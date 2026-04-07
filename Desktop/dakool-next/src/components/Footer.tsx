@@ -1,26 +1,46 @@
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faFacebookF, faTiktok, faXTwitter } from '@fortawesome/free-brands-svg-icons';
-import Logo from './Logo';
 
 export default function Footer() {
   return (
-    <footer className="bg-[#080808] border-t border-white/10 pt-16 pb-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-          {/* Brand */}
-          <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <Logo />
-              <span className="font-black text-xl tracking-widest text-white" style={{ fontFamily: "'Bebas Neue', cursive" }}>DAKOOL</span>
-            </Link>
-            <p className="text-gray-500 font-sans text-sm leading-relaxed mb-6">
-              La première marque d&apos;équipements sportifs 100% Sénégalaise. Né à Dakar, fait pour les champions.
-            </p>
-            <div className="flex gap-3">
-              {[faInstagram, faFacebookF, faTiktok, faXTwitter].map((icon, i) => (
-                <a key={i} href="#" className="w-9 h-9 rounded-lg bg-white/5 hover:bg-[#00853F]/20 border border-white/10 hover:border-[#00853F]/30 flex items-center justify-center text-gray-400 hover:text-[#00853F] transition-all">
-                  <FontAwesomeIcon icon={icon} className="w-4 h-4" />
+    <footer className="bg-black border-t border-white/5">
+      {/* Big brand statement */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-10 border-b border-white/5">
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
+          <h2
+            className="font-black text-white leading-none uppercase"
+            style={{ fontFamily: "'Bebas Neue', cursive", fontSize: 'clamp(60px, 10vw, 120px)' }}
+          >
+            DAKOOL
+          </h2>
+          <p className="text-gray-600 font-sans text-sm max-w-xs leading-relaxed">
+            La première marque d&apos;équipements sportifs 100% Sénégalaise.
+            Né à Dakar, fait pour les champions.
+          </p>
+        </div>
+      </div>
+
+      {/* Links grid */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-14">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-10">
+          {/* Social */}
+          <div>
+            <h4 className="text-white font-black text-xs uppercase tracking-[0.25em] mb-5 font-sans">Suivez-nous</h4>
+            <div className="flex gap-2 flex-wrap">
+              {[
+                { icon: faInstagram, label: 'Instagram' },
+                { icon: faFacebookF, label: 'Facebook' },
+                { icon: faTiktok, label: 'TikTok' },
+                { icon: faXTwitter, label: 'X' },
+              ].map(({ icon, label }) => (
+                <a
+                  key={label}
+                  href="#"
+                  aria-label={label}
+                  className="w-9 h-9 border border-white/10 hover:border-[#00853F] flex items-center justify-center text-gray-500 hover:text-[#00853F] transition-all duration-200"
+                >
+                  <FontAwesomeIcon icon={icon} className="w-3.5 h-3.5" />
                 </a>
               ))}
             </div>
@@ -28,11 +48,11 @@ export default function Footer() {
 
           {/* Navigation */}
           <div>
-            <h4 className="text-white font-black tracking-widest mb-4 text-sm" style={{ fontFamily: "'Bebas Neue', cursive" }}>Navigation</h4>
-            <ul className="space-y-2">
+            <h4 className="text-white font-black text-xs uppercase tracking-[0.25em] mb-5 font-sans">Navigation</h4>
+            <ul className="space-y-2.5">
               {[['/', 'Accueil'], ['/produits', 'Produits'], ['/equipes', 'Équipes'], ['/tournois', 'Tournois'], ['/contact', 'Contact']].map(([href, label]) => (
                 <li key={href}>
-                  <Link href={href} className="text-gray-500 hover:text-[#00853F] font-sans text-sm transition-colors">{label}</Link>
+                  <Link href={href} className="text-gray-600 hover:text-white font-sans text-sm transition-colors duration-200">{label}</Link>
                 </li>
               ))}
             </ul>
@@ -40,11 +60,11 @@ export default function Footer() {
 
           {/* Collections */}
           <div>
-            <h4 className="text-white font-black tracking-widest mb-4 text-sm" style={{ fontFamily: "'Bebas Neue', cursive" }}>Collections</h4>
-            <ul className="space-y-2">
+            <h4 className="text-white font-black text-xs uppercase tracking-[0.25em] mb-5 font-sans">Collections</h4>
+            <ul className="space-y-2.5">
               {['Maillots', 'Chaussures', 'Ballons', 'Équipements', 'Accessoires'].map(cat => (
                 <li key={cat}>
-                  <Link href="/produits" className="text-gray-500 hover:text-[#00853F] font-sans text-sm transition-colors">{cat}</Link>
+                  <Link href="/produits" className="text-gray-600 hover:text-white font-sans text-sm transition-colors duration-200">{cat}</Link>
                 </li>
               ))}
             </ul>
@@ -52,23 +72,33 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-white font-black tracking-widest mb-4 text-sm" style={{ fontFamily: "'Bebas Neue', cursive" }}>Contact</h4>
-            <ul className="space-y-2">
-              <li><span className="text-gray-500 font-sans text-sm">Dakar, Sénégal</span></li>
-              <li><a href="tel:+221761234567" className="text-gray-500 hover:text-[#00853F] font-sans text-sm transition-colors">+221 76 123 45 67</a></li>
-              <li><a href="mailto:contact@dakool.sn" className="text-gray-500 hover:text-[#00853F] font-sans text-sm transition-colors">contact@dakool.sn</a></li>
+            <h4 className="text-white font-black text-xs uppercase tracking-[0.25em] mb-5 font-sans">Contact</h4>
+            <ul className="space-y-2.5">
+              <li><span className="text-gray-600 font-sans text-sm">Dakar, Sénégal</span></li>
+              <li><a href="tel:+221761234567" className="text-gray-600 hover:text-white font-sans text-sm transition-colors duration-200">+221 76 123 45 67</a></li>
+              <li><a href="mailto:contact@dakool.sn" className="text-gray-600 hover:text-white font-sans text-sm transition-colors duration-200">contact@dakool.sn</a></li>
             </ul>
           </div>
         </div>
+      </div>
 
-        <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-gray-600 font-sans text-sm">© 2024 DAKOOL. Tous droits réservés. Fait avec fierté au Sénégal 🇸🇳</p>
+      {/* Bottom bar */}
+      <div className="border-t border-white/5 py-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-gray-700 font-sans text-xs">© 2024 DAKOOL. Tous droits réservés. Fait avec fierté au Sénégal 🇸🇳</p>
           <div className="flex gap-6">
             {['Mentions légales', 'Confidentialité', 'CGV'].map(label => (
-              <a key={label} href="#" className="text-gray-600 hover:text-gray-400 font-sans text-xs transition-colors">{label}</a>
+              <a key={label} href="#" className="text-gray-700 hover:text-gray-400 font-sans text-xs transition-colors duration-200">{label}</a>
             ))}
           </div>
         </div>
+      </div>
+
+      {/* Flag bar */}
+      <div className="flex h-[3px]">
+        <span className="flex-1 bg-[#00853F]" />
+        <span className="flex-1 bg-[#FDEF42]" />
+        <span className="flex-1 bg-[#E31E24]" />
       </div>
     </footer>
   );

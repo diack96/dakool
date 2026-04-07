@@ -38,9 +38,8 @@ export default function Navbar() {
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-black/98 backdrop-blur-md border-b border-white/5' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <Logo />
-            <span className="font-black text-xl tracking-[0.2em] text-white uppercase" style={{ fontFamily: "'Bebas Neue', cursive" }}>DAKOOL</span>
+          <Link href="/" className="flex items-center group">
+            <Logo height={38} />
           </Link>
 
           {/* Desktop Nav */}
@@ -99,7 +98,9 @@ export default function Navbar() {
       <div className={`fixed inset-0 z-40 bg-black flex flex-col items-start justify-center px-8 gap-8 transition-all duration-500 md:hidden ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
         {/* Decorative */}
         <div className="absolute top-0 right-0 w-px h-full bg-white/5" />
-        <span className="text-white/5 font-black text-[120px] absolute right-6 bottom-8 leading-none select-none" style={{ fontFamily: "'Bebas Neue', cursive" }}>DK</span>
+        <div className="absolute right-6 bottom-8 opacity-10 pointer-events-none select-none">
+          <Logo height={80} />
+        </div>
 
         {navLinks.map((link, i) => (
           <Link

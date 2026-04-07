@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faFacebookF, faTiktok, faXTwitter } from '@fortawesome/free-brands-svg-icons';
 
@@ -8,12 +9,15 @@ export default function Footer() {
       {/* Big brand statement */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-10 border-b border-white/5">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
-          <h2
-            className="font-black text-white leading-none uppercase"
-            style={{ fontFamily: "'Bebas Neue', cursive", fontSize: 'clamp(60px, 10vw, 120px)' }}
-          >
-            DAKOOL
-          </h2>
+          <Link href="/">
+            <Image
+              src="/dakool-logo.png"
+              alt="Dakool"
+              width={260}
+              height={125}
+              className="opacity-90 hover:opacity-100 transition-opacity"
+            />
+          </Link>
           <p className="text-gray-600 font-sans text-sm max-w-xs leading-relaxed">
             La première marque d&apos;équipements sportifs 100% Sénégalaise.
             Né à Dakar, fait pour les champions.

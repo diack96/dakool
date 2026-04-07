@@ -6,10 +6,18 @@ import { useCart } from '@/context/CartContext';
 import type { Product } from '@/data/products';
 import { useState } from 'react';
 
-const badgeColors = {
-  green: 'bg-[#00853F]/20 text-[#00853F] border border-[#00853F]/30',
-  yellow: 'bg-[#FDEF42]/20 text-[#FDEF42] border border-[#FDEF42]/30',
-  red: 'bg-[#E31E24]/20 text-[#E31E24] border border-[#E31E24]/30',
+const badgeStyles = {
+  green: 'bg-[#00853F] text-white',
+  yellow: 'bg-[#FDEF42] text-black',
+  red: 'bg-[#E31E24] text-white',
+};
+
+const categoryEmoji: Record<string, string> = {
+  Maillots: '👕',
+  Chaussures: '👟',
+  Ballons: '⚽',
+  Équipements: '🎽',
+  Accessoires: '🧢',
 };
 
 export default function ProductCard({ product }: { product: Product }) {
@@ -22,44 +30,50 @@ export default function ProductCard({ product }: { product: Product }) {
   };
 
   return (
-    <div className="bg-[#111] border border-white/10 rounded-2xl overflow-hidden hover:border-[#00853F]/40 hover:shadow-xl hover:shadow-[#00853F]/10 transition-all duration-300 group">
+    <div className="bg-black group cursor-pointer">
       {/* Image area */}
-      <div className="relative bg-[#0a0a0a] p-6 flex items-center justify-center h-48">
-        <div className="text-6xl">
-          {product.category === 'Maillots' ? '👕' :
-           product.category === 'Chaussures' ? '👟' :
-           product.category === 'Ballons' ? '⚽' :
-           product.category === 'Équipements' ? '🎽' : '🧢'}
+      <div className="relative bg-[#0d0d0d] aspect-square flex items-center justify-center overflow-hidden">
+        <div className="text-7xl transition-transform duration-500 group-hover:scale-110">
+          {categoryEmoji[product.category] ?? '📦'}
         </div>
+
+        {/* Badge */}
         {product.badge && (
-          <span className={`absolute top-3 left-3 text-xs font-bold px-2 py-1 rounded-full font-sans ${badgeColors[product.badge.color]}`}>
+          <span className={`absolute top-3 left-3 text-[10px] font-black uppercase tracking-[0.15em] px-2 py-1 font-sans ${badgeStyles[product.badge.color]}`}>
             {product.badge.label}
           </span>
         )}
+
+        {/* Wishlist */}
         <button
           onClick={() => setWished(!wished)}
-          className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors"
+          className="absolute top-3 right-3 w-8 h-8 bg-black/40 hover:bg-black/80 flex items-center justify-center transition-colors"
+          aria-label="Favoris"
         >
-          <FontAwesomeIcon icon={faHeart} className={`w-4 h-4 transition-colors ${wished ? 'text-[#E31E24]' : 'text-gray-500'}`} />
+          <FontAwesomeIcon
+            icon={faHeart}
+            className={`w-3.5 h-3.5 transition-colors ${wished ? 'text-[#E31E24]' : 'text-white/40'}`}
+          />
+        </button>
+
+        {/* Slide-up cart button */}
+        <button
+          onClick={handleAdd}
+          className="absolute bottom-0 left-0 right-0 bg-white hover:bg-[#00853F] text-black hover:text-white py-3.5 flex items-center justify-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] font-sans translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"
+        >
+          <FontAwesomeIcon icon={faPlus} className="w-3 h-3" />
+          Ajouter au panier
         </button>
       </div>
 
       {/* Info */}
-      <div className="p-4">
-        <p className="text-[#00853F] font-sans text-xs font-semibold uppercase tracking-wider mb-1">{product.category}</p>
-        <p className="text-white font-semibold font-sans mb-3 leading-tight">{product.name}</p>
-        <div className="flex items-center justify-between gap-2">
-          <span className="text-white font-black text-lg" style={{ fontFamily: "'Bebas Neue', cursive" }}>
-            {product.price.toLocaleString('fr-FR')} <span className="text-sm text-gray-400 font-sans font-normal">FCFA</span>
-          </span>
-          <button
-            onClick={handleAdd}
-            className="flex items-center gap-1.5 bg-[#00853F] hover:bg-[#006830] text-white text-sm font-semibold px-3 py-2 rounded-lg transition-colors font-sans"
-          >
-            <FontAwesomeIcon icon={faPlus} className="w-3 h-3" />
-            Ajouter
-          </button>
-        </div>
+      <div className="bg-black px-0 pt-3 pb-1">
+        <p className="text-[#00853F] font-sans text-[10px] font-bold uppercase tracking-[0.25em] mb-1">{product.category}</p>
+        <p className="text-white font-semibold font-sans text-sm leading-tight mb-2">{product.name}</p>
+        <p className="text-white font-black font-sans text-base" style={{ fontFamily: "'Bebas Neue', cursive" }}>
+          {product.price.toLocaleString('fr-FR')}{' '}
+          <span className="text-gray-500 text-xs font-sans font-normal">FCFA</span>
+        </p>
       </div>
     </div>
   );

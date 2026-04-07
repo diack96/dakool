@@ -30,28 +30,28 @@ export default function ProduitsPage() {
         subtitle="Équipements professionnels conçus pour les champions sénégalais."
       />
 
-      <section className="py-16 bg-[#0a0a0a]">
+      <section className="py-16 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           {/* Filter bar */}
-          <div className="flex flex-wrap gap-2 mb-10 justify-center">
+          <div className="flex flex-wrap gap-2 mb-10">
             {categories.map(cat => (
               <button
                 key={cat}
                 onClick={() => setActive(cat)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold font-sans transition-all border ${
+                className={`flex items-center gap-2 px-4 py-2.5 text-[11px] font-black uppercase tracking-[0.2em] font-sans transition-all border ${
                   active === cat
-                    ? 'bg-[#00853F] border-[#00853F] text-white'
-                    : 'bg-white/5 border-white/10 text-gray-400 hover:border-[#00853F]/30 hover:text-white'
+                    ? 'bg-white border-white text-black'
+                    : 'bg-transparent border-white/10 text-gray-500 hover:border-white/40 hover:text-white'
                 }`}
               >
-                <FontAwesomeIcon icon={catIcons[cat] || faGrip} className="w-3.5 h-3.5" />
+                <FontAwesomeIcon icon={catIcons[cat] || faGrip} className="w-3 h-3" />
                 {cat}
               </button>
             ))}
           </div>
 
           {/* Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-px bg-white/5">
             {filtered.map(p => <ProductCard key={p.id} product={p} />)}
           </div>
         </div>

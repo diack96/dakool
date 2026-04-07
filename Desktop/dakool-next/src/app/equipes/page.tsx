@@ -22,33 +22,35 @@ export default function EquipesPage() {
       />
 
       {/* Teams Grid */}
-      <section className="py-20 bg-[#0a0a0a]">
+      <section className="py-20 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-12">
-            <span className="inline-block bg-[#00853F]/10 border border-[#00853F]/30 text-[#00853F] text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full font-sans mb-4">8 Clubs Partenaires</span>
-            <h2 className="text-4xl sm:text-6xl font-black text-white" style={{ fontFamily: "'Bebas Neue', cursive" }}>
-              Les <span className="bg-gradient-to-r from-[#00853F] to-[#FDEF42] bg-clip-text text-transparent">Champions</span> DAKOOL
+          <div className="mb-10 border-b border-white/5 pb-6">
+            <span className="text-[#00853F] text-[11px] font-bold uppercase tracking-[0.3em] font-sans block mb-2">8 Clubs Partenaires</span>
+            <h2 className="text-5xl sm:text-7xl font-black text-white uppercase leading-none" style={{ fontFamily: "'Bebas Neue', cursive" }}>
+              Les Champions DAKOOL
             </h2>
-            <div className="w-16 h-1 bg-gradient-to-r from-[#00853F] to-[#FDEF42] mx-auto mt-4 rounded-full" />
-            <p className="text-gray-400 font-sans mt-4">Ensemble, nous construisons le football sénégalais de demain. Chaque maillot raconte une histoire.</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5">
             {teams.map(team => (
-              <div key={team.id} className="bg-[#111] border border-white/10 rounded-2xl p-6 hover:border-[#00853F]/30 hover:shadow-xl hover:shadow-[#00853F]/5 transition-all">
-                <div className="w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center text-white font-black text-2xl" style={{ backgroundColor: team.color, fontFamily: "'Bebas Neue', cursive" }}>
+              <div key={team.id} className="bg-black hover:bg-[#0d0d0d] p-8 group transition-colors duration-200">
+                <div
+                  className="w-16 h-16 mb-5 flex items-center justify-center text-white font-black"
+                  style={{ backgroundColor: team.color, fontFamily: "'Bebas Neue', cursive", fontSize: '14px', letterSpacing: '0.05em' }}
+                >
                   {team.acronym.slice(0, 3)}
                 </div>
-                <h3 className="text-white font-black text-lg text-center mb-1" style={{ fontFamily: "'Bebas Neue', cursive" }}>{team.name}</h3>
-                <p className="text-gray-500 font-sans text-sm text-center flex items-center justify-center gap-1 mb-3">
+                <h3 className="text-white font-black text-lg mb-1 uppercase leading-tight" style={{ fontFamily: "'Bebas Neue', cursive" }}>{team.name}</h3>
+                <p className="text-gray-600 font-sans text-xs flex items-center gap-1.5 mb-2">
                   <FontAwesomeIcon icon={faLocationDot} className="w-3 h-3 text-[#00853F]" />
                   {team.city}
                 </p>
-                <div className="flex flex-wrap gap-2 justify-center mb-4">
-                  <span className="text-xs bg-[#00853F]/10 text-[#00853F] border border-[#00853F]/20 px-2 py-0.5 rounded-full font-sans">{team.league}</span>
-                  <span className="text-xs bg-[#FDEF42]/10 text-[#FDEF42] border border-[#FDEF42]/20 px-2 py-0.5 rounded-full font-sans">Depuis {team.since}</span>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <span className="text-[10px] font-black uppercase tracking-[0.15em] px-2 py-1 border border-[#00853F]/30 text-[#00853F] font-sans">{team.league}</span>
+                  <span className="text-[10px] font-black uppercase tracking-[0.15em] px-2 py-1 border border-white/10 text-gray-600 font-sans">Depuis {team.since}</span>
                 </div>
-                <p className="text-gray-500 font-sans text-sm leading-relaxed text-center">{team.description}</p>
+                <p className="text-gray-600 font-sans text-xs leading-relaxed">{team.description}</p>
+                <div className="w-6 h-[2px] bg-[#00853F] mt-5 group-hover:w-12 transition-all duration-300" />
               </div>
             ))}
           </div>
@@ -56,23 +58,23 @@ export default function EquipesPage() {
       </section>
 
       {/* Impact */}
-      <section className="py-20 bg-[#0d0d0d] border-t border-white/10">
+      <section className="py-20 bg-[#050505] border-t border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-12">
-            <span className="inline-block bg-[#00853F]/10 border border-[#00853F]/30 text-[#00853F] text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full font-sans mb-4">Notre Impact</span>
-            <h2 className="text-4xl sm:text-6xl font-black text-white" style={{ fontFamily: "'Bebas Neue', cursive" }}>
-              Ce que <span className="bg-gradient-to-r from-[#00853F] to-[#FDEF42] bg-clip-text text-transparent">DAKOOL</span> Apporte
+          <div className="mb-10 border-b border-white/5 pb-6">
+            <span className="text-[#00853F] text-[11px] font-bold uppercase tracking-[0.3em] font-sans block mb-2">Notre Impact</span>
+            <h2 className="text-5xl sm:text-7xl font-black text-white uppercase leading-none" style={{ fontFamily: "'Bebas Neue', cursive" }}>
+              Ce que DAKOOL Apporte
             </h2>
-            <div className="w-16 h-1 bg-gradient-to-r from-[#00853F] to-[#FDEF42] mx-auto mt-4 rounded-full" />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5">
             {impacts.map(item => (
-              <div key={item.title} className="bg-[#111] border border-white/10 rounded-2xl p-6 hover:border-[#00853F]/20 transition-all">
-                <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-4">
-                  <FontAwesomeIcon icon={item.icon} className="w-5 h-5" style={{ color: item.color }} />
+              <div key={item.title} className="bg-[#050505] hover:bg-[#0d0d0d] p-8 group transition-colors">
+                <div className="w-10 h-10 border border-white/10 flex items-center justify-center mb-5">
+                  <FontAwesomeIcon icon={item.icon} className="w-4 h-4" style={{ color: item.color }} />
                 </div>
-                <h4 className="text-white font-black mb-2" style={{ fontFamily: "'Bebas Neue', cursive" }}>{item.title}</h4>
-                <p className="text-gray-500 font-sans text-sm leading-relaxed">{item.desc}</p>
+                <h4 className="text-white font-black mb-3 uppercase text-lg" style={{ fontFamily: "'Bebas Neue', cursive" }}>{item.title}</h4>
+                <p className="text-gray-600 font-sans text-sm leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -80,16 +82,28 @@ export default function EquipesPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-[#0a0a0a] border-t border-white/10">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
-          <span className="inline-block bg-[#00853F]/10 border border-[#00853F]/30 text-[#00853F] text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full font-sans mb-6">Rejoignez DAKOOL</span>
-          <h2 className="text-4xl sm:text-6xl font-black text-white mb-4" style={{ fontFamily: "'Bebas Neue', cursive" }}>
-            Devenir <span className="bg-gradient-to-r from-[#00853F] to-[#FDEF42] bg-clip-text text-transparent">Partenaire</span>
+      <section className="bg-[#00853F] py-24 relative overflow-hidden">
+        <span
+          className="absolute right-0 top-1/2 -translate-y-1/2 text-white/10 font-black leading-none select-none hidden lg:block"
+          style={{ fontFamily: "'Bebas Neue', cursive", fontSize: '280px' }}
+        >
+          DK
+        </span>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
+          <span className="text-white/60 text-[11px] font-bold uppercase tracking-[0.35em] font-sans block mb-4">Rejoignez DAKOOL</span>
+          <h2
+            className="text-5xl sm:text-7xl font-black text-white uppercase leading-[0.9] mb-8 max-w-2xl"
+            style={{ fontFamily: "'Bebas Neue', cursive" }}
+          >
+            Devenir Partenaire
           </h2>
-          <p className="text-gray-400 font-sans mb-8">Votre club mérite les meilleurs équipements. Rejoignez la famille DAKOOL et équipez vos joueurs comme des champions.</p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link href="/contact" className="bg-[#00853F] hover:bg-[#006830] text-white font-bold px-8 py-4 rounded-xl transition-all font-sans">Nous Contacter</Link>
-            <Link href="/produits" className="border border-white/20 hover:border-[#00853F]/50 text-white font-bold px-8 py-4 rounded-xl transition-all font-sans">Voir les équipements</Link>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/contact" className="bg-black hover:bg-white text-white hover:text-black font-black uppercase tracking-[0.15em] px-8 py-4 text-sm transition-colors font-sans">
+              Nous contacter →
+            </Link>
+            <Link href="/produits" className="border border-white/30 hover:border-white text-white font-black uppercase tracking-[0.15em] px-8 py-4 text-sm transition-colors font-sans">
+              Voir les équipements
+            </Link>
           </div>
         </div>
       </section>

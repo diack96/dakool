@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tournois — DAKOOL</title>
+  <meta name="description" content="DAKOOL sponsor les plus grands tournois de football sénégalais - Ligue 1, Coupe du Sénégal, Tournoi de la Téranga." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .tournament-detail-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: var(--transition);
+      margin-bottom: 32px;
+    }
+    .tournament-detail-card:hover {
+      border-color: rgba(0,133,63,0.4);
+      box-shadow: var(--shadow-hover);
+    }
+    .tournament-detail-header {
+      padding: 40px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .tournament-detail-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      flex-shrink: 0;
+    }
+    .tournament-detail-meta {
+      flex: 1;
+      min-width: 200px;
+    }
+    .tournament-detail-title {
+      font-size: clamp(28px, 5vw, 44px);
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .tournament-detail-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+    .tournament-detail-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0;
+    }
+    .tournament-detail-box {
+      padding: 28px 32px;
+      border-right: 1px solid var(--border);
+    }
+    .tournament-detail-box:last-child {
+      border-right: none;
+    }
+    .tournament-detail-box h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 12px;
+    }
+    .tournament-detail-box ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .tournament-detail-box ul li {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .tournament-detail-box ul li i {
+      color: var(--primary);
+      width: 14px;
+    }
+    .prize-amount {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 32px;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .prize-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    @media (max-width: 768px) {
+      .tournament-detail-body {
+        grid-template-columns: 1fr;
+      }
+      .tournament-detail-box {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+      .tournament-detail-box:last-child {
+        border-bottom: none;
+      }
+      .tournament-detail-header {
+        padding: 24px;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="navbar-logo">
+      <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="22" cy="22" r="21" fill="#0f0f0f" stroke="#00853F" stroke-width="1.5"/>
+        <ellipse cx="22" cy="24" rx="10" ry="7" fill="#00853F" opacity="0.9"/>
+        <circle cx="22" cy="16" r="6" fill="#00853F"/>
+        <circle cx="14" cy="14" r="3.5" fill="#FDEF42" opacity="0.85"/>
+        <circle cx="22" cy="10" r="3.5" fill="#FDEF42" opacity="0.85"/>
+        <circle cx="30" cy="14" r="3.5" fill="#FDEF42" opacity="0.85"/>
+        <circle cx="32" cy="22" r="3" fill="#FDEF42" opacity="0.75"/>
+        <circle cx="12" cy="22" r="3" fill="#FDEF42" opacity="0.75"/>
+        <circle cx="19.5" cy="15.5" r="1.2" fill="#FDEF42"/>
+        <circle cx="24.5" cy="15.5" r="1.2" fill="#FDEF42"/>
+        <ellipse cx="22" cy="18.5" rx="1.5" ry="1" fill="#E31E24"/>
+        <polygon points="15,10 17,6 19,10" fill="#00853F"/>
+        <polygon points="25,10 27,6 29,10" fill="#00853F"/>
+      </svg>
+      <span class="navbar-logo-text">DAKOOL</span>
+    </a>
+    <ul class="navbar-nav">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="produits.html">Produits</a></li>
+      <li><a href="equipes.html">Équipes</a></li>
+      <li><a href="tournois.html" class="active">Tournois</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="navbar-actions">
+      <a href="produits.html" class="btn btn-primary btn-sm" style="display:flex;">
+        <i class="fa-solid fa-store"></i> Boutique
+      </a>
+      <button class="cart-btn" aria-label="Panier">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="cart-count" style="display:none;">0</span>
+      </button>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu">
+  <a href="index.html">Accueil</a>
+  <a href="produits.html">Produits</a>
+  <a href="equipes.html">Équipes</a>
+  <a href="tournois.html" class="active">Tournois</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- ============ CART SIDEBAR ============ -->
+<div class="cart-overlay"></div>
+<aside class="cart-sidebar">
+  <div class="cart-header">
+    <h3>Mon Panier</h3>
+    <button class="cart-close"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="cart-items"></div>
+  <div class="cart-footer">
+    <div class="cart-total"><span>Total</span><strong>0 FCFA</strong></div>
+    <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="showToast('Fonctionnalité de paiement à venir !')">
+      <i class="fa-solid fa-lock"></i> Commander
+    </button>
+  </div>
+</aside>
+
+<!-- ============ PAGE HERO ============ -->
+<header class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-tag">Sponsoring Sportif</div>
+    <h1 class="page-hero-title">Nos <span class="gradient-text">Tournois</span></h1>
+    <p class="page-hero-subtitle">DAKOOL soutient le football à tous les niveaux — du quartier jusqu'à l'élite nationale.</p>
+  </div>
+  <div class="flag-bar"><span></span><span></span><span></span></div>
+</header>
+
+<!-- ============ TOURNAMENTS SECTION ============ -->
+<section class="section">
+  <div class="container">
+
+    <!-- Intro -->
+    <div class="section-header reveal">
+      <div class="section-tag">12 Compétitions</div>
+      <h2 class="section-title">DAKOOL <span class="gradient-text">Sponsorise</span></h2>
+      <div class="divider"></div>
+      <p class="section-subtitle">Chaque compétition est une opportunité de célébrer le talent sénégalais et d'équiper les prochains champions.</p>
+    </div>
+
+    <!-- 1. Ligue 1 Sénégalaise -->
+    <div class="tournament-detail-card reveal">
+      <div class="tournament-detail-header" style="background:linear-gradient(135deg,rgba(0,133,63,0.08),transparent);">
+        <div class="tournament-detail-icon" style="background:rgba(0,133,63,0.15);border:1px solid rgba(0,133,63,0.3);">🏆</div>
+        <div class="tournament-detail-meta">
+          <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;">
+            <span class="badge badge-green">Officiel</span>
+            <span class="badge badge-yellow">Ligue 1</span>
+            <span class="badge badge-green">Saison 2024–2025</span>
+          </div>
+          <h2 class="tournament-detail-title">Ligue 1 Sénégalaise</h2>
+          <p class="tournament-detail-sub">Le championnat national de première division, la plus haute compétition de football au Sénégal. DAKOOL est fier d'équiper 6 clubs et de sponsoriser les trophées officiels de la saison 2024–2025.</p>
+        </div>
+      </div>
+      <div class="tournament-detail-body">
+        <div class="tournament-detail-box">
+          <h4><i class="fa-solid fa-calendar"></i> Calendrier</h4>
+          <ul>
+            <li><i class="fa-solid fa-play"></i> Début : Août 2024</li>
+            <li><i class="fa-solid fa-flag-checkered"></i> Fin : Juin 2025</li>
+            <li><i class="fa-solid fa-rotate"></i> Format : Championnat aller-retour</li>
+            <li><i class="fa-solid fa-shield"></i> 16 clubs participants</li>
+            <li><i class="fa-solid fa-arrow-down"></i> 3 relégations en Ligue 2</li>
+          </ul>
+        </div>
+        <div class="tournament-detail-box">
+          <h4><i class="fa-solid fa-trophy"></i> Dotations</h4>
+          <ul>
+            <li>
+              <div>
+                <span class="prize-amount">15 000 000</span>
+                <span class="prize-label">FCFA — 1er prix (Champion)</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <span class="prize-amount">8 000 000</span>
+                <span class="prize-label">FCFA — 2e place (Vice-champion)</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <span class="prize-amount">4 000 000</span>
+                <span class="prize-label">FCFA — 3e place</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="tournament-detail-box">
+          <h4><i class="fa-solid fa-handshake"></i> Package DAKOOL</h4>
+          <ul>
+            <li><i class="fa-solid fa-check"></i> Équipements pour 6 clubs partenaires</li>
+            <li><i class="fa-solid fa-check"></i> Trophée officiel DAKOOL</li>
+            <li><i class="fa-solid fa-check"></i> Maillots du meilleur joueur</li>
+            <li><i class="fa-solid fa-check"></i> Branding sur panneaux publicitaires</li>
+            <li><i class="fa-solid fa-check"></i> Médailles DAKOOL pour finalistes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Coupe du Sénégal -->
+    <div class="tournament-detail-card reveal">
+      <div class="tournament-detail-header" style="background:linear-gradient(135deg,rgba(253,239,66,0.05),transparent);">
+        <div class="tournament-detail-icon" style="background:rgba(253,239,66,0.1);border:1px solid rgba(253,239,66,0.3);">🥇</div>
+        <div class="tournament-detail-meta">
+          <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;">
+            <span class="badge badge-yellow">Officiel</span>
+            <span class="badge badge-green">Knock-out</span>
+            <span class="badge badge-yellow">2024–2025</span>
+          </div>
+          <h2 class="tournament-detail-title">Coupe du Sénégal</h2>
+          <p class="tournament-detail-sub">La coupe nationale, ouverte à tous les clubs du Sénégal de la première à la quatrième division. Un format knock-out impitoyable qui produit chaque année des surprises mémorables. DAKOOL équipe les équipes finalistes.</p>
+        </div>
+      </div>
+      <div class="tournament-detail-body">
+        <div class="tournament-detail-box">
+          <h4><i class="fa-solid fa-calendar"></i> Calendrier</h4>
+          <ul>
+            <li><i class="fa-solid fa-play"></i> Début : Octobre 2024</li>
+            <li><i class="fa-solid fa-flag-checkered"></i> Finale : Mai 2025</li>
+            <li><i class="fa-solid fa-rotate"></i> Format : Élimination directe</li>
+            <li><i class="fa-solid fa-shield"></i> 64+ clubs participants</li>
+            <li><i class="fa-solid fa-star"></i> Finale au Stade Léopold Sédar Senghor</li>
+          </ul>
+        </div>
+        <div class="tournament-detail-box">
+          <h4><i class="fa-solid fa-trophy"></i> Dotations</h4>
+          <ul>
+            <li>
+              <div>
+                <span class="prize-amount">10 000 000</span>
+                <span class="prize-label">FCFA — Vainqueur</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <span class="prize-amount">5 000 000</span>
+                <span class="prize-label">FCFA — Finaliste</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <span class="prize-amount">2 000 000</span>
+                <span class="prize-label">FCFA — Demi-finalistes (x2)</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="tournament-detail-box">
+          <h4><i class="fa-solid fa-handshake"></i> Package DAKOOL</h4>
+          <ul>
+            <li><i class="fa-solid fa-check"></i> Trophée officiel DAKOOL gravé</li>
+            <li><i class="fa-solid fa-check"></i> Équipements des deux finalistes</li>
+            <li><i class="fa-solid fa-check"></i> Maillots spéciaux finale</li>
+            <li><i class="fa-solid fa-check"></i> Médailles DAKOOL (32 médailles)</li>
+            <li><i class="fa-solid fa-check"></i> Couverture digitale des matchs</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Tournoi de la Téranga -->
+    <div class="tournament-detail-card reveal" style="border-color:rgba(0,133,63,0.3);">
+      <div class="tournament-detail-header" style="background:linear-gradient(135deg,rgba(0,133,63,0.12),rgba(253,239,66,0.04));">
+        <div class="tournament-detail-icon" style="background:linear-gradient(135deg,rgba(0,133,63,0.2),rgba(253,239,66,0.1));border:1px solid rgba(0,133,63,0.4);font-size:28px;">🦁</div>
+        <div class="tournament-detail-meta">
+          <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;">
+            <span class="badge badge-green">Tournoi DAKOOL</span>
+            <span class="badge badge-yellow">Invitationnel</span>
+            <span class="badge badge-green">Signature Event</span>
+          </div>
+          <h2 class="tournament-detail-title">Tournoi de la Téranga</h2>
+          <p class="tournament-detail-sub">Le tournoi signature de DAKOOL, créé en 2020 pour célébrer l'hospitalité sénégalaise — la "téranga". Un événement annuel unique qui réunit les meilleures équipes partenaires dans un esprit de fraternité et de compétition de haut niveau.</p>
+        </div>
+      </div>
+      <div class="tournament-detail-body">
+        <div class="tournament-detail-box">
+          <h4><i class="fa-solid fa-calendar"></i> Prochaine Édition</h4>
+          <ul>
+            <li><i class="fa-solid fa-play"></i> Dates : 15–22 Janvier 2025</li>
+            <li><i class="fa-solid fa-location-dot"></i> Lieu : Stade Alassane Djigo, Pikine</li>
+            <li><i class="fa-solid fa-users"></i> 8 équipes invitées</li>
+            <li><i class="fa-solid fa-rotate"></i> Format : Phase de groupes + finale</li>
+            <li><i class="fa-solid fa-star"></i> 4e édition du tournoi</li>
+          </ul>
+        </div>
+        <div class="tournament-detail-box">
+          <h4><i class="fa-solid fa-trophy"></i> Dotations</h4>
+          <ul>
+            <li>
+              <div>
+                <span class="prize-amount">20 000 000</span>
+                <span class="prize-label">FCFA — Vainqueur</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <span class="prize-amount">10 000 000</span>
+                <span class="prize-label">FCFA — Finaliste</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <span class="prize-amount">5 000 000</span>
+                <span class="prize-label">FCFA — Meilleur buteur</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="tournament-detail-box">
+          <h4><i class="fa-solid fa-gift"></i> Package Équipes</h4>
+          <ul>
+            <li><i class="fa-solid fa-check"></i> Kit complet DAKOOL offert</li>
+            <li><i class="fa-solid fa-check"></i> Hébergement pris en charge</li>
+            <li><i class="fa-solid fa-check"></i> Transport aller-retour</li>
+            <li><i class="fa-solid fa-check"></i> Repas et collations</li>
+            <li><i class="fa-solid fa-check"></i> Couverture photo & vidéo pro</li>
+            <li><i class="fa-solid fa-check"></i> Trophée personnalisé DAKOOL</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Navétanes -->
+    <div class="tournament-detail-card reveal">
+      <div class="tournament-detail-header" style="background:linear-gradient(135deg,rgba(227,30,36,0.05),transparent);">
+        <div class="tournament-detail-icon" style="background:rgba(227,30,36,0.1);border:1px solid rgba(227,30,36,0.3);">🏘️</div>
+        <div class="tournament-detail-meta">
+          <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;">
+            <span class="badge badge-red">Communautaire</span>
+            <span class="badge badge-green">Tradition</span>
+            <span class="badge badge-yellow">Été 2025</span>
+          </div>
+          <h2 class="tournament-detail-title">Navétanes</h2>
+          <p class="tournament-detail-sub">Les Navétanes sont une institution au Sénégal — des tournois communautaires de quartier qui se déroulent chaque été dans tout le pays. DAKOOL soutient cette tradition vivante depuis 2020 en équipant des centaines d'équipes locales.</p>
+        </div>
+      </div>
+      <div class="tournament-detail-body">
+        <div class="tournament-detail-box">
+          <h4><i class="fa-solid fa-calendar"></i> Calendrier</h4>
+          <ul>
+            <li><i class="fa-solid fa-play"></i> Début : Juillet 2025</li>
+            <li><i class="fa-solid fa-flag-checkered"></i> Fin : Septembre 2025</li>
+            <li><i class="fa-solid fa-location-dot"></i> Partout au Sénégal</li>
+            <li><i class="fa-solid fa-users"></i> 200+ équipes par région</li>
+            <li><i class="fa-solid fa-heart"></i> 14 régions couvertes</li>
+          </ul>
+        </div>
+        <div class="tournament-detail-box">
+          <h4><i class="fa-solid fa-trophy"></i> Récompenses</h4>
+          <ul>
+            <li>
+              <div>
+                <span class="prize-amount">500 000</span>
+                <span class="prize-label">FCFA — Vainqueur par zone</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <span class="prize-amount">250 000</span>
+                <span class="prize-label">FCFA — Finaliste par zone</span>
+              </div>
+            </li>
+            <li><i class="fa-solid fa-shirt" style="color:var(--primary);"></i> Maillots DAKOOL pour toutes les équipes participantes</li>
+          </ul>
+        </div>
+        <div class="tournament-detail-box">
+          <h4><i class="fa-solid fa-handshake"></i> Engagement DAKOOL</h4>
+          <ul>
+            <li><i class="fa-solid fa-check"></i> 500+ maillots distribués</li>
+            <li><i class="fa-solid fa-check"></i> 200+ ballons fournis</li>
+            <li><i class="fa-solid fa-check"></i> Arbitres équipés DAKOOL</li>
+            <li><i class="fa-solid fa-check"></i> Trophées régionaux gravés</li>
+            <li><i class="fa-solid fa-check"></i> Présence et animation DAKOOL</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ SPONSORSHIP CTA ============ -->
+<section class="section" style="background:var(--bg-secondary);border-top:1px solid var(--border);">
+  <div class="container">
+    <div class="partner-cta reveal">
+      <div class="section-tag">Sponsoring</div>
+      <h2>Votre Tournoi <span class="gradient-text">avec DAKOOL</span></h2>
+      <p>Vous organisez un tournoi ou une compétition ? Associez-vous à DAKOOL pour équiper vos participants et bénéficier de notre soutien logistique et médiatique.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+        <a href="contact.html" class="btn btn-primary">
+          <i class="fa-solid fa-paper-plane"></i>
+          Proposer un partenariat
+        </a>
+        <a href="equipes.html" class="btn btn-outline">
+          <i class="fa-solid fa-shield"></i>
+          Voir nos équipes
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="navbar-logo">
+          <svg viewBox="0 0 44 44" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="22" cy="22" r="21" fill="#0f0f0f" stroke="#00853F" stroke-width="1.5"/>
+            <ellipse cx="22" cy="24" rx="10" ry="7" fill="#00853F" opacity="0.9"/>
+            <circle cx="22" cy="16" r="6" fill="#00853F"/>
+            <circle cx="14" cy="14" r="3.5" fill="#FDEF42" opacity="0.85"/>
+            <circle cx="22" cy="10" r="3.5" fill="#FDEF42" opacity="0.85"/>
+            <circle cx="30" cy="14" r="3.5" fill="#FDEF42" opacity="0.85"/>
+            <circle cx="19.5" cy="15.5" r="1.2" fill="#FDEF42"/>
+            <circle cx="24.5" cy="15.5" r="1.2" fill="#FDEF42"/>
+          </svg>
+          <span class="navbar-logo-text">DAKOOL</span>
+        </a>
+        <p>La première marque d'équipements sportifs 100% Sénégalaise.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="produits.html">Produits</a></li>
+          <li><a href="equipes.html">Équipes</a></li>
+          <li><a href="tournois.html">Tournois</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Tournois</h4>
+        <ul class="footer-links">
+          <li><a href="#">Ligue 1 Sénégalaise</a></li>
+          <li><a href="#">Coupe du Sénégal</a></li>
+          <li><a href="#">Tournoi de la Téranga</a></li>
+          <li><a href="#">Navétanes</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li><a href="contact.html">Dakar, Sénégal</a></li>
+          <li><a href="tel:+221761234567">+221 76 123 45 67</a></li>
+          <li><a href="mailto:contact@dakool.sn">contact@dakool.sn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 DAKOOL. Tous droits réservés. Fait avec fierté au Sénégal 🇸🇳</p>
+      <div class="footer-bottom-links">
+        <a href="#">Mentions légales</a>
+        <a href="#">Confidentialité</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

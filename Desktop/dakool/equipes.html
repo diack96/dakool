@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Équipes Partenaires — DAKOOL</title>
+  <meta name="description" content="Les équipes de football sénégalaises partenaires de DAKOOL - Teungueth FC, AS Jaraaf, Diambars et plus encore." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="navbar-logo">
+      <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="22" cy="22" r="21" fill="#0f0f0f" stroke="#00853F" stroke-width="1.5"/>
+        <ellipse cx="22" cy="24" rx="10" ry="7" fill="#00853F" opacity="0.9"/>
+        <circle cx="22" cy="16" r="6" fill="#00853F"/>
+        <circle cx="14" cy="14" r="3.5" fill="#FDEF42" opacity="0.85"/>
+        <circle cx="22" cy="10" r="3.5" fill="#FDEF42" opacity="0.85"/>
+        <circle cx="30" cy="14" r="3.5" fill="#FDEF42" opacity="0.85"/>
+        <circle cx="32" cy="22" r="3" fill="#FDEF42" opacity="0.75"/>
+        <circle cx="12" cy="22" r="3" fill="#FDEF42" opacity="0.75"/>
+        <circle cx="19.5" cy="15.5" r="1.2" fill="#FDEF42"/>
+        <circle cx="24.5" cy="15.5" r="1.2" fill="#FDEF42"/>
+        <ellipse cx="22" cy="18.5" rx="1.5" ry="1" fill="#E31E24"/>
+        <polygon points="15,10 17,6 19,10" fill="#00853F"/>
+        <polygon points="25,10 27,6 29,10" fill="#00853F"/>
+      </svg>
+      <span class="navbar-logo-text">DAKOOL</span>
+    </a>
+    <ul class="navbar-nav">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="produits.html">Produits</a></li>
+      <li><a href="equipes.html" class="active">Équipes</a></li>
+      <li><a href="tournois.html">Tournois</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="navbar-actions">
+      <a href="produits.html" class="btn btn-primary btn-sm" style="display:flex;">
+        <i class="fa-solid fa-store"></i> Boutique
+      </a>
+      <button class="cart-btn" aria-label="Panier">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="cart-count" style="display:none;">0</span>
+      </button>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu">
+  <a href="index.html">Accueil</a>
+  <a href="produits.html">Produits</a>
+  <a href="equipes.html" class="active">Équipes</a>
+  <a href="tournois.html">Tournois</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- ============ CART SIDEBAR ============ -->
+<div class="cart-overlay"></div>
+<aside class="cart-sidebar">
+  <div class="cart-header">
+    <h3>Mon Panier</h3>
+    <button class="cart-close"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="cart-items"></div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span>Total</span>
+      <strong>0 FCFA</strong>
+    </div>
+    <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="showToast('Fonctionnalité de paiement à venir !')">
+      <i class="fa-solid fa-lock"></i> Commander
+    </button>
+  </div>
+</aside>
+
+<!-- ============ PAGE HERO ============ -->
+<header class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-tag">Partenariats Officiels</div>
+    <h1 class="page-hero-title">Nos <span class="gradient-text">Équipes</span></h1>
+    <p class="page-hero-subtitle">8 clubs d'élite du football sénégalais équipés par DAKOOL, de la Ligue 1 jusqu'aux académies.</p>
+  </div>
+  <div class="flag-bar"><span></span><span></span><span></span></div>
+</header>
+
+<!-- ============ TEAMS SECTION ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">8 Clubs Partenaires</div>
+      <h2 class="section-title">Les <span class="gradient-text">Champions</span> DAKOOL</h2>
+      <div class="divider"></div>
+      <p class="section-subtitle">Ensemble, nous construisons le football sénégalais de demain. Chaque maillot raconte une histoire.</p>
+    </div>
+
+    <div class="teams-grid">
+
+      <!-- 1. Teungueth FC -->
+      <div class="team-card reveal delay-1">
+        <div class="team-logo">
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="40" r="40" fill="#E31E24"/>
+            <text x="50%" y="42%" dominant-baseline="middle" text-anchor="middle" font-size="22" font-weight="bold" fill="white" font-family="Arial">TFC</text>
+            <text x="50%" y="65%" dominant-baseline="middle" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)" font-family="Arial">TEUNGUETH</text>
+          </svg>
+        </div>
+        <div class="team-name">Teungueth FC</div>
+        <div class="team-city"><i class="fa-solid fa-location-dot" style="color:var(--primary);margin-right:6px;"></i>Rufisque, Dakar</div>
+        <div class="team-details">
+          <span class="badge badge-green">Ligue 1</span>
+          <span class="badge badge-yellow">Partenaire depuis 2021</span>
+        </div>
+        <p style="font-family:'Inter',sans-serif;font-size:13px;color:var(--text-muted);margin-top:16px;line-height:1.6;">Champion du Sénégal, Teungueth FC est l'un des clubs les plus titrés de la décennie. DAKOOL fournit l'intégralité des équipements officiels depuis 2021.</p>
+      </div>
+
+      <!-- 2. AS Jaraaf -->
+      <div class="team-card reveal delay-2">
+        <div class="team-logo">
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="40" r="40" fill="#003DA5"/>
+            <text x="50%" y="42%" dominant-baseline="middle" text-anchor="middle" font-size="22" font-weight="bold" fill="white" font-family="Arial">JAR</text>
+            <text x="50%" y="65%" dominant-baseline="middle" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)" font-family="Arial">AS JARAAF</text>
+          </svg>
+        </div>
+        <div class="team-name">AS Jaraaf</div>
+        <div class="team-city"><i class="fa-solid fa-location-dot" style="color:var(--primary);margin-right:6px;"></i>Dakar-Médina</div>
+        <div class="team-details">
+          <span class="badge badge-green">Ligue 1</span>
+          <span class="badge badge-yellow">Partenaire depuis 2020</span>
+        </div>
+        <p style="font-family:'Inter',sans-serif;font-size:13px;color:var(--text-muted);margin-top:16px;line-height:1.6;">Fondé en 1946, AS Jaraaf est l'un des plus anciens et prestigieux clubs du Sénégal. Notre partenariat depuis 2020 honore cette histoire unique.</p>
+      </div>
+
+      <!-- 3. AS Pikine -->
+      <div class="team-card reveal delay-3">
+        <div class="team-logo">
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="40" r="40" fill="#FF6B00"/>
+            <text x="50%" y="42%" dominant-baseline="middle" text-anchor="middle" font-size="22" font-weight="bold" fill="white" font-family="Arial">PIK</text>
+            <text x="50%" y="65%" dominant-baseline="middle" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)" font-family="Arial">AS PIKINE</text>
+          </svg>
+        </div>
+        <div class="team-name">AS Pikine</div>
+        <div class="team-city"><i class="fa-solid fa-location-dot" style="color:var(--primary);margin-right:6px;"></i>Pikine, Dakar</div>
+        <div class="team-details">
+          <span class="badge badge-green">Ligue 1</span>
+          <span class="badge badge-yellow">Partenaire depuis 2022</span>
+        </div>
+        <p style="font-family:'Inter',sans-serif;font-size:13px;color:var(--text-muted);margin-top:16px;line-height:1.6;">Le club de la banlieue dakaroise, symbole de la résilience et de la combativité sénégalaise. Un partenariat ancré dans les valeurs populaires.</p>
+      </div>
+
+      <!-- 4. Génération Foot -->
+      <div class="team-card reveal delay-1">
+        <div class="team-logo">
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="40" r="40" fill="#00853F"/>
+            <text x="50%" y="38%" dominant-baseline="middle" text-anchor="middle" font-size="18" font-weight="bold" fill="white" font-family="Arial">GEN</text>
+            <text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" font-size="12" font-weight="bold" fill="#FDEF42" font-family="Arial">FOOT</text>
+          </svg>
+        </div>
+        <div class="team-name">Génération Foot</div>
+        <div class="team-city"><i class="fa-solid fa-location-dot" style="color:var(--primary);margin-right:6px;"></i>Déni Biram Ndao</div>
+        <div class="team-details">
+          <span class="badge badge-green">Ligue 1</span>
+          <span class="badge badge-yellow">Partenaire depuis 2020</span>
+        </div>
+        <p style="font-family:'Inter',sans-serif;font-size:13px;color:var(--text-muted);margin-top:16px;line-height:1.6;">L'académie qui a formé Sadio Mané. Génération Foot représente l'excellence du football sénégalais et la formation de classe mondiale.</p>
+      </div>
+
+      <!-- 5. Diambars -->
+      <div class="team-card reveal delay-2">
+        <div class="team-logo">
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="40" r="40" fill="#7B2D8B"/>
+            <text x="50%" y="42%" dominant-baseline="middle" text-anchor="middle" font-size="18" font-weight="bold" fill="white" font-family="Arial">DIA</text>
+            <text x="50%" y="63%" dominant-baseline="middle" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)" font-family="Arial">DIAMBARS FC</text>
+          </svg>
+        </div>
+        <div class="team-name">Diambars FC</div>
+        <div class="team-city"><i class="fa-solid fa-location-dot" style="color:var(--primary);margin-right:6px;"></i>Saly, Thiès</div>
+        <div class="team-details">
+          <span class="badge badge-green">Ligue 1</span>
+          <span class="badge badge-yellow">Partenaire depuis 2021</span>
+        </div>
+        <p style="font-family:'Inter',sans-serif;font-size:13px;color:var(--text-muted);margin-top:16px;line-height:1.6;">Institut de formation reconnu internationalement, Diambars allie sport et éducation. DAKOOL équipe l'académie et l'équipe première depuis 2021.</p>
+      </div>
+
+      <!-- 6. US Gorée -->
+      <div class="team-card reveal delay-3">
+        <div class="team-logo">
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="40" r="40" fill="#00516B"/>
+            <text x="50%" y="42%" dominant-baseline="middle" text-anchor="middle" font-size="22" font-weight="bold" fill="white" font-family="Arial">USG</text>
+            <text x="50%" y="64%" dominant-baseline="middle" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)" font-family="Arial">US GORÉE</text>
+          </svg>
+        </div>
+        <div class="team-name">US Gorée</div>
+        <div class="team-city"><i class="fa-solid fa-location-dot" style="color:var(--primary);margin-right:6px;"></i>Île de Gorée</div>
+        <div class="team-details">
+          <span class="badge badge-green">Ligue 2</span>
+          <span class="badge badge-yellow">Partenaire depuis 2022</span>
+        </div>
+        <p style="font-family:'Inter',sans-serif;font-size:13px;color:var(--text-muted);margin-top:16px;line-height:1.6;">Club de l'île historique de Gorée, symbole de mémoire et de renouveau. US Gorée porte avec fierté l'héritage de ce lieu emblématique.</p>
+      </div>
+
+      <!-- 7. Mbour PC -->
+      <div class="team-card reveal delay-1">
+        <div class="team-logo">
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="40" r="40" fill="#C8102E"/>
+            <text x="50%" y="42%" dominant-baseline="middle" text-anchor="middle" font-size="22" font-weight="bold" fill="white" font-family="Arial">MPC</text>
+            <text x="50%" y="64%" dominant-baseline="middle" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)" font-family="Arial">MBOUR PC</text>
+          </svg>
+        </div>
+        <div class="team-name">Mbour Petite Côte</div>
+        <div class="team-city"><i class="fa-solid fa-location-dot" style="color:var(--primary);margin-right:6px;"></i>Mbour, Thiès</div>
+        <div class="team-details">
+          <span class="badge badge-green">Ligue 1</span>
+          <span class="badge badge-yellow">Partenaire depuis 2023</span>
+        </div>
+        <p style="font-family:'Inter',sans-serif;font-size:13px;color:var(--text-muted);margin-top:16px;line-height:1.6;">Club ambitieux de la côte sénégalaise, Mbour PC monte en puissance dans le football national. Notre partenariat marque le début d'une belle aventure.</p>
+      </div>
+
+      <!-- 8. Casa Sports -->
+      <div class="team-card reveal delay-2">
+        <div class="team-logo">
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="40" r="40" fill="#1a1a2e"/>
+            <text x="50%" y="38%" dominant-baseline="middle" text-anchor="middle" font-size="18" font-weight="bold" fill="#FDEF42" font-family="Arial">CASA</text>
+            <text x="50%" y="60%" dominant-baseline="middle" text-anchor="middle" font-size="12" font-weight="bold" fill="white" font-family="Arial">SPORTS</text>
+          </svg>
+        </div>
+        <div class="team-name">Casa Sports</div>
+        <div class="team-city"><i class="fa-solid fa-location-dot" style="color:var(--primary);margin-right:6px;"></i>Ziguinchor</div>
+        <div class="team-details">
+          <span class="badge badge-green">Ligue 1</span>
+          <span class="badge badge-yellow">Partenaire depuis 2021</span>
+        </div>
+        <p style="font-family:'Inter',sans-serif;font-size:13px;color:var(--text-muted);margin-top:16px;line-height:1.6;">Le géant du sud, représentant fier de la Casamance dans l'élite nationale. Casa Sports incarne la diversité et la richesse du football sénégalais.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ PARTNERSHIP STATS ============ -->
+<section class="section" style="background:var(--bg-secondary);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Notre Impact</div>
+      <h2 class="section-title">Ce que <span class="gradient-text">DAKOOL</span> Apporte</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:24px;">
+      <div class="tournament-card reveal delay-1">
+        <div class="tournament-icon"><i class="fa-solid fa-shirt" style="color:var(--primary);"></i></div>
+        <div class="tournament-name">Équipements Complets</div>
+        <p class="tournament-desc">Maillots domicile et extérieur, survêtements, chaussettes, sacs et accessoires pour toute la saison.</p>
+      </div>
+      <div class="tournament-card reveal delay-2">
+        <div class="tournament-icon"><i class="fa-solid fa-medal" style="color:var(--accent);"></i></div>
+        <div class="tournament-name">Qualité Professionnelle</div>
+        <p class="tournament-desc">Tissu technique respirant, broderies premium, coupes étudiées avec des professionnels du sport.</p>
+      </div>
+      <div class="tournament-card reveal delay-3">
+        <div class="tournament-icon"><i class="fa-solid fa-handshake" style="color:var(--primary);"></i></div>
+        <div class="tournament-name">Support Financier</div>
+        <p class="tournament-desc">Sponsoring des déplacements, primes de performance et soutien logistique tout au long de la saison.</p>
+      </div>
+      <div class="tournament-card reveal delay-1">
+        <div class="tournament-icon"><i class="fa-solid fa-bullhorn" style="color:var(--danger);"></i></div>
+        <div class="tournament-name">Visibilité Nationale</div>
+        <p class="tournament-desc">Mise en avant des clubs sur tous les canaux digitaux DAKOOL — Instagram, TikTok, Facebook et YouTube.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BECOME PARTNER CTA ============ -->
+<section class="section">
+  <div class="container">
+    <div class="partner-cta reveal">
+      <div class="section-tag">Rejoignez DAKOOL</div>
+      <h2>Devenir <span class="gradient-text">Partenaire</span></h2>
+      <p>Votre club mérite les meilleurs équipements. Rejoignez la famille DAKOOL et équipez vos joueurs comme des champions. Contactez-nous pour un devis personnalisé.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+        <a href="contact.html" class="btn btn-primary">
+          <i class="fa-solid fa-paper-plane"></i>
+          Nous Contacter
+        </a>
+        <a href="produits.html" class="btn btn-outline">
+          <i class="fa-solid fa-eye"></i>
+          Voir les équipements
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="navbar-logo">
+          <svg viewBox="0 0 44 44" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="22" cy="22" r="21" fill="#0f0f0f" stroke="#00853F" stroke-width="1.5"/>
+            <ellipse cx="22" cy="24" rx="10" ry="7" fill="#00853F" opacity="0.9"/>
+            <circle cx="22" cy="16" r="6" fill="#00853F"/>
+            <circle cx="14" cy="14" r="3.5" fill="#FDEF42" opacity="0.85"/>
+            <circle cx="22" cy="10" r="3.5" fill="#FDEF42" opacity="0.85"/>
+            <circle cx="30" cy="14" r="3.5" fill="#FDEF42" opacity="0.85"/>
+            <circle cx="19.5" cy="15.5" r="1.2" fill="#FDEF42"/>
+            <circle cx="24.5" cy="15.5" r="1.2" fill="#FDEF42"/>
+          </svg>
+          <span class="navbar-logo-text">DAKOOL</span>
+        </a>
+        <p>La première marque d'équipements sportifs 100% Sénégalaise.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="produits.html">Produits</a></li>
+          <li><a href="equipes.html">Équipes</a></li>
+          <li><a href="tournois.html">Tournois</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Collections</h4>
+        <ul class="footer-links">
+          <li><a href="produits.html">Maillots</a></li>
+          <li><a href="produits.html">Chaussures</a></li>
+          <li><a href="produits.html">Ballons</a></li>
+          <li><a href="produits.html">Accessoires</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li><a href="contact.html">Dakar, Sénégal</a></li>
+          <li><a href="tel:+221761234567">+221 76 123 45 67</a></li>
+          <li><a href="mailto:contact@dakool.sn">contact@dakool.sn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 DAKOOL. Tous droits réservés. Fait avec fierté au Sénégal 🇸🇳</p>
+      <div class="footer-bottom-links">
+        <a href="#">Mentions légales</a>
+        <a href="#">Confidentialité</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

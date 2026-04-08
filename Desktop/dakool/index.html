@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DAKOOL — L'Équipementier du Lion</title>
+  <meta name="description" content="DAKOOL - La première marque d'équipements sportifs 100% Sénégalaise. Maillots, chaussures, ballons et accessoires pour les champions." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="navbar-logo">
+      <!-- DAKOOL SVG Logo -->
+      <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="22" cy="22" r="21" fill="#0f0f0f" stroke="#00853F" stroke-width="1.5"/>
+        <!-- Lion silhouette simplified -->
+        <ellipse cx="22" cy="24" rx="10" ry="7" fill="#00853F" opacity="0.9"/>
+        <circle cx="22" cy="16" r="6" fill="#00853F"/>
+        <!-- Mane petals -->
+        <circle cx="14" cy="14" r="3.5" fill="#FDEF42" opacity="0.85"/>
+        <circle cx="22" cy="10" r="3.5" fill="#FDEF42" opacity="0.85"/>
+        <circle cx="30" cy="14" r="3.5" fill="#FDEF42" opacity="0.85"/>
+        <circle cx="32" cy="22" r="3" fill="#FDEF42" opacity="0.75"/>
+        <circle cx="12" cy="22" r="3" fill="#FDEF42" opacity="0.75"/>
+        <!-- Eyes -->
+        <circle cx="19.5" cy="15.5" r="1.2" fill="#FDEF42"/>
+        <circle cx="24.5" cy="15.5" r="1.2" fill="#FDEF42"/>
+        <!-- Nose -->
+        <ellipse cx="22" cy="18.5" rx="1.5" ry="1" fill="#E31E24"/>
+        <!-- Ears -->
+        <polygon points="15,10 17,6 19,10" fill="#00853F"/>
+        <polygon points="25,10 27,6 29,10" fill="#00853F"/>
+      </svg>
+      <span class="navbar-logo-text">DAKOOL</span>
+    </a>
+
+    <ul class="navbar-nav">
+      <li><a href="index.html" class="active">Accueil</a></li>
+      <li><a href="produits.html">Produits</a></li>
+      <li><a href="equipes.html">Équipes</a></li>
+      <li><a href="tournois.html">Tournois</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div class="navbar-actions">
+      <a href="produits.html" class="btn btn-primary btn-sm" style="display:none;display:flex;">
+        <i class="fa-solid fa-store"></i>
+        Boutique
+      </a>
+      <button class="cart-btn" aria-label="Panier">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="cart-count" style="display:none;">0</span>
+      </button>
+      <button class="hamburger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ MOBILE MENU ============ -->
+<div class="mobile-menu">
+  <a href="index.html">Accueil</a>
+  <a href="produits.html">Produits</a>
+  <a href="equipes.html">Équipes</a>
+  <a href="tournois.html">Tournois</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- ============ CART SIDEBAR ============ -->
+<div class="cart-overlay"></div>
+<aside class="cart-sidebar">
+  <div class="cart-header">
+    <h3>Mon Panier</h3>
+    <button class="cart-close"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="cart-items">
+    <div class="cart-empty">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <p>Votre panier est vide</p>
+      <a href="produits.html" class="btn btn-sm btn-primary">Voir les produits</a>
+    </div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span>Total</span>
+      <strong>0 FCFA</strong>
+    </div>
+    <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="showToast('Fonctionnalité de paiement à venir !')">
+      <i class="fa-solid fa-lock"></i> Commander
+    </button>
+  </div>
+</aside>
+
+<!-- ============ HERO SECTION ============ -->
+<section class="hero" id="accueil">
+  <div class="hero-bg"></div>
+  <div class="hero-particles"></div>
+
+  <div class="hero-content">
+    <div class="hero-tag">
+      <span>Première marque 100% Sénégalaise</span>
+    </div>
+
+    <h1 class="hero-title">
+      <span class="line-1">L'ÉQUIPEMENTIER</span>
+      <span class="line-2">DU LION</span>
+    </h1>
+
+    <p class="hero-subtitle">
+      La première marque d'équipements sportifs 100% Sénégalaise.<br>
+      Né à Dakar. Fait pour les champions.
+    </p>
+
+    <div class="hero-ctas">
+      <a href="produits.html" class="btn btn-primary">
+        <i class="fa-solid fa-store"></i>
+        Découvrir nos Produits
+      </a>
+      <a href="equipes.html" class="btn btn-outline">
+        <i class="fa-solid fa-shield"></i>
+        Nos Équipes
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span>Défiler</span>
+    <i class="fa-solid fa-chevron-down"></i>
+  </div>
+
+  <div class="flag-bar">
+    <span></span><span></span><span></span>
+  </div>
+</section>
+
+<!-- ============ HIGHLIGHT BAND ============ -->
+<div class="highlight-band">
+  LIVRAISON GRATUITE À DAKAR &nbsp;·&nbsp; QUALITÉ PROFESSIONNELLE &nbsp;·&nbsp; MADE IN SÉNÉGAL &nbsp;·&nbsp; ÉQUIPEMENTS OFFICIELS
+</div>
+
+<!-- ============ PARTENAIRES SECTION ============ -->
+<section class="partners" id="partenaires">
+  <div class="partners-title">Nos Équipes Partenaires</div>
+  <div class="partners-track-wrapper">
+    <div class="partners-track">
+      <!-- First set -->
+      <div class="partner-item">
+        <svg class="partner-logo" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#E31E24"/><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff" font-family="Arial">TFC</text></svg>
+        <span class="partner-name">Teungueth FC</span>
+      </div>
+      <div class="partner-item">
+        <svg class="partner-logo" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#003DA5"/><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff" font-family="Arial">JAR</text></svg>
+        <span class="partner-name">AS Jaraaf</span>
+      </div>
+      <div class="partner-item">
+        <svg class="partner-logo" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#FF6B00"/><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff" font-family="Arial">PIK</text></svg>
+        <span class="partner-name">AS Pikine</span>
+      </div>
+      <div class="partner-item">
+        <svg class="partner-logo" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#00853F"/><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff" font-family="Arial">GF</text></svg>
+        <span class="partner-name">Génération Foot</span>
+      </div>
+      <div class="partner-item">
+        <svg class="partner-logo" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#7B2D8B"/><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff" font-family="Arial">DIA</text></svg>
+        <span class="partner-name">Diambars</span>
+      </div>
+      <div class="partner-item">
+        <svg class="partner-logo" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#00516B"/><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff" font-family="Arial">USG</text></svg>
+        <span class="partner-name">US Gorée</span>
+      </div>
+      <div class="partner-item">
+        <svg class="partner-logo" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#C8102E"/><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff" font-family="Arial">MPC</text></svg>
+        <span class="partner-name">Mbour PC</span>
+      </div>
+      <div class="partner-item">
+        <svg class="partner-logo" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#1a1a2e"/><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" font-size="11" font-weight="bold" fill="#FDEF42" font-family="Arial">CSA</text></svg>
+        <span class="partner-name">Casa Sports</span>
+      </div>
+      <!-- Duplicate for seamless loop -->
+      <div class="partner-item">
+        <svg class="partner-logo" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#E31E24"/><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff" font-family="Arial">TFC</text></svg>
+        <span class="partner-name">Teungueth FC</span>
+      </div>
+      <div class="partner-item">
+        <svg class="partner-logo" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#003DA5"/><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff" font-family="Arial">JAR</text></svg>
+        <span class="partner-name">AS Jaraaf</span>
+      </div>
+      <div class="partner-item">
+        <svg class="partner-logo" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#FF6B00"/><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" font-size="13" font-weight="bold" fill="#fff" font-family="Arial">PIK</text></svg>
+        <span class="partner-name">AS Pikine</span>
+      </div>
+      <div class="partner-item">
+        <svg class="partner-logo" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#00853F"/><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff" font-family="Arial">GF</text></svg>
+        <span class="partner-name">Génération Foot</span>
+      </div>
+      <div class="partner-item">
+        <svg class="partner-logo" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#7B2D8B"/><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff" font-family="Arial">DIA</text></svg>
+        <span class="partner-name">Diambars</span>
+      </div>
+      <div class="partner-item">
+        <svg class="partner-logo" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#00516B"/><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff" font-family="Arial">USG</text></svg>
+        <span class="partner-name">US Gorée</span>
+      </div>
+      <div class="partner-item">
+        <svg class="partner-logo" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#C8102E"/><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff" font-family="Arial">MPC</text></svg>
+        <span class="partner-name">Mbour PC</span>
+      </div>
+      <div class="partner-item">
+        <svg class="partner-logo" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#1a1a2e"/><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" font-size="11" font-weight="bold" fill="#FDEF42" font-family="Arial">CSA</text></svg>
+        <span class="partner-name">Casa Sports</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRODUITS PHARES ============ -->
+<section class="section" id="produits">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Collections</div>
+      <h2 class="section-title">Produits <span class="gradient-text">Phares</span></h2>
+      <div class="divider"></div>
+      <p class="section-subtitle">Équipez-vous comme un professionnel avec la qualité DAKOOL, conçue pour les champions sénégalais.</p>
+    </div>
+
+    <div class="products-grid">
+      <!-- Product 1 -->
+      <div class="product-card reveal delay-1" data-id="p1" data-category="Maillots">
+        <div class="product-image-wrap">
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30 20 L20 40 L35 45 L35 95 L85 95 L85 45 L100 40 L90 20 L70 28 C68 22 62 18 60 18 C58 18 52 22 50 28 Z" fill="#00853F"/>
+            <path d="M30 20 L20 40 L35 45 L35 55 L85 55 L85 45 L100 40 L90 20" fill="#006830" opacity="0.5"/>
+            <path d="M50 28 C52 22 58 18 60 18 C62 18 68 22 70 28" fill="none" stroke="#FDEF42" stroke-width="2.5"/>
+            <text x="60" y="78" text-anchor="middle" fill="#FDEF42" font-size="11" font-weight="bold" font-family="Arial">DAKOOL</text>
+            <circle cx="60" cy="65" r="7" fill="none" stroke="#FDEF42" stroke-width="2"/>
+          </svg>
+          <div class="product-badge"><span class="badge badge-green">Nouveau</span></div>
+          <button class="product-wishlist"><i class="fa-regular fa-heart"></i></button>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Maillots</div>
+          <div class="product-name">Maillot Officiel Teranga</div>
+          <div class="product-price-row">
+            <div class="product-price">25 000<span>FCFA</span></div>
+            <button class="add-to-cart-btn">
+              <i class="fa-solid fa-plus"></i>
+              Ajouter
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="product-card reveal delay-2" data-id="p2" data-category="Maillots">
+        <div class="product-image-wrap">
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30 20 L20 40 L35 45 L35 95 L85 95 L85 45 L100 40 L90 20 L70 28 C68 22 62 18 60 18 C58 18 52 22 50 28 Z" fill="#1a1a1a" stroke="#E31E24" stroke-width="2"/>
+            <path d="M35 55 L85 55 L85 45 L35 45 Z" fill="#E31E24" opacity="0.7"/>
+            <path d="M50 28 C52 22 58 18 60 18 C62 18 68 22 70 28" fill="none" stroke="#E31E24" stroke-width="2.5"/>
+            <text x="60" y="78" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold" font-family="Arial">DAKOOL</text>
+            <path d="M48 62 L60 58 L72 62 L68 72 L60 74 L52 72 Z" fill="#E31E24" opacity="0.6"/>
+          </svg>
+          <button class="product-wishlist"><i class="fa-regular fa-heart"></i></button>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Maillots</div>
+          <div class="product-name">Maillot Domicile Lion</div>
+          <div class="product-price-row">
+            <div class="product-price">22 000<span>FCFA</span></div>
+            <button class="add-to-cart-btn">
+              <i class="fa-solid fa-plus"></i>
+              Ajouter
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="product-card reveal delay-3" data-id="p3" data-category="Ballons">
+        <div class="product-image-wrap">
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="60" r="36" fill="#f5f5f5" stroke="#ddd" stroke-width="1.5"/>
+            <path d="M60 24 L75 40 L70 58 L50 58 L45 40 Z" fill="#0A0A0A"/>
+            <path d="M45 40 L24 48 L28 68 L50 58 Z" fill="#0A0A0A"/>
+            <path d="M75 40 L96 48 L92 68 L70 58 Z" fill="#0A0A0A"/>
+            <path d="M28 68 L40 88 L60 90 L50 70 Z" fill="#0A0A0A"/>
+            <path d="M92 68 L80 88 L60 90 L70 70 Z" fill="#0A0A0A"/>
+            <path d="M50 58 L50 70 L60 90 L70 70 L70 58 L60 54 Z" fill="#00853F" opacity="0.8"/>
+            <text x="60" y="63" text-anchor="middle" fill="#fff" font-size="7" font-weight="bold" font-family="Arial">DKL</text>
+          </svg>
+          <div class="product-badge"><span class="badge badge-yellow">Officiel</span></div>
+          <button class="product-wishlist"><i class="fa-regular fa-heart"></i></button>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Ballons</div>
+          <div class="product-name">Ballon Officiel Téranga</div>
+          <div class="product-price-row">
+            <div class="product-price">18 500<span>FCFA</span></div>
+            <button class="add-to-cart-btn">
+              <i class="fa-solid fa-plus"></i>
+              Ajouter
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="product-card reveal delay-1" data-id="p4" data-category="Chaussures">
+        <div class="product-image-wrap">
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 75 C15 75 25 55 50 52 C65 51 80 56 95 58 L100 65 C100 65 85 70 70 72 C55 74 40 78 30 80 C22 82 15 80 15 75 Z" fill="#00853F"/>
+            <path d="M15 75 C15 75 25 55 50 52 C65 51 80 56 95 58 L95 63 C80 62 65 58 50 59 C28 62 18 75 18 75 Z" fill="#006830"/>
+            <path d="M95 58 L100 65 L95 72 L92 66 Z" fill="#FDEF42"/>
+            <path d="M30 72 C40 68 55 66 70 64" stroke="#FDEF42" stroke-width="2" stroke-linecap="round"/>
+            <path d="M32 75 C42 71 57 69 72 67" stroke="#FDEF42" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+            <ellipse cx="60" cy="82" rx="40" ry="5" fill="#0A0A0A" opacity="0.3"/>
+          </svg>
+          <div class="product-badge"><span class="badge badge-yellow">Pro</span></div>
+          <button class="product-wishlist"><i class="fa-regular fa-heart"></i></button>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Chaussures</div>
+          <div class="product-name">Chaussures Elite Pro</div>
+          <div class="product-price-row">
+            <div class="product-price">45 000<span>FCFA</span></div>
+            <button class="add-to-cart-btn">
+              <i class="fa-solid fa-plus"></i>
+              Ajouter
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="product-card reveal delay-2" data-id="p5" data-category="Accessoires">
+        <div class="product-image-wrap">
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="30" y="38" width="60" height="50" rx="4" fill="#00853F"/>
+            <rect x="30" y="38" width="60" height="18" rx="4" fill="#006830"/>
+            <line x1="45" y1="38" x2="45" y2="88" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+            <line x1="75" y1="38" x2="75" y2="88" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+            <text x="60" y="68" text-anchor="middle" fill="#FDEF42" font-size="9" font-weight="bold" font-family="Arial">SHORT</text>
+            <text x="60" y="78" text-anchor="middle" fill="rgba(253,239,66,0.6)" font-size="7" font-family="Arial">DAKOOL</text>
+            <path d="M47 88 L47 98 M73 88 L73 98" stroke="#006830" stroke-width="8" stroke-linecap="round"/>
+          </svg>
+          <button class="product-wishlist"><i class="fa-regular fa-heart"></i></button>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Accessoires</div>
+          <div class="product-name">Short Training DAKOOL</div>
+          <div class="product-price-row">
+            <div class="product-price">8 500<span>FCFA</span></div>
+            <button class="add-to-cart-btn">
+              <i class="fa-solid fa-plus"></i>
+              Ajouter
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 6 -->
+      <div class="product-card reveal delay-3" data-id="p7" data-category="Équipements">
+        <div class="product-image-wrap">
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Jacket -->
+            <path d="M28 25 L20 45 L35 50 L35 95 L85 95 L85 50 L100 45 L92 25 L72 32 C70 26 65 22 60 22 C55 22 50 26 48 32 Z" fill="#0f0f0f" stroke="#00853F" stroke-width="2"/>
+            <path d="M35 50 L85 50 L85 60 L35 60 Z" fill="#00853F" opacity="0.9"/>
+            <path d="M60 22 L58 50 L62 50 L60 22 Z" fill="#00853F" opacity="0.5"/>
+            <path d="M48 32 C50 26 55 22 60 22 C65 22 70 26 72 32" fill="none" stroke="#00853F" stroke-width="2"/>
+            <text x="60" y="78" text-anchor="middle" fill="#00853F" font-size="9" font-weight="bold" font-family="Arial">DAKOOL</text>
+            <rect x="36" y="65" width="18" height="14" rx="2" fill="#00853F" opacity="0.3" stroke="#00853F" stroke-width="1"/>
+          </svg>
+          <div class="product-badge"><span class="badge badge-green">Coach</span></div>
+          <button class="product-wishlist"><i class="fa-regular fa-heart"></i></button>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Équipements</div>
+          <div class="product-name">Veste Entraîneur</div>
+          <div class="product-price-row">
+            <div class="product-price">35 000<span>FCFA</span></div>
+            <button class="add-to-cart-btn">
+              <i class="fa-solid fa-plus"></i>
+              Ajouter
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-32 reveal">
+      <a href="produits.html" class="btn btn-outline">
+        Voir tous les produits
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TOURNOIS SECTION ============ -->
+<section class="section" id="tournois" style="background:var(--bg-secondary); border-top:1px solid var(--border);">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Partenariats</div>
+      <h2 class="section-title">Tournois <span class="gradient-text">Sponsorisés</span></h2>
+      <div class="divider"></div>
+      <p class="section-subtitle">DAKOOL soutient le football sénégalais à tous les niveaux, du quartier jusqu'à la Ligue 1.</p>
+    </div>
+
+    <div class="tournaments-grid">
+      <div class="tournament-card reveal delay-1">
+        <div class="tournament-icon">🏆</div>
+        <div class="tournament-name">Ligue 1 Sénégalaise</div>
+        <p class="tournament-desc">Le championnat national de première division. DAKOOL équipe 6 clubs et sponsorise les récompenses officielles.</p>
+        <div class="tournament-meta">
+          <span class="badge badge-green">Août – Juin</span>
+          <span class="badge badge-yellow">16 clubs</span>
+        </div>
+      </div>
+
+      <div class="tournament-card reveal delay-2">
+        <div class="tournament-icon">🥇</div>
+        <div class="tournament-name">Coupe du Sénégal</div>
+        <p class="tournament-desc">La coupe nationale, ouverte à tous les clubs du pays. DAKOOL fournit le trophée officiel et les équipements des finales.</p>
+        <div class="tournament-meta">
+          <span class="badge badge-green">Octobre – Mai</span>
+          <span class="badge badge-red">Knock-out</span>
+        </div>
+      </div>
+
+      <div class="tournament-card reveal delay-3">
+        <div class="tournament-icon" style="font-size:20px;">🦁</div>
+        <div class="tournament-name">Tournoi de la Téranga</div>
+        <p class="tournament-desc">Le tournoi signature de DAKOOL. Créé pour célébrer l'hospitalité sénégalaise et découvrir les talents de demain.</p>
+        <div class="tournament-meta">
+          <span class="badge badge-yellow">Janvier 2025</span>
+          <span class="badge badge-green">DAKOOL Official</span>
+        </div>
+      </div>
+
+      <div class="tournament-card reveal delay-1">
+        <div class="tournament-icon">🏘️</div>
+        <div class="tournament-name">Navétanes</div>
+        <p class="tournament-desc">Les tournois communautaires de quartier, tradition vivante du Sénégal. DAKOOL équipe les équipes locales depuis 2020.</p>
+        <div class="tournament-meta">
+          <span class="badge badge-green">Juillet – Sept</span>
+          <span class="badge badge-yellow">200+ équipes</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-32 reveal">
+      <a href="tournois.html" class="btn btn-primary">
+        <i class="fa-solid fa-trophy"></i>
+        Voir tous les tournois
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS SECTION ============ -->
+<section class="section stats-section" id="impact">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Notre Impact</div>
+      <h2 class="section-title">DAKOOL <span class="gradient-text">en Chiffres</span></h2>
+      <div class="divider"></div>
+    </div>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-item reveal">
+      <div class="stat-number" data-target="8" data-suffix="">8</div>
+      <div class="stat-label">Équipes Partenaires</div>
+    </div>
+    <div class="stat-item reveal delay-1">
+      <div class="stat-number" data-target="12" data-suffix="">12</div>
+      <div class="stat-label">Tournois Sponsorisés</div>
+    </div>
+    <div class="stat-item reveal delay-2">
+      <div class="stat-number" data-target="50000" data-suffix="+">50 000+</div>
+      <div class="stat-label">Athlètes Équipés</div>
+    </div>
+    <div class="stat-item reveal delay-3">
+      <div class="stat-number" data-target="5" data-suffix="">5</div>
+      <div class="stat-label">Ans d'Expérience</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA NEWSLETTER ============ -->
+<section class="section" style="border-top:1px solid var(--border);">
+  <div class="container">
+    <div class="partner-cta reveal">
+      <div class="section-tag">Newsletter</div>
+      <h2>Restez dans la <span class="gradient-text">Course</span></h2>
+      <p>Recevez en avant-première nos nouvelles collections, offres exclusives et actualités du football sénégalais.</p>
+      <form class="newsletter-form" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:8px;">
+        <input type="email" placeholder="Votre adresse email" class="form-input" style="max-width:320px;" required />
+        <button type="submit" class="btn btn-primary">
+          <i class="fa-solid fa-paper-plane"></i>
+          S'abonner
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Brand -->
+      <div class="footer-brand">
+        <a href="index.html" class="navbar-logo" style="margin-bottom:4px;">
+          <svg viewBox="0 0 44 44" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="22" cy="22" r="21" fill="#0f0f0f" stroke="#00853F" stroke-width="1.5"/>
+            <ellipse cx="22" cy="24" rx="10" ry="7" fill="#00853F" opacity="0.9"/>
+            <circle cx="22" cy="16" r="6" fill="#00853F"/>
+            <circle cx="14" cy="14" r="3.5" fill="#FDEF42" opacity="0.85"/>
+            <circle cx="22" cy="10" r="3.5" fill="#FDEF42" opacity="0.85"/>
+            <circle cx="30" cy="14" r="3.5" fill="#FDEF42" opacity="0.85"/>
+            <circle cx="19.5" cy="15.5" r="1.2" fill="#FDEF42"/>
+            <circle cx="24.5" cy="15.5" r="1.2" fill="#FDEF42"/>
+          </svg>
+          <span class="navbar-logo-text">DAKOOL</span>
+        </a>
+        <p>La première marque d'équipements sportifs 100% Sénégalaise. Né à Dakar, fait pour les champions. Nous habillons l'âme du sport sénégalais.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-btn" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#" class="social-btn" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="social-btn" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="produits.html">Produits</a></li>
+          <li><a href="equipes.html">Équipes</a></li>
+          <li><a href="tournois.html">Tournois</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Produits -->
+      <div class="footer-col">
+        <h4>Collections</h4>
+        <ul class="footer-links">
+          <li><a href="produits.html">Maillots</a></li>
+          <li><a href="produits.html">Chaussures</a></li>
+          <li><a href="produits.html">Ballons</a></li>
+          <li><a href="produits.html">Équipements</a></li>
+          <li><a href="produits.html">Accessoires</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li><a href="contact.html"><i class="fa-solid fa-location-dot" style="color:var(--primary);width:14px;"></i> Dakar, Sénégal</a></li>
+          <li><a href="tel:+221761234567"><i class="fa-solid fa-phone" style="color:var(--primary);width:14px;"></i> +221 76 123 45 67</a></li>
+          <li><a href="https://wa.me/221761234567"><i class="fa-brands fa-whatsapp" style="color:var(--primary);width:14px;"></i> WhatsApp</a></li>
+          <li><a href="mailto:contact@dakool.sn"><i class="fa-solid fa-envelope" style="color:var(--primary);width:14px;"></i> contact@dakool.sn</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2024 DAKOOL. Tous droits réservés. Fait avec fierté au Sénégal 🇸🇳</p>
+      <div class="footer-bottom-links">
+        <a href="#">Mentions légales</a>
+        <a href="#">Confidentialité</a>
+        <a href="#">CGV</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

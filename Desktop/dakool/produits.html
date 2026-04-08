@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Produits — DAKOOL</title>
+  <meta name="description" content="Catalogue complet des équipements sportifs DAKOOL - Maillots, Chaussures, Ballons, Accessoires" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="navbar-logo">
+      <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="22" cy="22" r="21" fill="#0f0f0f" stroke="#00853F" stroke-width="1.5"/>
+        <ellipse cx="22" cy="24" rx="10" ry="7" fill="#00853F" opacity="0.9"/>
+        <circle cx="22" cy="16" r="6" fill="#00853F"/>
+        <circle cx="14" cy="14" r="3.5" fill="#FDEF42" opacity="0.85"/>
+        <circle cx="22" cy="10" r="3.5" fill="#FDEF42" opacity="0.85"/>
+        <circle cx="30" cy="14" r="3.5" fill="#FDEF42" opacity="0.85"/>
+        <circle cx="32" cy="22" r="3" fill="#FDEF42" opacity="0.75"/>
+        <circle cx="12" cy="22" r="3" fill="#FDEF42" opacity="0.75"/>
+        <circle cx="19.5" cy="15.5" r="1.2" fill="#FDEF42"/>
+        <circle cx="24.5" cy="15.5" r="1.2" fill="#FDEF42"/>
+        <ellipse cx="22" cy="18.5" rx="1.5" ry="1" fill="#E31E24"/>
+        <polygon points="15,10 17,6 19,10" fill="#00853F"/>
+        <polygon points="25,10 27,6 29,10" fill="#00853F"/>
+      </svg>
+      <span class="navbar-logo-text">DAKOOL</span>
+    </a>
+    <ul class="navbar-nav">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="produits.html" class="active">Produits</a></li>
+      <li><a href="equipes.html">Équipes</a></li>
+      <li><a href="tournois.html">Tournois</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="navbar-actions">
+      <button class="cart-btn" aria-label="Panier">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="cart-count" style="display:none;">0</span>
+      </button>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu">
+  <a href="index.html">Accueil</a>
+  <a href="produits.html" class="active">Produits</a>
+  <a href="equipes.html">Équipes</a>
+  <a href="tournois.html">Tournois</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- ============ CART SIDEBAR ============ -->
+<div class="cart-overlay"></div>
+<aside class="cart-sidebar">
+  <div class="cart-header">
+    <h3>Mon Panier</h3>
+    <button class="cart-close"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="cart-items"></div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span>Total</span>
+      <strong>0 FCFA</strong>
+    </div>
+    <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="showToast('Fonctionnalité de paiement à venir !')">
+      <i class="fa-solid fa-lock"></i> Commander
+    </button>
+  </div>
+</aside>
+
+<!-- ============ PAGE HERO ============ -->
+<header class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-tag">Boutique DAKOOL</div>
+    <h1 class="page-hero-title">Nos <span class="gradient-text">Produits</span></h1>
+    <p class="page-hero-subtitle">Équipements professionnels conçus pour les champions sénégalais.</p>
+  </div>
+  <div class="flag-bar"><span></span><span></span><span></span></div>
+</header>
+
+<!-- ============ PRODUCTS SECTION ============ -->
+<section class="section">
+  <div class="container">
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">
+        <i class="fa-solid fa-grip"></i> Tous
+      </button>
+      <button class="filter-btn" data-filter="Maillots">
+        <i class="fa-solid fa-shirt"></i> Maillots
+      </button>
+      <button class="filter-btn" data-filter="Chaussures">
+        <i class="fa-solid fa-shoe-prints"></i> Chaussures
+      </button>
+      <button class="filter-btn" data-filter="Ballons">
+        <i class="fa-solid fa-futbol"></i> Ballons
+      </button>
+      <button class="filter-btn" data-filter="Accessoires">
+        <i class="fa-solid fa-tag"></i> Accessoires
+      </button>
+      <button class="filter-btn" data-filter="Équipements">
+        <i class="fa-solid fa-vest"></i> Équipements
+      </button>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="products-grid" id="products-grid">
+
+      <!-- 1. Maillot Officiel Teranga -->
+      <div class="product-card reveal delay-1" data-id="p1" data-category="Maillots">
+        <div class="product-image-wrap">
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30 20 L20 40 L35 45 L35 95 L85 95 L85 45 L100 40 L90 20 L70 28 C68 22 62 18 60 18 C58 18 52 22 50 28 Z" fill="#00853F"/>
+            <path d="M30 20 L20 40 L35 45 L35 55 L85 55 L85 45 L100 40 L90 20" fill="#006830" opacity="0.5"/>
+            <path d="M50 28 C52 22 58 18 60 18 C62 18 68 22 70 28" fill="none" stroke="#FDEF42" stroke-width="2.5"/>
+            <text x="60" y="78" text-anchor="middle" fill="#FDEF42" font-size="11" font-weight="bold" font-family="Arial">DAKOOL</text>
+            <circle cx="60" cy="65" r="7" fill="none" stroke="#FDEF42" stroke-width="2"/>
+            <path d="M35 55 L85 55" stroke="rgba(253,239,66,0.3)" stroke-width="1"/>
+          </svg>
+          <div class="product-badge"><span class="badge badge-green">Nouveau</span></div>
+          <button class="product-wishlist"><i class="fa-regular fa-heart"></i></button>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Maillots</div>
+          <div class="product-name">Maillot Officiel Teranga</div>
+          <div class="product-price-row">
+            <div class="product-price">25 000<span>FCFA</span></div>
+            <button class="add-to-cart-btn"><i class="fa-solid fa-plus"></i> Ajouter</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Maillot Domicile Lion -->
+      <div class="product-card reveal delay-2" data-id="p2" data-category="Maillots">
+        <div class="product-image-wrap">
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30 20 L20 40 L35 45 L35 95 L85 95 L85 45 L100 40 L90 20 L70 28 C68 22 62 18 60 18 C58 18 52 22 50 28 Z" fill="#1a1a1a" stroke="#E31E24" stroke-width="2"/>
+            <rect x="35" y="45" width="50" height="12" fill="#E31E24" opacity="0.85"/>
+            <path d="M50 28 C52 22 58 18 60 18 C62 18 68 22 70 28" fill="none" stroke="#E31E24" stroke-width="2.5"/>
+            <text x="60" y="78" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold" font-family="Arial">DAKOOL</text>
+            <path d="M48 62 L60 58 L72 62 L68 72 L60 74 L52 72 Z" fill="#E31E24" opacity="0.4"/>
+          </svg>
+          <button class="product-wishlist"><i class="fa-regular fa-heart"></i></button>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Maillots</div>
+          <div class="product-name">Maillot Domicile Lion</div>
+          <div class="product-price-row">
+            <div class="product-price">22 000<span>FCFA</span></div>
+            <button class="add-to-cart-btn"><i class="fa-solid fa-plus"></i> Ajouter</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Ballon Officiel Téranga -->
+      <div class="product-card reveal delay-3" data-id="p3" data-category="Ballons">
+        <div class="product-image-wrap">
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="60" r="36" fill="#f5f5f5" stroke="#ddd" stroke-width="1.5"/>
+            <path d="M60 24 L75 40 L70 58 L50 58 L45 40 Z" fill="#0A0A0A"/>
+            <path d="M45 40 L24 48 L28 68 L50 58 Z" fill="#0A0A0A"/>
+            <path d="M75 40 L96 48 L92 68 L70 58 Z" fill="#0A0A0A"/>
+            <path d="M28 68 L40 88 L60 90 L50 70 Z" fill="#0A0A0A"/>
+            <path d="M92 68 L80 88 L60 90 L70 70 Z" fill="#0A0A0A"/>
+            <path d="M50 58 L50 70 L60 90 L70 70 L70 58 L60 54 Z" fill="#00853F" opacity="0.8"/>
+            <text x="60" y="63" text-anchor="middle" fill="#fff" font-size="7" font-weight="bold" font-family="Arial">DKL</text>
+          </svg>
+          <div class="product-badge"><span class="badge badge-yellow">Officiel</span></div>
+          <button class="product-wishlist"><i class="fa-regular fa-heart"></i></button>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Ballons</div>
+          <div class="product-name">Ballon Officiel Téranga</div>
+          <div class="product-price-row">
+            <div class="product-price">18 500<span>FCFA</span></div>
+            <button class="add-to-cart-btn"><i class="fa-solid fa-plus"></i> Ajouter</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Chaussures Elite Pro -->
+      <div class="product-card reveal delay-1" data-id="p4" data-category="Chaussures">
+        <div class="product-image-wrap">
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 75 C15 75 25 55 50 52 C65 51 80 56 95 58 L100 65 C100 65 85 70 70 72 C55 74 40 78 30 80 C22 82 15 80 15 75 Z" fill="#00853F"/>
+            <path d="M15 75 C15 75 25 55 50 52 C65 51 80 56 95 58 L95 63 C80 62 65 58 50 59 C28 62 18 75 18 75 Z" fill="#006830"/>
+            <path d="M95 58 L100 65 L95 72 L92 66 Z" fill="#FDEF42"/>
+            <path d="M30 72 C40 68 55 66 70 64" stroke="#FDEF42" stroke-width="2" stroke-linecap="round"/>
+            <path d="M32 75 C42 71 57 69 72 67" stroke="#FDEF42" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+            <path d="M15 75 C18 82 24 83 34 81 L34 80 C24 82 17 81 15 75 Z" fill="#1a1a1a"/>
+            <ellipse cx="60" cy="83" rx="38" ry="4" fill="#000" opacity="0.25"/>
+          </svg>
+          <div class="product-badge"><span class="badge badge-yellow">Pro</span></div>
+          <button class="product-wishlist"><i class="fa-regular fa-heart"></i></button>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Chaussures</div>
+          <div class="product-name">Chaussures Elite Pro</div>
+          <div class="product-price-row">
+            <div class="product-price">45 000<span>FCFA</span></div>
+            <button class="add-to-cart-btn"><i class="fa-solid fa-plus"></i> Ajouter</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Short Training DAKOOL -->
+      <div class="product-card reveal delay-2" data-id="p5" data-category="Accessoires">
+        <div class="product-image-wrap">
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30 35 L40 90 L60 85 L80 90 L90 35 Z" fill="#00853F"/>
+            <path d="M30 35 L90 35 L85 50 L35 50 Z" fill="#006830"/>
+            <path d="M40 90 L60 85 L60 65 Z" fill="#006830" opacity="0.6"/>
+            <path d="M60 85 L80 90 L60 65 Z" fill="#005528" opacity="0.6"/>
+            <rect x="40" y="35" width="40" height="4" rx="2" fill="#FDEF42" opacity="0.4"/>
+            <text x="60" y="65" text-anchor="middle" fill="#FDEF42" font-size="8" font-weight="bold" font-family="Arial">DAKOOL</text>
+            <path d="M45 52 C50 50 60 50 70 52" stroke="rgba(253,239,66,0.5)" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <button class="product-wishlist"><i class="fa-regular fa-heart"></i></button>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Accessoires</div>
+          <div class="product-name">Short Training DAKOOL</div>
+          <div class="product-price-row">
+            <div class="product-price">8 500<span>FCFA</span></div>
+            <button class="add-to-cart-btn"><i class="fa-solid fa-plus"></i> Ajouter</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Chaussettes Pro -->
+      <div class="product-card reveal delay-3" data-id="p6" data-category="Accessoires">
+        <div class="product-image-wrap">
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M42 25 L42 75 C42 86 52 95 65 95 C78 95 88 86 88 75 L88 70 L75 70 L75 75 C75 79 71 82 67 82 C63 82 58 79 58 75 L58 25 Z" fill="#00853F"/>
+            <rect x="42" y="25" width="16" height="8" rx="2" fill="#FDEF42" opacity="0.6"/>
+            <rect x="42" y="40" width="16" height="4" fill="#006830"/>
+            <rect x="42" y="50" width="16" height="4" fill="#006830"/>
+            <text x="50" y="68" text-anchor="middle" fill="#FDEF42" font-size="6" font-weight="bold" font-family="Arial">DKL</text>
+          </svg>
+          <button class="product-wishlist"><i class="fa-regular fa-heart"></i></button>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Accessoires</div>
+          <div class="product-name">Chaussettes Pro</div>
+          <div class="product-price-row">
+            <div class="product-price">3 500<span>FCFA</span></div>
+            <button class="add-to-cart-btn"><i class="fa-solid fa-plus"></i> Ajouter</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. Veste Entraîneur -->
+      <div class="product-card reveal delay-1" data-id="p7" data-category="Équipements">
+        <div class="product-image-wrap">
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M28 25 L20 45 L35 50 L35 95 L85 95 L85 50 L100 45 L92 25 L72 32 C70 26 65 22 60 22 C55 22 50 26 48 32 Z" fill="#0f0f0f" stroke="#00853F" stroke-width="2"/>
+            <path d="M35 50 L85 50 L85 62 L35 62 Z" fill="#00853F" opacity="0.9"/>
+            <path d="M60 22 L60 62" stroke="#1a1a1a" stroke-width="3"/>
+            <path d="M60 22 L58 50 L62 50 L60 22 Z" fill="#111" opacity="0.8"/>
+            <text x="60" y="80" text-anchor="middle" fill="#00853F" font-size="9" font-weight="bold" font-family="Arial">DAKOOL</text>
+            <rect x="36" y="65" width="18" height="14" rx="2" fill="#00853F" opacity="0.25" stroke="#00853F" stroke-width="1"/>
+            <circle cx="37" cy="56" r="2" fill="#FDEF42" opacity="0.6"/>
+          </svg>
+          <div class="product-badge"><span class="badge badge-green">Coach</span></div>
+          <button class="product-wishlist"><i class="fa-regular fa-heart"></i></button>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Équipements</div>
+          <div class="product-name">Veste Entraîneur</div>
+          <div class="product-price-row">
+            <div class="product-price">35 000<span>FCFA</span></div>
+            <button class="add-to-cart-btn"><i class="fa-solid fa-plus"></i> Ajouter</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. Sac de Sport DAKOOL -->
+      <div class="product-card reveal delay-2" data-id="p8" data-category="Équipements">
+        <div class="product-image-wrap">
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="45" width="80" height="55" rx="10" fill="#111" stroke="#00853F" stroke-width="2"/>
+            <rect x="20" y="45" width="80" height="18" rx="10" fill="#00853F" opacity="0.8"/>
+            <rect x="25" y="52" width="70" height="4" rx="2" fill="rgba(253,239,66,0.4)"/>
+            <path d="M40 45 C40 35 50 30 60 30 C70 30 80 35 80 45" fill="none" stroke="#00853F" stroke-width="3" stroke-linecap="round"/>
+            <rect x="48" y="65" width="24" height="20" rx="4" fill="#00853F" opacity="0.2" stroke="#00853F" stroke-width="1.5"/>
+            <text x="60" y="79" text-anchor="middle" fill="#00853F" font-size="8" font-weight="bold" font-family="Arial">DKL</text>
+          </svg>
+          <button class="product-wishlist"><i class="fa-regular fa-heart"></i></button>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Équipements</div>
+          <div class="product-name">Sac de Sport DAKOOL</div>
+          <div class="product-price-row">
+            <div class="product-price">28 000<span>FCFA</span></div>
+            <button class="add-to-cart-btn"><i class="fa-solid fa-plus"></i> Ajouter</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. Gants de Gardien -->
+      <div class="product-card reveal delay-3" data-id="p9" data-category="Équipements">
+        <div class="product-image-wrap">
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Palm -->
+            <path d="M30 70 L30 45 C30 40 35 37 40 37 L40 28 C40 25 43 22 46 22 C49 22 52 25 52 28 L52 36 L54 30 C54 27 57 24 60 24 C63 24 66 27 66 30 L66 37 L68 34 C68 31 71 28 74 28 C77 28 80 31 80 34 L80 48 C80 48 85 50 87 55 L90 70 C90 80 82 90 60 90 C38 90 30 80 30 70 Z" fill="#00853F"/>
+            <path d="M30 70 C30 80 38 88 60 88 L60 60 C45 60 32 64 30 70 Z" fill="#006830" opacity="0.5"/>
+            <rect x="30" y="68" width="60" height="6" rx="3" fill="#FDEF42" opacity="0.5"/>
+            <text x="60" y="78" text-anchor="middle" fill="#FDEF42" font-size="8" font-weight="bold" font-family="Arial">GK</text>
+            <path d="M45 38 L45 28" stroke="#005528" stroke-width="3" stroke-linecap="round"/>
+            <path d="M52 37 L52 28" stroke="#005528" stroke-width="3" stroke-linecap="round"/>
+            <path d="M66 37 L66 30" stroke="#005528" stroke-width="3" stroke-linecap="round"/>
+            <path d="M80 47 L80 34" stroke="#005528" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+          <div class="product-badge"><span class="badge badge-red">Gardien</span></div>
+          <button class="product-wishlist"><i class="fa-regular fa-heart"></i></button>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Équipements</div>
+          <div class="product-name">Gants de Gardien</div>
+          <div class="product-price-row">
+            <div class="product-price">32 000<span>FCFA</span></div>
+            <button class="add-to-cart-btn"><i class="fa-solid fa-plus"></i> Ajouter</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. Protège-tibias Elite -->
+      <div class="product-card reveal delay-1" data-id="p10" data-category="Accessoires">
+        <div class="product-image-wrap">
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="42" y="20" width="36" height="70" rx="18" fill="#1a1a1a" stroke="#00853F" stroke-width="2"/>
+            <rect x="46" y="26" width="28" height="58" rx="14" fill="#00853F" opacity="0.8"/>
+            <rect x="50" y="30" width="20" height="50" rx="10" fill="#006830"/>
+            <rect x="50" y="35" width="20" height="6" rx="3" fill="#FDEF42" opacity="0.6"/>
+            <rect x="50" y="46" width="20" height="6" rx="3" fill="#FDEF42" opacity="0.6"/>
+            <rect x="50" y="57" width="20" height="6" rx="3" fill="#FDEF42" opacity="0.6"/>
+            <text x="60" y="74" text-anchor="middle" fill="#FDEF42" font-size="7" font-weight="bold" font-family="Arial">ELITE</text>
+          </svg>
+          <button class="product-wishlist"><i class="fa-regular fa-heart"></i></button>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Accessoires</div>
+          <div class="product-name">Protège-tibias Elite</div>
+          <div class="product-price-row">
+            <div class="product-price">7 500<span>FCFA</span></div>
+            <button class="add-to-cart-btn"><i class="fa-solid fa-plus"></i> Ajouter</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11. Bandeau Téranga -->
+      <div class="product-card reveal delay-2" data-id="p11" data-category="Accessoires">
+        <div class="product-image-wrap">
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="60" cy="60" rx="38" ry="28" fill="none" stroke="#00853F" stroke-width="12" opacity="0.3"/>
+            <ellipse cx="60" cy="60" rx="38" ry="28" fill="none" stroke="#00853F" stroke-width="8"/>
+            <rect x="22" y="52" width="76" height="16" rx="8" fill="#00853F"/>
+            <rect x="22" y="52" width="76" height="7" rx="4" fill="#006830" opacity="0.5"/>
+            <text x="60" y="63" text-anchor="middle" fill="#FDEF42" font-size="9" font-weight="bold" font-family="Arial">DAKOOL</text>
+            <circle cx="60" cy="30" r="8" fill="#00853F" opacity="0.3" stroke="#FDEF42" stroke-width="1" stroke-dasharray="3 3"/>
+          </svg>
+          <button class="product-wishlist"><i class="fa-regular fa-heart"></i></button>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Accessoires</div>
+          <div class="product-name">Bandeau Téranga</div>
+          <div class="product-price-row">
+            <div class="product-price">4 500<span>FCFA</span></div>
+            <button class="add-to-cart-btn"><i class="fa-solid fa-plus"></i> Ajouter</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12. Chaussures Junior -->
+      <div class="product-card reveal delay-3" data-id="p12" data-category="Chaussures">
+        <div class="product-image-wrap">
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 75 C18 75 28 58 52 55 C66 54 79 58 94 60 L99 67 C99 67 83 72 68 73 C53 74 38 77 28 79 C20 81 18 78 18 75 Z" fill="#E31E24"/>
+            <path d="M18 75 C18 75 28 58 52 55 C66 54 79 58 94 60 L94 65 C79 64 66 60 52 61 C32 64 21 75 21 75 Z" fill="#C01020"/>
+            <path d="M94 60 L99 67 L94 74 L91 67 Z" fill="#FDEF42"/>
+            <path d="M32 72 C44 68 57 67 70 65" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+            <text x="55" y="82" text-anchor="middle" fill="white" font-size="7" font-weight="bold" font-family="Arial">JUNIOR</text>
+            <ellipse cx="58" cy="82" rx="36" ry="4" fill="#000" opacity="0.2"/>
+          </svg>
+          <div class="product-badge"><span class="badge badge-red">Junior</span></div>
+          <button class="product-wishlist"><i class="fa-regular fa-heart"></i></button>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Chaussures</div>
+          <div class="product-name">Chaussures Junior</div>
+          <div class="product-price-row">
+            <div class="product-price">28 000<span>FCFA</span></div>
+            <button class="add-to-cart-btn"><i class="fa-solid fa-plus"></i> Ajouter</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 13. Maillot Gardien -->
+      <div class="product-card reveal delay-1" data-id="p13" data-category="Maillots">
+        <div class="product-image-wrap">
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30 20 L20 40 L35 45 L35 95 L85 95 L85 45 L100 40 L90 20 L70 28 C68 22 62 18 60 18 C58 18 52 22 50 28 Z" fill="#1a1a1a"/>
+            <path d="M35 45 L35 95 L85 95 L85 45 Z" fill="#FDEF42" opacity="0.08"/>
+            <path d="M40 45 L40 95 M50 45 L50 95 M60 45 L60 95 M70 45 L70 95 M80 45 L80 95" stroke="#FDEF42" stroke-width="1" opacity="0.12"/>
+            <path d="M50 28 C52 22 58 18 60 18 C62 18 68 22 70 28" fill="none" stroke="#FDEF42" stroke-width="2.5"/>
+            <text x="60" y="72" text-anchor="middle" fill="#FDEF42" font-size="10" font-weight="bold" font-family="Arial">GK</text>
+            <rect x="50" y="78" width="20" height="4" rx="2" fill="#FDEF42" opacity="0.5"/>
+          </svg>
+          <div class="product-badge"><span class="badge badge-yellow">GK</span></div>
+          <button class="product-wishlist"><i class="fa-regular fa-heart"></i></button>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Maillots</div>
+          <div class="product-name">Maillot Gardien Elite</div>
+          <div class="product-price-row">
+            <div class="product-price">26 000<span>FCFA</span></div>
+            <button class="add-to-cart-btn"><i class="fa-solid fa-plus"></i> Ajouter</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 14. Ballon d'Entraînement -->
+      <div class="product-card reveal delay-2" data-id="p14" data-category="Ballons">
+        <div class="product-image-wrap">
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="60" r="36" fill="#e8e8e8" stroke="#ccc" stroke-width="1.5"/>
+            <circle cx="60" cy="60" r="30" fill="none" stroke="#bbb" stroke-width="1" stroke-dasharray="6 3"/>
+            <path d="M60 28 L60 92 M28 60 L92 60" stroke="#bbb" stroke-width="1"/>
+            <circle cx="60" cy="60" r="8" fill="#00853F"/>
+            <text x="60" y="64" text-anchor="middle" fill="white" font-size="7" font-weight="bold" font-family="Arial">DKL</text>
+            <circle cx="60" cy="60" r="12" fill="none" stroke="#00853F" stroke-width="1.5" opacity="0.4"/>
+          </svg>
+          <button class="product-wishlist"><i class="fa-regular fa-heart"></i></button>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Ballons</div>
+          <div class="product-name">Ballon d'Entraînement</div>
+          <div class="product-price-row">
+            <div class="product-price">12 000<span>FCFA</span></div>
+            <button class="add-to-cart-btn"><i class="fa-solid fa-plus"></i> Ajouter</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 15. Survetement Complet -->
+      <div class="product-card reveal delay-3" data-id="p15" data-category="Équipements">
+        <div class="product-image-wrap">
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Top -->
+            <path d="M32 22 L22 42 L37 47 L37 62 L83 62 L83 47 L98 42 L88 22 L68 30 C66 24 63 20 60 20 C57 20 54 24 52 30 Z" fill="#111" stroke="#00853F" stroke-width="1.5"/>
+            <rect x="37" y="47" width="46" height="10" fill="#00853F" opacity="0.7"/>
+            <!-- Pants -->
+            <rect x="37" y="62" width="46" height="40" rx="3" fill="#111" stroke="#00853F" stroke-width="1.5"/>
+            <line x1="60" y1="62" x2="60" y2="102" stroke="#00853F" stroke-width="1.5"/>
+            <rect x="37" y="62" width="46" height="6" rx="2" fill="#00853F" opacity="0.7"/>
+            <text x="60" y="84" text-anchor="middle" fill="#00853F" font-size="8" font-weight="bold" font-family="Arial">DAKOOL</text>
+          </svg>
+          <div class="product-badge"><span class="badge badge-green">Ensemble</span></div>
+          <button class="product-wishlist"><i class="fa-regular fa-heart"></i></button>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Équipements</div>
+          <div class="product-name">Survêtement Complet</div>
+          <div class="product-price-row">
+            <div class="product-price">42 000<span>FCFA</span></div>
+            <button class="add-to-cart-btn"><i class="fa-solid fa-plus"></i> Ajouter</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 16. Casquette DAKOOL -->
+      <div class="product-card reveal delay-1" data-id="p16" data-category="Accessoires">
+        <div class="product-image-wrap">
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 70 C20 50 38 35 60 35 C82 35 100 50 100 70 L100 75 L20 75 Z" fill="#00853F"/>
+            <path d="M20 70 C20 50 38 35 60 35 C82 35 100 50 100 70 L100 72 L20 72 Z" fill="#006830" opacity="0.5"/>
+            <rect x="15" y="70" width="90" height="12" rx="4" fill="#005528"/>
+            <path d="M15 76 C15 82 20 86 28 86 L92 86 C100 86 105 82 105 76" fill="#00853F" opacity="0.3"/>
+            <text x="60" y="60" text-anchor="middle" fill="#FDEF42" font-size="10" font-weight="bold" font-family="Arial">DAKOOL</text>
+            <rect x="55" y="65" width="10" height="3" rx="1.5" fill="#FDEF42" opacity="0.5"/>
+          </svg>
+          <button class="product-wishlist"><i class="fa-regular fa-heart"></i></button>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Accessoires</div>
+          <div class="product-name">Casquette DAKOOL</div>
+          <div class="product-price-row">
+            <div class="product-price">6 000<span>FCFA</span></div>
+            <button class="add-to-cart-btn"><i class="fa-solid fa-plus"></i> Ajouter</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="navbar-logo">
+          <svg viewBox="0 0 44 44" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="22" cy="22" r="21" fill="#0f0f0f" stroke="#00853F" stroke-width="1.5"/>
+            <ellipse cx="22" cy="24" rx="10" ry="7" fill="#00853F" opacity="0.9"/>
+            <circle cx="22" cy="16" r="6" fill="#00853F"/>
+            <circle cx="14" cy="14" r="3.5" fill="#FDEF42" opacity="0.85"/>
+            <circle cx="22" cy="10" r="3.5" fill="#FDEF42" opacity="0.85"/>
+            <circle cx="30" cy="14" r="3.5" fill="#FDEF42" opacity="0.85"/>
+            <circle cx="19.5" cy="15.5" r="1.2" fill="#FDEF42"/>
+            <circle cx="24.5" cy="15.5" r="1.2" fill="#FDEF42"/>
+          </svg>
+          <span class="navbar-logo-text">DAKOOL</span>
+        </a>
+        <p>La première marque d'équipements sportifs 100% Sénégalaise. Né à Dakar, fait pour les champions.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="produits.html">Produits</a></li>
+          <li><a href="equipes.html">Équipes</a></li>
+          <li><a href="tournois.html">Tournois</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Collections</h4>
+        <ul class="footer-links">
+          <li><a href="#">Maillots</a></li>
+          <li><a href="#">Chaussures</a></li>
+          <li><a href="#">Ballons</a></li>
+          <li><a href="#">Équipements</a></li>
+          <li><a href="#">Accessoires</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li><a href="contact.html">Dakar, Sénégal</a></li>
+          <li><a href="tel:+221761234567">+221 76 123 45 67</a></li>
+          <li><a href="mailto:contact@dakool.sn">contact@dakool.sn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 DAKOOL. Tous droits réservés. Fait avec fierté au Sénégal 🇸🇳</p>
+      <div class="footer-bottom-links">
+        <a href="#">Mentions légales</a>
+        <a href="#">Confidentialité</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

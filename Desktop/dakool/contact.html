@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — DAKOOL</title>
+  <meta name="description" content="Contactez DAKOOL - La première marque d'équipements sportifs sénégalaise. Dakar, Sénégal." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .social-links-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .social-link-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: var(--transition);
+      text-decoration: none;
+    }
+    .social-link-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0,133,63,0.15);
+    }
+    .social-link-card .icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .social-link-card .info span {
+      display: block;
+      font-family: 'Inter', sans-serif;
+    }
+    .social-link-card .info .name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .social-link-card .info .handle {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    .faq-item:hover {
+      border-color: rgba(0,133,63,0.3);
+    }
+    .faq-question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 20px;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      user-select: none;
+    }
+    .faq-question i {
+      color: var(--primary);
+      transition: transform 0.3s ease;
+      font-size: 14px;
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+    }
+    .faq-answer.open {
+      max-height: 200px;
+    }
+    .faq-answer p {
+      padding: 0 20px 18px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .faq-item.open .faq-question i {
+      transform: rotate(45deg);
+    }
+    @media (max-width: 768px) {
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+      .social-links-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="navbar-logo">
+      <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="22" cy="22" r="21" fill="#0f0f0f" stroke="#00853F" stroke-width="1.5"/>
+        <ellipse cx="22" cy="24" rx="10" ry="7" fill="#00853F" opacity="0.9"/>
+        <circle cx="22" cy="16" r="6" fill="#00853F"/>
+        <circle cx="14" cy="14" r="3.5" fill="#FDEF42" opacity="0.85"/>
+        <circle cx="22" cy="10" r="3.5" fill="#FDEF42" opacity="0.85"/>
+        <circle cx="30" cy="14" r="3.5" fill="#FDEF42" opacity="0.85"/>
+        <circle cx="32" cy="22" r="3" fill="#FDEF42" opacity="0.75"/>
+        <circle cx="12" cy="22" r="3" fill="#FDEF42" opacity="0.75"/>
+        <circle cx="19.5" cy="15.5" r="1.2" fill="#FDEF42"/>
+        <circle cx="24.5" cy="15.5" r="1.2" fill="#FDEF42"/>
+        <ellipse cx="22" cy="18.5" rx="1.5" ry="1" fill="#E31E24"/>
+        <polygon points="15,10 17,6 19,10" fill="#00853F"/>
+        <polygon points="25,10 27,6 29,10" fill="#00853F"/>
+      </svg>
+      <span class="navbar-logo-text">DAKOOL</span>
+    </a>
+    <ul class="navbar-nav">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="produits.html">Produits</a></li>
+      <li><a href="equipes.html">Équipes</a></li>
+      <li><a href="tournois.html">Tournois</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <div class="navbar-actions">
+      <a href="produits.html" class="btn btn-primary btn-sm" style="display:flex;">
+        <i class="fa-solid fa-store"></i> Boutique
+      </a>
+      <button class="cart-btn" aria-label="Panier">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="cart-count" style="display:none;">0</span>
+      </button>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu">
+  <a href="index.html">Accueil</a>
+  <a href="produits.html">Produits</a>
+  <a href="equipes.html">Équipes</a>
+  <a href="tournois.html">Tournois</a>
+  <a href="contact.html" class="active">Contact</a>
+</div>
+
+<!-- ============ CART SIDEBAR ============ -->
+<div class="cart-overlay"></div>
+<aside class="cart-sidebar">
+  <div class="cart-header">
+    <h3>Mon Panier</h3>
+    <button class="cart-close"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="cart-items"></div>
+  <div class="cart-footer">
+    <div class="cart-total"><span>Total</span><strong>0 FCFA</strong></div>
+    <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="showToast('Fonctionnalité de paiement à venir !')">
+      <i class="fa-solid fa-lock"></i> Commander
+    </button>
+  </div>
+</aside>
+
+<!-- ============ PAGE HERO ============ -->
+<header class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-tag">Nous Parler</div>
+    <h1 class="page-hero-title"><span class="gradient-text">Contact</span></h1>
+    <p class="page-hero-subtitle">Une question, une commande groupée, un partenariat ? Nous sommes à votre écoute.</p>
+  </div>
+  <div class="flag-bar"><span></span><span></span><span></span></div>
+</header>
+
+<!-- ============ CONTACT SECTION ============ -->
+<section class="section">
+  <div class="container">
+    <div class="contact-layout">
+
+      <!-- Left: Form -->
+      <div class="reveal-left">
+        <div class="section-tag" style="margin-bottom:16px;">Formulaire de Contact</div>
+        <h2 style="font-size:clamp(28px,4vw,42px);margin-bottom:8px;">Envoyez-nous un <span class="gradient-text">Message</span></h2>
+        <p style="font-family:'Inter',sans-serif;font-size:15px;color:var(--text-muted);margin-bottom:32px;">Nous répondons en général dans les 24 heures. N'hésitez pas !</p>
+
+        <form class="contact-form contact-form-el">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div class="form-group">
+              <label class="form-label">Prénom *</label>
+              <input type="text" class="form-input" placeholder="Moussa" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Nom *</label>
+              <input type="text" class="form-input" placeholder="Diallo" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Email *</label>
+            <input type="email" class="form-input" placeholder="moussa@example.sn" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Téléphone / WhatsApp</label>
+            <input type="tel" class="form-input" placeholder="+221 76 000 00 00" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Sujet *</label>
+            <select class="form-input" required>
+              <option value="" disabled selected>Choisissez un sujet</option>
+              <option>Commande & Livraison</option>
+              <option>Commande Groupée (club / équipe)</option>
+              <option>Partenariat Club</option>
+              <option>Sponsoring Tournoi</option>
+              <option>Produit personnalisé</option>
+              <option>Service après-vente</option>
+              <option>Presse & Médias</option>
+              <option>Autre</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Message *</label>
+            <textarea class="form-input" placeholder="Décrivez votre demande en détail..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:16px;font-size:16px;">
+            <i class="fa-solid fa-paper-plane"></i>
+            Envoyer le message
+          </button>
+        </form>
+      </div>
+
+      <!-- Right: Info -->
+      <div class="reveal-right">
+        <div class="section-tag" style="margin-bottom:16px;">Nos Coordonnées</div>
+        <h2 style="font-size:clamp(28px,4vw,42px);margin-bottom:32px;">Trouvez-nous <span class="gradient-text">Facilement</span></h2>
+
+        <div class="contact-info-card">
+          <div class="contact-info-icon">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div class="contact-info-text">
+            <h4>Adresse</h4>
+            <p>Zone Industrielle de Dakar<br>Route de Rufisque, Dakar 11000<br>Sénégal</p>
+          </div>
+        </div>
+
+        <div class="contact-info-card">
+          <div class="contact-info-icon">
+            <i class="fa-solid fa-phone"></i>
+          </div>
+          <div class="contact-info-text">
+            <h4>Téléphone</h4>
+            <p><a href="tel:+221761234567" style="color:var(--text-muted);">+221 76 123 45 67</a><br>
+            <a href="tel:+221338001234" style="color:var(--text-muted);">+221 33 800 12 34</a> (Fixe)</p>
+          </div>
+        </div>
+
+        <div class="contact-info-card">
+          <div class="contact-info-icon" style="background:rgba(37,211,102,0.1);border-color:rgba(37,211,102,0.3);">
+            <i class="fa-brands fa-whatsapp" style="color:#25D366;"></i>
+          </div>
+          <div class="contact-info-text">
+            <h4>WhatsApp Business</h4>
+            <p><a href="https://wa.me/221761234567?text=Bonjour%20DAKOOL%2C%20je%20voudrais%20plus%20d%27informations..." style="color:var(--primary);font-weight:500;">+221 76 123 45 67</a><br>
+            Réponse rapide · 7j/7 · 8h–20h</p>
+          </div>
+        </div>
+
+        <div class="contact-info-card">
+          <div class="contact-info-icon">
+            <i class="fa-solid fa-envelope"></i>
+          </div>
+          <div class="contact-info-text">
+            <h4>Email</h4>
+            <p><a href="mailto:contact@dakool.sn" style="color:var(--text-muted);">contact@dakool.sn</a><br>
+            <a href="mailto:partenariats@dakool.sn" style="color:var(--text-muted);">partenariats@dakool.sn</a></p>
+          </div>
+        </div>
+
+        <div class="contact-info-card">
+          <div class="contact-info-icon">
+            <i class="fa-solid fa-clock"></i>
+          </div>
+          <div class="contact-info-text">
+            <h4>Horaires d'ouverture</h4>
+            <p>Lun–Ven : 8h00 – 18h00<br>
+            Samedi : 9h00 – 16h00<br>
+            Dimanche : Fermé</p>
+          </div>
+        </div>
+
+        <!-- Social Media Links -->
+        <div style="margin-top:28px;">
+          <h4 style="font-family:'Bebas Neue',cursive;font-size:20px;color:var(--text);margin-bottom:16px;">Suivez-nous</h4>
+          <div class="social-links-grid">
+            <a href="#" class="social-link-card">
+              <div class="icon" style="background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);color:#fff;"><i class="fa-brands fa-instagram"></i></div>
+              <div class="info">
+                <span class="name">Instagram</span>
+                <span class="handle">@dakool.sn</span>
+              </div>
+            </a>
+            <a href="#" class="social-link-card">
+              <div class="icon" style="background:#1877F2;color:#fff;"><i class="fa-brands fa-facebook-f"></i></div>
+              <div class="info">
+                <span class="name">Facebook</span>
+                <span class="handle">DAKOOL Sénégal</span>
+              </div>
+            </a>
+            <a href="#" class="social-link-card">
+              <div class="icon" style="background:#000;color:#fff;"><i class="fa-brands fa-tiktok"></i></div>
+              <div class="info">
+                <span class="name">TikTok</span>
+                <span class="handle">@dakool.official</span>
+              </div>
+            </a>
+            <a href="#" class="social-link-card">
+              <div class="icon" style="background:#FF0000;color:#fff;"><i class="fa-brands fa-youtube"></i></div>
+              <div class="info">
+                <span class="name">YouTube</span>
+                <span class="handle">DAKOOL TV</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Map Placeholder -->
+        <div class="map-placeholder" style="margin-top:24px;">
+          <svg viewBox="0 0 80 80" fill="none" width="60" height="60">
+            <circle cx="40" cy="32" r="16" fill="rgba(0,133,63,0.15)" stroke="var(--primary)" stroke-width="2"/>
+            <circle cx="40" cy="32" r="6" fill="var(--primary)"/>
+            <path d="M40 48 L40 70" stroke="var(--primary)" stroke-width="2" stroke-dasharray="4 3"/>
+            <ellipse cx="40" cy="70" rx="12" ry="4" fill="rgba(0,133,63,0.2)"/>
+          </svg>
+          <p style="font-size:15px;font-weight:600;color:var(--text);">Zone Industrielle, Dakar</p>
+          <p style="font-size:13px;color:var(--text-dim);">Carte interactive disponible prochainement</p>
+          <a href="https://maps.google.com/?q=Dakar,Senegal" target="_blank" class="btn btn-sm btn-outline" style="margin-top:8px;">
+            <i class="fa-brands fa-google"></i> Ouvrir dans Google Maps
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ SECTION ============ -->
+<section class="section" style="background:var(--bg-secondary);border-top:1px solid var(--border);">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">FAQ</div>
+      <h2 class="section-title">Questions <span class="gradient-text">Fréquentes</span></h2>
+      <div class="divider"></div>
+    </div>
+
+    <div style="max-width:720px;margin:0 auto;">
+      <div class="faq-item reveal delay-1">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Proposez-vous des commandes groupées pour les clubs ?
+          <i class="fa-solid fa-plus"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Oui, absolument ! DAKOOL propose des tarifs préférentiels pour les commandes groupées à partir de 10 maillots. Contactez-nous par email ou WhatsApp avec votre logo et vos couleurs pour un devis personnalisé sous 48h.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal delay-2">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Quels sont les délais de livraison ?
+          <i class="fa-solid fa-plus"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Livraison gratuite à Dakar sous 24–48h. Pour les autres régions du Sénégal, comptez 3–5 jours ouvrables. Les commandes personnalisées (flocage, broderie) nécessitent 7–10 jours supplémentaires.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal delay-3">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Puis-je personnaliser un maillot avec le nom et le numéro de mon joueur ?
+          <i class="fa-solid fa-plus"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Oui ! Nous proposons le flocage (impression) et la broderie sur tous nos maillots. Envoyez-nous le nom, le numéro et la police souhaitée lors de votre commande. Frais supplémentaires de 2 000 FCFA par maillot.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal delay-1">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Comment devenir partenaire de DAKOOL pour mon club ?
+          <i class="fa-solid fa-plus"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Contactez notre département partenariats à partenariats@dakool.sn ou via le formulaire ci-dessus (sujet : "Partenariat Club"). Nous étudions chaque dossier avec attention et vous répondons sous 5 jours ouvrables avec une proposition adaptée.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal delay-2">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Quels sont les modes de paiement acceptés ?
+          <i class="fa-solid fa-plus"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Nous acceptons le paiement par Wave, Orange Money, Free Money, virement bancaire et espèces pour les achats en boutique. Le paiement en ligne par carte bancaire sera disponible prochainement.</p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal delay-3">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Proposez-vous une garantie ou politique de retour ?
+          <i class="fa-solid fa-plus"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Tous nos produits bénéficient d'une garantie de 30 jours pour les défauts de fabrication. Les articles non portés et non lavés peuvent être retournés sous 14 jours après réception. Les articles personnalisés ne sont pas remboursables.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="navbar-logo">
+          <svg viewBox="0 0 44 44" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="22" cy="22" r="21" fill="#0f0f0f" stroke="#00853F" stroke-width="1.5"/>
+            <ellipse cx="22" cy="24" rx="10" ry="7" fill="#00853F" opacity="0.9"/>
+            <circle cx="22" cy="16" r="6" fill="#00853F"/>
+            <circle cx="14" cy="14" r="3.5" fill="#FDEF42" opacity="0.85"/>
+            <circle cx="22" cy="10" r="3.5" fill="#FDEF42" opacity="0.85"/>
+            <circle cx="30" cy="14" r="3.5" fill="#FDEF42" opacity="0.85"/>
+            <circle cx="19.5" cy="15.5" r="1.2" fill="#FDEF42"/>
+            <circle cx="24.5" cy="15.5" r="1.2" fill="#FDEF42"/>
+          </svg>
+          <span class="navbar-logo-text">DAKOOL</span>
+        </a>
+        <p>La première marque d'équipements sportifs 100% Sénégalaise.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#" class="social-btn"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="produits.html">Produits</a></li>
+          <li><a href="equipes.html">Équipes</a></li>
+          <li><a href="tournois.html">Tournois</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Collections</h4>
+        <ul class="footer-links">
+          <li><a href="produits.html">Maillots</a></li>
+          <li><a href="produits.html">Chaussures</a></li>
+          <li><a href="produits.html">Ballons</a></li>
+          <li><a href="produits.html">Accessoires</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li><a href="#">Dakar, Sénégal</a></li>
+          <li><a href="tel:+221761234567">+221 76 123 45 67</a></li>
+          <li><a href="mailto:contact@dakool.sn">contact@dakool.sn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 DAKOOL. Tous droits réservés. Fait avec fierté au Sénégal 🇸🇳</p>
+      <div class="footer-bottom-links">
+        <a href="#">Mentions légales</a>
+        <a href="#">Confidentialité</a>
+        <a href="#">CGV</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  function toggleFaq(el) {
+    const item = el.parentElement;
+    const answer = item.querySelector('.faq-answer');
+    const wasOpen = item.classList.contains('open');
+
+    // Close all
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-answer').classList.remove('open');
+    });
+
+    // Open clicked if it was closed
+    if (!wasOpen) {
+      item.classList.add('open');
+      answer.classList.add('open');
+    }
+  }
+</script>
+</body>
+</html>

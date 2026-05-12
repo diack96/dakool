@@ -20,7 +20,7 @@ export default function AfricanDivider({ bg = "#0B1120" }: { bg?: string }) {
         xmlns="http://www.w3.org/2000/svg"
       >
         {/* Top rule */}
-        <line x1="0" y1="0.5" x2="1440" y2="0.5" stroke="#F97316" strokeOpacity="0.18" />
+        <line x1="0" y1="0.5" x2="1440" y2="0.5" stroke="#F97316" strokeOpacity="0.5" />
 
         {/* Upward triangles — accent orange */}
         {Array.from({ length: count }, (_, i) => (
@@ -28,7 +28,7 @@ export default function AfricanDivider({ bg = "#0B1120" }: { bg?: string }) {
             key={`u${i}`}
             d={`M${i * 20} 52 L${i * 20 + 10} 26 L${i * 20 + 20} 52Z`}
             fill="#F97316"
-            fillOpacity={[0.11, 0.06, 0.09][i % 3]}
+            fillOpacity={[0.35, 0.18, 0.28][i % 3]}
           />
         ))}
 
@@ -38,7 +38,7 @@ export default function AfricanDivider({ bg = "#0B1120" }: { bg?: string }) {
             key={`d${i}`}
             d={`M${i * 20 - 10} 0 L${i * 20 + 10} 0 L${i * 20} 26Z`}
             fill="#2563EB"
-            fillOpacity={[0.10, 0.05, 0.07][i % 3]}
+            fillOpacity={[0.32, 0.16, 0.24][i % 3]}
           />
         ))}
 
@@ -48,12 +48,12 @@ export default function AfricanDivider({ bg = "#0B1120" }: { bg?: string }) {
             key={`c${i}`}
             d={`M${i * 20 + 10} 20 L${i * 20 + 14} 26 L${i * 20 + 10} 32 L${i * 20 + 6} 26Z`}
             fill="#F97316"
-            fillOpacity={0.18}
+            fillOpacity={0.55}
           />
         ))}
 
         {/* Bottom rule */}
-        <line x1="0" y1="51.5" x2="1440" y2="51.5" stroke="#F97316" strokeOpacity="0.18" />
+        <line x1="0" y1="51.5" x2="1440" y2="51.5" stroke="#F97316" strokeOpacity="0.5" />
       </svg>
     </div>
   );

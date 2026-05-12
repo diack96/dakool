@@ -17,8 +17,9 @@ const clients = [
 
 export default function Clients() {
   return (
-    <section id="clients" className="py-14 border-y border-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+    <section id="clients" className="relative py-14 border-y border-white/5 overflow-hidden">
+      <div className="absolute inset-0 pattern-adinkra opacity-[0.055]" />
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -52,3 +53,4 @@ export default function Clients() {
     </section>
   );
 }
+

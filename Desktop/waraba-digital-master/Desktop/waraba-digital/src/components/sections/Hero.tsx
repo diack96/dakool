@@ -15,8 +15,8 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center bg-[#0B1120]">
 
-      {/* Kente diamond pattern background */}
-      <div className="absolute inset-0 pattern-kente opacity-[0.08]" />
+      {/* Adinkra pattern background */}
+      <div className="absolute inset-0 pattern-adinkra opacity-[0.07]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20 w-full">
         <div className="grid lg:grid-cols-[1fr_420px] gap-16 xl:gap-24 items-center">

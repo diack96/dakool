@@ -31,8 +31,9 @@ const steps = [
 
 export default function Process() {
   return (
-    <section id="processus" className="py-24 lg:py-32 bg-[#0D1526] border-y border-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="processus" className="relative py-24 lg:py-32 bg-[#0D1526] border-y border-white/5 overflow-hidden">
+      <div className="absolute inset-0 pattern-adinkra opacity-[0.055]" />
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
         <motion.div
@@ -102,3 +103,4 @@ export default function Process() {
     </section>
   );
 }
+

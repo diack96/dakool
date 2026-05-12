@@ -42,8 +42,9 @@ const sideProjects = [
 
 export default function Realisations() {
   return (
-    <section id="realisations" className="py-24 lg:py-32 bg-[#0B1120]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="realisations" className="relative py-24 lg:py-32 bg-[#0B1120] overflow-hidden">
+      <div className="absolute inset-0 pattern-adinkra opacity-[0.055]" />
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
         <motion.div
@@ -176,3 +177,4 @@ export default function Realisations() {
     </section>
   );
 }
+

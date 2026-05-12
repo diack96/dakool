@@ -15,14 +15,8 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center bg-[#0B1120]">
 
-      {/* Very subtle dot grid — one single non-intrusive detail */}
-      <div
-        className="absolute inset-0 opacity-[0.018]"
-        style={{
-          backgroundImage: `radial-gradient(circle, #94A3B8 1px, transparent 1px)`,
-          backgroundSize: "32px 32px",
-        }}
-      />
+      {/* Kente diamond pattern background */}
+      <div className="absolute inset-0 pattern-kente opacity-[0.022]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20 w-full">
         <div className="grid lg:grid-cols-[1fr_420px] gap-16 xl:gap-24 items-center">

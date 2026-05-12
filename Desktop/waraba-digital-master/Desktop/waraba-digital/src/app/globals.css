@@ -107,3 +107,9 @@ section {
   background: rgba(249, 115, 22, 0.2);
   color: #F8FAFC;
 }
+
+/* ─── African Kente diamond pattern ─────────────── */
+.pattern-kente {
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 2L38 20L20 38L2 20Z' fill='none' stroke='%23F97316' stroke-width='0.8'/%3E%3Ccircle cx='20' cy='20' r='1.5' fill='%23F97316'/%3E%3Cpath d='M20 2L2 20' stroke='%232563EB' stroke-width='0.4' stroke-opacity='0.5'/%3E%3Cpath d='M20 2L38 20' stroke='%232563EB' stroke-width='0.4' stroke-opacity='0.5'/%3E%3C/svg%3E");
+  background-size: 40px 40px;
+}

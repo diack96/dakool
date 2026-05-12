@@ -7,6 +7,7 @@ import Process from "@/components/sections/Process";
 import Realisations from "@/components/sections/Realisations";
 import APropos from "@/components/sections/APropos";
 import Contact from "@/components/sections/Contact";
+import AfricanDivider from "@/components/ui/AfricanDivider";
 
 export default function Home() {
   return (
@@ -14,11 +15,15 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <AfricanDivider />
         <Clients />
         <Services />
+        <AfricanDivider />
         <Process />
         <Realisations />
+        <AfricanDivider />
         <APropos />
+        <AfricanDivider />
         <Contact />
       </main>
       <Footer />

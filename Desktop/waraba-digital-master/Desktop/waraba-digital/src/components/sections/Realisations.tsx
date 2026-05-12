@@ -11,7 +11,6 @@ const projects = [
     title: "Job Stage Santé",
     description:
       "Plateforme dédiée aux offres d'emploi et de stage dans le secteur de la santé au Sénégal. Mise en relation entre professionnels de santé et structures hospitalières, cliniques et ONG.",
-    stack: ["Next.js", "Supabase", "TypeScript", "Tailwind CSS"],
     url: "https://www.jobstage-sante.com/",
     screenshot: "/screenshots/jobstage-sante.png",
     domain: "jobstage-sante.com",
@@ -25,7 +24,6 @@ const sideProjects = [
     category: "E-Learning",
     description:
       "Plateforme de formation en ligne pensée pour l'Afrique de l'Ouest. Cours en vidéo, quiz interactifs et certificats numériques.",
-    stack: ["Next.js", "Supabase", "Tailwind CSS"],
     url: "https://waraba-academy.com",
     screenshot: "/screenshots/waraba-academy.png",
     domain: "waraba-academy.com",
@@ -36,7 +34,6 @@ const sideProjects = [
     category: "Coaching",
     description:
       "Application de coaching personnel et professionnel. Suivi des objectifs, séances en ligne et accompagnement personnalisé.",
-    stack: ["Next.js", "Vercel", "Tailwind CSS"],
     url: "https://nextapp-gules-one.vercel.app/",
     screenshot: "/screenshots/wewaxtaan.png",
     domain: "wewaxtaan.com",
@@ -108,18 +105,6 @@ export default function Realisations() {
                 <h3 className="text-2xl lg:text-3xl font-extrabold text-white mb-4">{p.title}</h3>
                 <p className="text-[#94A3B8] text-sm leading-relaxed mb-8">{p.description}</p>
 
-                {/* Stack */}
-                <div className="flex flex-wrap gap-2 mb-8">
-                  {p.stack.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 rounded-md border border-white/8 text-[#94A3B8] text-xs font-medium"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
                 {/* CTA */}
                 <a
                   href={p.url}
@@ -182,18 +167,7 @@ export default function Realisations() {
                 </div>
 
                 <h3 className="text-white font-bold text-lg mb-2">{p.title}</h3>
-                <p className="text-[#94A3B8] text-sm leading-relaxed mb-5">{p.description}</p>
-
-                <div className="flex flex-wrap gap-2">
-                  {p.stack.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 rounded-md border border-white/8 text-[#94A3B8] text-xs font-medium"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+                <p className="text-[#94A3B8] text-sm leading-relaxed">{p.description}</p>
               </div>
             </motion.div>
           ))}

@@ -6,7 +6,7 @@ import { ArrowRight, CheckCircle, Loader2 } from "lucide-react";
 
 const contactItems = [
   { label: "Email", value: "contact@waraba-digital.com", href: "mailto:contact@waraba-digital.com" },
-  { label: "Téléphone", value: "+221 77 000 00 00", href: "tel:+221770000000" },
+  { label: "Téléphone", value: "+221 77 227 10 93", href: "tel:+221772271093" },
   { label: "Localisation", value: "Dakar, Sénégal", href: "https://maps.google.com/?q=Dakar,Senegal" },
   { label: "Disponibilité", value: "Lun – Ven, 8h – 18h GMT", href: null },
 ];

@@ -22,7 +22,9 @@ const cols = {
 
 export default function Footer() {
   return (
-    <footer className="bg-[#080E1A] border-t border-white/6">
+    <footer className="bg-[#080E1A]">
+      {/* Kente stripe top border */}
+      <div className="h-2 w-full" style={{ backgroundImage: 'repeating-linear-gradient(90deg, #F97316 0, #F97316 6px, #2563EB 6px, #2563EB 12px, rgba(249,115,22,0.45) 12px, rgba(249,115,22,0.45) 16px, transparent 16px, transparent 26px)' }} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
 

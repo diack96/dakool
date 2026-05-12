@@ -92,8 +92,10 @@ export default function Services() {
   const wide = services[6];
 
   return (
-    <section id="services" className="py-24 lg:py-32 bg-[#0B1120]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" className="relative py-24 lg:py-32 bg-[#0B1120] overflow-hidden">
+      {/* Adinkra grid background */}
+      <div className="absolute inset-0 pattern-adinkra opacity-[0.055]" />
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* ─── Header ──────────────────────────── */}
         <motion.div
@@ -210,8 +212,16 @@ export default function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.5 }}
-          className="border border-primary/15 bg-primary/[0.03] rounded-2xl p-10 lg:p-14 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8"
+          className="relative overflow-hidden border border-primary/15 bg-primary/[0.03] rounded-2xl p-10 lg:p-14 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8"
         >
+          {/* Adinkrahene watermark */}
+          <svg className="absolute right-6 top-1/2 -translate-y-1/2 opacity-[0.07] pointer-events-none" width="220" height="220" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="100" cy="100" r="94" stroke="#F97316" strokeWidth="2"/>
+            <circle cx="100" cy="100" r="70" stroke="#2563EB" strokeWidth="1.5"/>
+            <circle cx="100" cy="100" r="46" stroke="#F97316" strokeWidth="1.5"/>
+            <circle cx="100" cy="100" r="22" stroke="#2563EB" strokeWidth="1.5"/>
+            <circle cx="100" cy="100" r="8" fill="#F97316"/>
+          </svg>
           <div>
             <p className="section-label mb-3">Travaillons ensemble</p>
             <h3 className="text-white font-extrabold text-2xl lg:text-3xl mb-3 leading-tight">
@@ -251,3 +261,4 @@ export default function Services() {
     </section>
   );
 }
+

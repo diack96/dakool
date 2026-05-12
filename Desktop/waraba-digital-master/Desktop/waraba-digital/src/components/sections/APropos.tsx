@@ -52,8 +52,18 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
 
 export default function APropos() {
   return (
-    <section id="a-propos" className="py-24 lg:py-32 bg-[#0D1526] border-y border-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="a-propos" className="relative py-24 lg:py-32 bg-[#0D1526] border-y border-white/5 overflow-hidden">
+      {/* Bogolan cross background */}
+      <div className="absolute inset-0 pattern-bogolan opacity-[0.05]" />
+      {/* Large Adinkrahene filigrane */}
+      <svg className="absolute -left-16 top-1/2 -translate-y-1/2 opacity-[0.06] pointer-events-none" width="400" height="400" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="94" stroke="#F97316" strokeWidth="1.5"/>
+        <circle cx="100" cy="100" r="70" stroke="#2563EB" strokeWidth="1"/>
+        <circle cx="100" cy="100" r="46" stroke="#F97316" strokeWidth="1"/>
+        <circle cx="100" cy="100" r="22" stroke="#2563EB" strokeWidth="1"/>
+        <circle cx="100" cy="100" r="8" fill="#F97316"/>
+      </svg>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header + mission */}
         <div className="grid lg:grid-cols-2 gap-16 items-start mb-20">
@@ -169,3 +179,4 @@ export default function APropos() {
     </section>
   );
 }
+

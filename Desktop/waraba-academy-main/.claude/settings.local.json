@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(for endpoint in /api/health /api/test /api/courses /api/public/categories /api/enrollments /api/certificates /api/stats /api/notifications /api/onboarding/status /api/profile/check /api/quiz)",
+      "Bash(do echo -n \"$endpoint -> \")",
+      "Bash(curl:*)",
+      "Bash(done)"
+    ]
+  }
+}

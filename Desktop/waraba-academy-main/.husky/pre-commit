@@ -1,0 +1,99 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# === HOOK PRE-COMMIT - WARABA ACADEMY ===
+# Ce hook s'exécute avant chaque commit pour assurer la qualité du code
+# @author Waraba Academy Team
+# @version 1.0.0
+# @since 2024
+
+echo "🔍 Vérification de la qualité du code..."
+
+# === VÉRIFICATIONS OBLIGATOIRES ===
+
+# 1. Vérification TypeScript
+echo "📝 Vérification des types TypeScript..."
+npm run type-check
+if [ $? -ne 0 ]; then
+  echo "❌ Erreurs TypeScript détectées. Commit annulé."
+  exit 1
+fi
+
+# 2. Linting ESLint
+echo "🔧 Vérification du style de code..."
+npm run lint
+if [ $? -ne 0 ]; then
+  echo "❌ Erreurs de linting détectées. Commit annulé."
+  exit 1
+fi
+
+# 3. Formatage Prettier
+echo "🎨 Vérification du formatage..."
+npm run format:check
+if [ $? -ne 0 ]; then
+  echo "❌ Erreurs de formatage détectées. Commit annulé."
+  exit 1
+fi
+
+# === VÉRIFICATIONS OPTIONNELLES (EN DÉVELOPPEMENT) ===
+
+# 4. Tests unitaires (seulement si des fichiers de test ont été modifiés)
+if git diff --cached --name-only | grep -E "\.(test|spec)\.(js|jsx|ts|tsx)$" > /dev/null; then
+  echo "🧪 Exécution des tests unitaires..."
+  npm run test
+  if [ $? -ne 0 ]; then
+    echo "❌ Tests unitaires échoués. Commit annulé."
+    exit 1
+  fi
+fi
+
+# 5. Vérification de sécurité (seulement en production)
+if [ "$NODE_ENV" = "production" ]; then
+  echo "🔒 Vérification de sécurité..."
+  npm run security-check
+  if [ $? -ne 0 ]; then
+    echo "⚠️  Vulnérabilités de sécurité détectées. Vérifiez avant de commiter."
+    # Ne pas bloquer le commit en développement
+  fi
+fi
+
+# === VÉRIFICATIONS MÉTIER ===
+
+# 6. Vérification des variables d'environnement
+echo "⚙️  Vérification des variables d'environnement..."
+if [ -f ".env.local" ]; then
+  # Vérifier que .env.local n'est pas commité
+  if git diff --cached --name-only | grep -E "\.env\.local$" > /dev/null; then
+    echo "❌ ERREUR: .env.local ne doit pas être commité !"
+    echo "   Utilisez .env.example pour les exemples."
+    exit 1
+  fi
+fi
+
+# 7. Vérification des secrets
+echo "🔐 Vérification des secrets..."
+if git diff --cached | grep -i -E "(password|secret|key|token)" > /dev/null; then
+  echo "⚠️  ATTENTION: Possible secret détecté dans les changements."
+  echo "   Vérifiez que vous ne commitez pas de données sensibles."
+  read -p "Continuer le commit ? (y/N): " -n 1 -r
+  echo
+  if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+    echo "❌ Commit annulé par l'utilisateur."
+    exit 1
+  fi
+fi
+
+# === SUCCÈS ===
+
+echo "✅ Toutes les vérifications ont réussi !"
+echo "🚀 Commit autorisé."
+
+# === INFORMATIONS UTILES ===
+
+echo ""
+echo "💡 Conseils pour le prochain commit :"
+echo "   - Utilisez des messages de commit descriptifs"
+echo "   - Testez vos changements avant de commiter"
+echo "   - Vérifiez que les tests passent"
+echo "   - Documentez les nouvelles fonctionnalités"
+echo "" 

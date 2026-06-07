@@ -1,0 +1,77 @@
+{
+  "buildCommand": "npm run build",
+  "installCommand": "npm ci",
+  "framework": "nextjs",
+  "regions": ["cdg1"],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store, no-cache, must-revalidate, proxy-revalidate"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+    }
+  ],
+  "trailingSlash": false,
+  "crons": [
+    {
+      "path": "/api/cron/day3-nudge",
+      "schedule": "0 8 * * *"
+    },
+    {
+      "path": "/api/cron/course-reminders",
+      "schedule": "0 9 * * 1,3,5"
+    },
+    {
+      "path": "/api/cron/reengage-inactive",
+      "schedule": "0 10 1 * *"
+    },
+    {
+      "path": "/api/cron/cleanup",
+      "schedule": "0 3 * * *"
+    },
+    {
+      "path": "/api/cron/post-completion-nudge",
+      "schedule": "30 10 * * *"
+    },
+    {
+      "path": "/api/cron/payment-reminder",
+      "schedule": "0 7 * * *"
+    }
+  ]
+}

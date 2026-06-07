@@ -1,0 +1,118 @@
+{
+  "compilerOptions": {
+    // === CONFIGURATION DE BASE ===
+    // Version ECMAScript cible pour la compilation
+    "target": "ES2020",
+    // Bibliothèques TypeScript disponibles
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    // === SÉCURITÉ ET QUALITÉ ===
+    // Permet l'utilisation de fichiers JavaScript
+    "allowJs": true,
+    // Ignore la vérification des types dans les node_modules
+    "skipLibCheck": true,
+    // Active toutes les vérifications strictes TypeScript
+    "strict": true,
+    // Interdit les types 'any' implicites
+    "noImplicitAny": true,
+    // Interdit les retours de fonction implicites
+    "noImplicitReturns": true,
+    // Interdit les 'this' implicites
+    "noImplicitThis": true,
+    // Interdit les variables non utilisées
+    "noUnusedLocals": true,
+    // Interdit les paramètres non utilisés
+    "noUnusedParameters": true,
+    // Interdit les propriétés non définies
+    "noUncheckedIndexedAccess": true,
+    // === CONFIGURATION DE COMPILATION ===
+    // Ne génère pas de fichiers de sortie (Next.js s'en charge)
+    "noEmit": true,
+    // Permet l'interopérabilité avec les modules CommonJS
+    "esModuleInterop": true,
+    // Système de modules utilisé
+    "module": "esnext",
+    // Stratégie de résolution des modules
+    "moduleResolution": "bundler",
+    // Permet l'import de fichiers JSON
+    "resolveJsonModule": true,
+    // Assure que chaque fichier est traité comme un module séparé
+    "isolatedModules": true,
+    // === CONFIGURATION JSX ===
+    // Préserve le JSX pour Next.js
+    "jsx": "react-jsx",
+    // === OPTIMISATIONS ===
+    // Active la compilation incrémentale
+    "incremental": true,
+    // Améliore les performances de compilation
+    "assumeChangesOnlyAffectDirectDependencies": true,
+    // === CONFIGURATION DES CHEMINS ===
+    "baseUrl": ".",
+    "paths": {
+      // Alias pour les imports depuis le dossier src
+      "@/*": [
+        "./src/*"
+      ],
+      "@/components/*": [
+        "./src/components/*"
+      ],
+      "@/lib/*": [
+        "./src/lib/*"
+      ],
+      "@/types/*": [
+        "./src/types/*"
+      ],
+      "@/config/*": [
+        "./src/config/*"
+      ]
+    },
+    // === CONFIGURATION DES TYPES ===
+    // Types TypeScript disponibles
+    "types": [
+      "node",
+      "react",
+      "react-dom"
+    ],
+    // === CONFIGURATION DES DÉCLARATIONS ===
+    // Génère des fichiers de déclaration
+    "declaration": false,
+    // Génère des source maps pour le débogage
+    "sourceMap": true,
+    // === CONFIGURATION DES PLUGINS ===
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  // === FICHIERS INCLUS ===
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/**/*",
+    ".next/dev/types/**/*.ts"
+  ],
+  // === FICHIERS EXCLUS ===
+  "exclude": [
+    "node_modules",
+    ".next",
+    "out",
+    "dist",
+    "build",
+    "coverage",
+    "*.config.js",
+    "*.config.ts",
+    "**/__tests__/**",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "remotion/**",
+    "video/**"
+  ]
+}

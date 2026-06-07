@@ -140,7 +140,7 @@ export async function GET(request: NextRequest) {
 
       )
 
-      .or('is_published.eq.true,is_coming_soon.eq.true')
+      .or('is_published.is.true,is_coming_soon.is.true')
 
       .neq('status', 'ARCHIVED');
 

@@ -3,9 +3,11 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLock, faCheck, faCartShopping, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faCartShopping, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { useCart } from '@/context/CartContext';
 import { formatPrice } from '@/lib/format';
+import { buildOrderMessage, whatsappUrl, WHATSAPP_DISPLAY } from '@/lib/whatsapp';
 import Container from '@/components/Container';
 import ProductVisual from '@/components/ProductVisual';
 
@@ -31,9 +33,9 @@ const regions = [
 ];
 
 const paymentMethods = [
-  { id: 'wave', label: 'Wave', hint: 'Paiement mobile — confirmation immédiate' },
-  { id: 'orange-money', label: 'Orange Money', hint: 'Paiement mobile' },
-  { id: 'free-money', label: 'Free Money', hint: 'Paiement mobile' },
+  { id: 'wave', label: 'Wave', hint: 'Nous vous envoyons le lien de paiement' },
+  { id: 'orange-money', label: 'Orange Money', hint: 'Nous vous communiquons le numéro' },
+  { id: 'free-money', label: 'Free Money', hint: 'Nous vous communiquons le numéro' },
   { id: 'especes', label: 'Espèces à la livraison', hint: 'Dakar uniquement' },
 ];
 
@@ -46,40 +48,85 @@ export default function CheckoutClient() {
 
   const [region, setRegion] = useState('Dakar');
   const [payment, setPayment] = useState('wave');
-  const [submitting, setSubmitting] = useState(false);
-  const [orderRef, setOrderRef] = useState<string | null>(null);
+  const [sent, setSent] = useState<{ reference: string; url: string } | null>(null);
 
   const deliveryFee = DAKAR_REGIONS.includes(region) ? 0 : DELIVERY_FEE;
   const total = cartTotal + deliveryFee;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  /**
+   * Aucune API de paiement n'est branchée : la commande part sur WhatsApp
+   * Business sous forme de message pré-rempli, et l'équipe la confirme
+   * ensuite de vive voix.
+   */
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitting(true);
 
-    /* Pas encore de backend de paiement : on simule la prise de commande,
-       on génère une référence et on vide le panier. */
-    setTimeout(() => {
-      const ref = `DK-${Date.now().toString().slice(-6)}`;
-      setOrderRef(ref);
-      clearCart();
-      setSubmitting(false);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 1200);
+    const form = new FormData(e.currentTarget);
+    const read = (name: string) => (form.get(name) as string | null)?.trim() ?? '';
+    const reference = `DK-${Date.now().toString().slice(-6)}`;
+
+    const url = whatsappUrl(
+      buildOrderMessage({
+        reference,
+        items: cart,
+        subtotal: cartTotal,
+        deliveryFee,
+        total,
+        customer: {
+          prenom: read('prenom'),
+          nom: read('nom'),
+          email: read('email'),
+          telephone: read('telephone'),
+        },
+        delivery: {
+          adresse: read('adresse'),
+          ville: read('ville'),
+          region,
+          note: read('note'),
+        },
+        payment: paymentMethods.find((m) => m.id === payment)?.label ?? payment,
+      }),
+    );
+
+    /* Déclenché depuis un clic utilisateur : les bloqueurs laissent passer.
+       Si l'ouverture échoue quand même, l'écran de confirmation propose le
+       même lien en clair — le message vit dans l'URL, rien n'est perdu. */
+    window.open(url, '_blank', 'noopener,noreferrer');
+
+    setSent({ reference, url });
+    clearCart();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   /* ── Confirmation ── */
-  if (orderRef) {
+  if (sent) {
     return (
       <Container className="py-20 sm:py-28">
         <div className="mx-auto max-w-xl border border-teranga/25 bg-teranga/5 p-10 text-center">
           <span className="mx-auto mb-6 flex h-14 w-14 items-center justify-center bg-teranga">
             <FontAwesomeIcon icon={faCheck} className="h-6 w-6 text-white" />
           </span>
-          <h1 className="mb-3 font-display text-title text-white">Commande enregistrée</h1>
+          <h1 className="mb-3 font-display text-title text-white">WhatsApp ouvert</h1>
           <p className="mb-6 text-sm leading-relaxed text-mute">
-            Votre référence est <strong className="text-teranga">{orderRef}</strong>. Notre équipe
-            vous contacte dans les deux heures ouvrées pour confirmer le paiement et la livraison.
+            Votre commande <strong className="text-teranga">{sent.reference}</strong> est
+            pré-remplie dans WhatsApp. Envoyez le message pour la valider — nous répondons avec les
+            modalités de paiement et de livraison.
           </p>
+
+          <a
+            href={sent.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mb-3 inline-flex w-full items-center justify-center gap-2.5 bg-[#25D366] px-7 py-4 text-sm font-black uppercase tracking-cta text-black transition-opacity hover:opacity-90"
+          >
+            <FontAwesomeIcon icon={faWhatsapp} className="h-4 w-4" />
+            Rouvrir la conversation
+          </a>
+          <p className="mb-8 text-xs text-mute-dim">
+            WhatsApp ne s&apos;est pas ouvert ? Utilisez ce bouton, ou écrivez-nous au{' '}
+            {WHATSAPP_DISPLAY}.
+          </p>
+
           <div className="flex flex-wrap justify-center gap-3">
             <Link
               href="/produits"
@@ -260,8 +307,12 @@ export default function CheckoutClient() {
 
           <section>
             <h2 className="mb-6 flex items-baseline gap-3 font-display text-heading text-white">
-              <span className="text-teranga">03</span> Paiement
+              <span className="text-teranga">03</span> Mode de paiement souhaité
             </h2>
+            <p className="mb-6 max-w-lg text-sm text-mute">
+              Aucun prélèvement n&apos;est effectué sur le site. Indiquez votre préférence : nous
+              vous envoyons les instructions sur WhatsApp après confirmation de la commande.
+            </p>
 
             <fieldset className="grid gap-2 sm:grid-cols-2">
               <legend className="sr-only">Mode de paiement</legend>
@@ -342,14 +393,14 @@ export default function CheckoutClient() {
             <div className="border-t border-line px-6 py-5">
               <button
                 type="submit"
-                disabled={submitting}
-                className="flex w-full items-center justify-center gap-2.5 bg-white py-4 text-sm font-black uppercase tracking-cta text-black transition-colors hover:bg-teranga hover:text-white disabled:pointer-events-none disabled:opacity-50"
+                className="flex w-full items-center justify-center gap-2.5 bg-[#25D366] py-4 text-sm font-black uppercase tracking-cta text-black transition-opacity hover:opacity-90"
               >
-                <FontAwesomeIcon icon={faLock} className="h-3.5 w-3.5" />
-                {submitting ? 'Validation…' : 'Valider la commande'}
+                <FontAwesomeIcon icon={faWhatsapp} className="h-4 w-4" />
+                Commander sur WhatsApp
               </button>
               <p className="mt-3 text-center text-xs text-mute-dim">
-                Nous vous appelons pour confirmer avant tout prélèvement.
+                Votre commande s&apos;ouvre pré-remplie dans WhatsApp. Aucun paiement en ligne —
+                nous confirmons avec vous au {WHATSAPP_DISPLAY}.
               </p>
             </div>
           </div>

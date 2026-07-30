@@ -21,6 +21,7 @@ import {
 import Container from '@/components/Container';
 import SectionHeading from '@/components/SectionHeading';
 import Reveal from '@/components/Reveal';
+import { whatsappUrl, WHATSAPP_DISPLAY } from '@/lib/whatsapp';
 
 const faqs = [
   {
@@ -300,7 +301,7 @@ export default function ContactClient() {
               </div>
 
               <a
-                href="https://wa.me/221761234567"
+                href={whatsappUrl('Bonjour DAKOOL, j’ai une question.')}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mb-8 flex items-start gap-4 border border-line p-5 transition-colors hover:border-[#25D366]/40"
@@ -312,7 +313,7 @@ export default function ContactClient() {
                   <h3 className="mb-1 text-xs font-black uppercase tracking-cta text-white">
                     WhatsApp Business
                   </h3>
-                  <p className="text-sm text-teranga">+221 76 123 45 67</p>
+                  <p className="text-sm text-teranga">{WHATSAPP_DISPLAY}</p>
                   <p className="text-xs text-mute-dim">Réponse rapide · 7j/7 · 8h–20h</p>
                 </div>
               </a>

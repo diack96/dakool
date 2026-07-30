@@ -15,7 +15,7 @@ export default function CheckoutPage() {
         tag="Étape finale"
         title="Votre"
         highlight="Commande"
-        subtitle="Renseignez vos coordonnées et votre mode de paiement. Nous vous appelons pour confirmer avant tout prélèvement."
+        subtitle="Renseignez vos coordonnées : votre commande part sur WhatsApp, pré-remplie. Aucun paiement en ligne, nous confirmons tout avec vous."
         index="06"
       />
       <div className="bg-ink">

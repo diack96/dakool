@@ -3,8 +3,10 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faCheck, faTruckFast, faRotateLeft } from '@fortawesome/free-solid-svg-icons';
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { useCart } from '@/context/CartContext';
 import { formatPrice } from '@/lib/format';
+import { buildProductMessage, whatsappUrl } from '@/lib/whatsapp';
 import type { Product } from '@/data/products';
 
 export default function BuyPanel({ product }: { product: Product }) {
@@ -147,6 +149,25 @@ export default function BuyPanel({ product }: { product: Product }) {
         <FontAwesomeIcon icon={faPlus} className="h-3.5 w-3.5" />
         Ajouter au panier
       </button>
+
+      {/* Commande directe pour un article seul, sans passer par le panier. */}
+      <a
+        href={whatsappUrl(
+          buildProductMessage({
+            name: product.name,
+            size: size ?? undefined,
+            color,
+            qty,
+            price: product.price,
+          }),
+        )}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-2.5 flex w-full items-center justify-center gap-2.5 border border-[#25D366]/50 py-4 text-sm font-black uppercase tracking-cta text-[#25D366] transition-colors hover:bg-[#25D366] hover:text-black"
+      >
+        <FontAwesomeIcon icon={faWhatsapp} className="h-4 w-4" />
+        Commander sur WhatsApp
+      </a>
 
       <ul className="mt-8 space-y-3 border-t border-line pt-8">
         <li className="flex items-start gap-3 text-sm text-mute">

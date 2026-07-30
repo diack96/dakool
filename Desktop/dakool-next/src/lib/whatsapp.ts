@@ -12,6 +12,33 @@ export function whatsappUrl(message: string): string {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
+/** Message d'intérêt pour un seul article, depuis sa fiche produit. */
+export function buildProductMessage(params: {
+  name: string;
+  size?: string;
+  color?: string;
+  qty: number;
+  price: number;
+}): string {
+  const lines = [
+    'Bonjour DAKOOL, je suis intéressé(e) par cet article :',
+    '',
+    params.name,
+  ];
+
+  const variant = [params.size, params.color].filter(Boolean).join(' · ');
+  if (variant) lines.push(variant);
+
+  lines.push(
+    `Quantité : ${params.qty}`,
+    `Prix : ${formatPrice(params.price * params.qty)}`,
+    '',
+    'Est-il disponible ?',
+  );
+
+  return lines.join('\n');
+}
+
 export type OrderDetails = {
   reference: string;
   items: CartItem[];

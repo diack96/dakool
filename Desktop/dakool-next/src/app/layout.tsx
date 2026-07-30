@@ -5,6 +5,7 @@ import { CartProvider } from '@/context/CartContext';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CartSidebar from '@/components/CartSidebar';
+import FloatingWhatsApp from '@/components/FloatingWhatsApp';
 
 const bebas = Bebas_Neue({
   subsets: ['latin'],
@@ -76,6 +77,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <CartSidebar />
           <main id="contenu">{children}</main>
           <Footer />
+          <FloatingWhatsApp />
         </CartProvider>
       </body>
     </html>

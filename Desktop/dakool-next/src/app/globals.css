@@ -1,23 +1,204 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-
 @import "tailwindcss";
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+/* ============================================================
+   DAKOOL — Design system
+   Direction : brutalisme sportif. Noir profond, typo condensée
+   display, grille en filets, accents drapeau sénégalais.
+   ============================================================ */
 
-html { scroll-behavior: smooth; }
+@theme {
+  /* ---- Surfaces ---- */
+  --color-ink: #000000;
+  --color-surface: #050505;
+  --color-elevated: #0d0d0d;
+  --color-raised: #161616;
 
-body {
-  background: #000;
-  color: #fff;
-  font-family: 'Inter', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* ---- Accents drapeau ---- */
+  --color-teranga: #00853f;
+  --color-teranga-bright: #00a34d;
+  --color-or: #fdef42;
+  --color-lion: #e31e24;
+
+  /* ---- Filets & textes ---- */
+  --color-line: rgba(255, 255, 255, 0.07);
+  --color-line-strong: rgba(255, 255, 255, 0.18);
+  --color-mute: #6e6e6e;
+  --color-mute-dim: #454545;
+
+  /* ---- Typographie ---- */
+  --font-display: var(--font-bebas), "Haettenschweiler", "Arial Narrow", sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Échelle display fluide — une seule source de vérité pour les titres */
+  --text-hero: clamp(4.5rem, 14vw, 12.5rem);
+  --text-hero--line-height: 0.84;
+  --text-display: clamp(3.5rem, 8vw, 7rem);
+  --text-display--line-height: 0.86;
+  --text-title: clamp(2.5rem, 5vw, 4rem);
+  --text-title--line-height: 0.9;
+  --text-heading: clamp(1.75rem, 3vw, 2.5rem);
+  --text-heading--line-height: 0.95;
+
+  /* Interlettrage de marque — les libellés en capitales du site */
+  --tracking-brand: 0.35em;
+  --tracking-label: 0.25em;
+  --tracking-cta: 0.15em;
+
+  /* ---- Mouvement ---- */
+  --ease-brand: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-rise: rise 0.7s var(--ease-brand) both;
 }
 
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #000; }
-::-webkit-scrollbar-thumb { background: #222; border-radius: 0; }
-::-webkit-scrollbar-thumb:hover { background: #00853F; }
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
 
-/* Smooth transitions everywhere */
-a, button { transition: all 0.2s ease; }
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+
+/* Tout passe par @layer base : une règle hors layer l'emporterait sur les
+   utilities Tailwind (un `* { padding: 0 }` non layeré neutralise px-*, mx-*,
+   py-*… sur tout le site).
+   Le reset box-sizing / margin / padding est déjà fourni par le preflight. */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* La navbar fixe fait 4rem — évite que les ancres passent dessous. */
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--color-ink);
+    color: #fff;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Empêche le débordement horizontal des éléments décoratifs surdimensionnés. */
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--color-teranga);
+    color: #fff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-ink);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #222;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-teranga);
+  }
+
+  /* Accessibilité : anneau de focus visible au clavier uniquement. */
+  :focus-visible {
+    outline: 2px solid var(--color-teranga-bright);
+    outline-offset: 3px;
+  }
+
+  /* Les champs de formulaire héritent de la typo — Safari ne le fait pas. */
+  input,
+  textarea,
+  select,
+  button {
+    font: inherit;
+    color: inherit;
+  }
+
+  /* Chevron maison sur les listes déroulantes. Les classes utilitaires
+     gardent la main sur l'espacement (prévoir pr-10 côté composant). */
+  select {
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%2300853F' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 12px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* ============================================================
+   Utilitaires de marque
+   ============================================================ */
+
+@layer components {
+  /* Les titres display sont toujours en capitales condensées. */
+  .font-display {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+}
+
+/* Grain léger : casse l'aplat du noir pur sur les grands panneaux. */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Ligne de vie DAKOOL : le trait rouge qui se dessine au survol. */
+.rule-grow {
+  display: block;
+  width: 1.5rem;
+  height: 2px;
+  background: var(--color-teranga);
+  transition: width 0.4s var(--ease-brand);
+}
+.group:hover .rule-grow {
+  width: 3.5rem;
+}
+
+/* ============================================================
+   Mouvement réduit — on coupe tout sauf l'essentiel.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

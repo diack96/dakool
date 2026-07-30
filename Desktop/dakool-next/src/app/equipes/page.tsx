@@ -1,111 +1,178 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import PageHero from '@/components/PageHero';
-import { teams } from '@/data/teams';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLocationDot, faShirt, faMedal, faHandshake, faBullhorn } from '@fortawesome/free-solid-svg-icons';
+import {
+  faLocationDot,
+  faShirt,
+  faMedal,
+  faHandshake,
+  faBullhorn,
+  faArrowRight,
+} from '@fortawesome/free-solid-svg-icons';
+import PageHero from '@/components/PageHero';
+import Container from '@/components/Container';
+import SectionHeading from '@/components/SectionHeading';
+import Button from '@/components/Button';
+import Reveal from '@/components/Reveal';
+import Marquee from '@/components/Marquee';
+import { teams } from '@/data/teams';
+
+export const metadata: Metadata = {
+  title: 'Équipes partenaires',
+  description:
+    'Les 8 clubs du football sénégalais équipés par DAKOOL — Teungueth FC, AS Jaraaf, Génération Foot, Casa Sports et les autres. De la Ligue 1 aux académies.',
+  alternates: { canonical: '/equipes' },
+};
 
 const impacts = [
-  { icon: faShirt, color: '#00853F', title: 'Équipements Complets', desc: 'Maillots domicile et extérieur, survêtements, chaussettes, sacs et accessoires pour toute la saison.' },
-  { icon: faMedal, color: '#FDEF42', title: 'Qualité Professionnelle', desc: 'Tissu technique respirant, broderies premium, coupes étudiées avec des professionnels du sport.' },
-  { icon: faHandshake, color: '#00853F', title: 'Support Financier', desc: 'Sponsoring des déplacements, primes de performance et soutien logistique tout au long de la saison.' },
-  { icon: faBullhorn, color: '#E31E24', title: 'Visibilité Nationale', desc: 'Mise en avant des clubs sur tous les canaux digitaux DAKOOL — Instagram, TikTok, Facebook et YouTube.' },
+  {
+    icon: faShirt,
+    color: '#00853F',
+    title: 'Équipements complets',
+    desc: 'Maillots domicile et extérieur, survêtements, chaussettes, sacs et accessoires pour toute la saison.',
+  },
+  {
+    icon: faMedal,
+    color: '#FDEF42',
+    title: 'Qualité professionnelle',
+    desc: 'Tissu technique respirant, broderies premium, coupes étudiées avec des professionnels du sport.',
+  },
+  {
+    icon: faHandshake,
+    color: '#00853F',
+    title: 'Support financier',
+    desc: 'Sponsoring des déplacements, primes de performance et soutien logistique tout au long de la saison.',
+  },
+  {
+    icon: faBullhorn,
+    color: '#E31E24',
+    title: 'Visibilité nationale',
+    desc: 'Mise en avant des clubs sur tous les canaux digitaux DAKOOL — Instagram, TikTok, Facebook et YouTube.',
+  },
 ];
 
 export default function EquipesPage() {
+  const ligue1 = teams.filter((t) => t.league === 'Ligue 1').length;
+
   return (
     <>
       <PageHero
-        tag="Partenariats Officiels"
+        tag="Partenariats officiels"
         title="Nos"
         highlight="Équipes"
-        subtitle="8 clubs d'élite du football sénégalais équipés par DAKOOL, de la Ligue 1 jusqu'aux académies."
+        subtitle="8 clubs d'élite du football sénégalais équipés par DAKOOL, de la Ligue 1 jusqu'aux académies de formation."
+        index="03"
+        meta={[
+          { value: String(teams.length), label: 'Clubs partenaires' },
+          { value: String(ligue1), label: 'En Ligue 1' },
+          { value: '2020', label: 'Premier contrat' },
+          { value: '14', label: 'Régions couvertes' },
+        ]}
       />
 
-      {/* Teams Grid */}
-      <section className="py-20 bg-black">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="mb-10 border-b border-white/5 pb-6">
-            <span className="text-[#00853F] text-[11px] font-bold uppercase tracking-[0.3em] font-sans block mb-2">8 Clubs Partenaires</span>
-            <h2 className="text-5xl sm:text-7xl font-black text-white uppercase leading-none" style={{ fontFamily: "'Bebas Neue', cursive" }}>
-              Les Champions DAKOOL
-            </h2>
-          </div>
+      <Marquee
+        items={teams.map((t) => t.name)}
+      />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5">
-            {teams.map(team => (
-              <div key={team.id} className="bg-black hover:bg-[#0d0d0d] p-8 group transition-colors duration-200">
-                <div
-                  className="w-16 h-16 mb-5 flex items-center justify-center text-white font-black"
-                  style={{ backgroundColor: team.color, fontFamily: "'Bebas Neue', cursive", fontSize: '14px', letterSpacing: '0.05em' }}
-                >
-                  {team.acronym.slice(0, 3)}
-                </div>
-                <h3 className="text-white font-black text-lg mb-1 uppercase leading-tight" style={{ fontFamily: "'Bebas Neue', cursive" }}>{team.name}</h3>
-                <p className="text-gray-600 font-sans text-xs flex items-center gap-1.5 mb-2">
-                  <FontAwesomeIcon icon={faLocationDot} className="w-3 h-3 text-[#00853F]" />
-                  {team.city}
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="text-[10px] font-black uppercase tracking-[0.15em] px-2 py-1 border border-[#00853F]/30 text-[#00853F] font-sans">{team.league}</span>
-                  <span className="text-[10px] font-black uppercase tracking-[0.15em] px-2 py-1 border border-white/10 text-gray-600 font-sans">Depuis {team.since}</span>
-                </div>
-                <p className="text-gray-600 font-sans text-xs leading-relaxed">{team.description}</p>
-                <div className="w-6 h-[2px] bg-[#00853F] mt-5 group-hover:w-12 transition-all duration-300" />
-              </div>
+      {/* Clubs */}
+      <section className="bg-ink py-16 sm:py-20">
+        <Container>
+          <SectionHeading
+            eyebrow={`${teams.length} clubs partenaires`}
+            title="Les champions"
+            highlight="DAKOOL"
+          />
+
+          <div className="grid grid-cols-1 gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
+            {teams.map((team, i) => (
+              <Reveal key={team.id} delay={Math.min(i, 7) * 60}>
+                <article className="group relative flex h-full flex-col bg-ink p-7 transition-colors hover:bg-elevated">
+                  <span
+                    className="mb-5 flex h-16 w-16 shrink-0 items-center justify-center font-display text-base tracking-wider text-white"
+                    style={{ backgroundColor: team.color }}
+                  >
+                    {team.acronym.slice(0, 4)}
+                  </span>
+
+                  <h3 className="mb-1.5 font-display text-xl leading-tight text-white">
+                    <Link
+                      href={`/equipes/${team.slug}`}
+                      className="transition-colors after:absolute after:inset-0 after:content-[''] hover:text-teranga"
+                    >
+                      {team.name}
+                    </Link>
+                  </h3>
+
+                  <p className="mb-3 flex items-center gap-1.5 text-xs text-mute-dim">
+                    <FontAwesomeIcon icon={faLocationDot} className="h-3 w-3 text-teranga" />
+                    {team.city}
+                  </p>
+
+                  <div className="mb-4 flex flex-wrap gap-2">
+                    <span className="border border-teranga/30 px-2 py-1 text-[10px] font-black uppercase tracking-cta text-teranga">
+                      {team.league}
+                    </span>
+                    <span className="border border-line px-2 py-1 text-[10px] font-black uppercase tracking-cta text-mute-dim">
+                      Depuis {team.since}
+                    </span>
+                  </div>
+
+                  <p className="mb-5 line-clamp-4 text-xs leading-relaxed text-mute">
+                    {team.description}
+                  </p>
+
+                  <span className="rule-grow mt-auto" />
+                </article>
+              </Reveal>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
-      {/* Impact */}
-      <section className="py-20 bg-[#050505] border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="mb-10 border-b border-white/5 pb-6">
-            <span className="text-[#00853F] text-[11px] font-bold uppercase tracking-[0.3em] font-sans block mb-2">Notre Impact</span>
-            <h2 className="text-5xl sm:text-7xl font-black text-white uppercase leading-none" style={{ fontFamily: "'Bebas Neue', cursive" }}>
-              Ce que DAKOOL Apporte
-            </h2>
-          </div>
+      {/* Ce que DAKOOL apporte */}
+      <section className="border-t border-line bg-surface py-16 sm:py-20">
+        <Container>
+          <SectionHeading eyebrow="Notre impact" title="Ce que DAKOOL" highlight="apporte" />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5">
-            {impacts.map(item => (
-              <div key={item.title} className="bg-[#050505] hover:bg-[#0d0d0d] p-8 group transition-colors">
-                <div className="w-10 h-10 border border-white/10 flex items-center justify-center mb-5">
-                  <FontAwesomeIcon icon={item.icon} className="w-4 h-4" style={{ color: item.color }} />
-                </div>
-                <h4 className="text-white font-black mb-3 uppercase text-lg" style={{ fontFamily: "'Bebas Neue', cursive" }}>{item.title}</h4>
-                <p className="text-gray-600 font-sans text-sm leading-relaxed">{item.desc}</p>
-              </div>
+          <div className="grid grid-cols-1 gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
+            {impacts.map((item, i) => (
+              <Reveal key={item.title} delay={i * 80}>
+                <article className="h-full bg-surface p-8 transition-colors hover:bg-elevated">
+                  <span className="mb-5 flex h-11 w-11 items-center justify-center border border-line">
+                    <FontAwesomeIcon icon={item.icon} className="h-4 w-4" style={{ color: item.color }} />
+                  </span>
+                  <h3 className="mb-3 font-display text-xl text-white">{item.title}</h3>
+                  <p className="text-sm leading-relaxed text-mute">{item.desc}</p>
+                </article>
+              </Reveal>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* CTA */}
-      <section className="bg-[#00853F] py-24 relative overflow-hidden">
+      <section className="grain relative overflow-hidden bg-teranga py-24">
         <span
-          className="absolute right-0 top-1/2 -translate-y-1/2 text-white/10 font-black leading-none select-none hidden lg:block"
-          style={{ fontFamily: "'Bebas Neue', cursive", fontSize: '280px' }}
+          aria-hidden
+          className="absolute top-1/2 right-0 hidden -translate-y-1/2 font-display text-[18rem] leading-none text-white/10 select-none lg:block"
         >
           DK
         </span>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
-          <span className="text-white/60 text-[11px] font-bold uppercase tracking-[0.35em] font-sans block mb-4">Rejoignez DAKOOL</span>
-          <h2
-            className="text-5xl sm:text-7xl font-black text-white uppercase leading-[0.9] mb-8 max-w-2xl"
-            style={{ fontFamily: "'Bebas Neue', cursive" }}
-          >
-            Devenir Partenaire
-          </h2>
+        <Container className="relative z-10">
+          <span className="mb-4 block text-[11px] font-bold uppercase tracking-brand text-white/60">
+            Rejoignez DAKOOL
+          </span>
+          <h2 className="mb-8 max-w-2xl font-display text-display text-white">Devenir partenaire</h2>
           <div className="flex flex-wrap gap-3">
-            <Link href="/contact" className="bg-black hover:bg-white text-white hover:text-black font-black uppercase tracking-[0.15em] px-8 py-4 text-sm transition-colors font-sans">
-              Nous contacter →
-            </Link>
-            <Link href="/produits" className="border border-white/30 hover:border-white text-white font-black uppercase tracking-[0.15em] px-8 py-4 text-sm transition-colors font-sans">
+            <Button href="/contact" variant="dark" size="lg">
+              Nous contacter
+              <FontAwesomeIcon icon={faArrowRight} className="h-3.5 w-3.5" />
+            </Button>
+            <Button href="/produits" variant="outline" size="lg" className="border-white/40">
               Voir les équipements
-            </Link>
+            </Button>
           </div>
-        </div>
+        </Container>
       </section>
     </>
   );

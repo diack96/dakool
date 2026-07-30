@@ -1,25 +1,24 @@
-'use client';
-
-import { useState } from 'react';
+import type { Metadata } from 'next';
 import PageHero from '@/components/PageHero';
-import ProductCard from '@/components/ProductCard';
-import { products, categories } from '@/data/products';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGrip, faShirt, faShoePrints, faFutbol, faVest, faTag } from '@fortawesome/free-solid-svg-icons';
+import Marquee from '@/components/Marquee';
+import { categories, products } from '@/data/products';
+import ProduitsClient from './ProduitsClient';
 
-const catIcons: Record<string, typeof faGrip> = {
-  Tous: faGrip,
-  Maillots: faShirt,
-  Chaussures: faShoePrints,
-  Ballons: faFutbol,
-  Équipements: faVest,
-  Accessoires: faTag,
+export const metadata: Metadata = {
+  title: 'Produits',
+  description:
+    'Maillots, chaussures, ballons, équipements et accessoires DAKOOL. Équipements professionnels conçus au Sénégal pour les clubs et les joueurs.',
+  alternates: { canonical: '/produits' },
 };
 
-export default function ProduitsPage() {
-  const [active, setActive] = useState('Tous');
-
-  const filtered = active === 'Tous' ? products : products.filter(p => p.category === active);
+export default async function ProduitsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ categorie?: string }>;
+}) {
+  const { categorie } = await searchParams;
+  /* On ne fait confiance au paramètre d'URL que s'il correspond à une catégorie réelle. */
+  const initialCategory = categorie && categories.includes(categorie) ? categorie : 'Tous';
 
   return (
     <>
@@ -27,35 +26,26 @@ export default function ProduitsPage() {
         tag="Boutique DAKOOL"
         title="Nos"
         highlight="Produits"
-        subtitle="Équipements professionnels conçus pour les champions sénégalais."
+        subtitle="Équipements professionnels conçus pour les champions sénégalais. Livraison 24h à Dakar, 3–5 jours dans le reste du pays."
+        index="02"
+        meta={[
+          { value: String(products.length), label: 'Références' },
+          { value: '5', label: 'Catégories' },
+          { value: '24h', label: 'Livraison Dakar' },
+          { value: '30j', label: 'Garantie' },
+        ]}
       />
 
-      <section className="py-16 bg-black">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          {/* Filter bar */}
-          <div className="flex flex-wrap gap-2 mb-10">
-            {categories.map(cat => (
-              <button
-                key={cat}
-                onClick={() => setActive(cat)}
-                className={`flex items-center gap-2 px-4 py-2.5 text-[11px] font-black uppercase tracking-[0.2em] font-sans transition-all border ${
-                  active === cat
-                    ? 'bg-white border-white text-black'
-                    : 'bg-transparent border-white/10 text-gray-500 hover:border-white/40 hover:text-white'
-                }`}
-              >
-                <FontAwesomeIcon icon={catIcons[cat] || faGrip} className="w-3 h-3" />
-                {cat}
-              </button>
-            ))}
-          </div>
+      <Marquee
+        items={[
+          'Flocage nom + numéro',
+          'Tarifs clubs dès 10 pièces',
+          'Wave · Orange Money · Free Money',
+          'Retour sous 14 jours',
+        ]}
+      />
 
-          {/* Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-px bg-white/5">
-            {filtered.map(p => <ProductCard key={p.id} product={p} />)}
-          </div>
-        </div>
-      </section>
+      <ProduitsClient initialCategory={initialCategory} />
     </>
   );
 }

@@ -1,40 +1,62 @@
+import Container from './Container';
+import FlagBar from './FlagBar';
+
 type Props = {
   tag: string;
-  title: string;
+  title?: string;
   highlight: string;
   subtitle: string;
+  /** Chiffres clés affichés sous le titre. */
+  meta?: { value: string; label: string }[];
+  /** Numéro de chapitre en filigrane, comme sur la home. */
+  index?: string;
 };
 
-export default function PageHero({ tag, title, highlight, subtitle }: Props) {
+export default function PageHero({ tag, title, highlight, subtitle, meta, index }: Props) {
   return (
-    <header className="relative pt-36 pb-20 bg-black overflow-hidden border-b border-white/5">
-      {/* Decorative */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 bottom-0 right-[20%] w-px bg-white/3" />
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-white/5" />
+    <header className="grain relative overflow-hidden border-b border-line bg-ink pt-32 pb-16 sm:pt-36 sm:pb-20">
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <div className="absolute top-0 bottom-0 right-[20%] w-px bg-line" />
+        {index && (
+          <span className="absolute right-6 -bottom-8 hidden font-display text-[16rem] leading-none text-white/[0.025] select-none lg:block">
+            {index}
+          </span>
+        )}
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center gap-3 mb-6">
-          <span className="w-2 h-2 rounded-full bg-[#00853F] shrink-0" />
-          <span className="text-[#00853F] text-[11px] font-bold uppercase tracking-[0.35em] font-sans">{tag}</span>
-        </div>
-        <h1
-          className="font-black text-white uppercase leading-[0.9] mb-6"
-          style={{ fontFamily: "'Bebas Neue', cursive", fontSize: 'clamp(56px, 10vw, 120px)' }}
-        >
-          {title}{' '}
-          <span className="text-[#00853F]">{highlight}</span>
+      <Container className="relative z-10">
+        <span className="mb-5 flex items-center gap-3 text-[11px] font-bold uppercase tracking-brand text-teranga">
+          <span className="h-2 w-2 shrink-0 rounded-full bg-teranga" />
+          {tag}
+        </span>
+
+        <h1 className="mb-6 font-display text-display text-white">
+          {title && <>{title} </>}
+          <span className="text-teranga">{highlight}</span>
         </h1>
-        <p className="text-gray-500 font-sans text-base sm:text-lg max-w-lg leading-relaxed">{subtitle}</p>
-      </div>
 
-      {/* Flag bar */}
-      <div className="absolute bottom-0 left-0 right-0 flex h-[3px]">
-        <span className="flex-1 bg-[#00853F]" />
-        <span className="flex-1 bg-[#FDEF42]" />
-        <span className="flex-1 bg-[#E31E24]" />
-      </div>
+        <p className="max-w-xl text-base leading-relaxed text-mute sm:text-lg">{subtitle}</p>
+
+        {meta && meta.length > 0 && (
+          <dl className="mt-10 grid max-w-2xl grid-cols-2 gap-px border border-line bg-line sm:grid-cols-4">
+            {meta.map((item) => (
+              <div key={item.label} className="bg-ink px-4 py-5">
+                <dt className="sr-only">{item.label}</dt>
+                <dd>
+                  <span className="block font-display text-3xl leading-none text-white">
+                    {item.value}
+                  </span>
+                  <span className="mt-1.5 block text-[10px] uppercase tracking-label text-mute-dim">
+                    {item.label}
+                  </span>
+                </dd>
+              </div>
+            ))}
+          </dl>
+        )}
+      </Container>
+
+      <FlagBar className="absolute inset-x-0 bottom-0" />
     </header>
   );
 }

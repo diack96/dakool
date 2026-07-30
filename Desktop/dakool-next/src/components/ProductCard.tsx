@@ -1,80 +1,103 @@
 'use client';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faHeart } from '@fortawesome/free-solid-svg-icons';
-import { useCart } from '@/context/CartContext';
-import type { Product } from '@/data/products';
+import Link from 'next/link';
 import { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faHeart, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { useCart } from '@/context/CartContext';
+import { formatPrice } from '@/lib/format';
+import type { Product } from '@/data/products';
+import ProductVisual from './ProductVisual';
 
 const badgeStyles = {
-  green: 'bg-[#00853F] text-white',
-  yellow: 'bg-[#FDEF42] text-black',
-  red: 'bg-[#E31E24] text-white',
+  green: 'bg-teranga text-white',
+  yellow: 'bg-or text-black',
+  red: 'bg-lion text-white',
 };
 
-const categoryEmoji: Record<string, string> = {
-  Maillots: '👕',
-  Chaussures: '👟',
-  Ballons: '⚽',
-  Équipements: '🎽',
-  Accessoires: '🧢',
-};
-
-export default function ProductCard({ product }: { product: Product }) {
+export default function ProductCard({ product, index }: { product: Product; index?: number }) {
   const { addToCart, openCart } = useCart();
   const [wished, setWished] = useState(false);
 
+  /* Un article qui existe en plusieurs tailles se choisit sur sa fiche —
+     on n'ajoute au panier depuis la grille que ce qui n'a pas de variante. */
+  const singleVariant = product.sizes.length === 1;
+
   const handleAdd = () => {
-    addToCart({ id: product.id, name: product.name, price: product.price, category: product.category });
+    addToCart({
+      productId: product.id,
+      slug: product.slug,
+      name: product.name,
+      price: product.price,
+      category: product.category,
+      size: product.sizes[0],
+      color: product.colors[0]?.name,
+    });
     openCart();
   };
 
   return (
-    <div className="bg-black group cursor-pointer">
-      {/* Image area */}
-      <div className="relative bg-[#0d0d0d] aspect-square flex items-center justify-center overflow-hidden">
-        <div className="text-7xl transition-transform duration-500 group-hover:scale-110">
-          {categoryEmoji[product.category] ?? '📦'}
-        </div>
+    <article className="group relative bg-ink">
+      <div className="relative flex aspect-square items-center justify-center overflow-hidden bg-elevated">
+        <ProductVisual category={product.category} index={index} />
 
-        {/* Badge */}
         {product.badge && (
-          <span className={`absolute top-3 left-3 text-[10px] font-black uppercase tracking-[0.15em] px-2 py-1 font-sans ${badgeStyles[product.badge.color]}`}>
+          <span
+            className={`absolute top-3 left-3 z-10 px-2 py-1 text-[10px] font-black uppercase tracking-cta ${badgeStyles[product.badge.color]}`}
+          >
             {product.badge.label}
           </span>
         )}
 
-        {/* Wishlist */}
         <button
+          type="button"
           onClick={() => setWished(!wished)}
-          className="absolute top-3 right-3 w-8 h-8 bg-black/40 hover:bg-black/80 flex items-center justify-center transition-colors"
-          aria-label="Favoris"
+          aria-pressed={wished}
+          aria-label={
+            wished ? `Retirer ${product.name} des favoris` : `Ajouter ${product.name} aux favoris`
+          }
+          className="absolute top-3 right-3 z-20 flex h-9 w-9 items-center justify-center bg-black/50 transition-colors hover:bg-black/90"
         >
           <FontAwesomeIcon
             icon={faHeart}
-            className={`w-3.5 h-3.5 transition-colors ${wished ? 'text-[#E31E24]' : 'text-white/40'}`}
+            className={`h-3.5 w-3.5 transition-colors ${wished ? 'text-lion' : 'text-white/40'}`}
           />
         </button>
 
-        {/* Slide-up cart button */}
-        <button
-          onClick={handleAdd}
-          className="absolute bottom-0 left-0 right-0 bg-white hover:bg-[#00853F] text-black hover:text-white py-3.5 flex items-center justify-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] font-sans translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"
-        >
-          <FontAwesomeIcon icon={faPlus} className="w-3 h-3" />
-          Ajouter au panier
-        </button>
+        {/* Sur mobile l'action reste visible ; sur desktop elle monte au survol. */}
+        {singleVariant ? (
+          <button
+            type="button"
+            onClick={handleAdd}
+            className="absolute inset-x-0 bottom-0 z-20 flex items-center justify-center gap-2 bg-white py-3.5 text-[11px] font-black uppercase tracking-label text-black transition-[transform,background-color,color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:bg-teranga hover:text-white sm:translate-y-full sm:group-hover:translate-y-0 sm:focus-visible:translate-y-0"
+          >
+            <FontAwesomeIcon icon={faPlus} className="h-3 w-3" />
+            Ajouter au panier
+          </button>
+        ) : (
+          <span className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex items-center justify-center gap-2 bg-white py-3.5 text-[11px] font-black uppercase tracking-label text-black transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] sm:translate-y-full sm:group-hover:translate-y-0">
+            Choisir la taille
+            <FontAwesomeIcon icon={faArrowRight} className="h-3 w-3" />
+          </span>
+        )}
       </div>
 
-      {/* Info */}
-      <div className="bg-black px-0 pt-3 pb-1">
-        <p className="text-[#00853F] font-sans text-[10px] font-bold uppercase tracking-[0.25em] mb-1">{product.category}</p>
-        <p className="text-white font-semibold font-sans text-sm leading-tight mb-2">{product.name}</p>
-        <p className="text-white font-black font-sans text-base" style={{ fontFamily: "'Bebas Neue', cursive" }}>
-          {product.price.toLocaleString('fr-FR')}{' '}
-          <span className="text-gray-500 text-xs font-sans font-normal">FCFA</span>
+      <div className="pt-4 pb-1">
+        <p className="mb-1.5 text-[10px] font-bold uppercase tracking-label text-teranga">
+          {product.category}
         </p>
+        <h3 className="mb-2 text-sm leading-tight font-semibold text-white">
+          {/* Le ::after étend la zone cliquable à toute la carte sans imbriquer
+              de bouton dans un lien. */}
+          <Link
+            href={`/produits/${product.slug}`}
+            className="transition-colors after:absolute after:inset-0 after:content-[''] hover:text-teranga"
+          >
+            {product.name}
+          </Link>
+        </h3>
+        <p className="font-display text-xl tracking-wide text-white">{formatPrice(product.price)}</p>
       </div>
-    </div>
+    </article>
   );
 }

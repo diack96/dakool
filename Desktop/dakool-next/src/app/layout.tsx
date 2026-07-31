@@ -23,8 +23,8 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL('https://dakool.sn'),
   title: {
-    default: "DAKOOL — L'Équipementier du Lion",
-    template: '%s — DAKOOL',
+    default: 'DAKOOL Site Officiel | Équipements de sport',
+    template: '%s | DAKOOL FR',
   },
   description:
     "La première marque d'équipements sportifs 100% sénégalaise. Maillots, chaussures, ballons et équipements pour les clubs et les joueurs. Né à Dakar, fait pour le terrain.",
@@ -40,14 +40,14 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_SN',
     siteName: 'DAKOOL',
-    title: "DAKOOL — L'Équipementier du Lion",
+    title: 'DAKOOL Site Officiel | Équipements de sport',
     description:
       "La première marque d'équipements sportifs 100% sénégalaise. Né à Dakar, fait pour le terrain.",
     images: [{ url: '/dakool-logo.png', width: 400, height: 191, alt: 'DAKOOL' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: "DAKOOL — L'Équipementier du Lion",
+    title: 'DAKOOL Site Officiel | Équipements de sport',
     description: "La première marque d'équipements sportifs 100% sénégalaise.",
   },
   robots: { index: true, follow: true },

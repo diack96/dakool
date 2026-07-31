@@ -160,9 +160,8 @@ export default function Home() {
       <section className="bg-ink py-20 sm:py-24">
         <Container>
           <SectionHeading
-            eyebrow="Nouveautés"
-            title="Les dernières"
-            highlight="sorties"
+            eyebrow="Boutique officielle"
+            title="Nouveautés"
             link={{ href: '/produits', label: 'Voir plus' }}
           />
 

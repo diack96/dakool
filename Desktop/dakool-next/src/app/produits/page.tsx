@@ -5,7 +5,7 @@ import { categories, products } from '@/data/products';
 import ProduitsClient from './ProduitsClient';
 
 export const metadata: Metadata = {
-  title: 'Produits',
+  title: 'Boutique officielle',
   description:
     'Maillots, chaussures, ballons et accessoires DAKOOL. Livraison offerte à Dakar, retours gratuits sous 14 jours.',
   alternates: { canonical: '/produits' },
@@ -23,7 +23,7 @@ export default async function ProduitsPage({
   return (
     <>
       <PageHero
-        tag="Boutique DAKOOL"
+        tag="Boutique officielle DAKOOL"
         title="La"
         highlight="Collection"
         subtitle="Des équipements de niveau professionnel, conçus et cousus à Dakar. Livraison offerte dans la capitale."

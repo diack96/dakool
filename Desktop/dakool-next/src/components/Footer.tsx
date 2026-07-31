@@ -38,15 +38,18 @@ export default function Footer() {
         <Container className="flex flex-col gap-8 py-14 lg:flex-row lg:items-center lg:justify-between">
           <div>
             <span className="mb-3 block text-[11px] font-bold uppercase tracking-brand text-white">
-              Club DAKOOL — gratuit
+              Club DAKOOL
             </span>
             <h2 className="font-display text-heading text-white">
-              Rejoins le club, prends de l&apos;avance
+              Deviens membre, c&apos;est gratuit
             </h2>
+            {/* Bénéfices formulés comme ceux d'un programme d'adhésion
+                d'équipementier : accès, exclusivité, avance. */}
             <ul className="mt-3 max-w-md space-y-1.5 text-sm text-mute">
-              <li>— Les sorties en avant-première</li>
+              <li>— Accès anticipé aux nouveautés</li>
+              <li>— Produits réservés aux membres</li>
               <li>— Les dates de tournois avant tout le monde</li>
-              <li>— Les tarifs réservés aux clubs</li>
+              <li>— Offres réservées aux clubs</li>
             </ul>
           </div>
           <NewsletterForm />

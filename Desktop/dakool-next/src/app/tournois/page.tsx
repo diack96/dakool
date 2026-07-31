@@ -32,7 +32,7 @@ export default function TournoisPage() {
         tag="Sponsoring sportif"
         title="Nos"
         highlight="Tournois"
-        subtitle="DAKOOL soutient le football à tous les niveaux — du quartier jusqu'à l'élite nationale."
+        subtitle="On soutient le football à tous les niveaux — du terrain de quartier jusqu'à l'élite nationale."
         index="04"
         meta={[
           { value: '12', label: 'Compétitions' },
@@ -46,7 +46,7 @@ export default function TournoisPage() {
 
       <section className="bg-ink py-16 sm:py-20">
         <Container size="narrow">
-          <SectionHeading eyebrow="12 compétitions" title="DAKOOL" highlight="sponsorise" />
+          <SectionHeading eyebrow="12 compétitions" title="Là où on est" highlight="présents" />
 
           <div className="flex flex-col gap-px bg-line">
             {tournaments.map((t, i) => (
@@ -151,15 +151,15 @@ export default function TournoisPage() {
             Sponsoring
           </span>
           <h2 className="mb-8 max-w-2xl font-display text-display text-black">
-            Votre tournoi avec DAKOOL
+            Ton tournoi avec DAKOOL
           </h2>
           <div className="flex flex-wrap gap-3">
             <Button href="/contact" variant="dark" size="lg">
-              Proposer un partenariat
+              Nous écrire
               <FontAwesomeIcon icon={faArrowRight} className="h-3.5 w-3.5" />
             </Button>
             <Button href="/equipes" variant="darkOutline" size="lg">
-              Voir nos équipes
+              Voir les clubs
             </Button>
           </div>
         </Container>

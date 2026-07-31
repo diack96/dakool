@@ -75,13 +75,13 @@ export default function CartSidebar() {
           {cart.length === 0 ? (
             <div className="flex h-full flex-col items-center justify-center gap-5 text-mute">
               <FontAwesomeIcon icon={faCartShopping} className="h-10 w-10 opacity-20" />
-              <p className="text-sm uppercase tracking-label">Votre panier est vide</p>
+              <p className="text-sm uppercase tracking-label">Ton panier est vide</p>
               <Link
                 href="/produits"
                 onClick={closeCart}
                 className="bg-white px-6 py-3 text-xs font-black uppercase tracking-cta text-black transition-colors hover:bg-accent"
               >
-                Voir les produits
+                Continuer mes achats
               </Link>
             </div>
           ) : (

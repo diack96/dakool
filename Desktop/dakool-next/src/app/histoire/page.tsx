@@ -221,7 +221,7 @@ export default function HistoirePage() {
               <FontAwesomeIcon icon={faArrowRight} className="h-3.5 w-3.5" />
             </Button>
             <Button href="/contact" variant="darkOutline" size="lg">
-              Devenir partenaire
+              Nous écrire
             </Button>
           </div>
         </Container>

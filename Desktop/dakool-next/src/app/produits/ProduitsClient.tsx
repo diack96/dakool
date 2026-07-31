@@ -110,7 +110,7 @@ export default function ProduitsClient({ initialCategory }: { initialCategory: s
         {filtered.length === 0 ? (
           <div className="border border-line py-24 text-center">
             <p className="font-display text-3xl text-white">Aucun produit</p>
-            <p className="mt-2 text-sm text-mute">Cette catégorie est vide pour le moment.</p>
+            <p className="mt-2 text-sm text-mute">Rien dans cette catégorie pour le moment.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 gap-px bg-line sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

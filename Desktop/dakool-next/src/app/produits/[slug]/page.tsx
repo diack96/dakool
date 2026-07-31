@@ -163,10 +163,10 @@ export default async function ProduitPage({ params }: Params) {
       <section className="bg-ink py-16 sm:py-20">
         <Container>
           <SectionHeading
-            eyebrow="À compléter"
-            title="Vous aimerez"
-            highlight="aussi"
-            link={{ href: '/produits', label: 'Tout voir' }}
+            eyebrow="Complète ta tenue"
+            title="À"
+            highlight="compléter"
+            link={{ href: '/produits', label: 'Voir plus' }}
           />
           <div className="grid grid-cols-1 gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
             {related.map((p, i) => (

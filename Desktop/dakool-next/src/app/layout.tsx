@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     template: '%s — DAKOOL',
   },
   description:
-    "La première marque d'équipements sportifs 100% sénégalaise. Maillots, chaussures, ballons et équipements pour les clubs et les champions. Né à Dakar.",
+    "La première marque d'équipements sportifs 100% sénégalaise. Maillots, chaussures, ballons et équipements pour les clubs et les joueurs. Né à Dakar, fait pour le terrain.",
   keywords: [
     'équipementier sportif Sénégal',
     'maillot football Sénégal',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     siteName: 'DAKOOL',
     title: "DAKOOL — L'Équipementier du Lion",
     description:
-      "La première marque d'équipements sportifs 100% sénégalaise. Né à Dakar, fait pour les champions.",
+      "La première marque d'équipements sportifs 100% sénégalaise. Né à Dakar, fait pour le terrain.",
     images: [{ url: '/dakool-logo.png', width: 400, height: 191, alt: 'DAKOOL' }],
   },
   twitter: {

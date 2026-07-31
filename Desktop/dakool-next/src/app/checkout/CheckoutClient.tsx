@@ -33,9 +33,9 @@ const regions = [
 ];
 
 const paymentMethods = [
-  { id: 'wave', label: 'Wave', hint: 'Nous vous envoyons le lien de paiement' },
-  { id: 'orange-money', label: 'Orange Money', hint: 'Nous vous communiquons le numéro' },
-  { id: 'free-money', label: 'Free Money', hint: 'Nous vous communiquons le numéro' },
+  { id: 'wave', label: 'Wave', hint: 'On t’envoie le lien de paiement' },
+  { id: 'orange-money', label: 'Orange Money', hint: 'On te communique le numéro' },
+  { id: 'free-money', label: 'Free Money', hint: 'On te communique le numéro' },
   { id: 'especes', label: 'Espèces à la livraison', hint: 'Dakar uniquement' },
 ];
 
@@ -108,9 +108,9 @@ export default function CheckoutClient() {
           </span>
           <h1 className="mb-3 font-display text-title text-white">WhatsApp ouvert</h1>
           <p className="mb-6 text-sm leading-relaxed text-mute">
-            Votre commande <strong className="text-accent">{sent.reference}</strong> est
-            pré-remplie dans WhatsApp. Envoyez le message pour la valider — nous répondons avec les
-            modalités de paiement et de livraison.
+            Ta commande <strong className="text-accent">{sent.reference}</strong> est déjà écrite
+            dans WhatsApp. Envoie le message pour la valider — on te répond avec les modalités de
+            paiement et de livraison.
           </p>
 
           <a
@@ -123,7 +123,7 @@ export default function CheckoutClient() {
             Rouvrir la conversation
           </a>
           <p className="mb-8 text-xs text-mute-dim">
-            WhatsApp ne s&apos;est pas ouvert ? Utilisez ce bouton, ou écrivez-nous au{' '}
+            WhatsApp ne s&apos;est pas ouvert ? Utilise ce bouton, ou écris-nous au{' '}
             {WHATSAPP_DISPLAY}.
           </p>
 
@@ -163,9 +163,9 @@ export default function CheckoutClient() {
       <Container className="py-20 sm:py-28">
         <div className="mx-auto max-w-md border border-line p-12 text-center">
           <FontAwesomeIcon icon={faCartShopping} className="mb-5 h-10 w-10 text-white/15" />
-          <h1 className="mb-3 font-display text-title text-white">Votre panier est vide</h1>
+          <h1 className="mb-3 font-display text-title text-white">Ton panier est vide</h1>
           <p className="mb-7 text-sm text-mute">
-            Ajoutez des articles avant de passer commande.
+            Ajoute des articles avant de passer commande.
           </p>
           <Link
             href="/produits"
@@ -187,7 +187,7 @@ export default function CheckoutClient() {
         <div>
           <section className="mb-12">
             <h2 className="mb-6 flex items-baseline gap-3 font-display text-heading text-white">
-              <span className="text-accent">01</span> Vos coordonnées
+              <span className="text-accent">01</span> Tes coordonnées
             </h2>
 
             <div className="grid gap-3 sm:grid-cols-2">
@@ -213,7 +213,7 @@ export default function CheckoutClient() {
                   type="email"
                   required
                   autoComplete="email"
-                  placeholder="vous@example.sn"
+                  placeholder="toi@example.sn"
                   className={inputClass}
                 />
               </div>
@@ -292,7 +292,7 @@ export default function CheckoutClient() {
                   id="note"
                   name="note"
                   rows={3}
-                  placeholder="Point de repère, horaire préféré…"
+                  placeholder="Point de repère, horaire qui t’arrange…"
                   className={`${inputClass} resize-none`}
                 />
               </div>
@@ -310,8 +310,8 @@ export default function CheckoutClient() {
               <span className="text-accent">03</span> Mode de paiement souhaité
             </h2>
             <p className="mb-6 max-w-lg text-sm text-mute">
-              Aucun prélèvement n&apos;est effectué sur le site. Indiquez votre préférence : nous
-              vous envoyons les instructions sur WhatsApp après confirmation de la commande.
+              Aucun prélèvement n&apos;est effectué sur le site. Indique ta préférence : on t&apos;envoie
+              les instructions sur WhatsApp après confirmation de la commande.
             </p>
 
             <fieldset className="grid gap-2 sm:grid-cols-2">
@@ -351,7 +351,7 @@ export default function CheckoutClient() {
         <aside className="lg:sticky lg:top-24 lg:self-start">
           <div className="border border-line bg-surface">
             <h2 className="border-b border-line px-6 py-5 font-display text-2xl text-white">
-              Votre commande
+              Ta commande
             </h2>
 
             <ul className="divide-y divide-line px-6">
@@ -399,8 +399,8 @@ export default function CheckoutClient() {
                 Commander sur WhatsApp
               </button>
               <p className="mt-3 text-center text-xs text-mute-dim">
-                Votre commande s&apos;ouvre pré-remplie dans WhatsApp. Aucun paiement en ligne —
-                nous confirmons avec vous au {WHATSAPP_DISPLAY}.
+                Ta commande s&apos;ouvre déjà écrite dans WhatsApp. Aucun paiement en ligne — on
+                confirme avec toi au {WHATSAPP_DISPLAY}.
               </p>
             </div>
           </div>

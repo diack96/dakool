@@ -91,7 +91,7 @@ export const products: Product[] = [
   {
     id: 'p4',
     slug: 'chaussures-elite-pro',
-    name: 'Chaussures Elite Pro',
+    name: 'Chaussure Elite Pro',
     category: 'Chaussures',
     price: 45000,
     badge: { label: 'Pro' },
@@ -270,7 +270,7 @@ export const products: Product[] = [
   {
     id: 'p12',
     slug: 'chaussures-junior',
-    name: 'Chaussures Junior',
+    name: 'Chaussure Junior',
     category: 'Chaussures',
     price: 28000,
     badge: { label: 'Junior' },

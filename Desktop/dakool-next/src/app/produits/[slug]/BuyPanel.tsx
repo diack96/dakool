@@ -109,7 +109,7 @@ export default function BuyPanel({ product }: { product: Product }) {
         </div>
         {error && (
           <p role="alert" className="mt-3 text-xs text-white">
-            Choisissez une taille avant d&apos;ajouter au panier.
+            Sélectionne ta taille.
           </p>
         )}
       </fieldset>
@@ -174,15 +174,15 @@ export default function BuyPanel({ product }: { product: Product }) {
       <ul className="mt-8 space-y-3 border-t border-line pt-8">
         <li className="flex items-start gap-3 text-sm text-mute">
           <FontAwesomeIcon icon={faTruckFast} className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-          Livraison gratuite à Dakar sous 24–48h. 3–5 jours pour les autres régions.
+          Livraison offerte à Dakar sous 24–48h. 3–5 jours ailleurs au Sénégal.
         </li>
         <li className="flex items-start gap-3 text-sm text-mute">
           <FontAwesomeIcon icon={faRotateLeft} className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-          Retour sous 14 jours si l&apos;article n&apos;a pas été porté.
+          Retour gratuit sous 14 jours si l&apos;article n&apos;a pas été porté.
         </li>
         <li className="flex items-start gap-3 text-sm text-mute">
           <FontAwesomeIcon icon={faCheck} className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-          Garantie 30 jours sur les défauts de fabrication.
+          Garantie 30 jours contre les défauts de fabrication.
         </li>
       </ul>
     </div>

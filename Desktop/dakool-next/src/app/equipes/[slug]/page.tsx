@@ -217,11 +217,11 @@ export default async function EquipePage({ params }: Params) {
               Partenariat
             </span>
             <h2 className="max-w-xl font-display text-title text-black">
-              Votre club aussi peut être équipé
+              Ton club aussi peut être équipé
             </h2>
           </div>
           <Button href="/contact" variant="dark" size="lg">
-            Nous contacter
+            Nous écrire
             <FontAwesomeIcon icon={faArrowRight} className="h-3.5 w-3.5" />
           </Button>
         </Container>

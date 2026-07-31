@@ -15,7 +15,7 @@ export default function ContactPage() {
       <PageHero
         tag="Nous parler"
         highlight="Contact"
-        subtitle="Une question, une commande groupée, un partenariat ? Nous sommes à votre écoute."
+        subtitle="Une question, une commande groupée, un partenariat ? On t’écoute."
         index="07"
         meta={[
           { value: '24h', label: 'Délai de réponse' },

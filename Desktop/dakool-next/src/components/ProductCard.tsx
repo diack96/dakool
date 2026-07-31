@@ -74,7 +74,7 @@ export default function ProductCard({ product, index }: { product: Product; inde
           </button>
         ) : (
           <span className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex items-center justify-center gap-2 bg-white py-3.5 text-[11px] font-black uppercase tracking-label text-black transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] sm:translate-y-full sm:group-hover:translate-y-0">
-            Choisir la taille
+            Voir le produit
             <FontAwesomeIcon icon={faArrowRight} className="h-3 w-3" />
           </span>
         )}

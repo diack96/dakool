@@ -31,7 +31,7 @@ const manifesto = [
   {
     number: '01',
     title: 'Fabriqué ici',
-    text: "Nos ateliers sont à Dakar. Les coupes sont pensées pour le climat et les terrains sénégalais, pas adaptées depuis un cahier des charges européen.",
+    text: "Nos ateliers sont à Dakar. Les coupes sont pensées pour le climat et les terrains sénégalais — pas adaptées depuis un cahier des charges européen.",
   },
   {
     number: '02',
@@ -41,7 +41,7 @@ const manifesto = [
   {
     number: '03',
     title: 'Du quartier à l’élite',
-    text: 'Nous équipons la Ligue 1 et les Navétanes avec la même exigence. Le niveau change, la qualité non.',
+    text: 'On équipe la Ligue 1 et les Navétanes avec la même exigence. Le niveau change, la qualité non.',
   },
 ];
 
@@ -78,16 +78,16 @@ export default function Home() {
 
           <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:gap-16">
             <p className="max-w-sm text-base leading-relaxed text-mute sm:text-lg">
-              La première marque d&apos;équipements sportifs 100% sénégalaise. Des maillots aux
-              chaussures — DAKOOL équipe les champions.
+              La première marque d&apos;équipements sportifs 100% sénégalaise. Du maillot à la
+              chaussure, on équipe ceux qui jouent pour gagner.
             </p>
             <div className="flex shrink-0 flex-wrap gap-3">
               <Button href="/produits">
-                Découvrir
+                Acheter
                 <FontAwesomeIcon icon={faArrowRight} className="h-3.5 w-3.5" />
               </Button>
               <Button href="/equipes" variant="outline">
-                Nos équipes
+                Voir les clubs
               </Button>
             </div>
           </div>
@@ -106,10 +106,10 @@ export default function Home() {
 
       <Marquee
         items={[
-          'Livraison 24h à Dakar',
-          'Flocage personnalisé',
+          'Livraison offerte à Dakar',
+          'Retours sous 14 jours',
+          'Flocage nom + numéro',
           'Tarifs clubs dès 10 pièces',
-          'Wave · Orange Money',
         ]}
       />
 
@@ -139,7 +139,7 @@ export default function Home() {
       {/* ── MANIFESTE ──────────────────────────────────────── */}
       <section className="border-b border-line bg-surface py-20 sm:py-24">
         <Container>
-          <SectionHeading eyebrow="Notre méthode" title="Ce qui nous" highlight="sépare" />
+          <SectionHeading eyebrow="Notre méthode" title="Pourquoi" highlight="DAKOOL" />
           <div className="grid gap-px bg-line sm:grid-cols-3">
             {manifesto.map((item, i) => (
               <Reveal key={item.number} delay={i * 100}>
@@ -161,9 +161,9 @@ export default function Home() {
         <Container>
           <SectionHeading
             eyebrow="Nouveautés"
-            title="Nos"
-            highlight="produits"
-            link={{ href: '/produits', label: 'Voir tout' }}
+            title="Les dernières"
+            highlight="sorties"
+            link={{ href: '/produits', label: 'Voir plus' }}
           />
 
           <div className="grid grid-cols-1 gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
@@ -176,7 +176,7 @@ export default function Home() {
 
           <div className="mt-10 sm:hidden">
             <Button href="/produits" variant="outline" className="w-full">
-              Voir tous les produits →
+              Tout voir
             </Button>
           </div>
         </Container>
@@ -185,7 +185,7 @@ export default function Home() {
       {/* ── CATÉGORIES ─────────────────────────────────────── */}
       <section className="border-y border-line bg-surface py-20 sm:py-24">
         <Container>
-          <SectionHeading eyebrow="Le catalogue" title="Par" highlight="catégorie" />
+          <SectionHeading eyebrow="Le catalogue" title="Trouve ton" highlight="équipement" />
           <div className="grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-5">
             {categoryTiles.map((cat, i) => (
               <Reveal key={cat.name} delay={i * 70}>
@@ -214,9 +214,9 @@ export default function Home() {
         <Container>
           <SectionHeading
             eyebrow="Partenariats"
-            title="Nos"
-            highlight="équipes"
-            link={{ href: '/equipes', label: 'Voir tout' }}
+            title="Ils portent"
+            highlight="DAKOOL"
+            link={{ href: '/equipes', label: 'Voir plus' }}
           />
 
           <div className="grid grid-cols-2 gap-px bg-line sm:grid-cols-4">
@@ -251,11 +251,11 @@ export default function Home() {
                 Du quartier au <span className="text-accent">stade national</span>
               </h2>
               <p className="mb-8 max-w-md text-base leading-relaxed text-mute">
-                DAKOOL sponsorise 12 compétitions — de la Ligue 1 sénégalaise aux Navétanes de
+                On sponsorise 12 compétitions — de la Ligue 1 sénégalaise aux Navétanes de
                 quartier. Mêmes trophées, mêmes équipements, même exigence.
               </p>
               <Button href="/tournois" variant="outline">
-                Voir les tournois
+                Voir plus
                 <FontAwesomeIcon icon={faArrowRight} className="h-3.5 w-3.5" />
               </Button>
             </Reveal>
@@ -296,15 +296,15 @@ export default function Home() {
             Partenariat
           </span>
           <h2 className="mb-8 max-w-3xl font-display text-display text-black">
-            Votre club mérite le meilleur
+            Ton club mérite le meilleur
           </h2>
           <div className="flex flex-wrap gap-3">
             <Button href="/contact" variant="dark" size="lg">
-              Nous contacter
+              Nous écrire
               <FontAwesomeIcon icon={faArrowRight} className="h-3.5 w-3.5" />
             </Button>
             <Button href="/equipes" variant="darkOutline" size="lg">
-              Nos clubs partenaires
+              Voir les clubs
             </Button>
           </div>
         </Container>

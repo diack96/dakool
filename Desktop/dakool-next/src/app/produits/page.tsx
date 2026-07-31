@@ -7,7 +7,7 @@ import ProduitsClient from './ProduitsClient';
 export const metadata: Metadata = {
   title: 'Produits',
   description:
-    'Maillots, chaussures, ballons, équipements et accessoires DAKOOL. Équipements professionnels conçus au Sénégal pour les clubs et les joueurs.',
+    'Maillots, chaussures, ballons et accessoires DAKOOL. Livraison offerte à Dakar, retours gratuits sous 14 jours.',
   alternates: { canonical: '/produits' },
 };
 
@@ -24,9 +24,9 @@ export default async function ProduitsPage({
     <>
       <PageHero
         tag="Boutique DAKOOL"
-        title="Nos"
-        highlight="Produits"
-        subtitle="Équipements professionnels conçus pour les champions sénégalais. Livraison 24h à Dakar, 3–5 jours dans le reste du pays."
+        title="La"
+        highlight="Collection"
+        subtitle="Des équipements de niveau professionnel, conçus et cousus à Dakar. Livraison offerte dans la capitale."
         index="02"
         meta={[
           { value: String(products.length), label: 'Références' },
@@ -38,10 +38,10 @@ export default async function ProduitsPage({
 
       <Marquee
         items={[
+          'Livraison offerte à Dakar',
+          'Retours gratuits sous 14 jours',
           'Flocage nom + numéro',
           'Tarifs clubs dès 10 pièces',
-          'Wave · Orange Money · Free Money',
-          'Retour sous 14 jours',
         ]}
       />
 

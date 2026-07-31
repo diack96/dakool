@@ -33,19 +33,21 @@ const legal = [
 export default function Footer() {
   return (
     <footer className="border-t border-line bg-ink">
-      {/* Newsletter */}
+      {/* Adhésion Club DAKOOL */}
       <div className="border-b border-line">
         <Container className="flex flex-col gap-8 py-14 lg:flex-row lg:items-center lg:justify-between">
           <div>
             <span className="mb-3 block text-[11px] font-bold uppercase tracking-brand text-white">
-              Restez équipé
+              Club DAKOOL — gratuit
             </span>
             <h2 className="font-display text-heading text-white">
-              Les sorties avant tout le monde
+              Rejoins le club, prends de l&apos;avance
             </h2>
-            <p className="mt-2 max-w-sm text-sm leading-relaxed text-mute">
-              Nouvelles collections, dates de tournois et offres réservées aux clubs.
-            </p>
+            <ul className="mt-3 max-w-md space-y-1.5 text-sm text-mute">
+              <li>— Les sorties en avant-première</li>
+              <li>— Les dates de tournois avant tout le monde</li>
+              <li>— Les tarifs réservés aux clubs</li>
+            </ul>
           </div>
           <NewsletterForm />
         </Container>
@@ -64,8 +66,8 @@ export default function Footer() {
             />
           </Link>
           <p className="max-w-xs text-sm leading-relaxed text-mute">
-            La première marque d&apos;équipements sportifs 100% sénégalaise. Née à Dakar, faite pour
-            les champions.
+            La première marque d&apos;équipements sportifs 100% sénégalaise. Née à Dakar, faite
+            pour ceux qui jouent.
           </p>
         </Container>
       </div>

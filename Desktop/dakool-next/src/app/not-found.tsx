@@ -33,14 +33,14 @@ export default function NotFound() {
         </h1>
 
         <p className="mb-10 max-w-md text-base leading-relaxed text-mute sm:text-lg">
-          Cette page n&apos;existe pas ou a été déplacée. Le ballon est sorti — reprenons depuis la
-          ligne de touche.
+          Cette page n&apos;existe pas ou a été déplacée. Le ballon est sorti — on reprend depuis
+          la ligne de touche.
         </p>
 
         <div className="mb-14 flex flex-wrap gap-3">
           <Button href="/">Retour à l&apos;accueil</Button>
           <Button href="/produits" variant="outline">
-            Voir la boutique
+            Voir la collection
           </Button>
         </div>
 

@@ -26,19 +26,19 @@ import { whatsappUrl, WHATSAPP_DISPLAY } from '@/lib/whatsapp';
 const faqs = [
   {
     q: 'Proposez-vous des commandes groupées pour les clubs ?',
-    a: "Oui. DAKOOL propose des tarifs préférentiels pour les commandes groupées à partir de 10 maillots. Contactez-nous par email ou WhatsApp avec votre logo et vos couleurs pour un devis personnalisé sous 48 heures.",
+    a: "Oui. Tarifs préférentiels à partir de 10 maillots. Écris-nous par email ou WhatsApp avec ton logo et tes couleurs : tu as un devis sous 48 heures.",
   },
   {
     q: 'Quels sont les délais de livraison ?',
     a: "Livraison gratuite à Dakar sous 24 à 48 heures. Pour les autres régions du Sénégal, comptez 3 à 5 jours ouvrables. Les commandes personnalisées (flocage, broderie) nécessitent 7 à 10 jours supplémentaires.",
   },
   {
-    q: 'Puis-je personnaliser un maillot avec le nom et le numéro de mon joueur ?',
-    a: "Oui. Nous proposons le flocage et la broderie sur tous nos maillots. Envoyez-nous le nom, le numéro et la police souhaitée lors de votre commande. Frais supplémentaires de 2 000 FCFA par maillot.",
+    q: 'Puis-je faire floquer un maillot au nom de mon joueur ?',
+    a: "Oui, flocage et broderie sur tous nos maillots. Indique le nom, le numéro et la police au moment de la commande. Compte 2 000 FCFA de plus par maillot.",
   },
   {
     q: 'Comment devenir partenaire de DAKOOL pour mon club ?',
-    a: "Contactez notre département partenariats à partenariats@dakool.sn ou via le formulaire ci-dessus en choisissant le sujet « Partenariat Club ». Nous répondons sous 5 jours ouvrables.",
+    a: "Écris à partenariats@dakool.sn, ou passe par le formulaire ci-dessus en choisissant le sujet « Partenariat club ». On répond sous 5 jours ouvrables.",
   },
   {
     q: 'Quels sont les modes de paiement acceptés ?',
@@ -134,10 +134,10 @@ export default function ContactClient() {
                 Formulaire de contact
               </span>
               <h2 className="mb-2 font-display text-title text-white">
-                Envoyez-nous un <span className="text-accent">message</span>
+                Écris-nous un <span className="text-accent">message</span>
               </h2>
               <p className="mb-8 text-sm text-mute">
-                Nous répondons en général dans les 24 heures.
+                On répond en général dans les 24 heures.
               </p>
 
               {submitted ? (
@@ -146,7 +146,7 @@ export default function ContactClient() {
                     <FontAwesomeIcon icon={faCheck} className="h-5 w-5 text-black" />
                   </span>
                   <h3 className="mb-2 font-display text-3xl text-white">Message envoyé</h3>
-                  <p className="text-sm text-mute">Nous vous répondrons dans les 24 heures.</p>
+                  <p className="text-sm text-mute">On te répond dans les 24 heures.</p>
                   <button
                     type="button"
                     onClick={() => setSubmitted(false)}
@@ -246,7 +246,7 @@ export default function ContactClient() {
                       name="message"
                       required
                       rows={5}
-                      placeholder="Décrivez votre demande…"
+                      placeholder="Dis-nous ce dont tu as besoin…"
                       className={`${inputClass} resize-none`}
                     />
                   </div>
@@ -270,7 +270,7 @@ export default function ContactClient() {
                 Nos coordonnées
               </span>
               <h2 className="mb-8 font-display text-title text-white">
-                Trouvez-nous <span className="text-accent">facilement</span>
+                Où nous <span className="text-accent">trouver</span>
               </h2>
 
               <div className="mb-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">

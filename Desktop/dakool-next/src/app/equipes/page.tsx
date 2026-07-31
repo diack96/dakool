@@ -18,7 +18,7 @@ import Marquee from '@/components/Marquee';
 import { teams } from '@/data/teams';
 
 export const metadata: Metadata = {
-  title: 'Équipes partenaires',
+  title: 'Ils portent DAKOOL',
   description:
     'Les 8 clubs du football sénégalais équipés par DAKOOL — Teungueth FC, AS Jaraaf, Génération Foot, Casa Sports et les autres. De la Ligue 1 aux académies.',
   alternates: { canonical: '/equipes' },
@@ -54,9 +54,9 @@ export default function EquipesPage() {
     <>
       <PageHero
         tag="Partenariats officiels"
-        title="Nos"
-        highlight="Équipes"
-        subtitle="8 clubs d'élite du football sénégalais équipés par DAKOOL, de la Ligue 1 jusqu'aux académies de formation."
+        title="Ils portent"
+        highlight="DAKOOL"
+        subtitle="8 clubs du football sénégalais portent nos équipements, de la Ligue 1 jusqu'aux académies de formation."
         index="03"
         meta={[
           { value: String(teams.length), label: 'Clubs partenaires' },
@@ -75,8 +75,8 @@ export default function EquipesPage() {
         <Container>
           <SectionHeading
             eyebrow={`${teams.length} clubs partenaires`}
-            title="Les champions"
-            highlight="DAKOOL"
+            title="Nos clubs"
+            highlight="partenaires"
           />
 
           <div className="grid grid-cols-1 gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
@@ -125,7 +125,7 @@ export default function EquipesPage() {
       {/* Ce que DAKOOL apporte */}
       <section className="border-t border-line bg-surface py-16 sm:py-20">
         <Container>
-          <SectionHeading eyebrow="Notre impact" title="Ce que DAKOOL" highlight="apporte" />
+          <SectionHeading eyebrow="Notre engagement" title="Ce qu’on" highlight="apporte" />
 
           <div className="grid grid-cols-1 gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
             {impacts.map((item, i) => (
@@ -158,11 +158,11 @@ export default function EquipesPage() {
           <h2 className="mb-8 max-w-2xl font-display text-display text-black">Devenir partenaire</h2>
           <div className="flex flex-wrap gap-3">
             <Button href="/contact" variant="dark" size="lg">
-              Nous contacter
+              Nous écrire
               <FontAwesomeIcon icon={faArrowRight} className="h-3.5 w-3.5" />
             </Button>
             <Button href="/produits" variant="darkOutline" size="lg">
-              Voir les équipements
+              Voir la collection
             </Button>
           </div>
         </Container>

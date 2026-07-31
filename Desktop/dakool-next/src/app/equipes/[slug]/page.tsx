@@ -46,10 +46,8 @@ export default async function EquipePage({ params }: Params) {
     <>
       {/* En-tête aux couleurs du club */}
       <header
-        className="grain relative overflow-hidden pt-32 pb-16 sm:pt-36 sm:pb-20"
-        style={{ backgroundColor: team.color }}
+        className="grain relative overflow-hidden border-b border-line bg-surface pt-32 pb-16 sm:pt-36 sm:pb-20"
       >
-        <div aria-hidden className="absolute inset-0 bg-black/45" />
         <span
           aria-hidden
           className="absolute top-1/2 right-4 hidden -translate-y-1/2 font-display text-[18rem] leading-none text-white/10 select-none lg:block"
@@ -131,7 +129,7 @@ export default async function EquipePage({ params }: Params) {
       <section className="bg-ink py-16 sm:py-20">
         <Container className="grid gap-12 lg:grid-cols-2 lg:gap-20">
           <Reveal>
-            <span className="mb-4 block text-[11px] font-bold uppercase tracking-brand text-teranga">
+            <span className="mb-4 block text-[11px] font-bold uppercase tracking-brand text-white">
               Le club
             </span>
             <h2 className="mb-5 font-display text-heading text-white">Notre partenariat</h2>
@@ -139,26 +137,26 @@ export default async function EquipePage({ params }: Params) {
 
             <div className="border border-line p-6">
               <h3 className="mb-2 text-xs font-black uppercase tracking-label text-white">Stade</h3>
-              <p className="font-display text-2xl text-teranga">{team.stadium}</p>
+              <p className="font-display text-2xl text-accent">{team.stadium}</p>
               <p className="mt-1 text-sm text-mute">{team.city}</p>
             </div>
           </Reveal>
 
           <Reveal delay={120}>
-            <span className="mb-4 block text-[11px] font-bold uppercase tracking-brand text-teranga">
+            <span className="mb-4 block text-[11px] font-bold uppercase tracking-brand text-white">
               Palmarès
             </span>
             <h2 className="mb-5 font-display text-heading text-white">Ce que le club a gagné</h2>
             <ul className="mb-10 divide-y divide-line border-y border-line">
               {team.honours.map((honour) => (
                 <li key={honour} className="flex items-start gap-3 py-4 text-sm text-mute">
-                  <FontAwesomeIcon icon={faTrophy} className="mt-0.5 h-3.5 w-3.5 shrink-0 text-or" />
+                  <FontAwesomeIcon icon={faTrophy} className="mt-0.5 h-3.5 w-3.5 shrink-0 text-white" />
                   {honour}
                 </li>
               ))}
             </ul>
 
-            <span className="mb-4 block text-[11px] font-bold uppercase tracking-brand text-teranga">
+            <span className="mb-4 block text-[11px] font-bold uppercase tracking-brand text-white">
               Dotation DAKOOL
             </span>
             <h2 className="mb-5 font-display text-heading text-white">Ce que nous fournissons</h2>
@@ -167,7 +165,7 @@ export default async function EquipePage({ params }: Params) {
                 <li key={supply} className="flex items-start gap-3 py-4 text-sm text-mute">
                   <FontAwesomeIcon
                     icon={faCheck}
-                    className="mt-0.5 h-3.5 w-3.5 shrink-0 text-teranga"
+                    className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent"
                   />
                   {supply}
                 </li>
@@ -182,11 +180,11 @@ export default async function EquipePage({ params }: Params) {
         <Container>
           <div className="mb-10 flex items-end justify-between gap-6 border-b border-line pb-6">
             <h2 className="font-display text-title text-white">
-              Autres <span className="text-teranga">clubs</span>
+              Autres <span className="text-accent">clubs</span>
             </h2>
             <Link
               href="/equipes"
-              className="mb-1 hidden shrink-0 border-b border-line-strong pb-1 text-xs font-black uppercase tracking-label text-white transition-colors hover:border-teranga hover:text-teranga sm:block"
+              className="mb-1 hidden shrink-0 border-b border-line-strong pb-1 text-xs font-black uppercase tracking-label text-white transition-colors hover:border-white hover:text-white sm:block"
             >
               Tout voir →
             </Link>
@@ -199,10 +197,7 @@ export default async function EquipePage({ params }: Params) {
                 href={`/equipes/${other.slug}`}
                 className="group flex flex-col bg-surface p-6 transition-colors hover:bg-elevated"
               >
-                <span
-                  className="mb-4 flex h-12 w-12 items-center justify-center font-display text-sm tracking-wider text-white"
-                  style={{ backgroundColor: other.color }}
-                >
+                <span className="mb-4 flex h-12 w-12 items-center justify-center border border-line-strong bg-elevated font-display text-sm tracking-wider text-white">
                   {other.acronym.slice(0, 3)}
                 </span>
                 <p className="text-sm font-bold text-white">{other.name}</p>
@@ -215,13 +210,13 @@ export default async function EquipePage({ params }: Params) {
       </section>
 
       {/* CTA */}
-      <section className="grain relative overflow-hidden bg-teranga py-20">
+      <section className="grain relative overflow-hidden bg-white py-20">
         <Container className="relative z-10 flex flex-col items-start gap-6 lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <span className="mb-3 block text-[11px] font-bold uppercase tracking-brand text-white/60">
+            <span className="mb-3 block text-[11px] font-bold uppercase tracking-brand text-black/50">
               Partenariat
             </span>
-            <h2 className="max-w-xl font-display text-title text-white">
+            <h2 className="max-w-xl font-display text-title text-black">
               Votre club aussi peut être équipé
             </h2>
           </div>

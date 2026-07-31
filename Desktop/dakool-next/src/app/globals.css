@@ -2,8 +2,9 @@
 
 /* ============================================================
    DAKOOL — Design system
-   Direction : brutalisme sportif. Noir profond, typo condensée
-   display, grille en filets, accents drapeau sénégalais.
+   Direction : brutalisme sportif, strictement noir et blanc.
+   Aucune teinte : la hiérarchie repose sur le contraste, la
+   graisse typographique et les filets.
    ============================================================ */
 
 @theme {
@@ -13,15 +14,11 @@
   --color-elevated: #0d0d0d;
   --color-raised: #161616;
 
-  /* ---- Accents drapeau ---- */
-  --color-teranga: #00853f;
-  --color-teranga-bright: #00a34d;
-  --color-or: #fdef42;
-  --color-lion: #e31e24;
-
   /* ---- Filets & textes ---- */
   --color-line: rgba(255, 255, 255, 0.07);
   --color-line-strong: rgba(255, 255, 255, 0.18);
+  /* Gris de mise en avant : remplace l'ancien accent coloré. */
+  --color-accent: #a3a3a3;
   --color-mute: #6e6e6e;
   --color-mute-dim: #454545;
 
@@ -99,8 +96,8 @@
   }
 
   ::selection {
-    background: var(--color-teranga);
-    color: #fff;
+    background: #ffffff;
+    color: #000;
   }
 
   ::-webkit-scrollbar {
@@ -114,12 +111,12 @@
     background: #222;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-teranga);
+    background: #ffffff;
   }
 
   /* Accessibilité : anneau de focus visible au clavier uniquement. */
   :focus-visible {
-    outline: 2px solid var(--color-teranga-bright);
+    outline: 2px solid #ffffff;
     outline-offset: 3px;
   }
 
@@ -137,7 +134,7 @@
   select {
     -webkit-appearance: none;
     appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%2300853F' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23a3a3a3' stroke-width='1.5'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 1rem center;
     background-size: 12px;
@@ -173,12 +170,12 @@
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Ligne de vie DAKOOL : le trait rouge qui se dessine au survol. */
+/* Ligne de vie DAKOOL : le trait qui s'allonge au survol. */
 .rule-grow {
   display: block;
   width: 1.5rem;
   height: 2px;
-  background: var(--color-teranga);
+  background: #ffffff;
   transition: width 0.4s var(--ease-brand);
 }
 .group:hover .rule-grow {

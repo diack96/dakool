@@ -25,14 +25,14 @@ export default function PageHero({ tag, title, highlight, subtitle, meta, index 
       </div>
 
       <Container className="relative z-10">
-        <span className="mb-5 flex items-center gap-3 text-[11px] font-bold uppercase tracking-brand text-teranga">
-          <span className="h-2 w-2 shrink-0 rounded-full bg-teranga" />
+        <span className="mb-5 flex items-center gap-3 text-[11px] font-bold uppercase tracking-brand text-white">
+          <span className="h-2 w-2 shrink-0 rounded-full bg-white" />
           {tag}
         </span>
 
         <h1 className="mb-6 font-display text-display text-white">
           {title && <>{title} </>}
-          <span className="text-teranga">{highlight}</span>
+          <span className="text-accent">{highlight}</span>
         </h1>
 
         <p className="max-w-xl text-base leading-relaxed text-mute sm:text-lg">{subtitle}</p>

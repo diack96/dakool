@@ -58,7 +58,7 @@ export default function CartSidebar() {
         <header className="flex items-center justify-between border-b border-line px-6 py-5">
           <h2 id="titre-panier" className="font-display text-2xl tracking-wide text-white">
             Mon Panier
-            {cartCount > 0 && <span className="ml-2 text-teranga">({cartCount})</span>}
+            {cartCount > 0 && <span className="ml-2 text-accent">({cartCount})</span>}
           </h2>
           <button
             ref={closeButtonRef}
@@ -79,7 +79,7 @@ export default function CartSidebar() {
               <Link
                 href="/produits"
                 onClick={closeCart}
-                className="bg-white px-6 py-3 text-xs font-black uppercase tracking-cta text-black transition-colors hover:bg-teranga hover:text-white"
+                className="bg-white px-6 py-3 text-xs font-black uppercase tracking-cta text-black transition-colors hover:bg-accent"
               >
                 Voir les produits
               </Link>
@@ -100,7 +100,7 @@ export default function CartSidebar() {
                     <Link
                       href={`/produits/${item.slug}`}
                       onClick={closeCart}
-                      className="block truncate text-sm font-semibold text-white transition-colors hover:text-teranga"
+                      className="block truncate text-sm font-semibold text-white transition-colors hover:text-white"
                     >
                       {item.name}
                     </Link>
@@ -111,7 +111,7 @@ export default function CartSidebar() {
                       </p>
                     )}
 
-                    <p className="mt-0.5 text-sm text-teranga">{formatPrice(item.price)}</p>
+                    <p className="mt-0.5 text-sm text-accent">{formatPrice(item.price)}</p>
 
                     <div className="mt-2 flex items-center gap-2">
                       <button
@@ -140,7 +140,7 @@ export default function CartSidebar() {
                     type="button"
                     onClick={() => removeFromCart(item.key)}
                     aria-label={`Retirer ${item.name} du panier`}
-                    className="p-1 text-mute-dim transition-colors hover:text-lion"
+                    className="p-1 text-mute-dim transition-colors hover:text-white"
                   >
                     <FontAwesomeIcon icon={faXmark} className="h-4 w-4" />
                   </button>
@@ -165,7 +165,7 @@ export default function CartSidebar() {
             <Link
               href="/checkout"
               onClick={closeCart}
-              className="flex w-full items-center justify-center gap-2.5 bg-white py-4 text-sm font-black uppercase tracking-cta text-black transition-colors hover:bg-teranga hover:text-white"
+              className="flex w-full items-center justify-center gap-2.5 bg-white py-4 text-sm font-black uppercase tracking-cta text-black transition-colors hover:bg-accent"
             >
               Commander
               <FontAwesomeIcon icon={faArrowRight} className="h-3.5 w-3.5" />

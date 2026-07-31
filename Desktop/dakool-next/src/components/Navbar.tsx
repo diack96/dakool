@@ -76,7 +76,7 @@ export default function Navbar() {
                 >
                   {link.label}
                   {isActive(link.href) && (
-                    <span className="absolute inset-x-3.5 -bottom-0.5 h-[2px] bg-teranga lg:inset-x-4" />
+                    <span className="absolute inset-x-3.5 -bottom-0.5 h-[2px] bg-white lg:inset-x-4" />
                   )}
                 </Link>
               </li>
@@ -86,7 +86,7 @@ export default function Navbar() {
           <div className="flex items-center gap-2 sm:gap-3">
             <Link
               href="/produits"
-              className="hidden bg-white px-5 py-2.5 text-xs font-black uppercase tracking-cta text-black transition-colors hover:bg-teranga hover:text-white md:block"
+              className="hidden bg-white px-5 py-2.5 text-xs font-black uppercase tracking-cta text-black transition-colors hover:bg-accent md:block"
             >
               Boutique
             </Link>
@@ -99,7 +99,7 @@ export default function Navbar() {
             >
               <FontAwesomeIcon icon={faCartShopping} className="h-5 w-5" />
               {cartCount > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 flex h-4 min-w-4 items-center justify-center bg-teranga px-1 text-[10px] leading-none font-bold text-white">
+                <span className="absolute -top-0.5 -right-0.5 flex h-4 min-w-4 items-center justify-center bg-white px-1 text-[10px] leading-none font-bold text-black">
                   {cartCount}
                 </span>
               )}
@@ -152,7 +152,7 @@ export default function Navbar() {
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
                 className={`block font-display text-5xl tracking-wide transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                  isActive(link.href) ? 'text-teranga' : 'text-white hover:text-teranga'
+                  isActive(link.href) ? 'text-accent' : 'text-white hover:text-white'
                 } ${menuOpen ? 'translate-y-0 opacity-100' : 'translate-y-5 opacity-0'}`}
                 style={{ transitionDelay: menuOpen ? `${80 + i * 55}ms` : '0ms' }}
               >
@@ -166,7 +166,7 @@ export default function Navbar() {
         <Link
           href="/produits"
           onClick={() => setMenuOpen(false)}
-          className={`relative mt-10 self-start bg-white px-8 py-4 text-sm font-black uppercase tracking-label text-black transition-all duration-500 hover:bg-teranga hover:text-white ${
+          className={`relative mt-10 self-start bg-white px-8 py-4 text-sm font-black uppercase tracking-label text-black transition-all duration-500 hover:bg-accent ${
             menuOpen ? 'translate-y-0 opacity-100' : 'translate-y-5 opacity-0'
           }`}
           style={{ transitionDelay: menuOpen ? `${80 + navLinks.length * 55}ms` : '0ms' }}

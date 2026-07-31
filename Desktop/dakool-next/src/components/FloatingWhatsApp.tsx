@@ -19,8 +19,10 @@ export default function FloatingWhatsApp() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Nous écrire sur WhatsApp"
-      /* z-30 : passe sous le panier et le menu plein écran (z-40/50). */
-      className="group fixed right-5 bottom-5 z-30 flex items-center gap-0 bg-[#25D366] text-black shadow-lg shadow-black/40 transition-[gap] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:gap-2.5 sm:right-6 sm:bottom-6"
+      /* z-30 : passe sous le panier et le menu plein écran (z-40/50).
+         Bordure noire épaisse : le bouton blanc reste détouré quand il
+         flotte au-dessus d'un bandeau CTA lui aussi blanc. */
+      className="group fixed right-5 bottom-5 z-30 flex items-center gap-0 border-2 border-ink bg-white text-black shadow-lg shadow-black/50 transition-[gap] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:gap-2.5 sm:right-6 sm:bottom-6"
     >
       <span className="flex h-14 w-14 shrink-0 items-center justify-center">
         <FontAwesomeIcon icon={faWhatsapp} className="h-7 w-7" />

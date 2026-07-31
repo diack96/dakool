@@ -27,25 +27,21 @@ export const metadata: Metadata = {
 const impacts = [
   {
     icon: faShirt,
-    color: '#00853F',
     title: 'Équipements complets',
     desc: 'Maillots domicile et extérieur, survêtements, chaussettes, sacs et accessoires pour toute la saison.',
   },
   {
     icon: faMedal,
-    color: '#FDEF42',
     title: 'Qualité professionnelle',
     desc: 'Tissu technique respirant, broderies premium, coupes étudiées avec des professionnels du sport.',
   },
   {
     icon: faHandshake,
-    color: '#00853F',
     title: 'Support financier',
     desc: 'Sponsoring des déplacements, primes de performance et soutien logistique tout au long de la saison.',
   },
   {
     icon: faBullhorn,
-    color: '#E31E24',
     title: 'Visibilité nationale',
     desc: 'Mise en avant des clubs sur tous les canaux digitaux DAKOOL — Instagram, TikTok, Facebook et YouTube.',
   },
@@ -87,29 +83,26 @@ export default function EquipesPage() {
             {teams.map((team, i) => (
               <Reveal key={team.id} delay={Math.min(i, 7) * 60}>
                 <article className="group relative flex h-full flex-col bg-ink p-7 transition-colors hover:bg-elevated">
-                  <span
-                    className="mb-5 flex h-16 w-16 shrink-0 items-center justify-center font-display text-base tracking-wider text-white"
-                    style={{ backgroundColor: team.color }}
-                  >
+                  <span className="mb-5 flex h-16 w-16 shrink-0 items-center justify-center border border-line-strong bg-elevated font-display text-base tracking-wider text-white">
                     {team.acronym.slice(0, 4)}
                   </span>
 
                   <h3 className="mb-1.5 font-display text-xl leading-tight text-white">
                     <Link
                       href={`/equipes/${team.slug}`}
-                      className="transition-colors after:absolute after:inset-0 after:content-[''] hover:text-teranga"
+                      className="transition-colors after:absolute after:inset-0 after:content-[''] hover:text-white"
                     >
                       {team.name}
                     </Link>
                   </h3>
 
                   <p className="mb-3 flex items-center gap-1.5 text-xs text-mute-dim">
-                    <FontAwesomeIcon icon={faLocationDot} className="h-3 w-3 text-teranga" />
+                    <FontAwesomeIcon icon={faLocationDot} className="h-3 w-3 text-accent" />
                     {team.city}
                   </p>
 
                   <div className="mb-4 flex flex-wrap gap-2">
-                    <span className="border border-teranga/30 px-2 py-1 text-[10px] font-black uppercase tracking-cta text-teranga">
+                    <span className="border border-white/20 px-2 py-1 text-[10px] font-black uppercase tracking-cta text-accent">
                       {team.league}
                     </span>
                     <span className="border border-line px-2 py-1 text-[10px] font-black uppercase tracking-cta text-mute-dim">
@@ -139,7 +132,7 @@ export default function EquipesPage() {
               <Reveal key={item.title} delay={i * 80}>
                 <article className="h-full bg-surface p-8 transition-colors hover:bg-elevated">
                   <span className="mb-5 flex h-11 w-11 items-center justify-center border border-line">
-                    <FontAwesomeIcon icon={item.icon} className="h-4 w-4" style={{ color: item.color }} />
+                    <FontAwesomeIcon icon={item.icon} className="h-4 w-4 text-white" />
                   </span>
                   <h3 className="mb-3 font-display text-xl text-white">{item.title}</h3>
                   <p className="text-sm leading-relaxed text-mute">{item.desc}</p>
@@ -151,24 +144,24 @@ export default function EquipesPage() {
       </section>
 
       {/* CTA */}
-      <section className="grain relative overflow-hidden bg-teranga py-24">
+      <section className="grain relative overflow-hidden bg-white py-24">
         <span
           aria-hidden
-          className="absolute top-1/2 right-0 hidden -translate-y-1/2 font-display text-[18rem] leading-none text-white/10 select-none lg:block"
+          className="absolute top-1/2 right-0 hidden -translate-y-1/2 font-display text-[18rem] leading-none text-black/10 select-none lg:block"
         >
           DK
         </span>
         <Container className="relative z-10">
-          <span className="mb-4 block text-[11px] font-bold uppercase tracking-brand text-white/60">
+          <span className="mb-4 block text-[11px] font-bold uppercase tracking-brand text-black/50">
             Rejoignez DAKOOL
           </span>
-          <h2 className="mb-8 max-w-2xl font-display text-display text-white">Devenir partenaire</h2>
+          <h2 className="mb-8 max-w-2xl font-display text-display text-black">Devenir partenaire</h2>
           <div className="flex flex-wrap gap-3">
             <Button href="/contact" variant="dark" size="lg">
               Nous contacter
               <FontAwesomeIcon icon={faArrowRight} className="h-3.5 w-3.5" />
             </Button>
-            <Button href="/produits" variant="outline" size="lg" className="border-white/40">
+            <Button href="/produits" variant="darkOutline" size="lg">
               Voir les équipements
             </Button>
           </div>

@@ -68,7 +68,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </noscript>
         <a
           href="#contenu"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-teranga focus:px-5 focus:py-3 focus:text-xs focus:font-black focus:uppercase focus:tracking-cta focus:text-white"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:px-5 focus:py-3 focus:text-xs focus:font-black focus:uppercase focus:tracking-cta focus:text-black"
         >
           Aller au contenu
         </a>

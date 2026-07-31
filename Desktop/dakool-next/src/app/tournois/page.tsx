@@ -22,11 +22,8 @@ export const metadata: Metadata = {
   alternates: { canonical: '/tournois' },
 };
 
-const badgeStyles = {
-  green: 'border-teranga/40 text-teranga',
-  yellow: 'border-or/40 text-or',
-  red: 'border-lion/40 text-lion',
-};
+/* Site monochrome : une seule pastille, le libellé porte le sens. */
+const BADGE = 'border-line-strong text-white';
 
 export default function TournoisPage() {
   return (
@@ -59,16 +56,16 @@ export default function TournoisPage() {
                     <div className="flex flex-wrap items-start gap-5 sm:gap-6">
                       <span
                         aria-hidden
-                        className="flex h-16 w-16 shrink-0 items-center justify-center border border-line bg-elevated text-3xl"
+                        className="flex h-16 w-16 shrink-0 items-center justify-center border border-line bg-elevated font-display text-3xl leading-none text-white"
                       >
-                        {t.emoji}
+                        {String(i + 1).padStart(2, '0')}
                       </span>
                       <div className="min-w-0 flex-1">
                         <div className="mb-3 flex flex-wrap gap-2">
                           {t.badges.map((b) => (
                             <span
                               key={b.label}
-                              className={`border px-2 py-1 text-[10px] font-black uppercase tracking-cta ${badgeStyles[b.color]}`}
+                              className={`border px-2 py-1 text-[10px] font-black uppercase tracking-cta ${BADGE}`}
                             >
                               {b.label}
                             </span>
@@ -85,13 +82,13 @@ export default function TournoisPage() {
                   <div className="grid divide-y divide-line sm:grid-cols-3 sm:divide-x sm:divide-y-0">
                     <div className="p-6">
                       <h3 className="mb-4 flex items-center gap-2 text-[10px] font-black uppercase tracking-label text-mute-dim">
-                        <FontAwesomeIcon icon={faCalendar} className="h-3 w-3 text-teranga" />
+                        <FontAwesomeIcon icon={faCalendar} className="h-3 w-3 text-accent" />
                         Calendrier
                       </h3>
                       <ul className="space-y-2">
                         {t.calendar.map((item) => (
                           <li key={item} className="flex items-start gap-2 text-sm text-mute">
-                            <span aria-hidden className="mt-0.5 text-xs text-teranga">
+                            <span aria-hidden className="mt-0.5 text-xs text-accent">
                               ▸
                             </span>
                             {item}
@@ -102,13 +99,13 @@ export default function TournoisPage() {
 
                     <div className="p-6">
                       <h3 className="mb-4 flex items-center gap-2 text-[10px] font-black uppercase tracking-label text-mute-dim">
-                        <FontAwesomeIcon icon={faTrophy} className="h-3 w-3 text-or" />
+                        <FontAwesomeIcon icon={faTrophy} className="h-3 w-3 text-white" />
                         Dotations
                       </h3>
                       <ul className="space-y-3">
                         {t.prizes.map((p) => (
                           <li key={p.label}>
-                            <span className="block font-display text-2xl leading-none text-or">
+                            <span className="block font-display text-2xl leading-none text-white">
                               {p.amount}
                             </span>
                             <span className="mt-1 block text-xs text-mute-dim">{p.label}</span>
@@ -119,7 +116,7 @@ export default function TournoisPage() {
 
                     <div className="p-6">
                       <h3 className="mb-4 flex items-center gap-2 text-[10px] font-black uppercase tracking-label text-mute-dim">
-                        <FontAwesomeIcon icon={faHandshake} className="h-3 w-3 text-teranga" />
+                        <FontAwesomeIcon icon={faHandshake} className="h-3 w-3 text-accent" />
                         Package DAKOOL
                       </h3>
                       <ul className="space-y-2">
@@ -127,7 +124,7 @@ export default function TournoisPage() {
                           <li key={item} className="flex items-start gap-2 text-sm text-mute">
                             <FontAwesomeIcon
                               icon={faCheck}
-                              className="mt-1 h-3 w-3 shrink-0 text-teranga"
+                              className="mt-1 h-3 w-3 shrink-0 text-accent"
                             />
                             {item}
                           </li>
@@ -142,18 +139,18 @@ export default function TournoisPage() {
         </Container>
       </section>
 
-      <section className="grain relative overflow-hidden bg-teranga py-24">
+      <section className="grain relative overflow-hidden bg-white py-24">
         <span
           aria-hidden
-          className="absolute top-1/2 right-0 hidden -translate-y-1/2 font-display text-[18rem] leading-none text-white/10 select-none lg:block"
+          className="absolute top-1/2 right-0 hidden -translate-y-1/2 font-display text-[18rem] leading-none text-black/10 select-none lg:block"
         >
           DK
         </span>
         <Container className="relative z-10">
-          <span className="mb-4 block text-[11px] font-bold uppercase tracking-brand text-white/60">
+          <span className="mb-4 block text-[11px] font-bold uppercase tracking-brand text-black/50">
             Sponsoring
           </span>
-          <h2 className="mb-8 max-w-2xl font-display text-display text-white">
+          <h2 className="mb-8 max-w-2xl font-display text-display text-black">
             Votre tournoi avec DAKOOL
           </h2>
           <div className="flex flex-wrap gap-3">
@@ -161,7 +158,7 @@ export default function TournoisPage() {
               Proposer un partenariat
               <FontAwesomeIcon icon={faArrowRight} className="h-3.5 w-3.5" />
             </Button>
-            <Button href="/equipes" variant="outline" size="lg" className="border-white/40">
+            <Button href="/equipes" variant="darkOutline" size="lg">
               Voir nos équipes
             </Button>
           </div>

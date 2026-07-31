@@ -62,8 +62,8 @@ export default function Home() {
 
         <Container className="relative z-10 pt-32 pb-24">
           <div className="mb-8 flex items-center gap-3">
-            <span className="h-2 w-2 shrink-0 rounded-full bg-teranga" />
-            <span className="text-xs font-bold uppercase tracking-brand text-teranga">
+            <span className="h-2 w-2 shrink-0 rounded-full bg-white" />
+            <span className="text-xs font-bold uppercase tracking-brand text-white">
               L&apos;Équipementier du Lion · Dakar, Sénégal
             </span>
           </div>
@@ -73,7 +73,7 @@ export default function Home() {
             <br />
             pour
             <br />
-            <span className="text-teranga">gagner</span>
+            <span className="text-accent">gagner</span>
           </h1>
 
           <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:gap-16">
@@ -144,7 +144,7 @@ export default function Home() {
             {manifesto.map((item, i) => (
               <Reveal key={item.number} delay={i * 100}>
                 <article className="h-full bg-surface p-8 transition-colors hover:bg-elevated lg:p-10">
-                  <span className="mb-6 block font-display text-6xl leading-none text-teranga/25">
+                  <span className="mb-6 block font-display text-6xl leading-none text-white/15">
                     {item.number}
                   </span>
                   <h3 className="mb-3 font-display text-2xl text-white">{item.title}</h3>
@@ -226,10 +226,7 @@ export default function Home() {
                   href={`/equipes/${team.slug}`}
                   className="group flex h-full flex-col bg-ink p-6 transition-colors hover:bg-elevated sm:p-8"
                 >
-                  <span
-                    className="mb-5 flex h-12 w-12 shrink-0 items-center justify-center font-display text-sm tracking-wider text-white"
-                    style={{ backgroundColor: team.color }}
-                  >
+                  <span className="mb-5 flex h-12 w-12 shrink-0 items-center justify-center border border-line-strong bg-elevated font-display text-sm tracking-wider text-white">
                     {team.acronym.slice(0, 3)}
                   </span>
                   <p className="mb-1 text-sm leading-tight font-bold text-white">{team.name}</p>
@@ -247,11 +244,11 @@ export default function Home() {
         <Container>
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
             <Reveal>
-              <span className="mb-4 block text-[11px] font-bold uppercase tracking-brand text-teranga">
+              <span className="mb-4 block text-[11px] font-bold uppercase tracking-brand text-white">
                 Sponsoring
               </span>
               <h2 className="mb-6 font-display text-title text-white">
-                Du quartier au <span className="text-teranga">stade national</span>
+                Du quartier au <span className="text-accent">stade national</span>
               </h2>
               <p className="mb-8 max-w-md text-base leading-relaxed text-mute">
                 DAKOOL sponsorise 12 compétitions — de la Ligue 1 sénégalaise aux Navétanes de
@@ -286,19 +283,19 @@ export default function Home() {
       </section>
 
       {/* ── CTA ────────────────────────────────────────────── */}
-      <section className="grain relative overflow-hidden bg-teranga py-24">
+      <section className="grain relative overflow-hidden bg-white py-24">
         <span
           aria-hidden
-          className="absolute top-1/2 right-0 hidden -translate-y-1/2 font-display text-[18rem] leading-none text-white/10 select-none lg:block"
+          className="absolute top-1/2 right-0 hidden -translate-y-1/2 font-display text-[18rem] leading-none text-black/10 select-none lg:block"
         >
           DK
         </span>
 
         <Container className="relative z-10">
-          <span className="mb-4 block text-[11px] font-bold uppercase tracking-brand text-white/60">
+          <span className="mb-4 block text-[11px] font-bold uppercase tracking-brand text-black/50">
             Partenariat
           </span>
-          <h2 className="mb-8 max-w-3xl font-display text-display text-white">
+          <h2 className="mb-8 max-w-3xl font-display text-display text-black">
             Votre club mérite le meilleur
           </h2>
           <div className="flex flex-wrap gap-3">
@@ -306,7 +303,7 @@ export default function Home() {
               Nous contacter
               <FontAwesomeIcon icon={faArrowRight} className="h-3.5 w-3.5" />
             </Button>
-            <Button href="/equipes" variant="outline" size="lg" className="border-white/40">
+            <Button href="/equipes" variant="darkOutline" size="lg">
               Nos clubs partenaires
             </Button>
           </div>

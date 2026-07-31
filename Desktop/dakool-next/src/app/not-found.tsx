@@ -21,15 +21,15 @@ export default function NotFound() {
       </div>
 
       <Container className="relative z-10 py-32">
-        <span className="mb-6 flex items-center gap-3 text-[11px] font-bold uppercase tracking-brand text-teranga">
-          <span className="h-2 w-2 shrink-0 rounded-full bg-lion" />
+        <span className="mb-6 flex items-center gap-3 text-[11px] font-bold uppercase tracking-brand text-white">
+          <span className="h-2 w-2 shrink-0 rounded-full bg-white" />
           Erreur 404
         </span>
 
         <h1 className="mb-6 font-display text-hero text-white">
           Hors
           <br />
-          <span className="text-teranga">jeu</span>
+          <span className="text-accent">jeu</span>
         </h1>
 
         <p className="mb-10 max-w-md text-base leading-relaxed text-mute sm:text-lg">

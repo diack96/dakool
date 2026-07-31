@@ -92,11 +92,11 @@ export default function HistoirePage() {
       <section className="bg-ink py-16 sm:py-24">
         <Container size="narrow">
           <Reveal>
-            <span className="mb-5 block text-[11px] font-bold uppercase tracking-brand text-teranga">
+            <span className="mb-5 block text-[11px] font-bold uppercase tracking-brand text-white">
               Le début
             </span>
             <h2 className="mb-8 font-display text-title text-white">
-              Personne ne fabriquait de maillots <span className="text-teranga">ici</span>
+              Personne ne fabriquait de maillots <span className="text-accent">ici</span>
             </h2>
 
             <div className="space-y-6 text-base leading-relaxed text-mute sm:text-lg">
@@ -120,7 +120,7 @@ export default function HistoirePage() {
           </Reveal>
 
           <Reveal delay={120}>
-            <blockquote className="my-14 border-l-2 border-teranga py-2 pl-8">
+            <blockquote className="my-14 border-l-2 border-white py-2 pl-8">
               <p className="font-display text-heading leading-tight text-white">
                 « Le premier club qui nous a fait confiance est devenu champion du Sénégal la même
                 année. On n&apos;y est pour rien — mais on n&apos;a jamais oublié. »
@@ -163,9 +163,9 @@ export default function HistoirePage() {
                 <Reveal delay={i * 70}>
                   <span
                     aria-hidden
-                    className="absolute -left-[calc(2rem+5px)] top-2 h-2.5 w-2.5 rounded-full bg-teranga ring-4 ring-surface sm:-left-[calc(3rem+5px)]"
+                    className="absolute -left-[calc(2rem+5px)] top-2 h-2.5 w-2.5 rounded-full bg-white ring-4 ring-surface sm:-left-[calc(3rem+5px)]"
                   />
-                  <span className="mb-2 block font-display text-4xl leading-none text-teranga">
+                  <span className="mb-2 block font-display text-4xl leading-none text-accent">
                     {item.year}
                   </span>
                   <h3 className="mb-2.5 font-display text-2xl text-white">{item.title}</h3>
@@ -188,7 +188,7 @@ export default function HistoirePage() {
             {values.map((value, i) => (
               <Reveal key={value.number} delay={i * 90}>
                 <article className="h-full bg-ink p-8 transition-colors hover:bg-elevated lg:p-10">
-                  <span className="mb-6 block font-display text-6xl leading-none text-teranga/25">
+                  <span className="mb-6 block font-display text-6xl leading-none text-white/15">
                     {value.number}
                   </span>
                   <h3 className="mb-3 font-display text-2xl text-white">{value.title}</h3>
@@ -201,18 +201,18 @@ export default function HistoirePage() {
       </section>
 
       {/* CTA */}
-      <section className="grain relative overflow-hidden bg-teranga py-24">
+      <section className="grain relative overflow-hidden bg-white py-24">
         <span
           aria-hidden
-          className="absolute top-1/2 right-0 hidden -translate-y-1/2 font-display text-[18rem] leading-none text-white/10 select-none lg:block"
+          className="absolute top-1/2 right-0 hidden -translate-y-1/2 font-display text-[18rem] leading-none text-black/10 select-none lg:block"
         >
           DK
         </span>
         <Container className="relative z-10">
-          <span className="mb-4 block text-[11px] font-bold uppercase tracking-brand text-white/60">
+          <span className="mb-4 block text-[11px] font-bold uppercase tracking-brand text-black/50">
             La suite
           </span>
-          <h2 className="mb-8 max-w-3xl font-display text-display text-white">
+          <h2 className="mb-8 max-w-3xl font-display text-display text-black">
             Écrivons le prochain chapitre
           </h2>
           <div className="flex flex-wrap gap-3">
@@ -220,7 +220,7 @@ export default function HistoirePage() {
               Voir la collection
               <FontAwesomeIcon icon={faArrowRight} className="h-3.5 w-3.5" />
             </Button>
-            <Button href="/contact" variant="outline" size="lg" className="border-white/40">
+            <Button href="/contact" variant="darkOutline" size="lg">
               Devenir partenaire
             </Button>
           </div>

@@ -41,7 +41,7 @@ export default function LegalPage({
             {sections.map((section, i) => (
               <section key={section.heading}>
                 <h2 className="mb-4 font-display text-heading text-white">
-                  <span className="mr-3 text-teranga">{String(i + 1).padStart(2, '0')}</span>
+                  <span className="mr-3 text-accent">{String(i + 1).padStart(2, '0')}</span>
                   {section.heading}
                 </h2>
 
@@ -55,7 +55,7 @@ export default function LegalPage({
                   <ul className="mt-4 divide-y divide-line border-y border-line">
                     {section.bullets.map((bullet) => (
                       <li key={bullet} className="flex items-start gap-3 py-3.5 text-sm text-mute">
-                        <span aria-hidden className="mt-1 text-xs text-teranga">
+                        <span aria-hidden className="mt-1 text-xs text-accent">
                           ▸
                         </span>
                         {bullet}
@@ -71,7 +71,7 @@ export default function LegalPage({
             Une question sur ce document ? Écrivez-nous à{' '}
             <a
               href="mailto:contact@dakool.sn"
-              className="text-teranga transition-colors hover:text-teranga-bright"
+              className="text-accent transition-colors hover:text-white"
             >
               contact@dakool.sn
             </a>

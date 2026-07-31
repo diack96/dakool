@@ -40,7 +40,7 @@ const paymentMethods = [
 ];
 
 const inputClass =
-  'w-full border border-line bg-elevated px-4 py-3.5 text-sm text-white placeholder-mute-dim transition-colors focus:border-teranga focus:outline-none';
+  'w-full border border-line bg-elevated px-4 py-3.5 text-sm text-white placeholder-mute-dim transition-colors focus:border-white focus:outline-none';
 const labelClass = 'mb-1.5 block text-[10px] font-black uppercase tracking-label text-mute-dim';
 
 export default function CheckoutClient() {
@@ -102,13 +102,13 @@ export default function CheckoutClient() {
   if (sent) {
     return (
       <Container className="py-20 sm:py-28">
-        <div className="mx-auto max-w-xl border border-teranga/25 bg-teranga/5 p-10 text-center">
-          <span className="mx-auto mb-6 flex h-14 w-14 items-center justify-center bg-teranga">
-            <FontAwesomeIcon icon={faCheck} className="h-6 w-6 text-white" />
+        <div className="mx-auto max-w-xl border border-white/20 bg-white/5 p-10 text-center">
+          <span className="mx-auto mb-6 flex h-14 w-14 items-center justify-center bg-white">
+            <FontAwesomeIcon icon={faCheck} className="h-6 w-6 text-black" />
           </span>
           <h1 className="mb-3 font-display text-title text-white">WhatsApp ouvert</h1>
           <p className="mb-6 text-sm leading-relaxed text-mute">
-            Votre commande <strong className="text-teranga">{sent.reference}</strong> est
+            Votre commande <strong className="text-accent">{sent.reference}</strong> est
             pré-remplie dans WhatsApp. Envoyez le message pour la valider — nous répondons avec les
             modalités de paiement et de livraison.
           </p>
@@ -117,7 +117,7 @@ export default function CheckoutClient() {
             href={sent.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="mb-3 inline-flex w-full items-center justify-center gap-2.5 bg-[#25D366] px-7 py-4 text-sm font-black uppercase tracking-cta text-black transition-opacity hover:opacity-90"
+            className="mb-3 inline-flex w-full items-center justify-center gap-2.5 bg-white px-7 py-4 text-sm font-black uppercase tracking-cta text-black transition-colors hover:bg-accent"
           >
             <FontAwesomeIcon icon={faWhatsapp} className="h-4 w-4" />
             Rouvrir la conversation
@@ -130,7 +130,7 @@ export default function CheckoutClient() {
           <div className="flex flex-wrap justify-center gap-3">
             <Link
               href="/produits"
-              className="bg-white px-7 py-3.5 text-xs font-black uppercase tracking-cta text-black transition-colors hover:bg-teranga hover:text-white"
+              className="bg-white px-7 py-3.5 text-xs font-black uppercase tracking-cta text-black transition-colors hover:bg-accent"
             >
               Continuer mes achats
             </Link>
@@ -169,7 +169,7 @@ export default function CheckoutClient() {
           </p>
           <Link
             href="/produits"
-            className="inline-flex items-center gap-2 bg-white px-7 py-3.5 text-xs font-black uppercase tracking-cta text-black transition-colors hover:bg-teranga hover:text-white"
+            className="inline-flex items-center gap-2 bg-white px-7 py-3.5 text-xs font-black uppercase tracking-cta text-black transition-colors hover:bg-accent"
           >
             Voir les produits
             <FontAwesomeIcon icon={faArrowRight} className="h-3 w-3" />
@@ -187,7 +187,7 @@ export default function CheckoutClient() {
         <div>
           <section className="mb-12">
             <h2 className="mb-6 flex items-baseline gap-3 font-display text-heading text-white">
-              <span className="text-teranga">01</span> Vos coordonnées
+              <span className="text-accent">01</span> Vos coordonnées
             </h2>
 
             <div className="grid gap-3 sm:grid-cols-2">
@@ -236,7 +236,7 @@ export default function CheckoutClient() {
 
           <section className="mb-12">
             <h2 className="mb-6 flex items-baseline gap-3 font-display text-heading text-white">
-              <span className="text-teranga">02</span> Livraison
+              <span className="text-accent">02</span> Livraison
             </h2>
 
             <div className="grid gap-3 sm:grid-cols-2">
@@ -307,7 +307,7 @@ export default function CheckoutClient() {
 
           <section>
             <h2 className="mb-6 flex items-baseline gap-3 font-display text-heading text-white">
-              <span className="text-teranga">03</span> Mode de paiement souhaité
+              <span className="text-accent">03</span> Mode de paiement souhaité
             </h2>
             <p className="mb-6 max-w-lg text-sm text-mute">
               Aucun prélèvement n&apos;est effectué sur le site. Indiquez votre préférence : nous
@@ -323,7 +323,7 @@ export default function CheckoutClient() {
                     key={method.id}
                     className={`flex cursor-pointer items-start gap-3 border p-4 transition-colors ${
                       payment === method.id
-                        ? 'border-teranga bg-teranga/5'
+                        ? 'border-white bg-white/5'
                         : 'border-line hover:border-line-strong'
                     } ${disabled ? 'pointer-events-none opacity-35' : ''}`}
                   >
@@ -334,7 +334,7 @@ export default function CheckoutClient() {
                       checked={payment === method.id}
                       disabled={disabled}
                       onChange={() => setPayment(method.id)}
-                      className="mt-1 accent-[#00853F]"
+                      className="mt-1 accent-white"
                     />
                     <span>
                       <span className="block text-sm font-bold text-white">{method.label}</span>
@@ -393,7 +393,7 @@ export default function CheckoutClient() {
             <div className="border-t border-line px-6 py-5">
               <button
                 type="submit"
-                className="flex w-full items-center justify-center gap-2.5 bg-[#25D366] py-4 text-sm font-black uppercase tracking-cta text-black transition-opacity hover:opacity-90"
+                className="flex w-full items-center justify-center gap-2.5 bg-white py-4 text-sm font-black uppercase tracking-cta text-black transition-colors hover:bg-accent"
               >
                 <FontAwesomeIcon icon={faWhatsapp} className="h-4 w-4" />
                 Commander sur WhatsApp

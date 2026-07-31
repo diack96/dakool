@@ -1,7 +1,6 @@
 export type Tournament = {
   id: string;
-  emoji: string;
-  badges: { label: string; color: 'green' | 'yellow' | 'red' }[];
+  badges: { label: string }[];
   title: string;
   description: string;
   calendar: string[];
@@ -12,11 +11,10 @@ export type Tournament = {
 export const tournaments: Tournament[] = [
   {
     id: 't1',
-    emoji: '🏆',
     badges: [
-      { label: 'Officiel', color: 'green' },
-      { label: 'Ligue 1', color: 'yellow' },
-      { label: 'Saison 2024–2025', color: 'green' },
+      { label: 'Officiel' },
+      { label: 'Ligue 1' },
+      { label: 'Saison 2024–2025' },
     ],
     title: 'Ligue 1 Sénégalaise',
     description:
@@ -43,11 +41,10 @@ export const tournaments: Tournament[] = [
   },
   {
     id: 't2',
-    emoji: '🥇',
     badges: [
-      { label: 'Officiel', color: 'yellow' },
-      { label: 'Knock-out', color: 'green' },
-      { label: '2024–2025', color: 'yellow' },
+      { label: 'Officiel' },
+      { label: 'Knock-out' },
+      { label: '2024–2025' },
     ],
     title: 'Coupe du Sénégal',
     description:
@@ -74,11 +71,10 @@ export const tournaments: Tournament[] = [
   },
   {
     id: 't3',
-    emoji: '🦁',
     badges: [
-      { label: 'Tournoi DAKOOL', color: 'green' },
-      { label: 'Invitationnel', color: 'yellow' },
-      { label: 'Signature Event', color: 'green' },
+      { label: 'Tournoi DAKOOL' },
+      { label: 'Invitationnel' },
+      { label: 'Signature Event' },
     ],
     title: 'Tournoi de la Téranga',
     description:
@@ -106,11 +102,10 @@ export const tournaments: Tournament[] = [
   },
   {
     id: 't4',
-    emoji: '🏘️',
     badges: [
-      { label: 'Communautaire', color: 'red' },
-      { label: 'Tradition', color: 'green' },
-      { label: 'Été 2025', color: 'yellow' },
+      { label: 'Communautaire' },
+      { label: 'Tradition' },
+      { label: 'Été 2025' },
     ],
     title: 'Navétanes',
     description:

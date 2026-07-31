@@ -91,7 +91,7 @@ export default function ProduitsClient({ initialCategory }: { initialCategory: s
               id="tri"
               value={sort}
               onChange={(e) => setSort(e.target.value as SortKey)}
-              className="border border-line bg-elevated py-2.5 pl-4 pr-10 text-xs text-white transition-colors focus:border-teranga focus:outline-none"
+              className="border border-line bg-elevated py-2.5 pl-4 pr-10 text-xs text-white transition-colors focus:border-white focus:outline-none"
             >
               {Object.entries(sorts).map(([value, label]) => (
                 <option key={value} value={value}>

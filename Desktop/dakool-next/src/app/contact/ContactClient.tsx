@@ -56,28 +56,24 @@ const socials = [
     label: 'Instagram',
     handle: '@dakool.sn',
     href: 'https://instagram.com/dakool.sn',
-    bg: 'linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)',
   },
   {
     icon: faFacebookF,
     label: 'Facebook',
     handle: 'DAKOOL Sénégal',
     href: 'https://facebook.com/dakool.sn',
-    bg: '#1877F2',
   },
   {
     icon: faTiktok,
     label: 'TikTok',
     handle: '@dakool.official',
     href: 'https://tiktok.com/@dakool.official',
-    bg: '#000',
   },
   {
     icon: faYoutube,
     label: 'YouTube',
     handle: 'DAKOOL TV',
     href: 'https://youtube.com/@dakool',
-    bg: '#FF0000',
   },
 ];
 
@@ -108,7 +104,7 @@ const subjects = [
 ];
 
 const inputClass =
-  'w-full border border-line bg-elevated px-4 py-3.5 text-sm text-white placeholder-mute-dim transition-colors focus:border-teranga focus:outline-none';
+  'w-full border border-line bg-elevated px-4 py-3.5 text-sm text-white placeholder-mute-dim transition-colors focus:border-white focus:outline-none';
 const labelClass = 'mb-1.5 block text-[10px] font-black uppercase tracking-label text-mute-dim';
 
 export default function ContactClient() {
@@ -133,28 +129,28 @@ export default function ContactClient() {
           <div className="grid gap-14 lg:grid-cols-2 lg:gap-16">
             {/* Formulaire */}
             <div>
-              <span className="mb-5 flex items-center gap-3 text-[11px] font-bold uppercase tracking-brand text-teranga">
-                <span className="h-2 w-2 shrink-0 rounded-full bg-teranga" />
+              <span className="mb-5 flex items-center gap-3 text-[11px] font-bold uppercase tracking-brand text-white">
+                <span className="h-2 w-2 shrink-0 rounded-full bg-white" />
                 Formulaire de contact
               </span>
               <h2 className="mb-2 font-display text-title text-white">
-                Envoyez-nous un <span className="text-teranga">message</span>
+                Envoyez-nous un <span className="text-accent">message</span>
               </h2>
               <p className="mb-8 text-sm text-mute">
                 Nous répondons en général dans les 24 heures.
               </p>
 
               {submitted ? (
-                <div className="border border-teranga/25 bg-teranga/5 p-10 text-center">
-                  <span className="mx-auto mb-5 flex h-12 w-12 items-center justify-center bg-teranga">
-                    <FontAwesomeIcon icon={faCheck} className="h-5 w-5 text-white" />
+                <div className="border border-white/20 bg-white/5 p-10 text-center">
+                  <span className="mx-auto mb-5 flex h-12 w-12 items-center justify-center bg-white">
+                    <FontAwesomeIcon icon={faCheck} className="h-5 w-5 text-black" />
                   </span>
                   <h3 className="mb-2 font-display text-3xl text-white">Message envoyé</h3>
                   <p className="text-sm text-mute">Nous vous répondrons dans les 24 heures.</p>
                   <button
                     type="button"
                     onClick={() => setSubmitted(false)}
-                    className="mt-5 border-b border-teranga/40 pb-0.5 text-sm text-teranga transition-colors hover:border-teranga"
+                    className="mt-5 border-b border-white/30 pb-0.5 text-sm text-accent transition-colors hover:border-white"
                   >
                     Envoyer un autre message
                   </button>
@@ -258,7 +254,7 @@ export default function ContactClient() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="flex w-full items-center justify-center gap-2.5 bg-white py-4 text-sm font-black uppercase tracking-cta text-black transition-colors hover:bg-teranga hover:text-white disabled:pointer-events-none disabled:opacity-50"
+                    className="flex w-full items-center justify-center gap-2.5 bg-white py-4 text-sm font-black uppercase tracking-cta text-black transition-colors hover:bg-accent disabled:pointer-events-none disabled:opacity-50"
                   >
                     <FontAwesomeIcon icon={faPaperPlane} className="h-3.5 w-3.5" />
                     {loading ? 'Envoi en cours…' : 'Envoyer le message'}
@@ -269,12 +265,12 @@ export default function ContactClient() {
 
             {/* Coordonnées */}
             <div>
-              <span className="mb-5 flex items-center gap-3 text-[11px] font-bold uppercase tracking-brand text-teranga">
-                <span className="h-2 w-2 shrink-0 rounded-full bg-teranga" />
+              <span className="mb-5 flex items-center gap-3 text-[11px] font-bold uppercase tracking-brand text-white">
+                <span className="h-2 w-2 shrink-0 rounded-full bg-white" />
                 Nos coordonnées
               </span>
               <h2 className="mb-8 font-display text-title text-white">
-                Trouvez-nous <span className="text-teranga">facilement</span>
+                Trouvez-nous <span className="text-accent">facilement</span>
               </h2>
 
               <div className="mb-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
@@ -283,8 +279,8 @@ export default function ContactClient() {
                     key={item.title}
                     className="flex items-start gap-4 border border-line p-5 transition-colors hover:border-line-strong"
                   >
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-teranga/25">
-                      <FontAwesomeIcon icon={item.icon} className="h-3.5 w-3.5 text-teranga" />
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-white/20">
+                      <FontAwesomeIcon icon={item.icon} className="h-3.5 w-3.5 text-accent" />
                     </span>
                     <div>
                       <h3 className="mb-1 text-xs font-black uppercase tracking-cta text-white">
@@ -304,16 +300,16 @@ export default function ContactClient() {
                 href={whatsappUrl('Bonjour DAKOOL, j’ai une question.')}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mb-8 flex items-start gap-4 border border-line p-5 transition-colors hover:border-[#25D366]/40"
+                className="mb-8 flex items-start gap-4 border border-line p-5 transition-colors hover:border-line-strong"
               >
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-[#25D366]/25">
-                  <FontAwesomeIcon icon={faWhatsapp} className="h-3.5 w-3.5 text-[#25D366]" />
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-line-strong">
+                  <FontAwesomeIcon icon={faWhatsapp} className="h-3.5 w-3.5 text-white" />
                 </span>
                 <div>
                   <h3 className="mb-1 text-xs font-black uppercase tracking-cta text-white">
                     WhatsApp Business
                   </h3>
-                  <p className="text-sm text-teranga">{WHATSAPP_DISPLAY}</p>
+                  <p className="text-sm text-accent">{WHATSAPP_DISPLAY}</p>
                   <p className="text-xs text-mute-dim">Réponse rapide · 7j/7 · 8h–20h</p>
                 </div>
               </a>
@@ -328,10 +324,7 @@ export default function ContactClient() {
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 border border-line p-3.5 transition-colors hover:border-line-strong"
                   >
-                    <span
-                      className="flex h-8 w-8 shrink-0 items-center justify-center text-white"
-                      style={{ background: s.bg }}
-                    >
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center border border-line-strong text-white">
                       <FontAwesomeIcon icon={s.icon} className="h-3.5 w-3.5" />
                     </span>
                     <span>
@@ -365,13 +358,13 @@ export default function ContactClient() {
                       className="group flex w-full items-center justify-between gap-4 py-5 text-left"
                     >
                       <span
-                        className={`text-sm font-medium transition-colors ${open ? 'text-teranga' : 'text-white group-hover:text-teranga'}`}
+                        className={`text-sm font-medium transition-colors ${open ? 'text-accent' : 'text-white group-hover:text-white'}`}
                       >
                         {faq.q}
                       </span>
                       <FontAwesomeIcon
                         icon={faPlus}
-                        className={`h-3.5 w-3.5 shrink-0 text-teranga transition-transform duration-300 ${open ? 'rotate-45' : ''}`}
+                        className={`h-3.5 w-3.5 shrink-0 text-accent transition-transform duration-300 ${open ? 'rotate-45' : ''}`}
                       />
                     </button>
                   </h3>

@@ -37,7 +37,7 @@ export default function Footer() {
       <div className="border-b border-line">
         <Container className="flex flex-col gap-8 py-14 lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <span className="mb-3 block text-[11px] font-bold uppercase tracking-brand text-teranga">
+            <span className="mb-3 block text-[11px] font-bold uppercase tracking-brand text-white">
               Restez équipé
             </span>
             <h2 className="font-display text-heading text-white">
@@ -122,7 +122,7 @@ export default function Footer() {
                 </li>
               ))}
               <li>
-                <Link href="/equipes" className="text-sm text-teranga transition-colors hover:text-teranga-bright">
+                <Link href="/equipes" className="text-sm text-accent transition-colors hover:text-white">
                   Tous les clubs →
                 </Link>
               </li>
@@ -165,7 +165,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`DAKOOL sur ${label}`}
-                  className="flex h-9 w-9 items-center justify-center border border-line text-mute transition-colors hover:border-teranga hover:text-teranga"
+                  className="flex h-9 w-9 items-center justify-center border border-line text-mute transition-colors hover:border-white hover:text-white"
                 >
                   <FontAwesomeIcon icon={icon} className="h-3.5 w-3.5" />
                 </a>
@@ -179,8 +179,7 @@ export default function Footer() {
       <div className="border-t border-line py-6">
         <Container className="flex flex-col items-center justify-between gap-4 sm:flex-row">
           <p className="text-xs text-mute-dim">
-            © {new Date().getFullYear()} DAKOOL. Tous droits réservés. Fait avec fierté au Sénégal
-            🇸🇳
+            © {new Date().getFullYear()} DAKOOL. Tous droits réservés. Fait avec fierté au Sénégal.
           </p>
           <div className="flex flex-wrap justify-center gap-6">
             {legal.map(([href, label]) => (

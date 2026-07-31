@@ -4,7 +4,7 @@ export type Product = {
   name: string;
   category: string;
   price: number;
-  badge?: { label: string; color: 'green' | 'yellow' | 'red' };
+  badge?: { label: string };
   tagline: string;
   description: string;
   sizes: string[];
@@ -24,15 +24,15 @@ export const products: Product[] = [
     name: 'Maillot Officiel Teranga',
     category: 'Maillots',
     price: 25000,
-    badge: { label: 'Nouveau', color: 'green' },
+    badge: { label: 'Nouveau' },
     tagline: 'Le maillot qui porte le nom du pays.',
     description:
       "Notre pièce signature. Le maillot Teranga reprend les codes du football sénégalais dans une coupe ajustée pensée pour le jeu. Maille technique à double couche, empiècements ventilés sous les bras et col côtelé renforcé. Le blason est brodé, pas imprimé — il tiendra toute la saison.",
     sizes: JERSEY_SIZES,
     colors: [
-      { name: 'Vert Téranga', hex: '#00853F' },
-      { name: 'Blanc Lion', hex: '#F2F2F2' },
-      { name: 'Noir Dakar', hex: '#111111' },
+      { name: 'Noir', hex: '#0F0F0F' },
+      { name: 'Blanc', hex: '#F2F2F2' },
+      { name: 'Gris', hex: '#8A8A8A' },
     ],
     details: [
       'Maille technique respirante 100% polyester recyclé',
@@ -54,8 +54,8 @@ export const products: Product[] = [
       'Coupe classique, tissu léger, séchage rapide. Le maillot Domicile Lion est celui que portent nos clubs partenaires en championnat. Sobre sur le terrain, il se porte aussi bien en dehors.',
     sizes: JERSEY_SIZES,
     colors: [
-      { name: 'Vert Téranga', hex: '#00853F' },
-      { name: 'Or', hex: '#FDEF42' },
+      { name: 'Noir', hex: '#0F0F0F' },
+      { name: 'Blanc', hex: '#F2F2F2' },
     ],
     details: [
       'Maille piquée légère, séchage rapide',
@@ -71,14 +71,14 @@ export const products: Product[] = [
     name: 'Ballon Officiel Téranga',
     category: 'Ballons',
     price: 18500,
-    badge: { label: 'Officiel', color: 'yellow' },
+    badge: { label: 'Officiel' },
     tagline: 'Le ballon des compétitions que nous sponsorisons.',
     description:
       "Ballon de match taille 5, thermocollé sans couture apparente pour une trajectoire prévisible et un contact régulier. C'est le ballon utilisé sur le Tournoi de la Téranga et en Coupe du Sénégal.",
     sizes: ['Taille 4', 'Taille 5'],
     colors: [
-      { name: 'Blanc / Vert', hex: '#F2F2F2' },
-      { name: 'Or', hex: '#FDEF42' },
+      { name: 'Blanc', hex: '#F2F2F2' },
+      { name: 'Noir', hex: '#0F0F0F' },
     ],
     details: [
       'Ballon de match taille 5, 410–450 g',
@@ -94,15 +94,15 @@ export const products: Product[] = [
     name: 'Chaussures Elite Pro',
     category: 'Chaussures',
     price: 45000,
-    badge: { label: 'Pro', color: 'yellow' },
+    badge: { label: 'Pro' },
     tagline: 'Notre chaussure la plus rapide.',
     description:
       'Conçue avec des joueurs de Ligue 1 sénégalaise. Tige synthétique fine pour le toucher de balle, semelle en composite léger, crampons lamellaires pour les appuis sur terrain sec. 210 g en taille 42.',
     sizes: BOOT_SIZES,
     colors: [
-      { name: 'Noir / Vert', hex: '#111111' },
-      { name: 'Blanc / Or', hex: '#F2F2F2' },
-      { name: 'Rouge Lion', hex: '#E31E24' },
+      { name: 'Noir', hex: '#0F0F0F' },
+      { name: 'Blanc', hex: '#F2F2F2' },
+      { name: 'Gris', hex: '#8A8A8A' },
     ],
     details: [
       '210 g en taille 42',
@@ -124,8 +124,8 @@ export const products: Product[] = [
       "Taille élastiquée à cordon, deux poches latérales, tissu léger qui sèche vite. Rien de superflu — c'est le short que portent nos équipes à l'entraînement toute la semaine.",
     sizes: JERSEY_SIZES,
     colors: [
-      { name: 'Noir', hex: '#111111' },
-      { name: 'Vert Téranga', hex: '#00853F' },
+      { name: 'Noir', hex: '#0F0F0F' },
+      { name: 'Gris', hex: '#8A8A8A' },
     ],
     details: [
       'Tissu léger séchage rapide',
@@ -146,9 +146,9 @@ export const products: Product[] = [
       'Chaussettes hautes à compression légère sur la voûte plantaire, semelle bouclette pour amortir les chocs et bande antidérapante interne. Vendues par paire.',
     sizes: ['35–38', '39–42', '43–46'],
     colors: [
-      { name: 'Vert Téranga', hex: '#00853F' },
       { name: 'Blanc', hex: '#F2F2F2' },
-      { name: 'Noir', hex: '#111111' },
+      { name: 'Noir', hex: '#0F0F0F' },
+      { name: 'Gris', hex: '#8A8A8A' },
     ],
     details: [
       'Compression légère sur la voûte plantaire',
@@ -164,14 +164,14 @@ export const products: Product[] = [
     name: 'Veste Entraîneur',
     category: 'Équipements',
     price: 35000,
-    badge: { label: 'Coach', color: 'green' },
+    badge: { label: 'Coach' },
     tagline: 'Pour ceux qui dirigent depuis le bord du terrain.',
     description:
       'Veste coupe-vent déperlante, doublure maille, col montant et poches zippées. Pensée pour rester trois heures debout sous le vent de la corniche sans bouger.',
     sizes: JERSEY_SIZES,
     colors: [
-      { name: 'Noir', hex: '#111111' },
-      { name: 'Vert Téranga', hex: '#00853F' },
+      { name: 'Noir', hex: '#0F0F0F' },
+      { name: 'Gris', hex: '#8A8A8A' },
     ],
     details: [
       'Coupe-vent déperlant, coutures thermocollées',
@@ -192,8 +192,8 @@ export const products: Product[] = [
       'Sac de 55 litres avec compartiment chaussures ventilé séparé, poche humide étanche et bandoulière rembourrée. Base renforcée pour poser au sol sans abîmer.',
     sizes: ONE_SIZE,
     colors: [
-      { name: 'Noir', hex: '#111111' },
-      { name: 'Vert Téranga', hex: '#00853F' },
+      { name: 'Noir', hex: '#0F0F0F' },
+      { name: 'Gris', hex: '#8A8A8A' },
     ],
     details: [
       'Volume 55 L',
@@ -210,14 +210,14 @@ export const products: Product[] = [
     name: 'Gants de Gardien',
     category: 'Équipements',
     price: 32000,
-    badge: { label: 'Gardien', color: 'red' },
+    badge: { label: 'Gardien' },
     tagline: 'Latex allemand, adhérence par tous les temps.',
     description:
       'Paume en latex 4 mm à grain fin, adhérente sur sec comme sur mouillé. Sangle de serrage large et dos aéré. Les barrettes de protection des doigts sont amovibles.',
     sizes: ['7', '8', '9', '10', '11'],
     colors: [
-      { name: 'Noir / Vert', hex: '#111111' },
-      { name: 'Rouge Lion', hex: '#E31E24' },
+      { name: 'Noir', hex: '#0F0F0F' },
+      { name: 'Blanc', hex: '#F2F2F2' },
     ],
     details: [
       'Paume latex 4 mm à grain fin',
@@ -239,8 +239,8 @@ export const products: Product[] = [
       'Coque en polypropylène haute densité doublée mousse EVA. 42 g par protège-tibia. Livrés avec une paire de manchons de maintien.',
     sizes: ['S', 'M', 'L'],
     colors: [
-      { name: 'Blanc / Vert', hex: '#F2F2F2' },
-      { name: 'Noir', hex: '#111111' },
+      { name: 'Blanc', hex: '#F2F2F2' },
+      { name: 'Noir', hex: '#0F0F0F' },
     ],
     details: [
       '42 g par protège-tibia',
@@ -258,11 +258,11 @@ export const products: Product[] = [
     price: 4500,
     tagline: 'Le détail qui se voit de la tribune.',
     description:
-      'Bandeau élastique absorbant aux couleurs du drapeau. Coutures plates pour ne pas irriter, maintien sans serrer.',
+      'Bandeau élastique absorbant, logo DAKOOL tissé. Coutures plates pour ne pas irriter, maintien sans serrer.',
     sizes: ONE_SIZE,
     colors: [
-      { name: 'Drapeau', hex: '#00853F' },
-      { name: 'Noir', hex: '#111111' },
+      { name: 'Noir', hex: '#0F0F0F' },
+      { name: 'Blanc', hex: '#F2F2F2' },
     ],
     details: ['Maille absorbante élastique', 'Coutures plates', 'Lavable en machine'],
     inStock: true,
@@ -273,14 +273,14 @@ export const products: Product[] = [
     name: 'Chaussures Junior',
     category: 'Chaussures',
     price: 28000,
-    badge: { label: 'Junior', color: 'red' },
+    badge: { label: 'Junior' },
     tagline: 'La première paire sérieuse.',
     description:
       "Version allégée de l'Elite Pro pour les 8–14 ans. Fermeture scratch en plus des lacets, tige souple et crampons adaptés aux terrains des académies.",
     sizes: ['33', '34', '35', '36', '37', '38'],
     colors: [
-      { name: 'Vert / Blanc', hex: '#00853F' },
-      { name: 'Noir / Or', hex: '#111111' },
+      { name: 'Noir', hex: '#0F0F0F' },
+      { name: 'Blanc', hex: '#F2F2F2' },
     ],
     details: [
       'Pour les 8–14 ans',
@@ -296,15 +296,15 @@ export const products: Product[] = [
     name: 'Maillot Gardien Elite',
     category: 'Maillots',
     price: 26000,
-    badge: { label: 'GK', color: 'yellow' },
+    badge: { label: 'GK' },
     tagline: 'Manches longues, coudes rembourrés.',
     description:
       'Le maillot des gardiens de nos clubs partenaires. Rembourrage discret aux coudes, manches longues resserrées aux poignets, coupe ample pour ne pas gêner les plongeons.',
     sizes: JERSEY_SIZES,
     colors: [
-      { name: 'Or', hex: '#FDEF42' },
-      { name: 'Noir', hex: '#111111' },
-      { name: 'Rouge Lion', hex: '#E31E24' },
+      { name: 'Noir', hex: '#0F0F0F' },
+      { name: 'Gris', hex: '#8A8A8A' },
+      { name: 'Blanc', hex: '#F2F2F2' },
     ],
     details: [
       'Manches longues resserrées aux poignets',
@@ -325,8 +325,8 @@ export const products: Product[] = [
       "Ballon d'entraînement cousu machine, enveloppe TPU renforcée. Moins nerveux que le ballon de match, beaucoup plus résistant aux terrains durs.",
     sizes: ['Taille 4', 'Taille 5'],
     colors: [
-      { name: 'Blanc / Noir', hex: '#F2F2F2' },
-      { name: 'Vert Téranga', hex: '#00853F' },
+      { name: 'Blanc', hex: '#F2F2F2' },
+      { name: 'Noir', hex: '#0F0F0F' },
     ],
     details: [
       'Enveloppe TPU renforcée',
@@ -342,19 +342,19 @@ export const products: Product[] = [
     name: 'Survêtement Complet',
     category: 'Équipements',
     price: 42000,
-    badge: { label: 'Ensemble', color: 'green' },
+    badge: { label: 'Ensemble' },
     tagline: 'Veste et pantalon, une seule commande.',
     description:
-      "L'ensemble d'échauffement de nos clubs : veste zippée col montant et pantalon fuselé à chevilles zippées. Bandes latérales aux couleurs du drapeau sur les deux pièces.",
+      "L'ensemble d'échauffement de nos clubs : veste zippée col montant et pantalon fuselé à chevilles zippées. Bandes latérales contrastées sur les deux pièces.",
     sizes: JERSEY_SIZES,
     colors: [
-      { name: 'Noir / Drapeau', hex: '#111111' },
-      { name: 'Vert Téranga', hex: '#00853F' },
+      { name: 'Noir', hex: '#0F0F0F' },
+      { name: 'Gris', hex: '#8A8A8A' },
     ],
     details: [
       'Veste zippée col montant + pantalon fuselé',
       'Chevilles zippées',
-      'Bandes latérales drapeau',
+      'Bandes latérales contrastées',
       'Poches zippées sur les deux pièces',
     ],
     inStock: true,
@@ -370,9 +370,9 @@ export const products: Product[] = [
       'Casquette six panneaux en coton lavé, logo DAKOOL brodé sur le devant, fermeture métal réglable. Visière préformée.',
     sizes: ONE_SIZE,
     colors: [
-      { name: 'Noir', hex: '#111111' },
-      { name: 'Vert Téranga', hex: '#00853F' },
-      { name: 'Écru', hex: '#E8E3D8' },
+      { name: 'Noir', hex: '#0F0F0F' },
+      { name: 'Blanc', hex: '#F2F2F2' },
+      { name: 'Gris', hex: '#8A8A8A' },
     ],
     details: [
       'Coton lavé six panneaux',

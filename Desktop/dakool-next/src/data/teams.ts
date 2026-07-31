@@ -4,7 +4,6 @@ export type Team = {
   name: string;
   city: string;
   acronym: string;
-  color: string;
   league: string;
   since: string;
   description: string;
@@ -23,7 +22,6 @@ export const teams: Team[] = [
     name: 'Teungueth FC',
     city: 'Rufisque, Dakar',
     acronym: 'TFC',
-    color: '#E31E24',
     league: 'Ligue 1',
     since: '2021',
     description:
@@ -44,7 +42,6 @@ export const teams: Team[] = [
     name: 'AS Jaraaf',
     city: 'Dakar-Médina',
     acronym: 'JAR',
-    color: '#003DA5',
     league: 'Ligue 1',
     since: '2020',
     description:
@@ -65,7 +62,6 @@ export const teams: Team[] = [
     name: 'AS Pikine',
     city: 'Pikine, Dakar',
     acronym: 'PIK',
-    color: '#FF6B00',
     league: 'Ligue 1',
     since: '2022',
     description:
@@ -86,7 +82,6 @@ export const teams: Team[] = [
     name: 'Génération Foot',
     city: 'Déni Biram Ndao',
     acronym: 'GEN',
-    color: '#00853F',
     league: 'Ligue 1',
     since: '2020',
     description:
@@ -111,7 +106,6 @@ export const teams: Team[] = [
     name: 'Diambars FC',
     city: 'Saly, Thiès',
     acronym: 'DIA',
-    color: '#7B2D8B',
     league: 'Ligue 1',
     since: '2021',
     description:
@@ -132,7 +126,6 @@ export const teams: Team[] = [
     name: 'US Gorée',
     city: 'Île de Gorée',
     acronym: 'USG',
-    color: '#00516B',
     league: 'Ligue 2',
     since: '2022',
     description:
@@ -153,7 +146,6 @@ export const teams: Team[] = [
     name: 'Mbour Petite Côte',
     city: 'Mbour, Thiès',
     acronym: 'MPC',
-    color: '#C8102E',
     league: 'Ligue 1',
     since: '2023',
     description:
@@ -174,7 +166,6 @@ export const teams: Team[] = [
     name: 'Casa Sports',
     city: 'Ziguinchor',
     acronym: 'CASA',
-    color: '#1a1a2e',
     league: 'Ligue 1',
     since: '2021',
     description:

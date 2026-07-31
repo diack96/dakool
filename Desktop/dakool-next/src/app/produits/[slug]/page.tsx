@@ -84,7 +84,7 @@ export default async function ProduitPage({ params }: Params) {
             <div className="grain relative flex aspect-square items-center justify-center overflow-hidden border border-line bg-elevated">
               <ProductVisual category={product.category} index={productIndex} />
               {product.badge && (
-                <span className="absolute top-5 left-5 bg-teranga px-2.5 py-1.5 text-[10px] font-black uppercase tracking-cta text-white">
+                <span className="absolute top-5 left-5 bg-white px-2.5 py-1.5 text-[10px] font-black uppercase tracking-cta text-black">
                   {product.badge.label}
                 </span>
               )}
@@ -116,7 +116,7 @@ export default async function ProduitPage({ params }: Params) {
       <section className="border-y border-line bg-surface py-16 sm:py-20">
         <Container className="grid gap-12 lg:grid-cols-2 lg:gap-20">
           <Reveal>
-            <span className="mb-4 block text-[11px] font-bold uppercase tracking-brand text-teranga">
+            <span className="mb-4 block text-[11px] font-bold uppercase tracking-brand text-white">
               Le produit
             </span>
             <h2 className="mb-5 font-display text-heading text-white">Description</h2>
@@ -124,14 +124,14 @@ export default async function ProduitPage({ params }: Params) {
           </Reveal>
 
           <Reveal delay={100}>
-            <span className="mb-4 block text-[11px] font-bold uppercase tracking-brand text-teranga">
+            <span className="mb-4 block text-[11px] font-bold uppercase tracking-brand text-white">
               Fiche technique
             </span>
             <h2 className="mb-5 font-display text-heading text-white">Caractéristiques</h2>
             <ul className="divide-y divide-line border-y border-line">
               {product.details.map((detail) => (
                 <li key={detail} className="flex items-start gap-3 py-3.5 text-sm text-mute">
-                  <span aria-hidden className="mt-1 text-xs text-teranga">
+                  <span aria-hidden className="mt-1 text-xs text-accent">
                     ▸
                   </span>
                   {detail}

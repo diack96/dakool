@@ -6,7 +6,7 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { whatsappUrl } from '@/lib/whatsapp';
 
 /* Pages où le bouton ferait doublon avec un CTA WhatsApp déjà présent. */
-const HIDDEN_ON = ['/checkout', '/contact'];
+const HIDDEN_ON = ['/contact'];
 
 export default function FloatingWhatsApp() {
   const pathname = usePathname();

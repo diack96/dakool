@@ -5,7 +5,7 @@ import ContactClient from './ContactClient';
 export const metadata: Metadata = {
   title: 'Contact',
   description:
-    'Contactez DAKOOL à Dakar — commandes groupées, partenariats clubs, sponsoring de tournois et service après-vente. Réponse sous 24 heures.',
+    'Contactez DAKOOL à Dakar — commandes, commandes groupées et partenariats clubs. Réponse sous 24 heures.',
   alternates: { canonical: '/contact' },
 };
 

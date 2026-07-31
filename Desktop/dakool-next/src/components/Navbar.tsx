@@ -11,10 +11,8 @@ import FlagBar from './FlagBar';
 
 const navLinks = [
   { href: '/', label: 'Accueil' },
-  { href: '/produits', label: 'Produits' },
-  { href: '/equipes', label: 'Équipes' },
-  { href: '/tournois', label: 'Tournois' },
-  { href: '/histoire', label: 'Histoire' },
+  { href: '/produits', label: 'Boutique' },
+  { href: '/equipes', label: 'Clubs' },
   { href: '/contact', label: 'Contact' },
 ];
 

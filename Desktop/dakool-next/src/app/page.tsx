@@ -1,10 +1,8 @@
-import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDown, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { products } from '@/data/products';
 import { teams } from '@/data/teams';
 import ProductCard from '@/components/ProductCard';
-import ProductVisual from '@/components/ProductVisual';
 import Container from '@/components/Container';
 import Button from '@/components/Button';
 import SectionHeading from '@/components/SectionHeading';
@@ -17,32 +15,6 @@ const stats = [
   { value: '12', label: 'Tournois sponsorisés' },
   { value: '500+', label: 'Maillots distribués' },
   { value: '2020', label: 'Fondée à Dakar' },
-];
-
-const categoryTiles = [
-  { name: 'Maillots', count: 3, blurb: 'Domicile, extérieur, gardien.' },
-  { name: 'Chaussures', count: 2, blurb: 'Terrain sec et académies.' },
-  { name: 'Ballons', count: 2, blurb: 'Match et entraînement.' },
-  { name: 'Équipements', count: 4, blurb: 'Sacs, vestes, gants.' },
-  { name: 'Accessoires', count: 5, blurb: 'Le reste du kit.' },
-];
-
-const manifesto = [
-  {
-    number: '01',
-    title: 'Fabriqué ici',
-    text: "Nos ateliers sont à Dakar. Les coupes sont pensées pour le climat et les terrains sénégalais — pas adaptées depuis un cahier des charges européen.",
-  },
-  {
-    number: '02',
-    title: 'Testé par les clubs',
-    text: 'Chaque pièce passe une saison complète chez un club partenaire avant d’arriver en boutique. Si elle ne tient pas, elle ne sort pas.',
-  },
-  {
-    number: '03',
-    title: 'Du quartier à l’élite',
-    text: 'On équipe la Ligue 1 et les Navétanes avec la même exigence. Le niveau change, la qualité non.',
-  },
 ];
 
 export default function Home() {
@@ -136,26 +108,6 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* ── MANIFESTE ──────────────────────────────────────── */}
-      <section className="border-b border-line bg-surface py-20 sm:py-24">
-        <Container>
-          <SectionHeading eyebrow="Notre méthode" title="Pourquoi" highlight="DAKOOL" />
-          <div className="grid gap-px bg-line sm:grid-cols-3">
-            {manifesto.map((item, i) => (
-              <Reveal key={item.number} delay={i * 100}>
-                <article className="h-full bg-surface p-8 transition-colors hover:bg-elevated lg:p-10">
-                  <span className="mb-6 block font-display text-6xl leading-none text-white/15">
-                    {item.number}
-                  </span>
-                  <h3 className="mb-3 font-display text-2xl text-white">{item.title}</h3>
-                  <p className="text-sm leading-relaxed text-mute">{item.text}</p>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-      </section>
-
       {/* ── PRODUITS ───────────────────────────────────────── */}
       <section className="bg-ink py-20 sm:py-24">
         <Container>
@@ -181,33 +133,6 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* ── CATÉGORIES ─────────────────────────────────────── */}
-      <section className="border-y border-line bg-surface py-20 sm:py-24">
-        <Container>
-          <SectionHeading eyebrow="Le catalogue" title="Trouve ton" highlight="équipement" />
-          <div className="grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-5">
-            {categoryTiles.map((cat, i) => (
-              <Reveal key={cat.name} delay={i * 70}>
-                <Link
-                  href={`/produits?categorie=${encodeURIComponent(cat.name)}`}
-                  className="group flex h-full flex-col bg-surface p-7 transition-colors hover:bg-elevated"
-                >
-                  <div className="mb-5 h-24 w-24 text-white/70">
-                    <ProductVisual category={cat.name} />
-                  </div>
-                  <h3 className="font-display text-2xl text-white">{cat.name}</h3>
-                  <p className="mt-1 mb-4 text-sm text-mute">{cat.blurb}</p>
-                  <span className="mt-auto text-[11px] uppercase tracking-label text-mute-dim">
-                    {cat.count} produits
-                  </span>
-                  <span className="rule-grow mt-4" />
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-      </section>
-
       {/* ── ÉQUIPES ────────────────────────────────────────── */}
       <section className="bg-ink py-20 sm:py-24">
         <Container>
@@ -221,62 +146,16 @@ export default function Home() {
           <div className="grid grid-cols-2 gap-px bg-line sm:grid-cols-4">
             {teams.map((team, i) => (
               <Reveal key={team.id} delay={i * 60}>
-                <Link
-                  href={`/equipes/${team.slug}`}
-                  className="group flex h-full flex-col bg-ink p-6 transition-colors hover:bg-elevated sm:p-8"
-                >
+                <div className="group flex h-full flex-col bg-ink p-6 sm:p-8">
                   <span className="mb-5 flex h-12 w-12 shrink-0 items-center justify-center border border-line-strong bg-elevated font-display text-sm tracking-wider text-white">
                     {team.acronym.slice(0, 3)}
                   </span>
                   <p className="mb-1 text-sm leading-tight font-bold text-white">{team.name}</p>
                   <p className="mb-4 text-xs text-mute-dim">{team.city}</p>
                   <span className="rule-grow mt-auto" />
-                </Link>
+                </div>
               </Reveal>
             ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* ── TOURNOIS ───────────────────────────────────────── */}
-      <section className="border-t border-line bg-surface py-20 sm:py-24">
-        <Container>
-          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-            <Reveal>
-              <span className="mb-4 block text-[11px] font-bold uppercase tracking-brand text-white">
-                Sponsoring
-              </span>
-              <h2 className="mb-6 font-display text-title text-white">
-                Du quartier au <span className="text-accent">stade national</span>
-              </h2>
-              <p className="mb-8 max-w-md text-base leading-relaxed text-mute">
-                On sponsorise 12 compétitions — de la Ligue 1 sénégalaise aux Navétanes de
-                quartier. Mêmes trophées, mêmes équipements, même exigence.
-              </p>
-              <Button href="/tournois" variant="outline">
-                Voir plus
-                <FontAwesomeIcon icon={faArrowRight} className="h-3.5 w-3.5" />
-              </Button>
-            </Reveal>
-
-            <Reveal delay={120}>
-              <ul className="grid gap-px bg-line">
-                {[
-                  ['Ligue 1 Sénégalaise', '6 clubs équipés'],
-                  ['Coupe du Sénégal', '64+ clubs engagés'],
-                  ['Tournoi de la Téranga', 'Notre tournoi signature'],
-                  ['Navétanes', '200+ équipes par région'],
-                ].map(([name, detail]) => (
-                  <li
-                    key={name}
-                    className="flex items-baseline justify-between gap-4 bg-surface px-6 py-5"
-                  >
-                    <span className="font-display text-xl text-white">{name}</span>
-                    <span className="shrink-0 text-xs text-mute-dim">{detail}</span>
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
           </div>
         </Container>
       </section>

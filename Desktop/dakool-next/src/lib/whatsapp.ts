@@ -12,7 +12,10 @@ export function whatsappUrl(message: string): string {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
-/** Message d'intérêt pour un seul article, depuis sa fiche produit. */
+/**
+ * Message d'intérêt pour un seul article, depuis sa fiche produit.
+ * Le séparateur de variante est « · » : les coloris peuvent contenir un slash.
+ */
 export function buildProductMessage(params: {
   name: string;
   size?: string;
@@ -20,11 +23,7 @@ export function buildProductMessage(params: {
   qty: number;
   price: number;
 }): string {
-  const lines = [
-    'Bonjour DAKOOL, je suis intéressé(e) par cet article :',
-    '',
-    params.name,
-  ];
+  const lines = ['Bonjour DAKOOL, je suis intéressé(e) par cet article :', '', params.name];
 
   const variant = [params.size, params.color].filter(Boolean).join(' · ');
   if (variant) lines.push(variant);
@@ -39,70 +38,23 @@ export function buildProductMessage(params: {
   return lines.join('\n');
 }
 
-export type OrderDetails = {
-  reference: string;
-  items: CartItem[];
-  subtotal: number;
-  deliveryFee: number;
-  total: number;
-  customer: {
-    prenom: string;
-    nom: string;
-    email: string;
-    telephone: string;
-  };
-  delivery: {
-    adresse: string;
-    ville: string;
-    region: string;
-    note?: string;
-  };
-  payment: string;
-};
-
 /**
- * Compose le récapitulatif de commande envoyé sur WhatsApp.
+ * Message de commande à partir du panier.
  *
- * Le message voyage dans l'URL : on reste compact pour ne pas s'approcher
- * des limites de longueur des navigateurs sur les gros paniers.
+ * Il n'y a pas de tunnel de commande : l'adresse et le mode de paiement se
+ * règlent dans la conversation. Le message reste donc court.
  */
-export function buildOrderMessage(order: OrderDetails): string {
-  const lines: string[] = [
-    `Bonjour DAKOOL, je souhaite passer la commande ${order.reference}.`,
-    '',
-    'ARTICLES',
-  ];
+export function buildCartMessage(items: CartItem[], total: number): string {
+  const lines = ['Bonjour DAKOOL, je voudrais commander :', ''];
 
-  for (const item of order.items) {
-    /* Séparateur « · » et non « / » : les coloris contiennent déjà des
-       slashs (« Noir / Vert »), la ligne deviendrait illisible. */
+  for (const item of items) {
     const variant = [item.size, item.color].filter(Boolean).join(' · ');
     lines.push(
       `- ${item.name}${variant ? ` (${variant})` : ''} x${item.qty} — ${formatPrice(item.price * item.qty)}`,
     );
   }
 
-  lines.push(
-    '',
-    `Sous-total : ${formatPrice(order.subtotal)}`,
-    `Livraison : ${order.deliveryFee === 0 ? 'offerte' : formatPrice(order.deliveryFee)}`,
-    `TOTAL : ${formatPrice(order.total)}`,
-    '',
-    'CLIENT',
-    `${order.customer.prenom} ${order.customer.nom}`,
-    order.customer.telephone,
-    order.customer.email,
-    '',
-    'LIVRAISON',
-    order.delivery.adresse,
-    `${order.delivery.ville}, ${order.delivery.region}`,
-  );
-
-  if (order.delivery.note?.trim()) {
-    lines.push(`Note : ${order.delivery.note.trim()}`);
-  }
-
-  lines.push('', `PAIEMENT SOUHAITÉ : ${order.payment}`);
+  lines.push('', `TOTAL : ${formatPrice(total)}`, '', 'Comment procède-t-on ?');
 
   return lines.join('\n');
 }

@@ -6,7 +6,6 @@ import FlagBar from '@/components/FlagBar';
 const suggestions = [
   { href: '/produits', label: 'La boutique', desc: '16 références en stock' },
   { href: '/equipes', label: 'Nos clubs', desc: '8 partenaires officiels' },
-  { href: '/tournois', label: 'Les tournois', desc: '12 compétitions sponsorisées' },
   { href: '/contact', label: 'Nous écrire', desc: 'Réponse sous 24 heures' },
 ];
 
@@ -44,7 +43,7 @@ export default function NotFound() {
           </Button>
         </div>
 
-        <div className="grid max-w-3xl grid-cols-1 gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid max-w-3xl grid-cols-1 gap-px border border-line bg-line sm:grid-cols-3">
           {suggestions.map((item) => (
             <Link
               key={item.href}

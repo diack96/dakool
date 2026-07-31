@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faLocationDot,
@@ -82,18 +81,13 @@ export default function EquipesPage() {
           <div className="grid grid-cols-1 gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
             {teams.map((team, i) => (
               <Reveal key={team.id} delay={Math.min(i, 7) * 60}>
-                <article className="group relative flex h-full flex-col bg-ink p-7 transition-colors hover:bg-elevated">
+                <article className="group flex h-full flex-col bg-ink p-7 transition-colors hover:bg-elevated">
                   <span className="mb-5 flex h-16 w-16 shrink-0 items-center justify-center border border-line-strong bg-elevated font-display text-base tracking-wider text-white">
                     {team.acronym.slice(0, 4)}
                   </span>
 
                   <h3 className="mb-1.5 font-display text-xl leading-tight text-white">
-                    <Link
-                      href={`/equipes/${team.slug}`}
-                      className="transition-colors after:absolute after:inset-0 after:content-[''] hover:text-white"
-                    >
-                      {team.name}
-                    </Link>
+                    {team.name}
                   </h3>
 
                   <p className="mb-3 flex items-center gap-1.5 text-xs text-mute-dim">

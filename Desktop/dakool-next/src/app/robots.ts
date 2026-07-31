@@ -5,8 +5,6 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      /* Le tunnel de commande n'a rien à faire dans l'index. */
-      disallow: '/checkout',
     },
     sitemap: 'https://dakool.sn/sitemap.xml',
   };

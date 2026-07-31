@@ -2,7 +2,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faFacebookF, faTiktok, faXTwitter } from '@fortawesome/free-brands-svg-icons';
-import { teams } from '@/data/teams';
 import { categories } from '@/data/products';
 import Container from './Container';
 import FlagBar from './FlagBar';
@@ -17,17 +16,9 @@ const socials = [
 
 const navigation = [
   ['/', 'Accueil'],
-  ['/produits', 'Produits'],
-  ['/equipes', 'Équipes'],
-  ['/tournois', 'Tournois'],
-  ['/histoire', 'Histoire'],
+  ['/produits', 'Boutique'],
+  ['/equipes', 'Clubs'],
   ['/contact', 'Contact'],
-];
-
-const legal = [
-  ['/mentions-legales', 'Mentions légales'],
-  ['/confidentialite', 'Confidentialité'],
-  ['/cgv', 'CGV'],
 ];
 
 export default function Footer() {
@@ -48,7 +39,6 @@ export default function Footer() {
             <ul className="mt-3 max-w-md space-y-1.5 text-sm text-mute">
               <li>— Accès anticipé aux nouveautés</li>
               <li>— Produits réservés aux membres</li>
-              <li>— Les dates de tournois avant tout le monde</li>
               <li>— Offres réservées aux clubs</li>
             </ul>
           </div>
@@ -77,7 +67,7 @@ export default function Footer() {
 
       {/* Colonnes */}
       <Container className="py-14">
-        <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3">
           <div>
             <h3 className="mb-5 text-xs font-black uppercase tracking-label text-white">
               Navigation
@@ -110,27 +100,6 @@ export default function Footer() {
                     </Link>
                   </li>
                 ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="mb-5 text-xs font-black uppercase tracking-label text-white">Clubs</h3>
-            <ul className="space-y-2.5">
-              {teams.slice(0, 5).map((team) => (
-                <li key={team.slug}>
-                  <Link
-                    href={`/equipes/${team.slug}`}
-                    className="text-sm text-mute transition-colors hover:text-white"
-                  >
-                    {team.name}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <Link href="/equipes" className="text-sm text-accent transition-colors hover:text-white">
-                  Tous les clubs →
-                </Link>
-              </li>
             </ul>
           </div>
 
@@ -186,17 +155,12 @@ export default function Footer() {
           <p className="text-xs text-mute-dim">
             © {new Date().getFullYear()} DAKOOL. Tous droits réservés. Fait avec fierté au Sénégal.
           </p>
-          <div className="flex flex-wrap justify-center gap-6">
-            {legal.map(([href, label]) => (
-              <Link
-                key={href}
-                href={href}
-                className="text-xs text-mute-dim transition-colors hover:text-mute"
-              >
-                {label}
-              </Link>
-            ))}
-          </div>
+          <Link
+            href="/mentions-legales"
+            className="text-xs text-mute-dim transition-colors hover:text-mute"
+          >
+            Mentions légales
+          </Link>
         </Container>
       </div>
 

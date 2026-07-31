@@ -3,9 +3,11 @@
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXmark, faCartShopping, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faXmark, faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { useCart } from '@/context/CartContext';
 import { formatPrice } from '@/lib/format';
+import { buildCartMessage, whatsappUrl } from '@/lib/whatsapp';
 import ProductVisual from './ProductVisual';
 
 export default function CartSidebar() {
@@ -152,24 +154,27 @@ export default function CartSidebar() {
 
         {cart.length > 0 && (
           <footer className="border-t border-line px-6 py-5">
-            <div className="mb-2 flex items-center justify-between text-xs text-mute-dim">
-              <span>Livraison</span>
-              <span>Calculée à la commande</span>
-            </div>
             <div className="mb-5 flex items-center justify-between">
-              <span className="text-xs uppercase tracking-label text-mute">Sous-total</span>
+              <span className="text-xs uppercase tracking-label text-mute">Total</span>
               <strong className="font-display text-2xl tracking-wide text-white">
                 {formatPrice(cartTotal)}
               </strong>
             </div>
-            <Link
-              href="/checkout"
+            {/* Pas de tunnel de commande : le panier part directement dans la
+                conversation, l'adresse et le paiement s'y règlent. */}
+            <a
+              href={whatsappUrl(buildCartMessage(cart, cartTotal))}
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={closeCart}
               className="flex w-full items-center justify-center gap-2.5 bg-white py-4 text-sm font-black uppercase tracking-cta text-black transition-colors hover:bg-accent"
             >
-              Commander
-              <FontAwesomeIcon icon={faArrowRight} className="h-3.5 w-3.5" />
-            </Link>
+              <FontAwesomeIcon icon={faWhatsapp} className="h-4 w-4" />
+              Commander sur WhatsApp
+            </a>
+            <p className="mt-3 text-center text-xs text-mute-dim">
+              Livraison et paiement se règlent dans la conversation.
+            </p>
           </footer>
         )}
       </aside>

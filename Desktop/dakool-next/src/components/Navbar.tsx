@@ -51,10 +51,10 @@ export default function Navbar() {
     <>
       <header
         onMouseLeave={() => setOpenEntry(null)}
-        className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-          scrolled || menuOpen || openEntry
-            ? 'border-b border-line bg-bg/95 backdrop-blur-md'
-            : 'bg-transparent'
+        /* surface-light : le header reste blanc quel que soit le thème,
+           le logo ne ressortant pas sur un fond sombre. */
+        className={`surface-light fixed inset-x-0 top-0 z-50 bg-bg text-fg transition-shadow duration-300 ${
+          scrolled || menuOpen || openEntry ? 'border-b border-line shadow-sm' : 'border-b border-line'
         }`}
       >
         <div className="mx-auto flex h-16 max-w-[100rem] items-center justify-between gap-6 px-5 sm:px-6 lg:px-8">
@@ -162,7 +162,7 @@ export default function Navbar() {
       <div
         id="menu-mobile"
         inert={!menuOpen}
-        className={`fixed inset-0 z-40 overflow-y-auto bg-bg pt-20 pb-10 transition-opacity duration-300 lg:hidden ${
+        className={`surface-light fixed inset-0 z-40 overflow-y-auto bg-bg pt-20 pb-10 text-fg transition-opacity duration-300 lg:hidden ${
           menuOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
         }`}
       >

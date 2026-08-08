@@ -11,8 +11,13 @@
    de les exposer aux utilitaires Tailwind.
    ============================================================ */
 
-/* ---- Thème clair (défaut) ---- */
-:root {
+/* ---- Thème clair (défaut) ----
+   `.surface-light` fige cette même palette localement : le header la porte
+   pour rester clair dans les deux thèmes, le logo embarquant un fond opaque
+   qui ne ressortirait pas sur un fond sombre. Les variables étant héritées,
+   tous les utilitaires (text-fg, bg-inverse, border-line…) suivent. */
+:root,
+.surface-light {
   --c-bg: #ffffff;
   --c-surface: #f5f5f5;
   --c-elevated: #ededed;

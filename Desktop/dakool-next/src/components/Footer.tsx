@@ -8,30 +8,29 @@ import FlagBar from './FlagBar';
 import NewsletterForm from './NewsletterForm';
 
 const socials = [
-  { icon: faInstagram, label: 'Instagram', href: 'https://instagram.com/dakool.sn' },
-  { icon: faFacebookF, label: 'Facebook', href: 'https://facebook.com/dakool.sn' },
+  { icon: faInstagram, label: 'Instagram', href: 'https://instagram.com/dakool' },
+  { icon: faFacebookF, label: 'Facebook', href: 'https://facebook.com/dakool' },
   { icon: faTiktok, label: 'TikTok', href: 'https://tiktok.com/@dakool.official' },
-  { icon: faXTwitter, label: 'X', href: 'https://x.com/dakool_sn' },
+  { icon: faXTwitter, label: 'X', href: 'https://x.com/dakool' },
 ];
 
 const navigation = [
   ['/', 'Accueil'],
   ['/produits', 'Boutique'],
-  ['/equipes', 'Clubs'],
   ['/contact', 'Contact'],
 ];
 
 export default function Footer() {
   return (
-    <footer className="border-t border-line bg-ink">
+    <footer className="border-t border-line bg-bg">
       {/* Adhésion Club DAKOOL */}
       <div className="border-b border-line">
         <Container className="flex flex-col gap-8 py-14 lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <span className="mb-3 block text-[11px] font-bold uppercase tracking-brand text-white">
+            <span className="mb-3 block text-[11px] font-bold uppercase tracking-brand text-fg">
               Club DAKOOL
             </span>
-            <h2 className="font-display text-heading text-white">
+            <h2 className="font-display text-heading text-fg">
               Deviens membre, c&apos;est gratuit
             </h2>
             {/* Bénéfices formulés comme ceux d'un programme d'adhésion
@@ -59,8 +58,8 @@ export default function Footer() {
             />
           </Link>
           <p className="max-w-xs text-sm leading-relaxed text-mute">
-            La première marque d&apos;équipements sportifs 100% sénégalaise. Née à Dakar, faite
-            pour ceux qui jouent.
+            Équipementier sportif. Maillots, chaussures et équipements pour ceux qui
+            jouent.
           </p>
         </Container>
       </div>
@@ -69,13 +68,13 @@ export default function Footer() {
       <Container className="py-14">
         <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3">
           <div>
-            <h3 className="mb-5 text-xs font-black uppercase tracking-label text-white">
+            <h3 className="mb-5 text-xs font-black uppercase tracking-label text-fg">
               Navigation
             </h3>
             <ul className="space-y-2.5">
               {navigation.map(([href, label]) => (
                 <li key={href}>
-                  <Link href={href} className="text-sm text-mute transition-colors hover:text-white">
+                  <Link href={href} className="text-sm text-mute transition-colors hover:text-fg">
                     {label}
                   </Link>
                 </li>
@@ -84,7 +83,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-5 text-xs font-black uppercase tracking-label text-white">
+            <h3 className="mb-5 text-xs font-black uppercase tracking-label text-fg">
               Collections
             </h3>
             <ul className="space-y-2.5">
@@ -94,7 +93,7 @@ export default function Footer() {
                   <li key={cat}>
                     <Link
                       href={`/produits?categorie=${encodeURIComponent(cat)}`}
-                      className="text-sm text-mute transition-colors hover:text-white"
+                      className="text-sm text-mute transition-colors hover:text-fg"
                     >
                       {cat}
                     </Link>
@@ -104,31 +103,17 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-5 text-xs font-black uppercase tracking-label text-white">Contact</h3>
+            <h3 className="mb-5 text-xs font-black uppercase tracking-label text-fg">Contact</h3>
             <ul className="space-y-2.5">
-              <li className="text-sm text-mute">
-                Zone Industrielle
-                <br />
-                Route de Rufisque
-                <br />
-                Dakar 11000, Sénégal
-              </li>
               <li>
                 <a
-                  href="tel:+221761234567"
-                  className="text-sm text-mute transition-colors hover:text-white"
+                  href="mailto:contact@dakool.com"
+                  className="text-sm text-mute transition-colors hover:text-fg"
                 >
-                  +221 76 123 45 67
+                  contact@dakool.com
                 </a>
               </li>
-              <li>
-                <a
-                  href="mailto:contact@dakool.sn"
-                  className="text-sm text-mute transition-colors hover:text-white"
-                >
-                  contact@dakool.sn
-                </a>
-              </li>
+              <li className="text-sm text-mute">Service client · 7j/7</li>
             </ul>
 
             <div className="mt-6 flex flex-wrap gap-2">
@@ -139,7 +124,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`DAKOOL sur ${label}`}
-                  className="flex h-9 w-9 items-center justify-center border border-line text-mute transition-colors hover:border-white hover:text-white"
+                  className="flex h-9 w-9 items-center justify-center border border-line text-mute transition-colors hover:border-fg hover:text-fg"
                 >
                   <FontAwesomeIcon icon={icon} className="h-3.5 w-3.5" />
                 </a>
@@ -153,7 +138,7 @@ export default function Footer() {
       <div className="border-t border-line py-6">
         <Container className="flex flex-col items-center justify-between gap-4 sm:flex-row">
           <p className="text-xs text-mute-dim">
-            © {new Date().getFullYear()} DAKOOL. Tous droits réservés. Fait avec fierté au Sénégal.
+            © {new Date().getFullYear()} DAKOOL. Tous droits réservés.
           </p>
           <Link
             href="/mentions-legales"

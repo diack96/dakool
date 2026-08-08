@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://dakool.sn/sitemap.xml',
+    sitemap: 'https://dakool.com/sitemap.xml',
   };
 }

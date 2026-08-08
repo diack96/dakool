@@ -11,7 +11,7 @@ import ProductVisual from './ProductVisual';
 
 /* Toutes les pastilles partagent le même traitement : le site est
    monochrome, la distinction se fait par le libellé. */
-const BADGE = 'bg-white text-black';
+const BADGE = 'bg-inverse text-on-inverse';
 
 export default function ProductCard({ product, index }: { product: Product; index?: number }) {
   const { addToCart, openCart } = useCart();
@@ -35,7 +35,7 @@ export default function ProductCard({ product, index }: { product: Product; inde
   };
 
   return (
-    <article className="group relative bg-ink">
+    <article className="group relative bg-bg">
       <div className="relative flex aspect-square items-center justify-center overflow-hidden bg-elevated">
         <ProductVisual category={product.category} index={index} />
 
@@ -58,7 +58,7 @@ export default function ProductCard({ product, index }: { product: Product; inde
         >
           <FontAwesomeIcon
             icon={faHeart}
-            className={`h-3.5 w-3.5 transition-colors ${wished ? 'text-white' : 'text-white/40'}`}
+            className={`h-3.5 w-3.5 transition-colors ${wished ? 'text-fg' : 'text-fg/40'}`}
           />
         </button>
 
@@ -67,13 +67,13 @@ export default function ProductCard({ product, index }: { product: Product; inde
           <button
             type="button"
             onClick={handleAdd}
-            className="absolute inset-x-0 bottom-0 z-20 flex items-center justify-center gap-2 bg-white py-3.5 text-[11px] font-black uppercase tracking-label text-black transition-[transform,background-color,color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:bg-accent sm:translate-y-full sm:group-hover:translate-y-0 sm:focus-visible:translate-y-0"
+            className="absolute inset-x-0 bottom-0 z-20 flex items-center justify-center gap-2 bg-inverse py-3.5 text-[11px] font-black uppercase tracking-label text-on-inverse transition-[transform,background-color,color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:bg-accent sm:translate-y-full sm:group-hover:translate-y-0 sm:focus-visible:translate-y-0"
           >
             <FontAwesomeIcon icon={faPlus} className="h-3 w-3" />
             Ajouter au panier
           </button>
         ) : (
-          <span className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex items-center justify-center gap-2 bg-white py-3.5 text-[11px] font-black uppercase tracking-label text-black transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] sm:translate-y-full sm:group-hover:translate-y-0">
+          <span className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex items-center justify-center gap-2 bg-inverse py-3.5 text-[11px] font-black uppercase tracking-label text-on-inverse transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] sm:translate-y-full sm:group-hover:translate-y-0">
             Voir le produit
             <FontAwesomeIcon icon={faArrowRight} className="h-3 w-3" />
           </span>
@@ -84,17 +84,17 @@ export default function ProductCard({ product, index }: { product: Product; inde
         <p className="mb-1.5 text-[10px] font-bold uppercase tracking-label text-accent">
           {product.category}
         </p>
-        <h3 className="mb-2 text-sm leading-tight font-semibold text-white">
+        <h3 className="mb-2 text-sm leading-tight font-semibold text-fg">
           {/* Le ::after étend la zone cliquable à toute la carte sans imbriquer
               de bouton dans un lien. */}
           <Link
             href={`/produits/${product.slug}`}
-            className="transition-colors after:absolute after:inset-0 after:content-[''] hover:text-white"
+            className="transition-colors after:absolute after:inset-0 after:content-[''] hover:text-fg"
           >
             {product.name}
           </Link>
         </h3>
-        <p className="font-display text-xl tracking-wide text-white">{formatPrice(product.price)}</p>
+        <p className="font-display text-xl tracking-wide text-fg">{formatPrice(product.price)}</p>
       </div>
     </article>
   );

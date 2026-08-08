@@ -40,18 +40,18 @@ export default function BuyPanel({ product }: { product: Product }) {
 
   return (
     <div>
-      <p className="mb-2 text-[11px] font-bold uppercase tracking-brand text-white">
+      <p className="mb-2 text-[11px] font-bold uppercase tracking-brand text-fg">
         {product.category}
       </p>
-      <h1 className="mb-3 font-display text-title text-white">{product.name}</h1>
+      <h1 className="mb-3 font-display text-title text-fg">{product.name}</h1>
       <p className="mb-6 text-base text-mute">{product.tagline}</p>
 
       <p className="mb-8 flex items-baseline gap-3">
-        <span className="font-display text-4xl text-white">{formatPrice(product.price)}</span>
+        <span className="font-display text-4xl text-fg">{formatPrice(product.price)}</span>
         {product.inStock ? (
           <span className="text-xs uppercase tracking-label text-accent">En stock</span>
         ) : (
-          <span className="text-xs uppercase tracking-label text-white">Rupture</span>
+          <span className="text-xs uppercase tracking-label text-fg">Rupture</span>
         )}
       </p>
 
@@ -59,7 +59,7 @@ export default function BuyPanel({ product }: { product: Product }) {
       {product.colors.length > 0 && (
         <fieldset className="mb-7">
           <legend className="mb-3 text-[10px] font-black uppercase tracking-label text-mute-dim">
-            Coloris — <span className="text-white">{color}</span>
+            Coloris — <span className="text-fg">{color}</span>
           </legend>
           <div className="flex flex-wrap gap-2.5">
             {product.colors.map((c) => (
@@ -73,7 +73,7 @@ export default function BuyPanel({ product }: { product: Product }) {
                 /* Bordure toujours marquée : sans elle, la pastille « Noir »
                    disparaîtrait sur le fond sombre du panneau. */
                 className={`h-10 w-10 border-2 transition-colors ${
-                  color === c.name ? 'border-white' : 'border-line-strong hover:border-white/60'
+                  color === c.name ? 'border-fg' : 'border-line-strong hover:border-fg/60'
                 }`}
                 style={{ backgroundColor: c.hex }}
               />
@@ -99,8 +99,8 @@ export default function BuyPanel({ product }: { product: Product }) {
               aria-pressed={size === s}
               className={`min-w-14 border px-4 py-3 text-xs font-black uppercase tracking-cta transition-colors ${
                 size === s
-                  ? 'border-white bg-white text-black'
-                  : 'border-line text-mute hover:border-line-strong hover:text-white'
+                  ? 'border-fg bg-inverse text-on-inverse'
+                  : 'border-line text-mute hover:border-line-strong hover:text-fg'
               }`}
             >
               {s}
@@ -108,7 +108,7 @@ export default function BuyPanel({ product }: { product: Product }) {
           ))}
         </div>
         {error && (
-          <p role="alert" className="mt-3 text-xs text-white">
+          <p role="alert" className="mt-3 text-xs text-fg">
             Sélectionne ta taille.
           </p>
         )}
@@ -124,18 +124,18 @@ export default function BuyPanel({ product }: { product: Product }) {
             type="button"
             onClick={() => setQty((q) => Math.max(1, q - 1))}
             aria-label="Réduire la quantité"
-            className="px-4 py-3 text-white transition-colors hover:bg-elevated"
+            className="px-4 py-3 text-fg transition-colors hover:bg-elevated"
           >
             −
           </button>
-          <span className="w-10 text-center text-sm text-white" aria-live="polite">
+          <span className="w-10 text-center text-sm text-fg" aria-live="polite">
             {qty}
           </span>
           <button
             type="button"
             onClick={() => setQty((q) => Math.min(99, q + 1))}
             aria-label="Augmenter la quantité"
-            className="px-4 py-3 text-white transition-colors hover:bg-elevated"
+            className="px-4 py-3 text-fg transition-colors hover:bg-elevated"
           >
             +
           </button>
@@ -146,7 +146,7 @@ export default function BuyPanel({ product }: { product: Product }) {
         type="button"
         onClick={handleAdd}
         disabled={!product.inStock}
-        className="flex w-full items-center justify-center gap-2.5 bg-white py-4.5 text-sm font-black uppercase tracking-cta text-black transition-colors hover:bg-accent disabled:pointer-events-none disabled:opacity-40"
+        className="flex w-full items-center justify-center gap-2.5 bg-inverse py-4.5 text-sm font-black uppercase tracking-cta text-on-inverse transition-colors hover:bg-accent disabled:pointer-events-none disabled:opacity-40"
       >
         <FontAwesomeIcon icon={faPlus} className="h-3.5 w-3.5" />
         Ajouter au panier
@@ -165,7 +165,7 @@ export default function BuyPanel({ product }: { product: Product }) {
         )}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-2.5 flex w-full items-center justify-center gap-2.5 border border-line-strong py-4 text-sm font-black uppercase tracking-cta text-white transition-colors hover:bg-white hover:text-black"
+        className="mt-2.5 flex w-full items-center justify-center gap-2.5 border border-line-strong py-4 text-sm font-black uppercase tracking-cta text-fg transition-colors hover:bg-inverse hover:text-on-inverse"
       >
         <FontAwesomeIcon icon={faWhatsapp} className="h-4 w-4" />
         Commander sur WhatsApp
@@ -174,7 +174,7 @@ export default function BuyPanel({ product }: { product: Product }) {
       <ul className="mt-8 space-y-3 border-t border-line pt-8">
         <li className="flex items-start gap-3 text-sm text-mute">
           <FontAwesomeIcon icon={faTruckFast} className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-          Livraison offerte à Dakar sous 24–48h. 3–5 jours ailleurs au Sénégal.
+          Expédition sous 48h. Délai de livraison selon la destination.
         </li>
         <li className="flex items-start gap-3 text-sm text-mute">
           <FontAwesomeIcon icon={faRotateLeft} className="mt-0.5 h-4 w-4 shrink-0 text-accent" />

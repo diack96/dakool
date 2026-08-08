@@ -46,18 +46,18 @@ export default async function ProduitPage({ params }: Params) {
 
   return (
     <>
-      <div className="border-b border-line bg-ink pt-24">
+      <div className="border-b border-line bg-bg pt-24">
         <Container>
           <nav aria-label="Fil d'Ariane" className="py-5 text-xs text-mute-dim">
             <ol className="flex flex-wrap items-center gap-2">
               <li>
-                <Link href="/" className="transition-colors hover:text-white">
+                <Link href="/" className="transition-colors hover:text-fg">
                   Accueil
                 </Link>
               </li>
               <li aria-hidden>/</li>
               <li>
-                <Link href="/produits" className="transition-colors hover:text-white">
+                <Link href="/produits" className="transition-colors hover:text-fg">
                   Produits
                 </Link>
               </li>
@@ -65,26 +65,26 @@ export default async function ProduitPage({ params }: Params) {
               <li>
                 <Link
                   href={`/produits?categorie=${encodeURIComponent(product.category)}`}
-                  className="transition-colors hover:text-white"
+                  className="transition-colors hover:text-fg"
                 >
                   {product.category}
                 </Link>
               </li>
               <li aria-hidden>/</li>
-              <li className="text-white">{product.name}</li>
+              <li className="text-fg">{product.name}</li>
             </ol>
           </nav>
         </Container>
       </div>
 
       {/* Visuel + achat */}
-      <section className="bg-ink">
+      <section className="bg-bg">
         <Container className="grid gap-12 py-12 lg:grid-cols-2 lg:gap-16 lg:py-16">
           <div className="relative">
             <div className="grain relative flex aspect-square items-center justify-center overflow-hidden border border-line bg-elevated">
               <ProductVisual category={product.category} index={productIndex} />
               {product.badge && (
-                <span className="absolute top-5 left-5 bg-white px-2.5 py-1.5 text-[10px] font-black uppercase tracking-cta text-black">
+                <span className="absolute top-5 left-5 bg-inverse px-2.5 py-1.5 text-[10px] font-black uppercase tracking-cta text-on-inverse">
                   {product.badge.label}
                 </span>
               )}
@@ -116,18 +116,18 @@ export default async function ProduitPage({ params }: Params) {
       <section className="border-y border-line bg-surface py-16 sm:py-20">
         <Container className="grid gap-12 lg:grid-cols-2 lg:gap-20">
           <Reveal>
-            <span className="mb-4 block text-[11px] font-bold uppercase tracking-brand text-white">
+            <span className="mb-4 block text-[11px] font-bold uppercase tracking-brand text-fg">
               Le produit
             </span>
-            <h2 className="mb-5 font-display text-heading text-white">Description</h2>
+            <h2 className="mb-5 font-display text-heading text-fg">Description</h2>
             <p className="text-base leading-relaxed text-mute">{product.description}</p>
           </Reveal>
 
           <Reveal delay={100}>
-            <span className="mb-4 block text-[11px] font-bold uppercase tracking-brand text-white">
+            <span className="mb-4 block text-[11px] font-bold uppercase tracking-brand text-fg">
               Fiche technique
             </span>
-            <h2 className="mb-5 font-display text-heading text-white">Caractéristiques</h2>
+            <h2 className="mb-5 font-display text-heading text-fg">Caractéristiques</h2>
             <ul className="divide-y divide-line border-y border-line">
               {product.details.map((detail) => (
                 <li key={detail} className="flex items-start gap-3 py-3.5 text-sm text-mute">
@@ -142,7 +142,7 @@ export default async function ProduitPage({ params }: Params) {
             <dl className="mt-8 grid grid-cols-2 gap-px border border-line bg-line">
               <div className="bg-surface px-5 py-4">
                 <dt className="text-[10px] uppercase tracking-label text-mute-dim">Prix</dt>
-                <dd className="mt-1 font-display text-2xl text-white">
+                <dd className="mt-1 font-display text-2xl text-fg">
                   {formatPrice(product.price)}
                 </dd>
               </div>
@@ -150,7 +150,7 @@ export default async function ProduitPage({ params }: Params) {
                 <dt className="text-[10px] uppercase tracking-label text-mute-dim">
                   {product.sizes.length > 1 ? 'Tailles' : 'Format'}
                 </dt>
-                <dd className="mt-1 font-display text-2xl text-white">
+                <dd className="mt-1 font-display text-2xl text-fg">
                   {product.sizes.length > 1 ? product.sizes.join(' · ') : product.sizes[0]}
                 </dd>
               </div>
@@ -160,7 +160,7 @@ export default async function ProduitPage({ params }: Params) {
       </section>
 
       {/* Suggestions */}
-      <section className="bg-ink py-16 sm:py-20">
+      <section className="bg-bg py-16 sm:py-20">
         <Container>
           <SectionHeading
             eyebrow="Complète ta tenue"

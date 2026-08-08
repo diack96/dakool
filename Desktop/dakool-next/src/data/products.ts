@@ -20,14 +20,14 @@ const ONE_SIZE = ['Taille unique'];
 export const products: Product[] = [
   {
     id: 'p1',
-    slug: 'maillot-officiel-teranga',
-    name: 'Maillot Officiel Teranga',
+    slug: 'maillot-officiel-pro',
+    name: 'Maillot Officiel Pro',
     category: 'Maillots',
-    price: 25000,
+    price: 38,
     badge: { label: 'Nouveau' },
-    tagline: 'Le maillot qui porte le nom du pays.',
+    tagline: 'Notre maillot signature.',
     description:
-      "Notre pièce signature. Le maillot Teranga reprend les codes du football sénégalais dans une coupe ajustée pensée pour le jeu. Maille technique à double couche, empiècements ventilés sous les bras et col côtelé renforcé. Le blason est brodé, pas imprimé — il tiendra toute la saison.",
+      "Notre pièce signature, dans une coupe ajustée pensée pour le jeu. Maille technique à double couche, empiècements ventilés sous les bras et col côtelé renforcé. Le blason est brodé, pas imprimé — il tiendra toute la saison.",
     sizes: JERSEY_SIZES,
     colors: [
       { name: 'Noir', hex: '#0F0F0F' },
@@ -45,13 +45,13 @@ export const products: Product[] = [
   },
   {
     id: 'p2',
-    slug: 'maillot-domicile-lion',
-    name: 'Maillot Domicile Lion',
+    slug: 'maillot-domicile',
+    name: 'Maillot Domicile',
     category: 'Maillots',
-    price: 22000,
+    price: 34,
     tagline: 'Le maillot des soirs de match à domicile.',
     description:
-      'Coupe classique, tissu léger, séchage rapide. Le maillot Domicile Lion est celui que portent nos clubs partenaires en championnat. Sobre sur le terrain, il se porte aussi bien en dehors.',
+      "Coupe classique, tissu léger, séchage rapide. C'est le maillot que portent nos clubs partenaires en championnat. Sobre sur le terrain, il se porte aussi bien en dehors.",
     sizes: JERSEY_SIZES,
     colors: [
       { name: 'Noir', hex: '#0F0F0F' },
@@ -67,14 +67,14 @@ export const products: Product[] = [
   },
   {
     id: 'p3',
-    slug: 'ballon-officiel-teranga',
-    name: 'Ballon Officiel Téranga',
+    slug: 'ballon-officiel-match',
+    name: 'Ballon Officiel Match',
     category: 'Ballons',
-    price: 18500,
+    price: 28,
     badge: { label: 'Officiel' },
     tagline: 'Le ballon des compétitions que nous sponsorisons.',
     description:
-      "Ballon de match taille 5, thermocollé sans couture apparente pour une trajectoire prévisible et un contact régulier. C'est le ballon utilisé sur le Tournoi de la Téranga et en Coupe du Sénégal.",
+      "Ballon de match taille 5, thermocollé sans couture apparente pour une trajectoire prévisible et un contact régulier. C'est le ballon utilisé sur les compétitions que nous sponsorisons.",
     sizes: ['Taille 4', 'Taille 5'],
     colors: [
       { name: 'Blanc', hex: '#F2F2F2' },
@@ -93,11 +93,11 @@ export const products: Product[] = [
     slug: 'chaussures-elite-pro',
     name: 'Chaussure Elite Pro',
     category: 'Chaussures',
-    price: 45000,
+    price: 69,
     badge: { label: 'Pro' },
     tagline: 'Notre chaussure la plus rapide.',
     description:
-      'Conçue avec des joueurs de Ligue 1 sénégalaise. Tige synthétique fine pour le toucher de balle, semelle en composite léger, crampons lamellaires pour les appuis sur terrain sec. 210 g en taille 42.',
+      'Conçue avec des joueurs professionnels. Tige synthétique fine pour le toucher de balle, semelle en composite léger, crampons lamellaires pour les appuis sur terrain sec. 210 g en taille 42.',
     sizes: BOOT_SIZES,
     colors: [
       { name: 'Noir', hex: '#0F0F0F' },
@@ -118,7 +118,7 @@ export const products: Product[] = [
     slug: 'short-training-dakool',
     name: 'Short Training DAKOOL',
     category: 'Accessoires',
-    price: 8500,
+    price: 13,
     tagline: "Le short d'entraînement, tous les jours.",
     description:
       "Taille élastiquée à cordon, deux poches latérales, tissu léger qui sèche vite. Rien de superflu — c'est le short que portent nos équipes à l'entraînement toute la semaine.",
@@ -140,7 +140,7 @@ export const products: Product[] = [
     slug: 'chaussettes-pro',
     name: 'Chaussettes Pro',
     category: 'Accessoires',
-    price: 3500,
+    price: 6,
     tagline: 'Maintien du pied, zéro glissement.',
     description:
       'Chaussettes hautes à compression légère sur la voûte plantaire, semelle bouclette pour amortir les chocs et bande antidérapante interne. Vendues par paire.',
@@ -163,11 +163,11 @@ export const products: Product[] = [
     slug: 'veste-entraineur',
     name: 'Veste Entraîneur',
     category: 'Équipements',
-    price: 35000,
+    price: 53,
     badge: { label: 'Coach' },
     tagline: 'Pour ceux qui dirigent depuis le bord du terrain.',
     description:
-      'Veste coupe-vent déperlante, doublure maille, col montant et poches zippées. Pensée pour rester trois heures debout sous le vent de la corniche sans bouger.',
+      'Veste coupe-vent déperlante, doublure maille, col montant et poches zippées. Pensée pour rester trois heures debout au bord du terrain sans bouger.',
     sizes: JERSEY_SIZES,
     colors: [
       { name: 'Noir', hex: '#0F0F0F' },
@@ -186,7 +186,7 @@ export const products: Product[] = [
     slug: 'sac-de-sport-dakool',
     name: 'Sac de Sport DAKOOL',
     category: 'Équipements',
-    price: 28000,
+    price: 43,
     tagline: 'Tout le kit du match dans un seul sac.',
     description:
       'Sac de 55 litres avec compartiment chaussures ventilé séparé, poche humide étanche et bandoulière rembourrée. Base renforcée pour poser au sol sans abîmer.',
@@ -209,7 +209,7 @@ export const products: Product[] = [
     slug: 'gants-de-gardien',
     name: 'Gants de Gardien',
     category: 'Équipements',
-    price: 32000,
+    price: 49,
     badge: { label: 'Gardien' },
     tagline: 'Latex allemand, adhérence par tous les temps.',
     description:
@@ -233,7 +233,7 @@ export const products: Product[] = [
     slug: 'protege-tibias-elite',
     name: 'Protège-tibias Elite',
     category: 'Accessoires',
-    price: 7500,
+    price: 11,
     tagline: 'Léger au point de les oublier.',
     description:
       'Coque en polypropylène haute densité doublée mousse EVA. 42 g par protège-tibia. Livrés avec une paire de manchons de maintien.',
@@ -252,10 +252,10 @@ export const products: Product[] = [
   },
   {
     id: 'p11',
-    slug: 'bandeau-teranga',
-    name: 'Bandeau Téranga',
+    slug: 'bandeau-performance',
+    name: 'Bandeau Performance',
     category: 'Accessoires',
-    price: 4500,
+    price: 7,
     tagline: 'Le détail qui se voit de la tribune.',
     description:
       'Bandeau élastique absorbant, logo DAKOOL tissé. Coutures plates pour ne pas irriter, maintien sans serrer.',
@@ -272,7 +272,7 @@ export const products: Product[] = [
     slug: 'chaussures-junior',
     name: 'Chaussure Junior',
     category: 'Chaussures',
-    price: 28000,
+    price: 43,
     badge: { label: 'Junior' },
     tagline: 'La première paire sérieuse.',
     description:
@@ -295,7 +295,7 @@ export const products: Product[] = [
     slug: 'maillot-gardien-elite',
     name: 'Maillot Gardien Elite',
     category: 'Maillots',
-    price: 26000,
+    price: 40,
     badge: { label: 'GK' },
     tagline: 'Manches longues, coudes rembourrés.',
     description:
@@ -319,7 +319,7 @@ export const products: Product[] = [
     slug: 'ballon-d-entrainement',
     name: "Ballon d'Entraînement",
     category: 'Ballons',
-    price: 12000,
+    price: 18,
     tagline: 'Celui qui encaisse les séances de la semaine.',
     description:
       "Ballon d'entraînement cousu machine, enveloppe TPU renforcée. Moins nerveux que le ballon de match, beaucoup plus résistant aux terrains durs.",
@@ -341,7 +341,7 @@ export const products: Product[] = [
     slug: 'survetement-complet',
     name: 'Survêtement Complet',
     category: 'Équipements',
-    price: 42000,
+    price: 64,
     badge: { label: 'Ensemble' },
     tagline: 'Veste et pantalon, une seule commande.',
     description:
@@ -364,7 +364,7 @@ export const products: Product[] = [
     slug: 'casquette-dakool',
     name: 'Casquette DAKOOL',
     category: 'Accessoires',
-    price: 6000,
+    price: 9,
     tagline: "Le logo, rien d'autre.",
     description:
       'Casquette six panneaux en coton lavé, logo DAKOOL brodé sur le devant, fermeture métal réglable. Visière préformée.',

@@ -7,7 +7,7 @@ import ProduitsClient from './ProduitsClient';
 export const metadata: Metadata = {
   title: 'Boutique officielle',
   description:
-    'Maillots, chaussures, ballons et accessoires DAKOOL. Livraison offerte à Dakar, retours gratuits sous 14 jours.',
+    'Maillots, chaussures, ballons et accessoires DAKOOL. Livraison internationale, retours gratuits sous 14 jours.',
   alternates: { canonical: '/produits' },
 };
 
@@ -26,19 +26,19 @@ export default async function ProduitsPage({
         tag="Boutique officielle DAKOOL"
         title="La"
         highlight="Collection"
-        subtitle="Des équipements de niveau professionnel, conçus et cousus à Dakar. Livraison offerte dans la capitale."
+        subtitle="Des équipements de niveau professionnel, testés une saison complète en compétition avant la mise en vente."
         index="02"
         meta={[
           { value: String(products.length), label: 'Références' },
           { value: '5', label: 'Catégories' },
-          { value: '24h', label: 'Livraison Dakar' },
+          { value: '48h', label: 'Expédition' },
           { value: '30j', label: 'Garantie' },
         ]}
       />
 
       <Marquee
         items={[
-          'Livraison offerte à Dakar',
+          'Livraison internationale',
           'Retours gratuits sous 14 jours',
           'Flocage nom + numéro',
           'Tarifs clubs dès 10 pièces',

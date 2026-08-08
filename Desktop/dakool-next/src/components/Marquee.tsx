@@ -16,7 +16,7 @@ export default function Marquee({ items, accent = false }: Props) {
       /* En version inversée le filet doit être sombre : un bandeau blanc
          collé à un bandeau CTA blanc se lirait comme un seul bloc. */
       className={`relative overflow-hidden border-y ${
-        accent ? 'border-black/15 bg-white' : 'border-line bg-elevated'
+        accent ? 'border-on-inverse/15 bg-inverse' : 'border-line bg-elevated'
       }`}
     >
       <div className="flex w-max animate-marquee py-3.5 hover:[animation-play-state:paused]">
@@ -24,11 +24,11 @@ export default function Marquee({ items, accent = false }: Props) {
           <span
             key={`${item}-${i}`}
             className={`flex shrink-0 items-center gap-6 px-6 font-display text-xl tracking-[0.18em] whitespace-nowrap ${
-              accent ? 'text-black' : 'text-white/70'
+              accent ? 'text-on-inverse' : 'text-fg/70'
             }`}
           >
             {item}
-            <span className={accent ? 'text-black/35' : 'text-accent'}>✦</span>
+            <span className={accent ? 'text-on-inverse/35' : 'text-accent'}>✦</span>
           </span>
         ))}
       </div>

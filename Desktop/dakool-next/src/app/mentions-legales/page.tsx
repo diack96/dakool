@@ -4,42 +4,55 @@ import LegalPage, { type LegalSection } from '@/components/LegalPage';
 export const metadata: Metadata = {
   title: 'Mentions légales',
   description:
-    'Éditeur du site, conditions de vente, livraison, retours et protection des données — DAKOOL, Dakar, Sénégal.',
+    'Éditeur du site, conditions de vente, livraison, retours et protection des données — DAKOOL.',
   alternates: { canonical: '/mentions-legales' },
 };
 
-/* Page légale unique : à ce stade le site ne prend aucun paiement en ligne,
-   les conditions tiennent donc sur une seule page plutôt que trois. */
+/*
+ * ⚠️ À COMPLÉTER AVANT MISE EN LIGNE
+ *
+ * Les champs marqués « [À COMPLÉTER] » sont juridiquement obligatoires et ne
+ * peuvent pas être devinés : raison sociale exacte, adresse du siège, numéro
+ * d'immatriculation, pays de rattachement et juridiction compétente. Ils
+ * dépendent du pays d'établissement de la société, à trancher avec un
+ * conseil juridique. Le reste du document est rédigé et prêt.
+ */
 const sections: LegalSection[] = [
   {
     heading: 'Éditeur du site',
     body: [
-      'Ce site est édité par DAKOOL SARL, société de droit sénégalais dont le siège est situé Zone Industrielle de Dakar, Route de Rufisque, Dakar 11000, Sénégal.',
+      'Ce site est édité par DAKOOL. Les informations d’immatriculation et l’adresse du siège social figurent ci-dessous.',
     ],
     bullets: [
-      'DAKOOL SARL — Zone Industrielle, Route de Rufisque, Dakar 11000',
-      'Téléphone : +221 76 123 45 67',
-      'Email : contact@dakool.sn',
+      'Raison sociale : DAKOOL — [À COMPLÉTER : forme juridique]',
+      'Siège social : [À COMPLÉTER : adresse complète]',
+      'Immatriculation : [À COMPLÉTER : numéro et registre]',
+      'Email : contact@dakool.com',
       'Hébergement : prestataire cloud, coordonnées communiquées sur demande',
     ],
   },
   {
     heading: 'Commandes et paiement',
     body: [
-      "Les commandes se passent par WhatsApp ou par téléphone. Aucun paiement n'est prélevé sur ce site : le prix, la disponibilité et les modalités sont confirmés par notre équipe avant tout règlement.",
-      'Les prix sont indiqués en francs CFA toutes taxes comprises et ne comprennent pas les frais de livraison. Ils peuvent être modifiés sans préavis ; le tarif applicable est celui confirmé lors de la commande.',
+      "Les commandes se passent par WhatsApp ou par email. Aucun paiement n'est prélevé sur ce site : le prix, la disponibilité et les modalités sont confirmés par notre équipe avant tout règlement.",
+      'Les prix sont indiqués en euros toutes taxes comprises et ne comprennent pas les frais de livraison. Ils peuvent être modifiés sans préavis ; le tarif applicable est celui confirmé lors de la commande.',
     ],
     bullets: [
-      'Moyens acceptés : Wave, Orange Money, Free Money, virement, espèces à Dakar',
-      'Personnalisation (flocage nom + numéro) : 2 000 FCFA par article',
+      'Moyens acceptés : virement bancaire et paiement mobile',
+      'Personnalisation (flocage nom + numéro) : 3 € par article',
       'Tarifs préférentiels pour les clubs à partir de 10 pièces',
+      'Droits de douane et taxes d’importation éventuels à la charge du destinataire',
     ],
   },
   {
     heading: 'Livraison',
+    body: [
+      "Les commandes quittent notre atelier sous quarante-huit heures ouvrées. Le délai d'acheminement dépend ensuite de la destination et du transporteur retenu ; il est communiqué lors de la confirmation de commande.",
+      'Les délais sont donnés à titre indicatif. Un retard ne peut donner lieu à annulation de la vente ni à indemnité, sauf faute lourde de notre part.',
+    ],
     bullets: [
-      'Région de Dakar : 24 à 48 heures, livraison offerte',
-      'Autres régions du Sénégal : 3 à 5 jours ouvrables',
+      'Expédition sous 48 heures ouvrées',
+      'Livraison internationale',
       'Articles personnalisés : 7 à 10 jours ouvrables supplémentaires',
     ],
   },
@@ -54,15 +67,15 @@ const sections: LegalSection[] = [
     heading: 'Données personnelles',
     body: [
       "Nous ne collectons que les données nécessaires au traitement de votre demande : nom, téléphone, email et adresse de livraison. Elles ne sont ni vendues ni cédées à des tiers, et ne sont transmises qu'à nos prestataires de livraison, pour la seule exécution de votre commande.",
-      "Votre panier est enregistré dans le stockage local de votre navigateur, sur votre appareil ; il n'est transmis nulle part tant que vous ne nous écrivez pas.",
-      "Conformément à la loi n° 2008-12 du 25 janvier 2008, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Écrivez à contact@dakool.sn : nous répondons sous trente jours.",
+      "Votre panier est enregistré dans le stockage local de votre navigateur, sur votre appareil ; il n'est transmis nulle part tant que vous ne nous écrivez pas. Votre préférence de thème clair ou sombre y est également conservée.",
+      "Vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Écrivez à contact@dakool.com : nous répondons sous trente jours. [À COMPLÉTER : mention du régime de protection des données applicable au pays d'établissement.]",
     ],
   },
   {
     heading: 'Propriété intellectuelle et droit applicable',
     body: [
-      "La marque DAKOOL, le logo, les textes et les visuels de ce site sont protégés et ne peuvent être reproduits sans autorisation écrite. Les noms et logos des clubs partenaires restent la propriété de leurs détenteurs.",
-      "Les présentes conditions sont soumises au droit sénégalais. En cas de litige, les parties recherchent une solution amiable avant toute action ; à défaut, les tribunaux de Dakar sont compétents.",
+      'La marque DAKOOL, le logo, les textes et les visuels de ce site sont protégés et ne peuvent être reproduits sans autorisation écrite. Les noms et logos des clubs partenaires restent la propriété de leurs détenteurs.',
+      'Les présentes conditions sont soumises au droit du pays d’établissement de la société. [À COMPLÉTER : droit applicable et juridiction compétente.] En cas de litige, les parties recherchent une solution amiable avant toute action contentieuse.',
     ],
   },
 ];
@@ -74,7 +87,7 @@ export default function MentionsLegalesPage() {
       title="Mentions"
       highlight="Légales"
       subtitle="Éditeur, commandes, livraison, retours et protection des données."
-      updatedAt="31 juillet 2026"
+      updatedAt="1 août 2026"
       sections={sections}
     />
   );

@@ -16,12 +16,12 @@ type Props = {
 
 const variants: Record<Variant, string> = {
   /* ---- Sur fond noir ---- */
-  solid: 'bg-white text-black hover:bg-accent',
-  outline: 'border border-line-strong text-white hover:border-white hover:bg-white hover:text-black',
+  solid: 'bg-inverse text-on-inverse hover:bg-accent',
+  outline: 'border border-line-strong text-fg hover:border-fg hover:bg-inverse hover:text-on-inverse',
 
   /* ---- Sur fond blanc (bandeaux CTA inversés) ---- */
-  dark: 'bg-ink text-white hover:bg-raised',
-  darkOutline: 'border border-black/25 text-black hover:bg-ink hover:text-white',
+  dark: 'bg-bg text-fg hover:bg-elevated',
+  darkOutline: 'border border-on-inverse/25 text-on-inverse hover:bg-bg hover:text-fg',
 };
 
 const sizes: Record<Size, string> = {

@@ -31,7 +31,7 @@ export default function LegalPage({
     <>
       <PageHero tag={tag} title={title} highlight={highlight} subtitle={subtitle} />
 
-      <article className="bg-ink py-16 sm:py-20">
+      <article className="bg-bg py-16 sm:py-20">
         <Container size="narrow">
           <p className="mb-12 border-b border-line pb-6 text-xs uppercase tracking-label text-mute-dim">
             Dernière mise à jour : {updatedAt}
@@ -40,7 +40,7 @@ export default function LegalPage({
           <div className="space-y-12">
             {sections.map((section, i) => (
               <section key={section.heading}>
-                <h2 className="mb-4 font-display text-heading text-white">
+                <h2 className="mb-4 font-display text-heading text-fg">
                   <span className="mr-3 text-accent">{String(i + 1).padStart(2, '0')}</span>
                   {section.heading}
                 </h2>
@@ -70,10 +70,10 @@ export default function LegalPage({
           <p className="mt-16 border-t border-line pt-8 text-sm text-mute">
             Une question sur ce document ? Écrivez-nous à{' '}
             <a
-              href="mailto:contact@dakool.sn"
-              className="text-accent transition-colors hover:text-white"
+              href="mailto:contact@dakool.com"
+              className="text-accent transition-colors hover:text-fg"
             >
-              contact@dakool.sn
+              contact@dakool.com
             </a>
             .
           </p>

@@ -58,7 +58,7 @@ export default function CartSidebar() {
         }`}
       >
         <header className="flex items-center justify-between border-b border-line px-6 py-5">
-          <h2 id="titre-panier" className="font-display text-2xl tracking-wide text-white">
+          <h2 id="titre-panier" className="font-display text-2xl tracking-wide text-fg">
             Mon Panier
             {cartCount > 0 && <span className="ml-2 text-accent">({cartCount})</span>}
           </h2>
@@ -67,7 +67,7 @@ export default function CartSidebar() {
             type="button"
             onClick={closeCart}
             aria-label="Fermer le panier"
-            className="p-1 text-mute transition-colors hover:text-white"
+            className="p-1 text-mute transition-colors hover:text-fg"
           >
             <FontAwesomeIcon icon={faXmark} className="h-5 w-5" />
           </button>
@@ -81,7 +81,7 @@ export default function CartSidebar() {
               <Link
                 href="/produits"
                 onClick={closeCart}
-                className="bg-white px-6 py-3 text-xs font-black uppercase tracking-cta text-black transition-colors hover:bg-accent"
+                className="bg-inverse px-6 py-3 text-xs font-black uppercase tracking-cta text-on-inverse transition-colors hover:bg-accent"
               >
                 Continuer mes achats
               </Link>
@@ -93,7 +93,7 @@ export default function CartSidebar() {
                   <Link
                     href={`/produits/${item.slug}`}
                     onClick={closeCart}
-                    className="h-16 w-16 shrink-0 border border-line bg-ink p-1"
+                    className="h-16 w-16 shrink-0 border border-line bg-bg p-1"
                   >
                     <ProductVisual category={item.category} />
                   </Link>
@@ -102,7 +102,7 @@ export default function CartSidebar() {
                     <Link
                       href={`/produits/${item.slug}`}
                       onClick={closeCart}
-                      className="block truncate text-sm font-semibold text-white transition-colors hover:text-white"
+                      className="block truncate text-sm font-semibold text-fg transition-colors hover:text-fg"
                     >
                       {item.name}
                     </Link>
@@ -120,18 +120,18 @@ export default function CartSidebar() {
                         type="button"
                         onClick={() => updateQty(item.key, -1)}
                         aria-label={`Réduire la quantité de ${item.name}`}
-                        className="flex h-7 w-7 items-center justify-center border border-line text-sm text-white transition-colors hover:border-line-strong"
+                        className="flex h-7 w-7 items-center justify-center border border-line text-sm text-fg transition-colors hover:border-line-strong"
                       >
                         −
                       </button>
-                      <span className="w-5 text-center text-sm text-white" aria-live="polite">
+                      <span className="w-5 text-center text-sm text-fg" aria-live="polite">
                         {item.qty}
                       </span>
                       <button
                         type="button"
                         onClick={() => updateQty(item.key, 1)}
                         aria-label={`Augmenter la quantité de ${item.name}`}
-                        className="flex h-7 w-7 items-center justify-center border border-line text-sm text-white transition-colors hover:border-line-strong"
+                        className="flex h-7 w-7 items-center justify-center border border-line text-sm text-fg transition-colors hover:border-line-strong"
                       >
                         +
                       </button>
@@ -142,7 +142,7 @@ export default function CartSidebar() {
                     type="button"
                     onClick={() => removeFromCart(item.key)}
                     aria-label={`Retirer ${item.name} du panier`}
-                    className="p-1 text-mute-dim transition-colors hover:text-white"
+                    className="p-1 text-mute-dim transition-colors hover:text-fg"
                   >
                     <FontAwesomeIcon icon={faXmark} className="h-4 w-4" />
                   </button>
@@ -156,7 +156,7 @@ export default function CartSidebar() {
           <footer className="border-t border-line px-6 py-5">
             <div className="mb-5 flex items-center justify-between">
               <span className="text-xs uppercase tracking-label text-mute">Total</span>
-              <strong className="font-display text-2xl tracking-wide text-white">
+              <strong className="font-display text-2xl tracking-wide text-fg">
                 {formatPrice(cartTotal)}
               </strong>
             </div>
@@ -167,7 +167,7 @@ export default function CartSidebar() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={closeCart}
-              className="flex w-full items-center justify-center gap-2.5 bg-white py-4 text-sm font-black uppercase tracking-cta text-black transition-colors hover:bg-accent"
+              className="flex w-full items-center justify-center gap-2.5 bg-inverse py-4 text-sm font-black uppercase tracking-cta text-on-inverse transition-colors hover:bg-accent"
             >
               <FontAwesomeIcon icon={faWhatsapp} className="h-4 w-4" />
               Commander sur WhatsApp

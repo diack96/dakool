@@ -53,7 +53,7 @@ export default function ProduitsClient({ initialCategory }: { initialCategory: s
   }, [active, sort]);
 
   return (
-    <section className="bg-ink py-14 sm:py-16">
+    <section className="bg-bg py-14 sm:py-16">
       <Container>
         {/* Filtres */}
         <div className="mb-8 flex flex-col gap-4 border-b border-line pb-6 lg:flex-row lg:items-center lg:justify-between">
@@ -70,8 +70,8 @@ export default function ProduitsClient({ initialCategory }: { initialCategory: s
                 aria-pressed={active === cat}
                 className={`flex shrink-0 items-center gap-2 border px-4 py-2.5 text-[11px] font-black uppercase tracking-label transition-colors ${
                   active === cat
-                    ? 'border-white bg-white text-black'
-                    : 'border-line bg-transparent text-mute hover:border-line-strong hover:text-white'
+                    ? 'border-fg bg-inverse text-on-inverse'
+                    : 'border-line bg-transparent text-mute hover:border-line-strong hover:text-fg'
                 }`}
               >
                 <FontAwesomeIcon icon={catIcons[cat] ?? faGrip} className="h-3 w-3" />
@@ -91,7 +91,7 @@ export default function ProduitsClient({ initialCategory }: { initialCategory: s
               id="tri"
               value={sort}
               onChange={(e) => setSort(e.target.value as SortKey)}
-              className="border border-line bg-elevated py-2.5 pl-4 pr-10 text-xs text-white transition-colors focus:border-white focus:outline-none"
+              className="border border-line bg-elevated py-2.5 pl-4 pr-10 text-xs text-fg transition-colors focus:border-fg focus:outline-none"
             >
               {Object.entries(sorts).map(([value, label]) => (
                 <option key={value} value={value}>
@@ -109,7 +109,7 @@ export default function ProduitsClient({ initialCategory }: { initialCategory: s
 
         {filtered.length === 0 ? (
           <div className="border border-line py-24 text-center">
-            <p className="font-display text-3xl text-white">Aucun produit</p>
+            <p className="font-display text-3xl text-fg">Aucun produit</p>
             <p className="mt-2 text-sm text-mute">Rien dans cette catégorie pour le moment.</p>
           </div>
         ) : (

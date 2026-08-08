@@ -6,9 +6,9 @@
 export default function FlagBar({ className = '' }: { className?: string }) {
   return (
     <div aria-hidden className={`flex h-[3px] w-full ${className}`}>
-      <span className="flex-1 bg-white" />
-      <span className="flex-1 bg-white/40" />
-      <span className="flex-1 bg-white/15" />
+      <span className="flex-1 bg-inverse" />
+      <span className="flex-1 bg-inverse/40" />
+      <span className="flex-1 bg-inverse/15" />
     </div>
   );
 }

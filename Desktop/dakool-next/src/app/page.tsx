@@ -13,7 +13,7 @@ const stats = [
   { value: '40', label: 'Clubs équipés' },
   { value: '12', label: 'Tournois sponsorisés' },
   { value: '500+', label: 'Maillots distribués' },
-  { value: '2020', label: 'Année de création' },
+  { value: '2017', label: 'Année de création' },
 ];
 
 export default function Home() {
@@ -35,7 +35,7 @@ export default function Home() {
           <div className="mb-8 flex items-center gap-3">
             <span className="h-2 w-2 shrink-0 rounded-full bg-inverse" />
             <span className="text-xs font-bold uppercase tracking-brand text-fg">
-              Équipementier sportif — depuis 2020
+              Équipementier sportif — depuis 2017
             </span>
           </div>
 
@@ -161,7 +161,7 @@ export default function Home() {
         </Container>
       </section>
 
-      <Marquee accent items={['Dakool', 'Équipementier', 'Depuis 2020']} />
+      <Marquee accent items={['Dakool', 'Équipementier', 'Depuis 2017']} />
     </>
   );
 }

@@ -25,7 +25,7 @@ export default function Footer() {
     <footer className="border-t border-line bg-bg">
       {/* Adhésion Club DAKOOL */}
       <div className="border-b border-line">
-        <Container className="flex flex-col gap-8 py-14 lg:flex-row lg:items-center lg:justify-between">
+        <Container className="flex flex-col gap-8 py-12 lg:flex-row lg:items-center lg:justify-between">
           <div>
             <span className="mb-3 block text-[11px] font-bold uppercase tracking-brand text-fg">
               Club DAKOOL
@@ -45,28 +45,25 @@ export default function Footer() {
         </Container>
       </div>
 
-      {/* Signature de marque */}
-      <div className="border-b border-line">
-        <Container className="flex flex-col gap-6 py-14 sm:flex-row sm:items-end sm:justify-between">
-          <Link href="/" aria-label="DAKOOL — accueil">
-            <Image
-              src="/dakool-logo.png"
-              alt="DAKOOL"
-              width={260}
-              height={125}
-              className="opacity-90 transition-opacity hover:opacity-100"
-            />
-          </Link>
-          <p className="max-w-xs text-sm leading-relaxed text-mute">
-            Équipementier sportif. Maillots, chaussures et équipements pour ceux qui
-            jouent.
-          </p>
-        </Container>
-      </div>
+      {/* Colonnes — la signature de marque tient la première, plutôt que
+          d'occuper une bande à elle seule presque vide. */}
+      <Container className="py-12">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4">
+          <div className="col-span-2 sm:col-span-1">
+            <Link href="/" aria-label="DAKOOL — accueil" className="inline-block">
+              <Image
+                src="/dakool-logo.png"
+                alt="DAKOOL"
+                width={180}
+                height={87}
+                className="opacity-90 transition-opacity hover:opacity-100"
+              />
+            </Link>
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-mute">
+              Équipementier sportif. Maillots, chaussures et équipements pour ceux qui jouent.
+            </p>
+          </div>
 
-      {/* Colonnes */}
-      <Container className="py-14">
-        <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3">
           <div>
             <h3 className="mb-5 text-xs font-black uppercase tracking-label text-fg">
               Navigation

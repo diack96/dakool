@@ -920,6 +920,77 @@ export const products: Product[] = [
     ],
     inStock: true,
   },
+  {
+    id: 'c3',
+    slug: 'chaussures-basket-low',
+    name: 'Chaussure de Basket Low',
+    category: 'Chaussures',
+    price: 64,
+    badge: { label: 'Pro' },
+    images: ['/produits/chaussures-basket-glacier.jpg', '/produits/chaussures-basket-royal.jpg'],
+    viewsAreColorways: true,
+    tagline: 'Tige basse, cheville libre, appuis secs.',
+    description:
+      "Chaussure de basket à tige basse pour les joueurs qui veulent de la vitesse plutôt que du maintien haut. Empeigne en mesh perforé sur contreforts synthétiques, semelle intermédiaire translucide et gomme à chevrons pour accrocher au premier appui. Deux coloris, même construction.",
+    sizes: BOOT_SIZES,
+    colors: [
+      { name: 'Blanc / Bleu glacier', hex: '#A8CBE4' },
+      { name: 'Blanc / Bleu roi', hex: '#2B4BA8' },
+    ],
+    details: [
+      'Tige basse, cheville dégagée',
+      'Mesh perforé et contreforts synthétiques',
+      'Semelle intermédiaire translucide',
+      'Gomme à chevrons pour les changements de direction',
+      'Parquet et terrain couvert',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'c4',
+    slug: 'chaussures-basket-mid',
+    name: 'Chaussure de Basket Mid',
+    category: 'Chaussures',
+    price: 58,
+    images: ['/produits/chaussures-basket-fluo.jpg'],
+    tagline: 'Le modèle qui encaisse le bitume.',
+    description:
+      "Chaussure montante pensée pour le terrain extérieur : tige tricotée renforcée aux zones d'usure, col mi-haut qui tient la cheville et semelle en gomme épaisse qui résiste au béton. La languette et la boucle arrière facilitent le chaussage.",
+    sizes: BOOT_SIZES,
+    colors: [{ name: 'Noir / Vert fluo', hex: '#C6F032' }],
+    details: [
+      'Col mi-haut, maintien de la cheville',
+      'Tige tricotée renforcée aux zones d’usure',
+      'Gomme épaisse résistante au béton',
+      'Boucle arrière de chaussage',
+      'Terrain extérieur et playground',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'c5',
+    slug: 'chaussures-basket-graffiti',
+    name: 'Chaussure de Basket Graffiti',
+    category: 'Chaussures',
+    price: 62,
+    images: [
+      '/produits/chaussures-basket-graffiti-1.jpg',
+      '/produits/chaussures-basket-graffiti-2.jpg',
+    ],
+    tagline: 'Celle qu’on repère à l’autre bout du terrain.',
+    description:
+      "Chaussure de basket à tige tricotée dégradée et semelle imprimée graffiti, chaque paire sortant légèrement différente de l'impression. Sous le motif, la construction reste sérieuse : maintien latéral rigide, amorti sur toute la longueur et gomme adhérente.",
+    sizes: BOOT_SIZES,
+    colors: [{ name: 'Pastel multicolore', hex: '#F2C7D0' }],
+    details: [
+      'Tige tricotée en dégradé',
+      'Semelle à impression graffiti',
+      'Maintien latéral rigide',
+      'Amorti sur toute la longueur',
+      'Parquet et terrain couvert',
+    ],
+    inStock: true,
+  },
 ];
 
 export const categories = [

@@ -506,10 +506,15 @@ export const products: Product[] = [
     category: 'Volleyball',
     price: 52,
     badge: { label: 'Sur mesure' },
-    images: ['/produits/volley-vert-1.jpg', '/produits/volley-vert-2.jpg'],
+    /* La tenue portée en premier : elle vend mieux que le à-plat d'atelier. */
+    images: [
+      '/produits/volley-vert-3.jpg',
+      '/produits/volley-vert-1.jpg',
+      '/produits/volley-vert-2.jpg',
+    ],
     tagline: 'Vert franc, marquage jaune, coupe débardeur.',
     description:
-      "Ensemble de volleyball en maille légère : débardeur à emmanchures larges et short à taille élastiquée. Le marquage jaune est imprimé à chaud, poitrine, dos et cuisse. Une tenue pensée pour le jeu en extérieur, où la couleur doit rester lisible en plein soleil.",
+      "Ensemble de volleyball en maille légère : débardeur à emmanchures larges et short à taille élastiquée. Le marquage jaune est imprimé à chaud, poitrine, dos et cuisse. Une tenue pensée pour le jeu en extérieur et sur sable, où la couleur doit rester lisible en plein soleil.",
     sizes: JERSEY_SIZES,
     colors: [{ name: 'Vert', hex: '#2E9B2E' }],
     details: [
@@ -528,7 +533,13 @@ export const products: Product[] = [
     name: 'Ensemble Volley Blanc',
     category: 'Volleyball',
     price: 52,
-    images: ['/produits/volley-blanc-1.jpg', '/produits/volley-blanc-2.jpg'],
+    images: [
+      '/produits/volley-blanc-3.jpg',
+      '/produits/volley-blanc-5.jpg',
+      '/produits/volley-blanc-4.jpg',
+      '/produits/volley-blanc-1.jpg',
+      '/produits/volley-blanc-2.jpg',
+    ],
     tagline: 'Blanc, griffures colorées, motif ton sur ton.',
     description:
       "Le jeu extérieur du même patron. Fond blanc à motif ton sur ton, traversé de trois griffures colorées sur le devant. Le marquage vert reste net sur le blanc, de face comme de dos, et le short reprend le nom de l'équipe sur toute sa largeur.",

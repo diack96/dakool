@@ -4,10 +4,9 @@ import { notFound } from 'next/navigation';
 import { getProduct, getRelatedProducts, products } from '@/data/products';
 import { formatPrice } from '@/lib/format';
 import Container from '@/components/Container';
-import ProductVisual from '@/components/ProductVisual';
+import ProductGallery from '@/components/ProductGallery';
 import ProductCard from '@/components/ProductCard';
 import SectionHeading from '@/components/SectionHeading';
-import FlagBar from '@/components/FlagBar';
 import Reveal from '@/components/Reveal';
 import BuyPanel from './BuyPanel';
 
@@ -81,26 +80,12 @@ export default async function ProduitPage({ params }: Params) {
       <section className="bg-bg">
         <Container className="grid gap-12 py-12 lg:grid-cols-2 lg:gap-16 lg:py-16">
           <div className="relative">
-            <div className="grain relative flex aspect-square items-center justify-center overflow-hidden border border-line bg-elevated">
-              <ProductVisual
-                category={product.category}
-                image={product.image}
-                alt={product.name}
-                priority
-                index={productIndex}
-              />
-              {product.badge && (
-                <span className="absolute top-5 left-5 bg-inverse px-2.5 py-1.5 text-[10px] font-black uppercase tracking-cta text-on-inverse">
-                  {product.badge.label}
-                </span>
-              )}
-              <FlagBar className="absolute inset-x-0 bottom-0" />
-            </div>
+            <ProductGallery product={product} index={productIndex} />
 
             {/* Nuancier des coloris disponibles. */}
-            <ul className="mt-3 grid gap-px bg-line [grid-template-columns:repeat(auto-fit,minmax(9rem,1fr))]">
+            <ul className="mt-3 flex flex-wrap gap-px bg-line">
               {product.colors.map((c) => (
-                <li key={c.name} className="flex items-center gap-3 bg-elevated px-4 py-3.5">
+                <li key={c.name} className="flex grow items-center gap-3 bg-elevated px-4 py-3.5">
                   <span
                     aria-hidden
                     className="h-6 w-6 shrink-0 border border-line-strong"

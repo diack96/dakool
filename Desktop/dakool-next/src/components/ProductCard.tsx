@@ -39,7 +39,7 @@ export default function ProductCard({ product, index }: { product: Product; inde
       <div className="relative flex aspect-square items-center justify-center overflow-hidden bg-elevated">
         <ProductVisual
           category={product.category}
-          image={product.image}
+          image={product.images?.[0]}
           alt={product.name}
           index={index}
         />

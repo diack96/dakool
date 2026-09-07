@@ -5,8 +5,8 @@ export type Product = {
   category: string;
   price: number;
   badge?: { label: string };
-  /** Photo produit dans /public ; à défaut, un dessin par catégorie est utilisé. */
-  image?: string;
+  /** Vues du produit dans /public ; à défaut, un dessin par catégorie est utilisé. */
+  images?: string[];
   tagline: string;
   description: string;
   sizes: string[];
@@ -391,7 +391,7 @@ export const products: Product[] = [
     category: 'Basketball',
     price: 58,
     badge: { label: 'Sur mesure' },
-    image: '/produits/basket-royal.jpg',
+    images: ['/produits/basket-royal.jpg'],
     tagline: 'Bleu franc, chevrons latéraux, col contrasté.',
     description:
       "Ensemble de basketball sublimé aux couleurs du club. Le bleu profond est cassé par un col et des emmanchures blanches, avec des chevrons sur les flancs qui suivent le mouvement. Nom, numéro, blason et sponsors sont intégrés à l'impression, pas rapportés.",
@@ -413,7 +413,7 @@ export const products: Product[] = [
     name: 'Ensemble Basket Or',
     category: 'Basketball',
     price: 58,
-    image: '/produits/basket-or.jpg',
+    images: ['/produits/basket-or.jpg'],
     tagline: 'Or profond et double liseré.',
     description:
       "Ensemble de basketball sublimé, dans un or dense relevé par un double liseré au col et aux emmanchures. Une coupe classique, lisible de loin, pensée pour les salles où le maillot doit se reconnaître depuis les tribunes.",
@@ -435,7 +435,7 @@ export const products: Product[] = [
     name: 'Ensemble Basket Noir',
     category: 'Basketball',
     price: 58,
-    image: '/produits/basket-noir.jpg',
+    images: ['/produits/basket-noir.jpg'],
     tagline: 'Noir mat, motif ton sur ton, finitions jaunes.',
     description:
       "Ensemble de basketball sublimé en noir, avec un motif ton sur ton qui monte depuis le bas du maillot et se prolonge sur les côtés du short. Les liserés jaunes tiennent le contraste sans alourdir la pièce.",
@@ -457,7 +457,7 @@ export const products: Product[] = [
     name: 'Ensemble Basket Jaune',
     category: 'Basketball',
     price: 58,
-    image: '/produits/basket-jaune.jpg',
+    images: ['/produits/basket-jaune.jpg'],
     tagline: 'Jaune vif et bandes graphiques latérales.',
     description:
       'Version claire du même patron : jaune saturé, col et emmanchures noirs, et une bande graphique qui court sur les flancs du maillot comme du short. Le jeu extérieur qui complète la tenue noire.',
@@ -479,7 +479,7 @@ export const products: Product[] = [
     name: 'Ensemble Basket Blanc',
     category: 'Basketball',
     price: 58,
-    image: '/produits/basket-blanc.jpg',
+    images: ['/produits/basket-blanc.jpg'],
     tagline: 'Blanc texturé, dégradé vert sur les flancs.',
     description:
       "Ensemble de basketball sublimé sur fond blanc texturé, avec un dégradé vert qui remonte le long des côtes. Les emplacements sponsors sont intégrés dès la maquette, à l'avant comme à l'arrière.",
@@ -495,11 +495,57 @@ export const products: Product[] = [
     ],
     inStock: true,
   },
+  {
+    id: 'v1',
+    slug: 'ensemble-volley-vert',
+    name: 'Ensemble Volley Vert',
+    category: 'Volleyball',
+    price: 52,
+    badge: { label: 'Sur mesure' },
+    images: ['/produits/volley-vert-1.jpg', '/produits/volley-vert-2.jpg'],
+    tagline: 'Vert franc, marquage jaune, coupe débardeur.',
+    description:
+      "Ensemble de volleyball en maille légère : débardeur à emmanchures larges et short à taille élastiquée. Le marquage jaune est imprimé à chaud, poitrine, dos et cuisse. Une tenue pensée pour le jeu en extérieur, où la couleur doit rester lisible en plein soleil.",
+    sizes: JERSEY_SIZES,
+    colors: [{ name: 'Vert', hex: '#2E9B2E' }],
+    details: [
+      'Ensemble complet : débardeur + short',
+      'Maille légère, séchage rapide',
+      'Marquage nom, numéro et sponsors imprimé à chaud',
+      'Short à taille élastiquée avec cordon',
+      'Production à partir de 10 ensembles',
+      'Livraison 3 à 4 semaines après validation de la maquette',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'v2',
+    slug: 'ensemble-volley-blanc',
+    name: 'Ensemble Volley Blanc',
+    category: 'Volleyball',
+    price: 52,
+    images: ['/produits/volley-blanc-1.jpg', '/produits/volley-blanc-2.jpg'],
+    tagline: 'Blanc, griffures colorées, motif ton sur ton.',
+    description:
+      "Le jeu extérieur du même patron. Fond blanc à motif ton sur ton, traversé de trois griffures colorées sur le devant. Le marquage vert reste net sur le blanc, de face comme de dos, et le short reprend le nom de l'équipe sur toute sa largeur.",
+    sizes: JERSEY_SIZES,
+    colors: [{ name: 'Blanc', hex: '#F2F2F2' }],
+    details: [
+      'Ensemble complet : débardeur + short',
+      'Maille légère, séchage rapide',
+      'Motif ton sur ton intégré au tissu',
+      'Marquage nom, numéro et sponsors imprimé à chaud',
+      'Production à partir de 10 ensembles',
+      'Livraison 3 à 4 semaines après validation de la maquette',
+    ],
+    inStock: true,
+  },
 ];
 
 export const categories = [
   'Tous',
   'Basketball',
+  'Volleyball',
   'Maillots',
   'Chaussures',
   'Ballons',

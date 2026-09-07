@@ -200,7 +200,7 @@ export default function ContactClient() {
                       type="email"
                       required
                       autoComplete="email"
-                      placeholder="moussa@example.sn"
+                      placeholder="prenom@example.com"
                       className={inputClass}
                     />
                   </div>

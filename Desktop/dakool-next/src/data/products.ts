@@ -5,6 +5,8 @@ export type Product = {
   category: string;
   price: number;
   badge?: { label: string };
+  /** Photo produit dans /public ; à défaut, un dessin par catégorie est utilisé. */
+  image?: string;
   tagline: string;
   description: string;
   sizes: string[];
@@ -382,10 +384,122 @@ export const products: Product[] = [
     ],
     inStock: true,
   },
+  {
+    id: 'b1',
+    slug: 'ensemble-basket-royal',
+    name: 'Ensemble Basket Royal',
+    category: 'Basketball',
+    price: 58,
+    badge: { label: 'Sur mesure' },
+    image: '/produits/basket-royal.jpg',
+    tagline: 'Bleu franc, chevrons latéraux, col contrasté.',
+    description:
+      "Ensemble de basketball sublimé aux couleurs du club. Le bleu profond est cassé par un col et des emmanchures blanches, avec des chevrons sur les flancs qui suivent le mouvement. Nom, numéro, blason et sponsors sont intégrés à l'impression, pas rapportés.",
+    sizes: JERSEY_SIZES,
+    colors: [{ name: 'Bleu Royal', hex: '#1B32D6' }],
+    details: [
+      'Ensemble complet : maillot sans manches + short',
+      'Sublimation intégrale — le motif ne se décolle pas',
+      'Maille technique respirante, séchage rapide',
+      'Nom, numéros, logos club et sponsors inclus',
+      'Production à partir de 10 ensembles',
+      'Livraison 3 à 4 semaines après validation de la maquette',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'b2',
+    slug: 'ensemble-basket-or',
+    name: 'Ensemble Basket Or',
+    category: 'Basketball',
+    price: 58,
+    image: '/produits/basket-or.jpg',
+    tagline: 'Or profond et double liseré.',
+    description:
+      "Ensemble de basketball sublimé, dans un or dense relevé par un double liseré au col et aux emmanchures. Une coupe classique, lisible de loin, pensée pour les salles où le maillot doit se reconnaître depuis les tribunes.",
+    sizes: JERSEY_SIZES,
+    colors: [{ name: 'Or', hex: '#E8A317' }],
+    details: [
+      'Ensemble complet : maillot sans manches + short',
+      'Sublimation intégrale — le motif ne se décolle pas',
+      'Maille technique respirante, séchage rapide',
+      'Nom, numéros, logos club et sponsors inclus',
+      'Production à partir de 10 ensembles',
+      'Livraison 3 à 4 semaines après validation de la maquette',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'b3',
+    slug: 'ensemble-basket-noir',
+    name: 'Ensemble Basket Noir',
+    category: 'Basketball',
+    price: 58,
+    image: '/produits/basket-noir.jpg',
+    tagline: 'Noir mat, motif ton sur ton, finitions jaunes.',
+    description:
+      "Ensemble de basketball sublimé en noir, avec un motif ton sur ton qui monte depuis le bas du maillot et se prolonge sur les côtés du short. Les liserés jaunes tiennent le contraste sans alourdir la pièce.",
+    sizes: JERSEY_SIZES,
+    colors: [{ name: 'Noir', hex: '#0F0F0F' }],
+    details: [
+      'Ensemble complet : maillot sans manches + short',
+      'Sublimation intégrale — le motif ne se décolle pas',
+      'Maille technique respirante, séchage rapide',
+      'Nom, numéros, logos club et sponsors inclus',
+      'Production à partir de 10 ensembles',
+      'Livraison 3 à 4 semaines après validation de la maquette',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'b4',
+    slug: 'ensemble-basket-jaune',
+    name: 'Ensemble Basket Jaune',
+    category: 'Basketball',
+    price: 58,
+    image: '/produits/basket-jaune.jpg',
+    tagline: 'Jaune vif et bandes graphiques latérales.',
+    description:
+      'Version claire du même patron : jaune saturé, col et emmanchures noirs, et une bande graphique qui court sur les flancs du maillot comme du short. Le jeu extérieur qui complète la tenue noire.',
+    sizes: JERSEY_SIZES,
+    colors: [{ name: 'Jaune', hex: '#F2D024' }],
+    details: [
+      'Ensemble complet : maillot sans manches + short',
+      'Sublimation intégrale — le motif ne se décolle pas',
+      'Maille technique respirante, séchage rapide',
+      'Nom, numéros, logos club et sponsors inclus',
+      'Production à partir de 10 ensembles',
+      'Livraison 3 à 4 semaines après validation de la maquette',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'b5',
+    slug: 'ensemble-basket-blanc',
+    name: 'Ensemble Basket Blanc',
+    category: 'Basketball',
+    price: 58,
+    image: '/produits/basket-blanc.jpg',
+    tagline: 'Blanc texturé, dégradé vert sur les flancs.',
+    description:
+      "Ensemble de basketball sublimé sur fond blanc texturé, avec un dégradé vert qui remonte le long des côtes. Les emplacements sponsors sont intégrés dès la maquette, à l'avant comme à l'arrière.",
+    sizes: JERSEY_SIZES,
+    colors: [{ name: 'Blanc', hex: '#F2F2F2' }],
+    details: [
+      'Ensemble complet : maillot sans manches + short',
+      'Sublimation intégrale — le motif ne se décolle pas',
+      'Maille technique respirante, séchage rapide',
+      'Nom, numéros, logos club et sponsors inclus',
+      'Production à partir de 10 ensembles',
+      'Livraison 3 à 4 semaines après validation de la maquette',
+    ],
+    inStock: true,
+  },
 ];
 
 export const categories = [
   'Tous',
+  'Basketball',
   'Maillots',
   'Chaussures',
   'Ballons',

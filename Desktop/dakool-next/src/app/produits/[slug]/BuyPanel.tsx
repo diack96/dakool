@@ -174,7 +174,7 @@ export default function BuyPanel({ product }: { product: Product }) {
       <ul className="mt-8 space-y-3 border-t border-line pt-8">
         <li className="flex items-start gap-3 text-sm text-mute">
           <FontAwesomeIcon icon={faTruckFast} className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-          Expédition sous 48h. Délai de livraison selon la destination.
+          Expédition sous 48h pour les articles en stock. Délai de livraison selon la destination.
         </li>
         <li className="flex items-start gap-3 text-sm text-mute">
           <FontAwesomeIcon icon={faRotateLeft} className="mt-0.5 h-4 w-4 shrink-0 text-accent" />

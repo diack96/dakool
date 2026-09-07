@@ -82,7 +82,13 @@ export default async function ProduitPage({ params }: Params) {
         <Container className="grid gap-12 py-12 lg:grid-cols-2 lg:gap-16 lg:py-16">
           <div className="relative">
             <div className="grain relative flex aspect-square items-center justify-center overflow-hidden border border-line bg-elevated">
-              <ProductVisual category={product.category} index={productIndex} />
+              <ProductVisual
+                category={product.category}
+                image={product.image}
+                alt={product.name}
+                priority
+                index={productIndex}
+              />
               {product.badge && (
                 <span className="absolute top-5 left-5 bg-inverse px-2.5 py-1.5 text-[10px] font-black uppercase tracking-cta text-on-inverse">
                   {product.badge.label}
@@ -92,7 +98,7 @@ export default async function ProduitPage({ params }: Params) {
             </div>
 
             {/* Nuancier des coloris disponibles. */}
-            <ul className="mt-3 grid gap-px bg-line sm:grid-cols-3">
+            <ul className="mt-3 grid gap-px bg-line [grid-template-columns:repeat(auto-fit,minmax(9rem,1fr))]">
               {product.colors.map((c) => (
                 <li key={c.name} className="flex items-center gap-3 bg-elevated px-4 py-3.5">
                   <span

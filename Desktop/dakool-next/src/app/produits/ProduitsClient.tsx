@@ -7,6 +7,7 @@ import {
   faShirt,
   faShoePrints,
   faFutbol,
+  faBasketball,
   faVest,
   faTag,
 } from '@fortawesome/free-solid-svg-icons';
@@ -17,6 +18,7 @@ import { products, categories } from '@/data/products';
 
 const catIcons: Record<string, typeof faGrip> = {
   Tous: faGrip,
+  Basketball: faBasketball,
   Maillots: faShirt,
   Chaussures: faShoePrints,
   Ballons: faFutbol,

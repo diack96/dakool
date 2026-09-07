@@ -37,7 +37,12 @@ export default function ProductCard({ product, index }: { product: Product; inde
   return (
     <article className="group relative bg-bg">
       <div className="relative flex aspect-square items-center justify-center overflow-hidden bg-elevated">
-        <ProductVisual category={product.category} index={index} />
+        <ProductVisual
+          category={product.category}
+          image={product.image}
+          alt={product.name}
+          index={index}
+        />
 
         {product.badge && (
           <span

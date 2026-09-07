@@ -14,6 +14,7 @@ export type NavEntry = {
 const SHOP = '/produits';
 const JERSEYS = '/produits?categorie=Maillots';
 const SHOES = '/produits?categorie=Chaussures';
+const BASKET = '/produits?categorie=Basketball';
 
 const APPAREL: NavChild[] = [
   { label: 'Maillot de football', href: JERSEYS },
@@ -34,7 +35,7 @@ export const navigation: NavEntry[] = [
     heading: 'Disciplines',
     children: [
       { label: 'Football', href: SHOP },
-      { label: 'Basketball', href: SHOP },
+      { label: 'Basketball', href: BASKET },
       { label: 'Volley-ball', href: SHOP },
       { label: 'Hand-ball', href: SHOP },
       { label: 'Tennis', href: SHOP },

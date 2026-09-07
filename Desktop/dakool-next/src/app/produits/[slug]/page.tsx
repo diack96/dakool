@@ -5,6 +5,7 @@ import { getProduct, getRelatedProducts, products } from '@/data/products';
 import { formatPrice } from '@/lib/format';
 import Container from '@/components/Container';
 import ProductGallery from '@/components/ProductGallery';
+import { ProductVariantProvider } from '@/components/ProductVariant';
 import ProductCard from '@/components/ProductCard';
 import SectionHeading from '@/components/SectionHeading';
 import Reveal from '@/components/Reveal';
@@ -78,29 +79,33 @@ export default async function ProduitPage({ params }: Params) {
 
       {/* Visuel + achat */}
       <section className="bg-bg">
-        <Container className="grid gap-12 py-12 lg:grid-cols-2 lg:gap-16 lg:py-16">
-          <div className="relative">
-            <ProductGallery product={product} index={productIndex} />
+        {/* Le fournisseur enveloppe les deux colonnes : la galerie et le
+            panneau d'achat partagent le coloris sélectionné. */}
+        <ProductVariantProvider product={product}>
+          <Container className="grid gap-12 py-12 lg:grid-cols-2 lg:gap-16 lg:py-16">
+            <div className="relative">
+              <ProductGallery product={product} index={productIndex} />
 
-            {/* Nuancier des coloris disponibles. */}
-            <ul className="mt-3 flex flex-wrap gap-px bg-line">
-              {product.colors.map((c) => (
-                <li key={c.name} className="flex grow items-center gap-3 bg-elevated px-4 py-3.5">
-                  <span
-                    aria-hidden
-                    className="h-6 w-6 shrink-0 border border-line-strong"
-                    style={{ backgroundColor: c.hex }}
-                  />
-                  <span className="text-xs text-mute">{c.name}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+              {/* Nuancier des coloris disponibles. */}
+              <ul className="mt-3 flex flex-wrap gap-px bg-line">
+                {product.colors.map((c) => (
+                  <li key={c.name} className="flex grow items-center gap-3 bg-elevated px-4 py-3.5">
+                    <span
+                      aria-hidden
+                      className="h-6 w-6 shrink-0 border border-line-strong"
+                      style={{ backgroundColor: c.hex }}
+                    />
+                    <span className="text-xs text-mute">{c.name}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          <div className="lg:sticky lg:top-24 lg:self-start">
-            <BuyPanel product={product} />
-          </div>
-        </Container>
+            <div className="lg:sticky lg:top-24 lg:self-start">
+              <BuyPanel product={product} />
+            </div>
+          </Container>
+        </ProductVariantProvider>
       </section>
 
       {/* Description + caractéristiques */}

@@ -9,6 +9,7 @@ import {
   faFutbol,
   faBasketball,
   faVolleyball,
+  faHandBackFist,
   faVest,
   faTag,
 } from '@fortawesome/free-solid-svg-icons';
@@ -21,6 +22,7 @@ const catIcons: Record<string, typeof faGrip> = {
   Tous: faGrip,
   Basketball: faBasketball,
   Volleyball: faVolleyball,
+  Handball: faHandBackFist,
   Maillots: faShirt,
   Chaussures: faShoePrints,
   Ballons: faFutbol,

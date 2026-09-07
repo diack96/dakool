@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
 import ProductVisual from './ProductVisual';
+import { useProductVariant } from './ProductVariant';
 import FlagBar from './FlagBar';
 import type { Product } from '@/data/products';
 
@@ -18,7 +18,8 @@ type Props = {
  */
 export default function ProductGallery({ product, index }: Props) {
   const images = product.images ?? [];
-  const [active, setActive] = useState(0);
+  const { view, selectView, linked } = useProductVariant();
+  const active = Math.min(view, Math.max(images.length - 1, 0));
 
   return (
     <div>
@@ -41,16 +42,20 @@ export default function ProductGallery({ product, index }: Props) {
       {images.length > 1 && (
         <div
           role="group"
-          aria-label={`Vues de ${product.name}`}
+          aria-label={linked ? `Coloris de ${product.name}` : `Vues de ${product.name}`}
           className="mt-3 grid grid-cols-4 gap-3"
         >
           {images.map((src, i) => (
             <button
               key={src}
               type="button"
-              onClick={() => setActive(i)}
+              onClick={() => selectView(i)}
               aria-pressed={i === active}
-              aria-label={`Vue ${i + 1} sur ${images.length}`}
+              aria-label={
+                linked
+                  ? `Coloris ${product.colors[i]?.name ?? i + 1}`
+                  : `Vue ${i + 1} sur ${images.length}`
+              }
               className={`relative aspect-square overflow-hidden border transition-colors ${
                 i === active ? 'border-fg' : 'border-line hover:border-line-strong'
               }`}

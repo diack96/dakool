@@ -7,6 +7,9 @@ export type Product = {
   badge?: { label: string };
   /** Vues du produit dans /public ; à défaut, un dessin par catégorie est utilisé. */
   images?: string[];
+  /** Chaque vue correspond au coloris de même rang : galerie et nuancier
+      sont alors synchronisés. */
+  viewsAreColorways?: boolean;
   tagline: string;
   description: string;
   sizes: string[];
@@ -540,12 +543,71 @@ export const products: Product[] = [
     ],
     inStock: true,
   },
+  {
+    id: 'h1',
+    slug: 'maillot-handball',
+    name: 'Maillot Handball',
+    category: 'Handball',
+    price: 44,
+    badge: { label: 'Sur mesure' },
+    images: [
+      '/produits/hand-blanc-orange.jpg',
+      '/produits/hand-marine.jpg',
+      '/produits/hand-blanc-marine.jpg',
+    ],
+    viewsAreColorways: true,
+    tagline: 'Col et poignets contrastés, emplacements sponsors intégrés.',
+    description:
+      "Maillot de handball à manches courtes, col rond et poignets contrastés. La coupe laisse l'épaule libre pour le geste de tir. Numéro, blason et sponsors sont intégrés dès la maquette : les vues ci-dessus montrent trois coloris réellement produits pour des clubs.",
+    sizes: JERSEY_SIZES,
+    colors: [
+      { name: 'Blanc / Orange', hex: '#F2F2F2' },
+      { name: 'Marine / Orange', hex: '#2E3192' },
+      { name: 'Blanc / Marine', hex: '#EDEDED' },
+    ],
+    details: [
+      'Manches courtes, col rond côtelé',
+      'Col et poignets en contraste',
+      'Maille technique respirante, séchage rapide',
+      'Numéro, blason et sponsors inclus',
+      'Production à partir de 10 maillots',
+      'Livraison 3 à 4 semaines après validation de la maquette',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'h2',
+    slug: 'tenue-staff',
+    name: 'Tenue Staff',
+    category: 'Équipements',
+    price: 62,
+    images: ['/produits/staff-vert-marine.jpg', '/produits/staff-blanc-vert.jpg'],
+    viewsAreColorways: true,
+    tagline: 'Polo et pantalon, pour le banc et les déplacements.',
+    description:
+      "L'ensemble que portent les encadrants : polo à empiècement contrasté, boutonnage trois trous, et pantalon de survêtement à bas resserré. Une tenue qui tient le bord du terrain comme le déplacement, et qui se décline aux couleurs du club.",
+    sizes: JERSEY_SIZES,
+    colors: [
+      { name: 'Vert / Marine', hex: '#2E3192' },
+      { name: 'Blanc / Vert', hex: '#2ECC40' },
+    ],
+    details: [
+      'Ensemble complet : polo + pantalon',
+      'Polo à empiècement contrasté, boutonnage trois trous',
+      'Pantalon à taille élastiquée et bas resserré',
+      'Blason club et logos sponsors inclus',
+      'Production à partir de 10 ensembles',
+      'Livraison 3 à 4 semaines après validation de la maquette',
+    ],
+    inStock: true,
+  },
 ];
 
 export const categories = [
   'Tous',
   'Basketball',
   'Volleyball',
+  'Handball',
   'Maillots',
   'Chaussures',
   'Ballons',

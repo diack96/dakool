@@ -7,14 +7,15 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { useCart } from '@/context/CartContext';
 import { formatPrice } from '@/lib/format';
 import { buildProductMessage, whatsappUrl } from '@/lib/whatsapp';
+import { useProductVariant } from '@/components/ProductVariant';
 import type { Product } from '@/data/products';
 
 export default function BuyPanel({ product }: { product: Product }) {
   const { addToCart, openCart } = useCart();
   const singleSize = product.sizes.length === 1;
 
+  const { color, selectColor } = useProductVariant();
   const [size, setSize] = useState<string | null>(singleSize ? product.sizes[0] : null);
-  const [color, setColor] = useState(product.colors[0]?.name ?? '');
   const [qty, setQty] = useState(1);
   const [error, setError] = useState(false);
 
@@ -66,7 +67,7 @@ export default function BuyPanel({ product }: { product: Product }) {
               <button
                 key={c.name}
                 type="button"
-                onClick={() => setColor(c.name)}
+                onClick={() => selectColor(c.name)}
                 aria-pressed={color === c.name}
                 aria-label={c.name}
                 title={c.name}

@@ -16,6 +16,8 @@ const JERSEYS = '/produits?categorie=Maillots';
 const SHOES = '/produits?categorie=Chaussures';
 const BASKET = '/produits?categorie=Basketball';
 const VOLLEY = '/produits?categorie=Volleyball';
+const HAND = '/produits?categorie=Handball';
+const STAFF = '/produits/tenue-staff';
 
 const APPAREL: NavChild[] = [
   { label: 'Maillot de football', href: JERSEYS },
@@ -38,7 +40,7 @@ export const navigation: NavEntry[] = [
       { label: 'Football', href: SHOP },
       { label: 'Basketball', href: BASKET },
       { label: 'Volley-ball', href: VOLLEY },
-      { label: 'Hand-ball', href: SHOP },
+      { label: 'Hand-ball', href: HAND },
       { label: 'Tennis', href: SHOP },
     ],
   },
@@ -49,7 +51,7 @@ export const navigation: NavEntry[] = [
     children: [
       { label: 'Jeux de maillots', href: JERSEYS },
       { label: 'Survêtements', href: SHOP },
-      { label: 'Tenues staff', href: SHOP },
+      { label: 'Tenues staff', href: STAFF },
       { label: 'Loisir', href: SHOP },
     ],
   },

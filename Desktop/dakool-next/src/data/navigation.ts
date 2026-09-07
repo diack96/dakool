@@ -17,6 +17,7 @@ const SHOES = '/produits?categorie=Chaussures';
 const BASKET = '/produits?categorie=Basketball';
 const VOLLEY = '/produits?categorie=Volleyball';
 const HAND = '/produits?categorie=Handball';
+const YOGA = '/produits?categorie=Yoga';
 const STAFF = '/produits/tenue-staff';
 
 const APPAREL: NavChild[] = [
@@ -41,6 +42,7 @@ export const navigation: NavEntry[] = [
       { label: 'Basketball', href: BASKET },
       { label: 'Volley-ball', href: VOLLEY },
       { label: 'Hand-ball', href: HAND },
+      { label: 'Yoga', href: YOGA },
       { label: 'Tennis', href: SHOP },
     ],
   },

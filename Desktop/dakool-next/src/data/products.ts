@@ -21,6 +21,7 @@ export type Product = {
 const JERSEY_SIZES = ['S', 'M', 'L', 'XL', 'XXL'];
 const BOOT_SIZES = ['39', '40', '41', '42', '43', '44', '45'];
 const ONE_SIZE = ['Taille unique'];
+const YOGA_SIZES = ['XS', 'S', 'M', 'L', 'XL'];
 
 export const products: Product[] = [
   {
@@ -810,6 +811,115 @@ export const products: Product[] = [
     ],
     inStock: true,
   },
+  {
+    id: 'y1',
+    slug: 'legging-taille-haute',
+    name: 'Legging Taille Haute',
+    category: 'Yoga',
+    price: 29,
+    images: ['/produits/yoga-legging-vert.jpg'],
+    tagline: 'Une seconde peau qui ne bouge pas d’un centimètre.',
+    description:
+      "Legging sculptant en maille sans couture, ceinture large qui remonte au-dessus du nombril et reste en place pendant la séance. La maille est opaque à l'étirement, y compris en flexion profonde, et évacue l'humidité au lieu de la garder.",
+    sizes: YOGA_SIZES,
+    colors: [{ name: 'Vert d’eau', hex: '#5E9B93' }],
+    details: [
+      'Maille sans couture, opaque à l’étirement',
+      'Ceinture large taille haute',
+      'Coutures sculptantes au dos',
+      'Séchage rapide',
+      'Lavage machine à 30°',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'y2',
+    slug: 'ensemble-veste-legging',
+    name: 'Ensemble Veste + Legging',
+    category: 'Yoga',
+    price: 59,
+    images: ['/produits/yoga-ensemble-gris.jpg'],
+    tagline: 'Le deux-pièces pour l’échauffement et le retour au calme.',
+    description:
+      "Veste courte zippée à manches longues et passe-pouces, assortie au legging taille haute. On garde la veste le temps de monter en température, on l'enlève sans défaire la tenue. Coupe près du corps sur les deux pièces.",
+    sizes: YOGA_SIZES,
+    colors: [{ name: 'Gris anthracite', hex: '#4A4A4A' }],
+    details: [
+      'Veste zippée courte à manches longues',
+      'Passe-pouces aux poignets',
+      'Legging taille haute assorti',
+      'Maille extensible dans les deux sens',
+      'Vendu en ensemble deux pièces',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'y3',
+    slug: 'ensemble-brassiere-short',
+    name: 'Ensemble Brassière + Short',
+    category: 'Yoga',
+    price: 34,
+    badge: { label: 'Club' },
+    images: ['/produits/yoga-brassiere-short.jpg'],
+    tagline: 'Maille côtelée, format court, logo à ta demande.',
+    description:
+      "Brassière zippée col montant et short cycliste taille haute, en maille côtelée qui reprend sa forme après chaque lavage. C'est le modèle que nous personnalisons au logo du club ou de la salle, sur la poitrine et à l'arrière du short.",
+    sizes: YOGA_SIZES,
+    colors: [
+      { name: 'Noir', hex: '#111111' },
+      { name: 'Blanc', hex: '#F2F2F2' },
+    ],
+    details: [
+      'Brassière zippée à col montant',
+      'Short cycliste taille haute',
+      'Maille côtelée extensible',
+      'Emplacements logo poitrine et dos',
+      'Tarifs dégressifs à partir de 10 ensembles',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'y4',
+    slug: 'ensemble-brassiere-lacee',
+    name: 'Ensemble Brassière Lacée',
+    category: 'Yoga',
+    price: 49,
+    images: ['/produits/yoga-ensemble-blanc.jpg'],
+    tagline: 'Le laçage dorsal se règle au serrage que tu veux.',
+    description:
+      "Brassière à fines bretelles croisées et laçage dorsal réglable, portée avec le legging taille haute assorti. Le laçage permet d'ajuster le maintien sans changer de taille. Maintien léger à modéré, pensé pour le yoga et le pilates plutôt que pour la course.",
+    sizes: YOGA_SIZES,
+    colors: [{ name: 'Blanc', hex: '#F2F2F2' }],
+    details: [
+      'Laçage dorsal réglable',
+      'Fines bretelles croisées',
+      'Legging taille haute assorti',
+      'Maintien léger à modéré',
+      'Vendu en ensemble deux pièces',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'y5',
+    slug: 'ensemble-brassiere-legging',
+    name: 'Ensemble Brassière + Legging',
+    category: 'Yoga',
+    price: 44,
+    images: ['/produits/yoga-ensemble-lime.jpg'],
+    tagline: 'Deux pièces, une seule couleur, rien qui dépasse.',
+    description:
+      "Brassière à bretelles fines et legging taille haute sans couture, coupés dans la même maille et la même teinte. La ceinture large ne roule pas à la flexion, la brassière se porte seule ou sous une veste. L'ensemble le plus simple de la gamme.",
+    sizes: YOGA_SIZES,
+    colors: [{ name: 'Vert lime', hex: '#9DBE2B' }],
+    details: [
+      'Brassière à bretelles fines',
+      'Legging taille haute sans couture',
+      'Ceinture large qui ne roule pas',
+      'Maille opaque à l’étirement',
+      'Vendu en ensemble deux pièces',
+    ],
+    inStock: true,
+  },
 ];
 
 export const categories = [
@@ -817,6 +927,7 @@ export const categories = [
   'Basketball',
   'Volleyball',
   'Handball',
+  'Yoga',
   'Maillots',
   'Chaussures',
   'Ballons',

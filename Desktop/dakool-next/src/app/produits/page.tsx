@@ -30,7 +30,8 @@ export default async function ProduitsPage({
         index="02"
         meta={[
           { value: String(products.length), label: 'Références' },
-          { value: '5', label: 'Catégories' },
+          // « Tous » est un filtre, pas une catégorie : on ne le compte pas.
+          { value: String(categories.length - 1), label: 'Catégories' },
           { value: '48h', label: 'Expédition' },
           { value: '30j', label: 'Garantie' },
         ]}

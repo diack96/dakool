@@ -47,6 +47,16 @@ export default function BuyPanel({ product }: { product: Product }) {
       <h1 className="mb-3 font-display text-title text-fg">{product.name}</h1>
       <p className="mb-6 text-base text-mute">{product.tagline}</p>
 
+      {/* Sans cette mention, les blasons visibles sur les photos passeraient
+          pour ce qui est livré. */}
+      {product.personnalisable && (
+        <p className="mb-6 border-l-2 border-fg pl-4 text-sm leading-relaxed text-mute">
+          <span className="font-bold text-fg">Article personnalisable.</span> Les clubs, blasons et
+          sponsors visibles sur les photos sont des réalisations. Le tien est fabriqué à tes
+          couleurs, avec ton blason et tes marquages.
+        </p>
+      )}
+
       <p className="mb-8 flex items-baseline gap-3">
         <span className="font-display text-4xl text-fg">{formatPrice(product.price)}</span>
         {product.inStock ? (

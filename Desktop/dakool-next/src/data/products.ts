@@ -15,6 +15,10 @@ export type Product = {
       figure une fois, sans doublon de fiche ni de photo. `category` reste
       le rayon principal, celui du fil d'Ariane et de la carte produit. */
   alsoIn?: string[];
+  /** Article fabriqué à la demande : les clubs et logos visibles sur les
+      photos sont des réalisations, pas ce qui est livré. La fiche produit
+      le dit explicitement au lieu de laisser croire à un article de stock. */
+  personnalisable?: boolean;
   tagline: string;
   description: string;
   sizes: string[];
@@ -133,10 +137,11 @@ export const products: Product[] = [
   },
   {
     id: 'p5',
-    slug: 'short-training-dakool',
-    name: 'Short Training DAKOOL',
+    slug: 'short-entrainement',
+    name: 'Short d’Entraînement',
     category: 'Accessoires',
     price: 13,
+    personnalisable: true,
     tagline: "Le short d'entraînement, tous les jours.",
     description:
       "Taille élastiquée à cordon, deux poches latérales, tissu léger qui sèche vite. Rien de superflu — c'est le short que portent nos équipes à l'entraînement toute la semaine.",
@@ -201,10 +206,11 @@ export const products: Product[] = [
   },
   {
     id: 'p8',
-    slug: 'sac-de-sport-dakool',
-    name: 'Sac de Sport DAKOOL',
+    slug: 'sac-de-sport',
+    name: 'Sac de Sport',
     category: 'Équipements',
     price: 43,
+    personnalisable: true,
     tagline: 'Tout le kit du match dans un seul sac.',
     description:
       'Sac de 55 litres avec compartiment chaussures ventilé séparé, poche humide étanche et bandoulière rembourrée. Base renforcée pour poser au sol sans abîmer.',
@@ -362,6 +368,7 @@ export const products: Product[] = [
     category: 'Équipements',
     price: 64,
     badge: { label: 'Ensemble' },
+    personnalisable: true,
     images: ['/produits/survetement-marine.jpg'],
     tagline: 'Veste et pantalon, une seule commande.',
     description:
@@ -379,29 +386,6 @@ export const products: Product[] = [
     inStock: true,
   },
   {
-    id: 'p16',
-    slug: 'casquette-dakool',
-    name: 'Casquette DAKOOL',
-    category: 'Accessoires',
-    price: 9,
-    tagline: "Le logo, rien d'autre.",
-    description:
-      'Casquette six panneaux en coton lavé, logo DAKOOL brodé sur le devant, fermeture métal réglable. Visière préformée.',
-    sizes: ONE_SIZE,
-    colors: [
-      { name: 'Noir', hex: '#0F0F0F' },
-      { name: 'Blanc', hex: '#F2F2F2' },
-      { name: 'Gris', hex: '#8A8A8A' },
-    ],
-    details: [
-      'Coton lavé six panneaux',
-      'Logo brodé devant',
-      'Fermeture métal réglable',
-      'Visière préformée',
-    ],
-    inStock: true,
-  },
-  {
     id: 'b1',
     alsoIn: ['Maillots'],
     slug: 'ensemble-basket-royal',
@@ -409,6 +393,7 @@ export const products: Product[] = [
     category: 'Basketball',
     price: 58,
     badge: { label: 'Sur mesure' },
+    personnalisable: true,
     images: ['/produits/basket-royal.jpg'],
     tagline: 'Bleu franc, chevrons latéraux, col contrasté.',
     description:
@@ -432,6 +417,7 @@ export const products: Product[] = [
     name: 'Ensemble Basket Or',
     category: 'Basketball',
     price: 58,
+    personnalisable: true,
     images: ['/produits/basket-or.jpg'],
     tagline: 'Or profond et double liseré.',
     description:
@@ -455,6 +441,7 @@ export const products: Product[] = [
     name: 'Ensemble Basket Noir',
     category: 'Basketball',
     price: 58,
+    personnalisable: true,
     images: ['/produits/basket-noir.jpg'],
     tagline: 'Noir mat, motif ton sur ton, finitions jaunes.',
     description:
@@ -478,6 +465,7 @@ export const products: Product[] = [
     name: 'Ensemble Basket Jaune',
     category: 'Basketball',
     price: 58,
+    personnalisable: true,
     images: ['/produits/basket-jaune.jpg'],
     tagline: 'Jaune vif et bandes graphiques latérales.',
     description:
@@ -501,6 +489,7 @@ export const products: Product[] = [
     name: 'Ensemble Basket Blanc',
     category: 'Basketball',
     price: 58,
+    personnalisable: true,
     images: ['/produits/basket-blanc.jpg'],
     tagline: 'Blanc texturé, dégradé vert sur les flancs.',
     description:
@@ -525,6 +514,7 @@ export const products: Product[] = [
     category: 'Volleyball',
     price: 52,
     badge: { label: 'Sur mesure' },
+    personnalisable: true,
     /* La tenue portée en premier : elle vend mieux que le à-plat d'atelier. */
     images: [
       '/produits/volley-vert-3.jpg',
@@ -553,6 +543,7 @@ export const products: Product[] = [
     name: 'Ensemble Volley Blanc',
     category: 'Volleyball',
     price: 52,
+    personnalisable: true,
     images: [
       '/produits/volley-blanc-3.jpg',
       '/produits/volley-blanc-5.jpg',
@@ -583,6 +574,7 @@ export const products: Product[] = [
     category: 'Handball',
     price: 44,
     badge: { label: 'Sur mesure' },
+    personnalisable: true,
     images: [
       '/produits/hand-blanc-orange.jpg',
       '/produits/hand-marine.jpg',
@@ -615,6 +607,7 @@ export const products: Product[] = [
     name: 'Tenue Staff',
     category: 'Équipements',
     price: 62,
+    personnalisable: true,
     images: [
       '/produits/staff-vert-marine.jpg',
       '/produits/staff-blanc-vert.jpg',
@@ -653,6 +646,7 @@ export const products: Product[] = [
     name: 'Chasuble d’Entraînement',
     category: 'Accessoires',
     price: 9,
+    personnalisable: true,
     images: ['/produits/chasuble-verte.jpg'],
     tagline: 'Le repère qui sépare les deux équipes à l’entraînement.',
     description:
@@ -675,6 +669,7 @@ export const products: Product[] = [
     name: 'Sac Bandoulière',
     category: 'Accessoires',
     price: 24,
+    personnalisable: true,
     images: ['/produits/sac-bandouliere.jpg'],
     tagline: 'Le petit format pour le trajet et les affaires du jour.',
     description:
@@ -733,11 +728,12 @@ export const products: Product[] = [
   {
     id: 'a5',
     alsoIn: ['Équipements'],
-    slug: 'sac-a-dos-dakool',
-    name: 'Sac à Dos DAKOOL',
+    slug: 'sac-a-dos-club',
+    name: 'Sac à Dos Club',
     category: 'Accessoires',
     price: 39,
     badge: { label: 'Club' },
+    personnalisable: true,
     images: ['/produits/sac-a-dos-dakool.jpg'],
     tagline: 'Le sac de club, compartiment chaussures inclus.',
     description:
@@ -755,81 +751,31 @@ export const products: Product[] = [
   },
   {
     id: 'a6',
-    slug: 'echarpe-supporter-asp',
-    name: 'Écharpe Supporter ASP',
+    slug: 'echarpe-supporter',
+    name: 'Écharpe Supporter',
     category: 'Accessoires',
     price: 19,
-    images: ['/produits/echarpe-asp.jpg'],
+    personnalisable: true,
+    images: [
+      '/produits/echarpe-asp.jpg',
+      '/produits/echarpe-casa-sports.jpg',
+      '/produits/echarpe-stade-mbour.jpg',
+      '/produits/echarpe-uso.jpg',
+    ],
+    viewsAreColorways: true,
     tagline: 'Les couleurs du club, tendues à bout de bras.',
     description:
-      "Écharpe de supporter tricotée en jacquard double face : le nom du club sur toute la longueur, le blason au centre et à chaque extrémité. Maille épaisse, franges nouées à la main. C'est l'objet qu'on lève au coup d'envoi et qu'on garde des années.",
+      "Écharpe de supporter tricotée en jacquard double face : le nom du club sur toute la longueur, le blason au centre et à chaque extrémité. Maille épaisse, franges nouées à la main. C'est l'objet qu'on lève au coup d'envoi et qu'on garde des années. Chaque coloris se dessine avec le club, à partir de son blason.",
     sizes: ONE_SIZE,
-    colors: [{ name: 'Rouge / Vert', hex: '#D42027' }],
-    details: [
-      'Tricot jacquard double face',
-      'Blason au centre et sur les deux pointes',
-      'Franges nouées',
-      'Environ 140 × 17 cm',
-      'Tarifs dégressifs à partir de 50 pièces',
+    colors: [
+      { name: 'Rouge / Vert', hex: '#D42027' },
+      { name: 'Vert / Blanc', hex: '#1B5E3A' },
+      { name: 'Rouge / Noir', hex: '#E01B22' },
+      { name: 'Bordeaux / Blanc', hex: '#8C1420' },
     ],
-    inStock: true,
-  },
-  {
-    id: 'a7',
-    slug: 'echarpe-supporter-casa-sports',
-    name: 'Écharpe Supporter Casa Sports',
-    category: 'Accessoires',
-    price: 19,
-    images: ['/produits/echarpe-casa-sports.jpg'],
-    tagline: 'Le vert et blanc, du premier au dernier rang.',
-    description:
-      "Écharpe de supporter tricotée en jacquard double face, nom du club en toutes lettres et blason repris au centre comme sur les pointes. Maille épaisse qui tient la couleur, franges nouées à la main.",
-    sizes: ONE_SIZE,
-    colors: [{ name: 'Vert / Blanc', hex: '#1B5E3A' }],
     details: [
       'Tricot jacquard double face',
-      'Blason au centre et sur les deux pointes',
-      'Franges nouées',
-      'Environ 140 × 17 cm',
-      'Tarifs dégressifs à partir de 50 pièces',
-    ],
-    inStock: true,
-  },
-  {
-    id: 'a8',
-    slug: 'echarpe-supporter-stade-de-mbour',
-    name: 'Écharpe Supporter Stade de M’bour',
-    category: 'Accessoires',
-    price: 19,
-    images: ['/produits/echarpe-stade-mbour.jpg'],
-    tagline: 'Rouge et noir, sans discussion.',
-    description:
-      "Écharpe de supporter tricotée en jacquard double face : nom du club au centre, blason répété de chaque côté et sur les pointes. Liseré contrasté sur toute la longueur, franges nouées à la main.",
-    sizes: ONE_SIZE,
-    colors: [{ name: 'Rouge / Noir', hex: '#E01B22' }],
-    details: [
-      'Tricot jacquard double face',
-      'Blason répété sur toute la longueur',
-      'Franges nouées ton sur ton',
-      'Environ 140 × 17 cm',
-      'Tarifs dégressifs à partir de 50 pièces',
-    ],
-    inStock: true,
-  },
-  {
-    id: 'a9',
-    slug: 'echarpe-supporter-uso',
-    name: 'Écharpe Supporter USO',
-    category: 'Accessoires',
-    price: 19,
-    images: ['/produits/echarpe-uso.jpg'],
-    tagline: 'Le blason à chaque bout, le sigle au milieu.',
-    description:
-      "Écharpe de supporter tricotée en jacquard double face, sigle du club de part et d'autre du blason central. Encadrement blanc sur toute la longueur, maille épaisse et franges nouées à la main.",
-    sizes: ONE_SIZE,
-    colors: [{ name: 'Bordeaux / Blanc', hex: '#8C1420' }],
-    details: [
-      'Tricot jacquard double face',
+      'Nom du club sur toute la longueur',
       'Blason au centre et sur les deux pointes',
       'Franges nouées',
       'Environ 140 × 17 cm',
@@ -839,23 +785,23 @@ export const products: Product[] = [
   },
   {
     id: 'a10',
-    slug: 'casquette-jeanne-darc',
-    name: 'Casquette Jeanne d’Arc',
+    slug: 'casquette-brodee',
+    name: 'Casquette Brodée',
     category: 'Accessoires',
     price: 22,
-    badge: { label: 'Club' },
+    personnalisable: true,
     images: ['/produits/casquette-jeanne-darc.jpg'],
     tagline: 'Visière plate, blason brodé, rien de plus.',
     description:
-      "Casquette snapback à visière plate, calotte cinq panneaux et blason du club brodé sur le devant. Visière contrastée, fermeture arrière réglable par pression. Se décline au blason de n'importe quel club sur commande.",
+      "Casquette snapback à visière plate, calotte cinq panneaux et blason brodé sur le devant. Visière contrastée, fermeture arrière réglable par pression. La calotte, la visière et la broderie se choisissent séparément, aux couleurs du club ou de la structure.",
     sizes: ONE_SIZE,
     colors: [{ name: 'Bleu / Blanc', hex: '#22409A' }],
     details: [
       'Snapback cinq panneaux, visière plate',
       'Blason brodé sur le panneau frontal',
-      'Visière contrastée',
+      'Calotte et visière de couleurs distinctes',
       'Fermeture arrière réglable',
-      'Broderie club sur commande',
+      'Broderie sur commande, à partir de 10 pièces',
     ],
     inStock: true,
   },
@@ -1051,6 +997,7 @@ export const products: Product[] = [
     category: 'Équipements',
     price: 54,
     badge: { label: 'Ensemble' },
+    personnalisable: true,
     images: ['/produits/jogging-zippe-gris.jpg', '/produits/jogging-zippe-bleu.jpg'],
     viewsAreColorways: true,
     tagline: 'Le survêtement qu’on garde après la douche.',
@@ -1078,6 +1025,7 @@ export const products: Product[] = [
     name: 'Ensemble à Capuche',
     category: 'Équipements',
     price: 48,
+    personnalisable: true,
     images: [
       '/produits/jogging-bordeaux.jpg',
       '/produits/jogging-bleu.jpg',
@@ -1111,6 +1059,7 @@ export const products: Product[] = [
     category: 'Sweats',
     price: 42,
     badge: { label: 'Sur mesure' },
+    personnalisable: true,
     images: [
       '/produits/sweat-bordeaux.jpg',
       '/produits/sweat-blanc.jpg',
@@ -1144,6 +1093,7 @@ export const products: Product[] = [
     category: 'Loisirs',
     price: 46,
     badge: { label: 'Sur mesure' },
+    personnalisable: true,
     images: ['/produits/loisir-coach-marine.jpg'],
     tagline: 'La tenue de celui qui dirige la séance.',
     description:
@@ -1167,6 +1117,7 @@ export const products: Product[] = [
     name: 'Ensemble Club Sponsors',
     category: 'Loisirs',
     price: 46,
+    personnalisable: true,
     images: ['/produits/loisir-club-bleu.jpg'],
     tagline: 'Six emplacements sponsors, un seul ensemble.',
     description:
@@ -1191,6 +1142,7 @@ export const products: Product[] = [
     category: 'Loisirs',
     price: 36,
     badge: { label: 'Nouveau' },
+    personnalisable: true,
     images: ['/produits/loisir-splatter-1.jpg', '/produits/loisir-splatter-2.jpg'],
     tagline: 'Éclaboussures fluo sur fond marine.',
     description:
@@ -1215,6 +1167,7 @@ export const products: Product[] = [
     category: 'Survêtements',
     price: 58,
     badge: { label: 'Sur mesure' },
+    personnalisable: true,
     images: [
       '/produits/survetement-capuche-noir.jpg',
       '/produits/survetement-capuche-jaune.jpg',
@@ -1245,6 +1198,7 @@ export const products: Product[] = [
     name: 'Survêtement de Présentation',
     category: 'Survêtements',
     price: 56,
+    personnalisable: true,
     images: [
       '/produits/survetement-presentation-bleu.jpg',
       '/produits/survetement-presentation-marine.jpg',

@@ -349,6 +349,7 @@ export const products: Product[] = [
   },
   {
     id: 'p15',
+    alsoIn: ['Pantalons & Leggings'],
     slug: 'survetement-complet',
     name: 'Survêtement Complet',
     category: 'Équipements',
@@ -602,7 +603,7 @@ export const products: Product[] = [
   },
   {
     id: 'h2',
-    alsoIn: ['Maillots'],
+    alsoIn: ['Maillots', 'Pantalons & Leggings'],
     slug: 'tenue-staff',
     name: 'Tenue Staff',
     category: 'Équipements',
@@ -853,6 +854,7 @@ export const products: Product[] = [
   },
   {
     id: 'y1',
+    alsoIn: ['Pantalons & Leggings'],
     slug: 'legging-taille-haute',
     name: 'Legging Taille Haute',
     category: 'Yoga',
@@ -874,7 +876,7 @@ export const products: Product[] = [
   },
   {
     id: 'y2',
-    alsoIn: ['Équipements'],
+    alsoIn: ['Équipements', 'Pantalons & Leggings'],
     slug: 'ensemble-veste-legging',
     name: 'Ensemble Veste + Legging',
     category: 'Yoga',
@@ -921,7 +923,7 @@ export const products: Product[] = [
   },
   {
     id: 'y4',
-    alsoIn: ['Équipements'],
+    alsoIn: ['Équipements', 'Pantalons & Leggings'],
     slug: 'ensemble-brassiere-lacee',
     name: 'Ensemble Brassière Lacée',
     category: 'Yoga',
@@ -943,7 +945,7 @@ export const products: Product[] = [
   },
   {
     id: 'y5',
-    alsoIn: ['Équipements'],
+    alsoIn: ['Équipements', 'Pantalons & Leggings'],
     slug: 'ensemble-brassiere-legging',
     name: 'Ensemble Brassière + Legging',
     category: 'Yoga',
@@ -1034,6 +1036,66 @@ export const products: Product[] = [
     ],
     inStock: true,
   },
+  {
+    id: 'j1',
+    alsoIn: ['Pantalons & Leggings'],
+    slug: 'ensemble-capuche-zippe',
+    name: 'Ensemble Capuche Zippé',
+    category: 'Équipements',
+    price: 54,
+    badge: { label: 'Ensemble' },
+    images: ['/produits/jogging-zippe-gris.jpg', '/produits/jogging-zippe-bleu.jpg'],
+    viewsAreColorways: true,
+    tagline: 'Le survêtement qu’on garde après la douche.',
+    description:
+      "Veste à capuche zippée sur toute la longueur, poche kangourou coupée en deux, et jogger fuselé à bas resserré. Molleton gratté à l'intérieur, assez chaud pour l'avant-match en extérieur, assez sobre pour le trajet. Blason brodé poitrine.",
+    sizes: JERSEY_SIZES,
+    colors: [
+      { name: 'Gris clair', hex: '#C9CACC' },
+      { name: 'Bleu', hex: '#2E6C96' },
+    ],
+    details: [
+      'Ensemble complet : veste à capuche + jogger',
+      'Zip intégral, poche kangourou',
+      'Molleton gratté intérieur',
+      'Jogger fuselé, bas resserré et cordon de taille',
+      'Blason club et logos sponsors inclus',
+      'Production à partir de 10 ensembles',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'j2',
+    alsoIn: ['Pantalons & Leggings'],
+    slug: 'ensemble-capuche',
+    name: 'Ensemble à Capuche',
+    category: 'Équipements',
+    price: 48,
+    images: [
+      '/produits/jogging-bordeaux.jpg',
+      '/produits/jogging-bleu.jpg',
+      '/produits/jogging-gris.jpg',
+    ],
+    viewsAreColorways: true,
+    tagline: 'Sweat à enfiler et jogger assorti, rien à régler.',
+    description:
+      "La version à enfiler du même ensemble : sweat à capuche sans zip, poche kangourou d'un seul tenant, et jogger fuselé assorti. Une seule couleur d'un bout à l'autre, le blason brodé pour seul marquage.",
+    sizes: JERSEY_SIZES,
+    colors: [
+      { name: 'Bordeaux', hex: '#5E2226' },
+      { name: 'Bleu', hex: '#2C5F86' },
+      { name: 'Gris', hex: '#9EA1A4' },
+    ],
+    details: [
+      'Ensemble complet : sweat à capuche + jogger',
+      'Sweat à enfiler, poche kangourou',
+      'Molleton gratté intérieur',
+      'Jogger fuselé, bas resserré et cordon de taille',
+      'Blason club et logos sponsors inclus',
+      'Production à partir de 10 ensembles',
+    ],
+    inStock: true,
+  },
 ];
 
 export const categories = [
@@ -1043,6 +1105,7 @@ export const categories = [
   'Handball',
   'Yoga',
   'Maillots',
+  'Pantalons & Leggings',
   'Chaussures',
   'Ballons',
   'Équipements',

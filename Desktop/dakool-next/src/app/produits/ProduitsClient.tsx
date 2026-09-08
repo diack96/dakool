@@ -11,6 +11,7 @@ import {
   faVolleyball,
   faHandBackFist,
   faSpa,
+  faPersonRunning,
   faVest,
   faTag,
 } from '@fortawesome/free-solid-svg-icons';
@@ -26,6 +27,7 @@ const catIcons: Record<string, typeof faGrip> = {
   Handball: faHandBackFist,
   Yoga: faSpa,
   Maillots: faShirt,
+  'Pantalons & Leggings': faPersonRunning,
   Chaussures: faShoePrints,
   Ballons: faFutbol,
   Équipements: faVest,

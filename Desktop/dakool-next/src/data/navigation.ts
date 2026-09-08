@@ -18,6 +18,7 @@ const BASKET = '/produits?categorie=Basketball';
 const VOLLEY = '/produits?categorie=Volleyball';
 const HAND = '/produits?categorie=Handball';
 const YOGA = '/produits?categorie=Yoga';
+const BOTTOMS = '/produits?categorie=' + encodeURIComponent('Pantalons & Leggings');
 
 const APPAREL: NavChild[] = [
   { label: 'Maillot de football', href: JERSEYS },
@@ -25,7 +26,7 @@ const APPAREL: NavChild[] = [
   { label: 'Sweats', href: SHOP },
   { label: 'T-shirt', href: SHOP },
   { label: 'Short', href: SHOP },
-  { label: 'Pantalon & Legging', href: SHOP },
+  { label: 'Pantalon & Legging', href: BOTTOMS },
 ];
 
 export const navigation: NavEntry[] = [

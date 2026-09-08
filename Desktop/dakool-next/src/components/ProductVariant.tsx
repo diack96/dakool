@@ -1,16 +1,18 @@
 'use client';
 
 import { createContext, useCallback, useContext, useMemo, useState, ReactNode } from 'react';
-import type { Product } from '@/data/products';
+import { hasColorViews, viewsFor, type Product } from '@/data/products';
 
 type VariantContext = {
-  /** Index de la vue affichée dans la galerie. */
-  view: number;
-  selectView: (index: number) => void;
   /** Nom du coloris retenu pour la commande. */
   color: string;
   selectColor: (name: string) => void;
-  /** Vrai quand chaque vue correspond à un coloris. */
+  /** Vues du coloris courant, dans l'ordre de la galerie. */
+  views: string[];
+  /** Index de la vue affichée, à l'intérieur de `views`. */
+  view: number;
+  selectView: (index: number) => void;
+  /** Vrai quand chaque coloris porte ses propres photos. */
   linked: boolean;
 };
 
@@ -19,9 +21,9 @@ const Context = createContext<VariantContext | null>(null);
 /**
  * État partagé entre la galerie et le panneau d'achat.
  *
- * Quand les vues sont des coloris (`viewsAreColorways`), les deux contrôles
- * sont synchronisés : sans cela on pouvait regarder une photo et commander
- * un autre coloris.
+ * Quand chaque coloris porte ses propres vues, la galerie ne montre que
+ * celles du coloris choisi : sans cela on pouvait regarder une photo et
+ * commander un autre coloris.
  */
 export function ProductVariantProvider({
   product,
@@ -30,34 +32,29 @@ export function ProductVariantProvider({
   product: Product;
   children: ReactNode;
 }) {
-  const linked = Boolean(
-    product.viewsAreColorways && product.images?.length === product.colors.length,
-  );
+  const linked = hasColorViews(product);
 
-  const [view, setView] = useState(0);
   const [color, setColor] = useState(product.colors[0]?.name ?? '');
+  const [view, setView] = useState(0);
 
-  const selectView = useCallback(
-    (index: number) => {
-      setView(index);
-      if (linked) setColor(product.colors[index]?.name ?? '');
-    },
-    [linked, product.colors],
-  );
+  const selectColor = useCallback((name: string) => {
+    setColor(name);
+    /* Le nouveau coloris a ses propres vues : on repart de la première. */
+    setView(0);
+  }, []);
 
-  const selectColor = useCallback(
-    (name: string) => {
-      setColor(name);
-      if (!linked) return;
-      const index = product.colors.findIndex((c) => c.name === name);
-      if (index >= 0) setView(index);
-    },
-    [linked, product.colors],
-  );
+  const views = useMemo(() => viewsFor(product, color), [product, color]);
 
   const value = useMemo<VariantContext>(
-    () => ({ view, selectView, color, selectColor, linked }),
-    [view, selectView, color, selectColor, linked],
+    () => ({
+      color,
+      selectColor,
+      views,
+      view: Math.min(view, Math.max(views.length - 1, 0)),
+      selectView: setView,
+      linked,
+    }),
+    [color, selectColor, views, view, linked],
   );
 
   return <Context.Provider value={value}>{children}</Context.Provider>;

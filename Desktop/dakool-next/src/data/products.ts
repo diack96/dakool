@@ -5,11 +5,9 @@ export type Product = {
   category: string;
   price: number;
   badge?: { label: string };
-  /** Vues du produit dans /public ; à défaut, un dessin par catégorie est utilisé. */
+  /** Toutes les vues de l'article dans /public, coloris après coloris ; à
+      défaut, un dessin par catégorie est utilisé. */
   images?: string[];
-  /** Chaque vue correspond au coloris de même rang : galerie et nuancier
-      sont alors synchronisés. */
-  viewsAreColorways?: boolean;
   /** Rayons supplémentaires où l'article se range aussi. Un maillot de
       basket appartient au rayon Basketball comme au rayon Maillots : il y
       figure une fois, sans doublon de fiche ni de photo. `category` reste
@@ -22,7 +20,11 @@ export type Product = {
   tagline: string;
   description: string;
   sizes: string[];
-  colors: { name: string; hex: string }[];
+  /** Un coloris peut porter ses propres vues : la galerie n'affiche alors que
+      celles-ci, et changer de pastille change la photo. C'est ce qui permet de
+      réunir sur une seule fiche un modèle décliné en cinq couleurs, au lieu
+      d'en faire cinq articles quasi identiques. */
+  colors: { name: string; hex: string; images?: string[] }[];
   details: string[];
   inStock: boolean;
 };
@@ -115,15 +117,14 @@ export const products: Product[] = [
       '/produits/chaussures-foot-bleu.jpg',
       '/produits/chaussures-foot-degrade.jpg',
     ],
-    viewsAreColorways: true,
     tagline: 'Notre chaussure la plus rapide.',
     description:
       "Conçue avec des joueurs professionnels. Tige synthétique fine pour le toucher de balle, semelle en composite léger, crampons lamellaires pour les appuis sur terrain sec. Le motif de la tige est imprimé dans la matière et change avec le coloris : nervures, mouchetures ou dégradé. 210 g en taille 42.",
     sizes: BOOT_SIZES,
     colors: [
-      { name: 'Bordeaux / Noir', hex: '#6B1F28' },
-      { name: 'Bleu roi', hex: '#2B7FD4' },
-      { name: 'Bleu / Vert', hex: '#1F8F3E' },
+      { name: 'Bordeaux / Noir', hex: '#6B1F28', images: ['/produits/chaussures-foot-bordeaux.jpg'] },
+      { name: 'Bleu roi', hex: '#2B7FD4', images: ['/produits/chaussures-foot-bleu.jpg'] },
+      { name: 'Bleu / Vert', hex: '#1F8F3E', images: ['/produits/chaussures-foot-degrade.jpg'] },
     ],
     details: [
       '210 g en taille 42',
@@ -388,114 +389,30 @@ export const products: Product[] = [
   {
     id: 'b1',
     alsoIn: ['Maillots'],
-    slug: 'ensemble-basket-royal',
-    name: 'Ensemble Basket Royal',
+    slug: 'ensemble-basketball',
+    name: 'Ensemble Basketball',
     category: 'Basketball',
     price: 58,
     badge: { label: 'Sur mesure' },
     personnalisable: true,
-    images: ['/produits/basket-royal.jpg'],
-    tagline: 'Bleu franc, chevrons latéraux, col contrasté.',
-    description:
-      "Ensemble de basketball sublimé aux couleurs du club. Le bleu profond est cassé par un col et des emmanchures blanches, avec des chevrons sur les flancs qui suivent le mouvement. Nom, numéro, blason et sponsors sont intégrés à l'impression, pas rapportés.",
-    sizes: JERSEY_SIZES,
-    colors: [{ name: 'Bleu Royal', hex: '#1B32D6' }],
-    details: [
-      'Ensemble complet : maillot sans manches + short',
-      'Sublimation intégrale — le motif ne se décolle pas',
-      'Maille technique respirante, séchage rapide',
-      'Nom, numéros, logos club et sponsors inclus',
-      'Production à partir de 10 ensembles',
-      'Livraison 3 à 4 semaines après validation de la maquette',
+    images: [
+      '/produits/basket-royal.jpg',
+      '/produits/basket-or.jpg',
+      '/produits/basket-noir.jpg',
+      '/produits/basket-jaune.jpg',
+      '/produits/basket-blanc.jpg',
     ],
-    inStock: true,
-  },
-  {
-    id: 'b2',
-    alsoIn: ['Maillots'],
-    slug: 'ensemble-basket-or',
-    name: 'Ensemble Basket Or',
-    category: 'Basketball',
-    price: 58,
-    personnalisable: true,
-    images: ['/produits/basket-or.jpg'],
-    tagline: 'Or profond et double liseré.',
+    tagline: 'Maillot sans manches et short, sublimés aux couleurs du club.',
     description:
-      "Ensemble de basketball sublimé, dans un or dense relevé par un double liseré au col et aux emmanchures. Une coupe classique, lisible de loin, pensée pour les salles où le maillot doit se reconnaître depuis les tribunes.",
+      "Ensemble de basketball sublimé : maillot sans manches à emmanchures larges et short assorti. Nom, numéro, blason et sponsors sont intégrés à l'impression, pas rapportés — rien ne se décolle au lavage. Cinq réalisations en exemple ci-contre ; le tien se dessine à partir de tes couleurs.",
     sizes: JERSEY_SIZES,
-    colors: [{ name: 'Or', hex: '#E8A317' }],
-    details: [
-      'Ensemble complet : maillot sans manches + short',
-      'Sublimation intégrale — le motif ne se décolle pas',
-      'Maille technique respirante, séchage rapide',
-      'Nom, numéros, logos club et sponsors inclus',
-      'Production à partir de 10 ensembles',
-      'Livraison 3 à 4 semaines après validation de la maquette',
+    colors: [
+      { name: 'Bleu roi', hex: '#1B32D6', images: ['/produits/basket-royal.jpg'] },
+      { name: 'Or', hex: '#D9A227', images: ['/produits/basket-or.jpg'] },
+      { name: 'Noir', hex: '#111111', images: ['/produits/basket-noir.jpg'] },
+      { name: 'Jaune', hex: '#E9C61C', images: ['/produits/basket-jaune.jpg'] },
+      { name: 'Blanc', hex: '#F2F2F2', images: ['/produits/basket-blanc.jpg'] },
     ],
-    inStock: true,
-  },
-  {
-    id: 'b3',
-    alsoIn: ['Maillots'],
-    slug: 'ensemble-basket-noir',
-    name: 'Ensemble Basket Noir',
-    category: 'Basketball',
-    price: 58,
-    personnalisable: true,
-    images: ['/produits/basket-noir.jpg'],
-    tagline: 'Noir mat, motif ton sur ton, finitions jaunes.',
-    description:
-      "Ensemble de basketball sublimé en noir, avec un motif ton sur ton qui monte depuis le bas du maillot et se prolonge sur les côtés du short. Les liserés jaunes tiennent le contraste sans alourdir la pièce.",
-    sizes: JERSEY_SIZES,
-    colors: [{ name: 'Noir', hex: '#0F0F0F' }],
-    details: [
-      'Ensemble complet : maillot sans manches + short',
-      'Sublimation intégrale — le motif ne se décolle pas',
-      'Maille technique respirante, séchage rapide',
-      'Nom, numéros, logos club et sponsors inclus',
-      'Production à partir de 10 ensembles',
-      'Livraison 3 à 4 semaines après validation de la maquette',
-    ],
-    inStock: true,
-  },
-  {
-    id: 'b4',
-    alsoIn: ['Maillots'],
-    slug: 'ensemble-basket-jaune',
-    name: 'Ensemble Basket Jaune',
-    category: 'Basketball',
-    price: 58,
-    personnalisable: true,
-    images: ['/produits/basket-jaune.jpg'],
-    tagline: 'Jaune vif et bandes graphiques latérales.',
-    description:
-      'Version claire du même patron : jaune saturé, col et emmanchures noirs, et une bande graphique qui court sur les flancs du maillot comme du short. Le jeu extérieur qui complète la tenue noire.',
-    sizes: JERSEY_SIZES,
-    colors: [{ name: 'Jaune', hex: '#F2D024' }],
-    details: [
-      'Ensemble complet : maillot sans manches + short',
-      'Sublimation intégrale — le motif ne se décolle pas',
-      'Maille technique respirante, séchage rapide',
-      'Nom, numéros, logos club et sponsors inclus',
-      'Production à partir de 10 ensembles',
-      'Livraison 3 à 4 semaines après validation de la maquette',
-    ],
-    inStock: true,
-  },
-  {
-    id: 'b5',
-    alsoIn: ['Maillots'],
-    slug: 'ensemble-basket-blanc',
-    name: 'Ensemble Basket Blanc',
-    category: 'Basketball',
-    price: 58,
-    personnalisable: true,
-    images: ['/produits/basket-blanc.jpg'],
-    tagline: 'Blanc texturé, dégradé vert sur les flancs.',
-    description:
-      "Ensemble de basketball sublimé sur fond blanc texturé, avec un dégradé vert qui remonte le long des côtes. Les emplacements sponsors sont intégrés dès la maquette, à l'avant comme à l'arrière.",
-    sizes: JERSEY_SIZES,
-    colors: [{ name: 'Blanc', hex: '#F2F2F2' }],
     details: [
       'Ensemble complet : maillot sans manches + short',
       'Sublimation intégrale — le motif ne se décolle pas',
@@ -509,53 +426,49 @@ export const products: Product[] = [
   {
     id: 'v1',
     alsoIn: ['Maillots'],
-    slug: 'ensemble-volley-vert',
-    name: 'Ensemble Volley Vert',
+    slug: 'ensemble-volleyball',
+    name: 'Ensemble Volleyball',
     category: 'Volleyball',
     price: 52,
     badge: { label: 'Sur mesure' },
     personnalisable: true,
-    /* La tenue portée en premier : elle vend mieux que le à-plat d'atelier. */
+    /* Les tenues portées d'abord : elles vendent mieux que les à-plats d'atelier. */
     images: [
       '/produits/volley-vert-3.jpg',
       '/produits/volley-vert-1.jpg',
       '/produits/volley-vert-2.jpg',
-    ],
-    tagline: 'Vert franc, marquage jaune, coupe débardeur.',
-    description:
-      "Ensemble de volleyball en maille légère : débardeur à emmanchures larges et short à taille élastiquée. Le marquage jaune est imprimé à chaud, poitrine, dos et cuisse. Une tenue pensée pour le jeu en extérieur et sur sable, où la couleur doit rester lisible en plein soleil.",
-    sizes: JERSEY_SIZES,
-    colors: [{ name: 'Vert', hex: '#2E9B2E' }],
-    details: [
-      'Ensemble complet : débardeur + short',
-      'Maille légère, séchage rapide',
-      'Marquage nom, numéro et sponsors imprimé à chaud',
-      'Short à taille élastiquée avec cordon',
-      'Production à partir de 10 ensembles',
-      'Livraison 3 à 4 semaines après validation de la maquette',
-    ],
-    inStock: true,
-  },
-  {
-    id: 'v2',
-    alsoIn: ['Maillots'],
-    slug: 'ensemble-volley-blanc',
-    name: 'Ensemble Volley Blanc',
-    category: 'Volleyball',
-    price: 52,
-    personnalisable: true,
-    images: [
       '/produits/volley-blanc-3.jpg',
       '/produits/volley-blanc-5.jpg',
       '/produits/volley-blanc-4.jpg',
       '/produits/volley-blanc-1.jpg',
       '/produits/volley-blanc-2.jpg',
     ],
-    tagline: 'Blanc, griffures colorées, motif ton sur ton.',
+    tagline: 'Débardeur et short en maille légère, pour la salle et le sable.',
     description:
-      "Le jeu extérieur du même patron. Fond blanc à motif ton sur ton, traversé de trois griffures colorées sur le devant. Le marquage vert reste net sur le blanc, de face comme de dos, et le short reprend le nom de l'équipe sur toute sa largeur.",
+      "Ensemble de volleyball en maille légère : débardeur à emmanchures larges et short à taille élastiquée. Le marquage est imprimé à chaud sur la poitrine, le dos et la cuisse. Une tenue pensée pour le jeu en extérieur et sur sable, où la couleur doit rester lisible en plein soleil.",
     sizes: JERSEY_SIZES,
-    colors: [{ name: 'Blanc', hex: '#F2F2F2' }],
+    colors: [
+      {
+        name: 'Vert',
+        hex: '#2E9B2E',
+        images: [
+          '/produits/volley-vert-3.jpg',
+          '/produits/volley-vert-1.jpg',
+          '/produits/volley-vert-2.jpg',
+        ],
+      },
+      {
+        name: 'Blanc',
+        hex: '#F2F2F2',
+        images: [
+          '/produits/volley-blanc-3.jpg',
+          '/produits/volley-blanc-5.jpg',
+          '/produits/volley-blanc-4.jpg',
+          '/produits/volley-blanc-1.jpg',
+          '/produits/volley-blanc-2.jpg',
+        ],
+      },
+    ],
     details: [
       'Ensemble complet : débardeur + short',
       'Maille légère, séchage rapide',
@@ -580,15 +493,14 @@ export const products: Product[] = [
       '/produits/hand-marine.jpg',
       '/produits/hand-blanc-marine.jpg',
     ],
-    viewsAreColorways: true,
     tagline: 'Col et poignets contrastés, emplacements sponsors intégrés.',
     description:
       "Maillot de handball à manches courtes, col rond et poignets contrastés. La coupe laisse l'épaule libre pour le geste de tir. Numéro, blason et sponsors sont intégrés dès la maquette : les vues ci-dessus montrent trois coloris réellement produits pour des clubs.",
     sizes: JERSEY_SIZES,
     colors: [
-      { name: 'Blanc / Orange', hex: '#F2F2F2' },
-      { name: 'Marine / Orange', hex: '#2E3192' },
-      { name: 'Blanc / Marine', hex: '#EDEDED' },
+      { name: 'Blanc / Orange', hex: '#F2F2F2', images: ['/produits/hand-blanc-orange.jpg'] },
+      { name: 'Marine / Orange', hex: '#2E3192', images: ['/produits/hand-marine.jpg'] },
+      { name: 'Blanc / Marine', hex: '#EDEDED', images: ['/produits/hand-blanc-marine.jpg'] },
     ],
     details: [
       'Manches courtes, col rond côtelé',
@@ -616,18 +528,17 @@ export const products: Product[] = [
       '/produits/staff-marine.jpg',
       '/produits/staff-petrole.jpg',
     ],
-    viewsAreColorways: true,
     tagline: 'Polo et pantalon, pour le banc et les déplacements.',
     description:
       "L'ensemble que portent les encadrants : polo à empiècement contrasté, boutonnage trois trous, et pantalon de survêtement à bas resserré. Une tenue qui tient le bord du terrain comme le déplacement, et qui se décline aux couleurs du club. La mention portée dans le dos — STAFF, COACH ou autre — se choisit à la commande.",
     sizes: JERSEY_SIZES,
     colors: [
-      { name: 'Vert / Marine', hex: '#2E3192' },
-      { name: 'Blanc / Vert', hex: '#2ECC40' },
-      { name: 'Vert / Blanc', hex: '#1E7A5C' },
-      { name: 'Bleu ciel / Blanc', hex: '#4BA3DA' },
-      { name: 'Marine / Blanc', hex: '#2B3A8F' },
-      { name: 'Pétrole / Blanc', hex: '#1F5C73' },
+      { name: 'Vert / Marine', hex: '#2E3192', images: ['/produits/staff-vert-marine.jpg'] },
+      { name: 'Blanc / Vert', hex: '#2ECC40', images: ['/produits/staff-blanc-vert.jpg'] },
+      { name: 'Vert / Blanc', hex: '#1E7A5C', images: ['/produits/staff-vert-blanc.jpg'] },
+      { name: 'Bleu ciel / Blanc', hex: '#4BA3DA', images: ['/produits/staff-bleu-ciel.jpg'] },
+      { name: 'Marine / Blanc', hex: '#2B3A8F', images: ['/produits/staff-marine.jpg'] },
+      { name: 'Pétrole / Blanc', hex: '#1F5C73', images: ['/produits/staff-petrole.jpg'] },
     ],
     details: [
       'Ensemble complet : polo + pantalon',
@@ -762,16 +673,15 @@ export const products: Product[] = [
       '/produits/echarpe-stade-mbour.jpg',
       '/produits/echarpe-uso.jpg',
     ],
-    viewsAreColorways: true,
     tagline: 'Les couleurs du club, tendues à bout de bras.',
     description:
       "Écharpe de supporter tricotée en jacquard double face : le nom du club sur toute la longueur, le blason au centre et à chaque extrémité. Maille épaisse, franges nouées à la main. C'est l'objet qu'on lève au coup d'envoi et qu'on garde des années. Chaque coloris se dessine avec le club, à partir de son blason.",
     sizes: ONE_SIZE,
     colors: [
-      { name: 'Rouge / Vert', hex: '#D42027' },
-      { name: 'Vert / Blanc', hex: '#1B5E3A' },
-      { name: 'Rouge / Noir', hex: '#E01B22' },
-      { name: 'Bordeaux / Blanc', hex: '#8C1420' },
+      { name: 'Rouge / Vert', hex: '#D42027', images: ['/produits/echarpe-asp.jpg'] },
+      { name: 'Vert / Blanc', hex: '#1B5E3A', images: ['/produits/echarpe-casa-sports.jpg'] },
+      { name: 'Rouge / Noir', hex: '#E01B22', images: ['/produits/echarpe-stade-mbour.jpg'] },
+      { name: 'Bordeaux / Blanc', hex: '#8C1420', images: ['/produits/echarpe-uso.jpg'] },
     ],
     details: [
       'Tricot jacquard double face',
@@ -926,14 +836,13 @@ export const products: Product[] = [
     price: 64,
     badge: { label: 'Pro' },
     images: ['/produits/chaussures-basket-glacier.jpg', '/produits/chaussures-basket-royal.jpg'],
-    viewsAreColorways: true,
     tagline: 'Tige basse, cheville libre, appuis secs.',
     description:
       "Chaussure de basket à tige basse pour les joueurs qui veulent de la vitesse plutôt que du maintien haut. Empeigne en mesh perforé sur contreforts synthétiques, semelle intermédiaire translucide et gomme à chevrons pour accrocher au premier appui. Deux coloris, même construction.",
     sizes: BOOT_SIZES,
     colors: [
-      { name: 'Blanc / Bleu glacier', hex: '#A8CBE4' },
-      { name: 'Blanc / Bleu roi', hex: '#2B4BA8' },
+      { name: 'Blanc / Bleu glacier', hex: '#A8CBE4', images: ['/produits/chaussures-basket-glacier.jpg'] },
+      { name: 'Blanc / Bleu roi', hex: '#2B4BA8', images: ['/produits/chaussures-basket-royal.jpg'] },
     ],
     details: [
       'Tige basse, cheville dégagée',
@@ -999,14 +908,13 @@ export const products: Product[] = [
     badge: { label: 'Ensemble' },
     personnalisable: true,
     images: ['/produits/jogging-zippe-gris.jpg', '/produits/jogging-zippe-bleu.jpg'],
-    viewsAreColorways: true,
     tagline: 'Le survêtement qu’on garde après la douche.',
     description:
       "Veste à capuche zippée sur toute la longueur, poche kangourou coupée en deux, et jogger fuselé à bas resserré. Molleton gratté à l'intérieur, assez chaud pour l'avant-match en extérieur, assez sobre pour le trajet. Blason brodé poitrine.",
     sizes: JERSEY_SIZES,
     colors: [
-      { name: 'Gris clair', hex: '#C9CACC' },
-      { name: 'Bleu', hex: '#2E6C96' },
+      { name: 'Gris clair', hex: '#C9CACC', images: ['/produits/jogging-zippe-gris.jpg'] },
+      { name: 'Bleu', hex: '#2E6C96', images: ['/produits/jogging-zippe-bleu.jpg'] },
     ],
     details: [
       'Ensemble complet : veste à capuche + jogger',
@@ -1031,15 +939,14 @@ export const products: Product[] = [
       '/produits/jogging-bleu.jpg',
       '/produits/jogging-gris.jpg',
     ],
-    viewsAreColorways: true,
     tagline: 'Sweat à enfiler et jogger assorti, rien à régler.',
     description:
       "La version à enfiler du même ensemble : sweat à capuche sans zip, poche kangourou d'un seul tenant, et jogger fuselé assorti. Une seule couleur d'un bout à l'autre, le blason brodé pour seul marquage.",
     sizes: JERSEY_SIZES,
     colors: [
-      { name: 'Bordeaux', hex: '#5E2226' },
-      { name: 'Bleu', hex: '#2C5F86' },
-      { name: 'Gris', hex: '#9EA1A4' },
+      { name: 'Bordeaux', hex: '#5E2226', images: ['/produits/jogging-bordeaux.jpg'] },
+      { name: 'Bleu', hex: '#2C5F86', images: ['/produits/jogging-bleu.jpg'] },
+      { name: 'Gris', hex: '#9EA1A4', images: ['/produits/jogging-gris.jpg'] },
     ],
     details: [
       'Ensemble complet : sweat à capuche + jogger',
@@ -1065,15 +972,14 @@ export const products: Product[] = [
       '/produits/sweat-blanc.jpg',
       '/produits/sweat-bleu.jpg',
     ],
-    viewsAreColorways: true,
     tagline: 'Col demi-zip, manches longues, motif baobab.',
     description:
       "Le haut d'entraînement des séances où il fait frais : col montant à demi-zip, manches longues, maille technique sublimée sur toute la pièce. Le motif — bande de losanges en travers de la poitrine, baobab qui monte du bas du flanc — est imprimé dans la matière, pas posé dessus : il ne s'écaille pas au lavage.",
     sizes: JERSEY_SIZES,
     colors: [
-      { name: 'Bordeaux', hex: '#6B2C35' },
-      { name: 'Blanc', hex: '#F2F2F2' },
-      { name: 'Bleu ciel', hex: '#4E9BD1' },
+      { name: 'Bordeaux', hex: '#6B2C35', images: ['/produits/sweat-bordeaux.jpg'] },
+      { name: 'Blanc', hex: '#F2F2F2', images: ['/produits/sweat-blanc.jpg'] },
+      { name: 'Bleu ciel', hex: '#4E9BD1', images: ['/produits/sweat-bleu.jpg'] },
     ],
     details: [
       'Col montant à demi-zip',
@@ -1172,14 +1078,13 @@ export const products: Product[] = [
       '/produits/survetement-capuche-noir.jpg',
       '/produits/survetement-capuche-jaune.jpg',
     ],
-    viewsAreColorways: true,
     tagline: 'Capuche doublée, bords-côtes contrastés, nom du club dans le dos.',
     description:
       "Le survêtement de l'équipe pour les déplacements : veste à capuche doublée en couleur contrastée, zip intégral, bords-côtes assortis à la taille et aux poignets. Le nom du club et sa discipline s'impriment en grand dans le dos, le blason reste discret sur la poitrine. Jogger fuselé assorti.",
     sizes: JERSEY_SIZES,
     colors: [
-      { name: 'Noir / Jaune', hex: '#111111' },
-      { name: 'Jaune / Noir', hex: '#EDD65B' },
+      { name: 'Noir / Jaune', hex: '#111111', images: ['/produits/survetement-capuche-noir.jpg'] },
+      { name: 'Jaune / Noir', hex: '#EDD65B', images: ['/produits/survetement-capuche-jaune.jpg'] },
     ],
     details: [
       'Ensemble complet : veste à capuche + jogger',
@@ -1204,15 +1109,14 @@ export const products: Product[] = [
       '/produits/survetement-presentation-marine.jpg',
       '/produits/survetement-presentation-blanc.jpg',
     ],
-    viewsAreColorways: true,
     tagline: 'Col montant, pantalon droit, trois découpes au choix.',
     description:
       "Le survêtement qu'on porte à l'échauffement et sur la photo d'équipe : veste à col montant et zip intégral, pantalon droit à bas ouvert. Trois découpes au choix — empiècement courbe, bande droite en travers de la poitrine, ou chevron — chacune déclinable dans les couleurs du club.",
     sizes: JERSEY_SIZES,
     colors: [
-      { name: 'Bleu roi / Blanc — empiècement courbe', hex: '#2540E8' },
-      { name: 'Marine / Blanc — bande droite', hex: '#39329B' },
-      { name: 'Blanc / Marine — chevron', hex: '#F2F2F2' },
+      { name: 'Bleu roi / Blanc — empiècement courbe', hex: '#2540E8', images: ['/produits/survetement-presentation-bleu.jpg'] },
+      { name: 'Marine / Blanc — bande droite', hex: '#39329B', images: ['/produits/survetement-presentation-marine.jpg'] },
+      { name: 'Blanc / Marine — chevron', hex: '#F2F2F2', images: ['/produits/survetement-presentation-blanc.jpg'] },
     ],
     details: [
       'Ensemble complet : veste + pantalon droit',
@@ -1245,6 +1149,23 @@ export const categories = [
 
 export function getProduct(slug: string): Product | undefined {
   return products.find((p) => p.slug === slug);
+}
+
+/**
+ * Vues à afficher pour un coloris donné.
+ *
+ * Un article décliné en couleurs range ses photos coloris par coloris : la
+ * galerie ne montre alors que celles du coloris choisi. Les autres articles
+ * renvoient simplement toutes leurs vues.
+ */
+export function viewsFor(product: Product, colorName: string): string[] {
+  const color = product.colors.find((c) => c.name === colorName);
+  return color?.images ?? product.images ?? [];
+}
+
+/** Vrai quand chaque coloris porte ses propres vues. */
+export function hasColorViews(product: Product): boolean {
+  return product.colors.length > 0 && product.colors.every((c) => c.images?.length);
 }
 
 /** Vrai si l'article se range dans ce rayon, à titre principal ou secondaire. */

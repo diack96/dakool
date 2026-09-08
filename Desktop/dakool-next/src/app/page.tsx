@@ -59,7 +59,15 @@ export default function Home() {
     const cover = covers.find((src) => !used.has(src)) ?? covers[0];
     if (cover) used.add(cover);
 
-    return { category, count: inCategory.length, cover };
+    /* Un rayon tenu par un seul modèle décliné se raconte par ses coloris :
+       « 1 produit » sous-vendrait cinq tenues de basket différentes. */
+    const colorways = inCategory.reduce((n, p) => n + Math.max(p.colors.length, 1), 0);
+    const label =
+      inCategory.length === 1
+        ? `${colorways} coloris`
+        : `${inCategory.length} produits`;
+
+    return { category, label, cover };
   }).filter((shelf) => shelf.cover);
 
   return (
@@ -217,7 +225,7 @@ export default function Home() {
                         {shelf.category}
                       </span>
                       <span className="text-[11px] uppercase tracking-label text-white/70">
-                        {shelf.count} {shelf.count > 1 ? 'produits' : 'produit'}
+                        {shelf.label}
                       </span>
                     </span>
                     <FontAwesomeIcon

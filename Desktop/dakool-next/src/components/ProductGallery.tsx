@@ -17,9 +17,8 @@ type Props = {
  * sinon le dessin au trait de la catégorie.
  */
 export default function ProductGallery({ product, index }: Props) {
-  const images = product.images ?? [];
-  const { view, selectView, linked } = useProductVariant();
-  const active = Math.min(view, Math.max(images.length - 1, 0));
+  /* Les vues viennent du coloris sélectionné, pas du produit entier. */
+  const { views: images, view: active, selectView, linked, color } = useProductVariant();
 
   return (
     <div>
@@ -42,7 +41,7 @@ export default function ProductGallery({ product, index }: Props) {
       {images.length > 1 && (
         <div
           role="group"
-          aria-label={linked ? `Coloris de ${product.name}` : `Vues de ${product.name}`}
+          aria-label={linked ? `Vues du coloris ${color}` : `Vues de ${product.name}`}
           className="mt-3 grid grid-cols-4 gap-3"
         >
           {images.map((src, i) => (
@@ -53,7 +52,7 @@ export default function ProductGallery({ product, index }: Props) {
               aria-pressed={i === active}
               aria-label={
                 linked
-                  ? `Coloris ${product.colors[i]?.name ?? i + 1}`
+                  ? `${color} — vue ${i + 1} sur ${images.length}`
                   : `Vue ${i + 1} sur ${images.length}`
               }
               className={`relative aspect-square overflow-hidden border transition-colors ${

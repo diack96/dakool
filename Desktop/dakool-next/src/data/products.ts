@@ -349,7 +349,7 @@ export const products: Product[] = [
   },
   {
     id: 'p15',
-    alsoIn: ['Pantalons & Leggings'],
+    alsoIn: ['Survêtements', 'Pantalons & Leggings'],
     slug: 'survetement-complet',
     name: 'Survêtement Complet',
     category: 'Équipements',
@@ -1038,7 +1038,7 @@ export const products: Product[] = [
   },
   {
     id: 'j1',
-    alsoIn: ['Pantalons & Leggings', 'Sweats'],
+    alsoIn: ['Pantalons & Leggings', 'Sweats', 'Survêtements'],
     slug: 'ensemble-capuche-zippe',
     name: 'Ensemble Capuche Zippé',
     category: 'Équipements',
@@ -1066,7 +1066,7 @@ export const products: Product[] = [
   },
   {
     id: 'j2',
-    alsoIn: ['Pantalons & Leggings', 'Sweats'],
+    alsoIn: ['Pantalons & Leggings', 'Sweats', 'Survêtements'],
     slug: 'ensemble-capuche',
     name: 'Ensemble à Capuche',
     category: 'Équipements',
@@ -1200,6 +1200,69 @@ export const products: Product[] = [
     ],
     inStock: true,
   },
+  {
+    id: 'sv1',
+    alsoIn: ['Sweats', 'Pantalons & Leggings'],
+    slug: 'survetement-a-capuche',
+    name: 'Survêtement à Capuche',
+    category: 'Survêtements',
+    price: 58,
+    badge: { label: 'Sur mesure' },
+    images: [
+      '/produits/survetement-capuche-noir.jpg',
+      '/produits/survetement-capuche-jaune.jpg',
+    ],
+    viewsAreColorways: true,
+    tagline: 'Capuche doublée, bords-côtes contrastés, nom du club dans le dos.',
+    description:
+      "Le survêtement de l'équipe pour les déplacements : veste à capuche doublée en couleur contrastée, zip intégral, bords-côtes assortis à la taille et aux poignets. Le nom du club et sa discipline s'impriment en grand dans le dos, le blason reste discret sur la poitrine. Jogger fuselé assorti.",
+    sizes: JERSEY_SIZES,
+    colors: [
+      { name: 'Noir / Jaune', hex: '#111111' },
+      { name: 'Jaune / Noir', hex: '#EDD65B' },
+    ],
+    details: [
+      'Ensemble complet : veste à capuche + jogger',
+      'Capuche doublée et bords-côtes contrastés',
+      'Zip intégral, poches latérales',
+      'Nom du club et discipline imprimés dans le dos',
+      'Production à partir de 10 ensembles',
+      'Livraison 3 à 4 semaines après validation de la maquette',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'sv2',
+    alsoIn: ['Pantalons & Leggings'],
+    slug: 'survetement-presentation',
+    name: 'Survêtement de Présentation',
+    category: 'Survêtements',
+    price: 56,
+    images: [
+      '/produits/survetement-presentation-bleu.jpg',
+      '/produits/survetement-presentation-marine.jpg',
+      '/produits/survetement-presentation-blanc.jpg',
+    ],
+    viewsAreColorways: true,
+    tagline: 'Col montant, pantalon droit, trois découpes au choix.',
+    description:
+      "Le survêtement qu'on porte à l'échauffement et sur la photo d'équipe : veste à col montant et zip intégral, pantalon droit à bas ouvert. Trois découpes au choix — empiècement courbe, bande droite en travers de la poitrine, ou chevron — chacune déclinable dans les couleurs du club.",
+    sizes: JERSEY_SIZES,
+    colors: [
+      { name: 'Bleu roi / Blanc — empiècement courbe', hex: '#2540E8' },
+      { name: 'Marine / Blanc — bande droite', hex: '#39329B' },
+      { name: 'Blanc / Marine — chevron', hex: '#F2F2F2' },
+    ],
+    details: [
+      'Ensemble complet : veste + pantalon droit',
+      'Col montant, zip intégral, poches zippées',
+      'Trois découpes au choix',
+      'Blason club et logos sponsors inclus',
+      'Production à partir de 10 ensembles',
+      'Livraison 3 à 4 semaines après validation de la maquette',
+    ],
+    inStock: true,
+  },
 ];
 
 export const categories = [
@@ -1212,6 +1275,7 @@ export const categories = [
   'Pantalons & Leggings',
   'Sweats',
   'Loisirs',
+  'Survêtements',
   'Chaussures',
   'Ballons',
   'Équipements',

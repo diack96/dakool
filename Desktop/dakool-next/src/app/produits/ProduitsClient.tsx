@@ -17,7 +17,7 @@ import {
 import ProductCard from '@/components/ProductCard';
 import Container from '@/components/Container';
 import Reveal from '@/components/Reveal';
-import { products, categories } from '@/data/products';
+import { categories, productsIn } from '@/data/products';
 
 const catIcons: Record<string, typeof faGrip> = {
   Tous: faGrip,
@@ -46,7 +46,7 @@ export default function ProduitsClient({ initialCategory }: { initialCategory: s
   const [sort, setSort] = useState<SortKey>('defaut');
 
   const filtered = useMemo(() => {
-    const list = active === 'Tous' ? products : products.filter((p) => p.category === active);
+    const list = productsIn(active);
 
     switch (sort) {
       case 'prix-croissant':

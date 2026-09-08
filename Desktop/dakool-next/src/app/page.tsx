@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { products } from '@/data/products';
+import { products, productsIn } from '@/data/products';
 import ProductCard from '@/components/ProductCard';
 import Container from '@/components/Container';
 import Button from '@/components/Button';
@@ -54,7 +54,7 @@ export default function Home() {
   const used = new Set<string>([HERO_IMAGE, ...featured.map((p) => p.images![0])]);
 
   const shelves = SHOWCASE.map((category) => {
-    const inCategory = products.filter((p) => p.category === category);
+    const inCategory = productsIn(category);
     const covers = inCategory.flatMap((p) => p.images ?? []);
     const cover = covers.find((src) => !used.has(src)) ?? covers[0];
     if (cover) used.add(cover);

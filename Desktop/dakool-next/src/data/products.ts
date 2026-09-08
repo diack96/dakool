@@ -10,6 +10,11 @@ export type Product = {
   /** Chaque vue correspond au coloris de même rang : galerie et nuancier
       sont alors synchronisés. */
   viewsAreColorways?: boolean;
+  /** Rayons supplémentaires où l'article se range aussi. Un maillot de
+      basket appartient au rayon Basketball comme au rayon Maillots : il y
+      figure une fois, sans doublon de fiche ni de photo. `category` reste
+      le rayon principal, celui du fil d'Ariane et de la carte produit. */
+  alsoIn?: string[];
   tagline: string;
   description: string;
   sizes: string[];
@@ -390,6 +395,7 @@ export const products: Product[] = [
   },
   {
     id: 'b1',
+    alsoIn: ['Maillots'],
     slug: 'ensemble-basket-royal',
     name: 'Ensemble Basket Royal',
     category: 'Basketball',
@@ -413,6 +419,7 @@ export const products: Product[] = [
   },
   {
     id: 'b2',
+    alsoIn: ['Maillots'],
     slug: 'ensemble-basket-or',
     name: 'Ensemble Basket Or',
     category: 'Basketball',
@@ -435,6 +442,7 @@ export const products: Product[] = [
   },
   {
     id: 'b3',
+    alsoIn: ['Maillots'],
     slug: 'ensemble-basket-noir',
     name: 'Ensemble Basket Noir',
     category: 'Basketball',
@@ -457,6 +465,7 @@ export const products: Product[] = [
   },
   {
     id: 'b4',
+    alsoIn: ['Maillots'],
     slug: 'ensemble-basket-jaune',
     name: 'Ensemble Basket Jaune',
     category: 'Basketball',
@@ -479,6 +488,7 @@ export const products: Product[] = [
   },
   {
     id: 'b5',
+    alsoIn: ['Maillots'],
     slug: 'ensemble-basket-blanc',
     name: 'Ensemble Basket Blanc',
     category: 'Basketball',
@@ -501,6 +511,7 @@ export const products: Product[] = [
   },
   {
     id: 'v1',
+    alsoIn: ['Maillots'],
     slug: 'ensemble-volley-vert',
     name: 'Ensemble Volley Vert',
     category: 'Volleyball',
@@ -529,6 +540,7 @@ export const products: Product[] = [
   },
   {
     id: 'v2',
+    alsoIn: ['Maillots'],
     slug: 'ensemble-volley-blanc',
     name: 'Ensemble Volley Blanc',
     category: 'Volleyball',
@@ -557,6 +569,7 @@ export const products: Product[] = [
   },
   {
     id: 'h1',
+    alsoIn: ['Maillots'],
     slug: 'maillot-handball',
     name: 'Maillot Handball',
     category: 'Handball',
@@ -589,6 +602,7 @@ export const products: Product[] = [
   },
   {
     id: 'h2',
+    alsoIn: ['Maillots'],
     slug: 'tenue-staff',
     name: 'Tenue Staff',
     category: 'Équipements',
@@ -636,6 +650,7 @@ export const products: Product[] = [
   },
   {
     id: 'a2',
+    alsoIn: ['Équipements'],
     slug: 'sac-bandouliere',
     name: 'Sac Bandoulière',
     category: 'Accessoires',
@@ -676,6 +691,7 @@ export const products: Product[] = [
   },
   {
     id: 'a4',
+    alsoIn: ['Équipements'],
     slug: 'sac-a-dos-motif',
     name: 'Sac à Dos Motif',
     category: 'Accessoires',
@@ -696,6 +712,7 @@ export const products: Product[] = [
   },
   {
     id: 'a5',
+    alsoIn: ['Équipements'],
     slug: 'sac-a-dos-dakool',
     name: 'Sac à Dos DAKOOL',
     category: 'Accessoires',
@@ -845,6 +862,7 @@ export const products: Product[] = [
   },
   {
     id: 'y2',
+    alsoIn: ['Équipements'],
     slug: 'ensemble-veste-legging',
     name: 'Ensemble Veste + Legging',
     category: 'Yoga',
@@ -891,6 +909,7 @@ export const products: Product[] = [
   },
   {
     id: 'y4',
+    alsoIn: ['Équipements'],
     slug: 'ensemble-brassiere-lacee',
     name: 'Ensemble Brassière Lacée',
     category: 'Yoga',
@@ -912,6 +931,7 @@ export const products: Product[] = [
   },
   {
     id: 'y5',
+    alsoIn: ['Équipements'],
     slug: 'ensemble-brassiere-legging',
     name: 'Ensemble Brassière + Legging',
     category: 'Yoga',
@@ -1019,6 +1039,24 @@ export const categories = [
 
 export function getProduct(slug: string): Product | undefined {
   return products.find((p) => p.slug === slug);
+}
+
+/** Vrai si l'article se range dans ce rayon, à titre principal ou secondaire. */
+export function isInCategory(product: Product, category: string): boolean {
+  return product.category === category || (product.alsoIn?.includes(category) ?? false);
+}
+
+/**
+ * Contenu d'un rayon, photos d'abord. « Tous » renvoie le catalogue entier.
+ *
+ * Les articles encore sans photo passent en fin de liste : sinon un rayon
+ * s'ouvrait sur les dessins de secours alors que ses vraies photos
+ * attendaient plus bas.
+ */
+export function productsIn(category: string): Product[] {
+  const list = category === 'Tous' ? products : products.filter((p) => isInCategory(p, category));
+
+  return [...list.filter((p) => p.images?.length), ...list.filter((p) => !p.images?.length)];
 }
 
 /** Suggestions de fin de fiche produit : même catégorie d'abord, puis le reste. */

@@ -12,6 +12,7 @@ import {
   faHandBackFist,
   faSpa,
   faPersonRunning,
+  faVestPatches,
   faVest,
   faTag,
 } from '@fortawesome/free-solid-svg-icons';
@@ -28,6 +29,7 @@ const catIcons: Record<string, typeof faGrip> = {
   Yoga: faSpa,
   Maillots: faShirt,
   'Pantalons & Leggings': faPersonRunning,
+  Sweats: faVestPatches,
   Chaussures: faShoePrints,
   Ballons: faFutbol,
   Équipements: faVest,

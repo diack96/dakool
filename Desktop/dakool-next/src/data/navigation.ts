@@ -18,12 +18,13 @@ const BASKET = '/produits?categorie=Basketball';
 const VOLLEY = '/produits?categorie=Volleyball';
 const HAND = '/produits?categorie=Handball';
 const YOGA = '/produits?categorie=Yoga';
+const SWEATS = '/produits?categorie=Sweats';
 const BOTTOMS = '/produits?categorie=' + encodeURIComponent('Pantalons & Leggings');
 
 const APPAREL: NavChild[] = [
   { label: 'Maillot de football', href: JERSEYS },
   { label: 'Survêtements', href: SHOP },
-  { label: 'Sweats', href: SHOP },
+  { label: 'Sweats', href: SWEATS },
   { label: 'T-shirt', href: SHOP },
   { label: 'Short', href: SHOP },
   { label: 'Pantalon & Legging', href: BOTTOMS },

@@ -1038,7 +1038,7 @@ export const products: Product[] = [
   },
   {
     id: 'j1',
-    alsoIn: ['Pantalons & Leggings'],
+    alsoIn: ['Pantalons & Leggings', 'Sweats'],
     slug: 'ensemble-capuche-zippe',
     name: 'Ensemble Capuche Zippé',
     category: 'Équipements',
@@ -1066,7 +1066,7 @@ export const products: Product[] = [
   },
   {
     id: 'j2',
-    alsoIn: ['Pantalons & Leggings'],
+    alsoIn: ['Pantalons & Leggings', 'Sweats'],
     slug: 'ensemble-capuche',
     name: 'Ensemble à Capuche',
     category: 'Équipements',
@@ -1096,6 +1096,39 @@ export const products: Product[] = [
     ],
     inStock: true,
   },
+  {
+    id: 's1',
+    alsoIn: ['Équipements'],
+    slug: 'sweat-entrainement-demi-zip',
+    name: 'Sweat d’Entraînement Demi-Zip',
+    category: 'Sweats',
+    price: 42,
+    badge: { label: 'Sur mesure' },
+    images: [
+      '/produits/sweat-bordeaux.jpg',
+      '/produits/sweat-blanc.jpg',
+      '/produits/sweat-bleu.jpg',
+    ],
+    viewsAreColorways: true,
+    tagline: 'Col demi-zip, manches longues, motif baobab.',
+    description:
+      "Le haut d'entraînement des séances où il fait frais : col montant à demi-zip, manches longues, maille technique sublimée sur toute la pièce. Le motif — bande de losanges en travers de la poitrine, baobab qui monte du bas du flanc — est imprimé dans la matière, pas posé dessus : il ne s'écaille pas au lavage.",
+    sizes: JERSEY_SIZES,
+    colors: [
+      { name: 'Bordeaux', hex: '#6B2C35' },
+      { name: 'Blanc', hex: '#F2F2F2' },
+      { name: 'Bleu ciel', hex: '#4E9BD1' },
+    ],
+    details: [
+      'Col montant à demi-zip',
+      'Sublimation intégrale, motif dans la matière',
+      'Maille technique respirante, manches longues',
+      'Blason club et logos sponsors inclus',
+      'Production à partir de 10 pièces',
+      'Livraison 3 à 4 semaines après validation de la maquette',
+    ],
+    inStock: true,
+  },
 ];
 
 export const categories = [
@@ -1106,6 +1139,7 @@ export const categories = [
   'Yoga',
   'Maillots',
   'Pantalons & Leggings',
+  'Sweats',
   'Chaussures',
   'Ballons',
   'Équipements',

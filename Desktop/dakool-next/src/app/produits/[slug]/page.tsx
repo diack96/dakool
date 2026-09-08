@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getProduct, getRelatedProducts, products } from '@/data/products';
-import { formatPrice } from '@/lib/format';
 import Container from '@/components/Container';
 import ProductGallery from '@/components/ProductGallery';
 import { ProductVariantProvider } from '@/components/ProductVariant';
@@ -137,9 +136,9 @@ export default async function ProduitPage({ params }: Params) {
 
             <dl className="mt-8 grid grid-cols-2 gap-px border border-line bg-line">
               <div className="bg-surface px-5 py-4">
-                <dt className="text-[10px] uppercase tracking-label text-mute-dim">Prix</dt>
+                <dt className="text-[10px] uppercase tracking-label text-mute-dim">Coloris</dt>
                 <dd className="mt-1 font-display text-2xl text-fg">
-                  {formatPrice(product.price)}
+                  {product.colors.length > 1 ? `${product.colors.length} au choix` : 'Sur mesure'}
                 </dd>
               </div>
               <div className="bg-surface px-5 py-4">

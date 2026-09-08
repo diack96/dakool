@@ -4,8 +4,9 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faHeart, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { useCart } from '@/context/CartContext';
-import { formatPrice } from '@/lib/format';
+import { buildProductMessage, whatsappUrl } from '@/lib/whatsapp';
 import type { Product } from '@/data/products';
 import ProductVisual from './ProductVisual';
 
@@ -26,7 +27,6 @@ export default function ProductCard({ product, index }: { product: Product; inde
       productId: product.id,
       slug: product.slug,
       name: product.name,
-      price: product.price,
       category: product.category,
       size: product.sizes[0],
       color: product.colors[0]?.name,
@@ -99,7 +99,24 @@ export default function ProductCard({ product, index }: { product: Product; inde
             {product.name}
           </Link>
         </h3>
-        <p className="font-display text-xl tracking-wide text-fg">{formatPrice(product.price)}</p>
+        {/* Le lien du titre couvre la carte entière via son ::after ; ce bouton
+            doit donc passer au-dessus pour rester cliquable. */}
+        <a
+          href={whatsappUrl(
+            buildProductMessage({
+              name: product.name,
+              color: product.colors[0]?.name,
+              qty: 1,
+            }),
+          )}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Demander le tarif de ${product.name} sur WhatsApp`}
+          className="relative z-10 inline-flex items-center gap-2 border border-line-strong px-3 py-2 text-[11px] font-black uppercase tracking-cta text-fg transition-colors hover:bg-inverse hover:text-on-inverse"
+        >
+          <FontAwesomeIcon icon={faWhatsapp} className="h-3.5 w-3.5" />
+          Demander le tarif
+        </a>
       </div>
     </article>
   );

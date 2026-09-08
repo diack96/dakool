@@ -6,12 +6,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark, faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { useCart } from '@/context/CartContext';
-import { formatPrice } from '@/lib/format';
 import { buildCartMessage, whatsappUrl } from '@/lib/whatsapp';
 import ProductVisual from './ProductVisual';
 
 export default function CartSidebar() {
-  const { cart, isOpen, closeCart, removeFromCart, updateQty, cartTotal, cartCount } = useCart();
+  const { cart, isOpen, closeCart, removeFromCart, updateQty, cartCount } = useCart();
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const lastFocused = useRef<HTMLElement | null>(null);
 
@@ -113,7 +112,6 @@ export default function CartSidebar() {
                       </p>
                     )}
 
-                    <p className="mt-0.5 text-sm text-accent">{formatPrice(item.price)}</p>
 
                     <div className="mt-2 flex items-center gap-2">
                       <button
@@ -154,26 +152,29 @@ export default function CartSidebar() {
 
         {cart.length > 0 && (
           <footer className="border-t border-line px-6 py-5">
+            {/* Pas de total : les articles sont fabriqués à la demande et le
+                tarif dépend de la quantité comme de la personnalisation. */}
             <div className="mb-5 flex items-center justify-between">
-              <span className="text-xs uppercase tracking-label text-mute">Total</span>
+              <span className="text-xs uppercase tracking-label text-mute">Ta sélection</span>
               <strong className="font-display text-2xl tracking-wide text-fg">
-                {formatPrice(cartTotal)}
+                {cart.reduce((n, i) => n + i.qty, 0)} article
+                {cart.reduce((n, i) => n + i.qty, 0) > 1 ? 's' : ''}
               </strong>
             </div>
             {/* Pas de tunnel de commande : le panier part directement dans la
                 conversation, l'adresse et le paiement s'y règlent. */}
             <a
-              href={whatsappUrl(buildCartMessage(cart, cartTotal))}
+              href={whatsappUrl(buildCartMessage(cart))}
               target="_blank"
               rel="noopener noreferrer"
               onClick={closeCart}
               className="flex w-full items-center justify-center gap-2.5 bg-inverse py-4 text-sm font-black uppercase tracking-cta text-on-inverse transition-colors hover:bg-accent"
             >
               <FontAwesomeIcon icon={faWhatsapp} className="h-4 w-4" />
-              Commander sur WhatsApp
+              Demander un devis
             </a>
             <p className="mt-3 text-center text-xs text-mute-dim">
-              Livraison et paiement se règlent dans la conversation.
+              Tarif, personnalisation et livraison se règlent dans la conversation.
             </p>
           </footer>
         )}

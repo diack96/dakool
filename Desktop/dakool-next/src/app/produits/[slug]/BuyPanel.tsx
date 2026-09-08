@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faCheck, faTruckFast, faRotateLeft } from '@fortawesome/free-solid-svg-icons';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { useCart } from '@/context/CartContext';
-import { formatPrice } from '@/lib/format';
 import { buildProductMessage, whatsappUrl } from '@/lib/whatsapp';
 import { useProductVariant } from '@/components/ProductVariant';
 import type { Product } from '@/data/products';
@@ -29,7 +28,6 @@ export default function BuyPanel({ product }: { product: Product }) {
         productId: product.id,
         slug: product.slug,
         name: product.name,
-        price: product.price,
         category: product.category,
         size,
         color,
@@ -57,10 +55,12 @@ export default function BuyPanel({ product }: { product: Product }) {
         </p>
       )}
 
+      {/* Pas de prix affiché : les articles sont fabriqués à la demande et le
+          tarif dépend de la quantité comme de la personnalisation. */}
       <p className="mb-8 flex items-baseline gap-3">
-        <span className="font-display text-4xl text-fg">{formatPrice(product.price)}</span>
+        <span className="font-display text-4xl text-fg">Tarif sur demande</span>
         {product.inStock ? (
-          <span className="text-xs uppercase tracking-label text-accent">En stock</span>
+          <span className="text-xs uppercase tracking-label text-accent">Disponible</span>
         ) : (
           <span className="text-xs uppercase tracking-label text-fg">Rupture</span>
         )}
@@ -153,17 +153,6 @@ export default function BuyPanel({ product }: { product: Product }) {
         </div>
       </div>
 
-      <button
-        type="button"
-        onClick={handleAdd}
-        disabled={!product.inStock}
-        className="flex w-full items-center justify-center gap-2.5 bg-inverse py-4.5 text-sm font-black uppercase tracking-cta text-on-inverse transition-colors hover:bg-accent disabled:pointer-events-none disabled:opacity-40"
-      >
-        <FontAwesomeIcon icon={faPlus} className="h-3.5 w-3.5" />
-        Ajouter au panier
-      </button>
-
-      {/* Commande directe pour un article seul, sans passer par le panier. */}
       <a
         href={whatsappUrl(
           buildProductMessage({
@@ -171,16 +160,25 @@ export default function BuyPanel({ product }: { product: Product }) {
             size: size ?? undefined,
             color,
             qty,
-            price: product.price,
           }),
         )}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-2.5 flex w-full items-center justify-center gap-2.5 border border-line-strong py-4 text-sm font-black uppercase tracking-cta text-fg transition-colors hover:bg-inverse hover:text-on-inverse"
+        className="flex w-full items-center justify-center gap-2.5 bg-inverse py-4.5 text-sm font-black uppercase tracking-cta text-on-inverse transition-colors hover:bg-accent"
       >
         <FontAwesomeIcon icon={faWhatsapp} className="h-4 w-4" />
-        Commander sur WhatsApp
+        Demander le tarif
       </a>
+
+      <button
+        type="button"
+        onClick={handleAdd}
+        disabled={!product.inStock}
+        className="mt-2.5 flex w-full items-center justify-center gap-2.5 border border-line-strong py-4 text-sm font-black uppercase tracking-cta text-fg transition-colors hover:bg-inverse hover:text-on-inverse disabled:pointer-events-none disabled:opacity-40"
+      >
+        <FontAwesomeIcon icon={faPlus} className="h-3.5 w-3.5" />
+        Ajouter à ma sélection
+      </button>
 
       <ul className="mt-8 space-y-3 border-t border-line pt-8">
         <li className="flex items-start gap-3 text-sm text-mute">

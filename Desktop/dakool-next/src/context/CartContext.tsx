@@ -16,7 +16,6 @@ export type CartItem = {
   productId: string;
   slug: string;
   name: string;
-  price: number;
   category: string;
   size?: string;
   color?: string;
@@ -35,7 +34,6 @@ type CartContextType = {
   updateQty: (key: string, delta: number) => void;
   clearCart: () => void;
   cartCount: number;
-  cartTotal: number;
   isOpen: boolean;
   openCart: () => void;
   closeCart: () => void;
@@ -56,7 +54,6 @@ function isCartItem(value: unknown): value is CartItem {
     typeof item.key === 'string' &&
     typeof item.productId === 'string' &&
     typeof item.name === 'string' &&
-    typeof item.price === 'number' &&
     typeof item.qty === 'number'
   );
 }
@@ -132,7 +129,6 @@ export function CartProvider({ children }: { children: ReactNode }) {
       updateQty,
       clearCart,
       cartCount: cart.reduce((sum, i) => sum + i.qty, 0),
-      cartTotal: cart.reduce((sum, i) => sum + i.price * i.qty, 0),
       isOpen,
       openCart,
       closeCart,

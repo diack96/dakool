@@ -42,8 +42,6 @@ const catIcons: Record<string, typeof faGrip> = {
 
 const sorts = {
   defaut: 'Sélection',
-  'prix-croissant': 'Prix croissant',
-  'prix-decroissant': 'Prix décroissant',
   nom: 'Nom (A–Z)',
 } as const;
 
@@ -57,10 +55,6 @@ export default function ProduitsClient({ initialCategory }: { initialCategory: s
     const list = productsIn(active);
 
     switch (sort) {
-      case 'prix-croissant':
-        return [...list].sort((a, b) => a.price - b.price);
-      case 'prix-decroissant':
-        return [...list].sort((a, b) => b.price - a.price);
       case 'nom':
         return [...list].sort((a, b) => a.name.localeCompare(b.name, 'fr'));
       default:

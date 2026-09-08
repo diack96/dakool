@@ -3,6 +3,9 @@ export type Product = {
   slug: string;
   name: string;
   category: string;
+  /** Conservé pour référence interne, mais plus affiché nulle part : le tarif
+      dépend de la quantité et de la personnalisation, il s'établit sur
+      WhatsApp. */
   price: number;
   badge?: { label: string };
   /** Toutes les vues de l'article dans /public, coloris après coloris ; à

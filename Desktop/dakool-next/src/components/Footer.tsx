@@ -1,17 +1,22 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram, faFacebookF, faTiktok, faXTwitter } from '@fortawesome/free-brands-svg-icons';
+import {
+  faInstagram,
+  faFacebookF,
+  faTiktok,
+  faLinkedinIn,
+} from '@fortawesome/free-brands-svg-icons';
 import { categories } from '@/data/products';
 import Container from './Container';
 import FlagBar from './FlagBar';
 import NewsletterForm from './NewsletterForm';
 
 const socials = [
-  { icon: faInstagram, label: 'Instagram', href: 'https://instagram.com/dakool' },
-  { icon: faFacebookF, label: 'Facebook', href: 'https://facebook.com/dakool' },
-  { icon: faTiktok, label: 'TikTok', href: 'https://tiktok.com/@dakool.official' },
-  { icon: faXTwitter, label: 'X', href: 'https://x.com/dakool' },
+  { icon: faInstagram, label: 'Instagram', href: 'https://www.instagram.com/dakoolsport' },
+  { icon: faFacebookF, label: 'Facebook', href: 'https://www.facebook.com/share/1FLovtc773/' },
+  { icon: faTiktok, label: 'TikTok', href: 'https://www.tiktok.com/@dakoolsport' },
+  { icon: faLinkedinIn, label: 'LinkedIn', href: 'https://www.linkedin.com/company/dakool/' },
 ];
 
 const navigation = [

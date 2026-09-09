@@ -40,7 +40,7 @@ const sections: LegalSection[] = [
     bullets: [
       'Moyens acceptés : virement bancaire et paiement mobile',
       'Personnalisation (flocage nom + numéro) : 3 € par article',
-      'Tarifs préférentiels pour les clubs à partir de 10 pièces',
+      'Tarifs préférentiels pour les clubs à partir de 200 pièces',
       'Droits de douane et taxes d’importation éventuels à la charge du destinataire',
     ],
   },

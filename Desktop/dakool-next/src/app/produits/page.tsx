@@ -42,7 +42,7 @@ export default async function ProduitsPage({
           'Livraison internationale',
           'Retours gratuits sous 14 jours',
           'Flocage nom + numéro',
-          'Tarifs clubs dès 10 pièces',
+          'Tarifs clubs dès 200 pièces',
         ]}
       />
 

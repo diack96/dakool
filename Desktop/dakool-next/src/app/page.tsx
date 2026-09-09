@@ -144,7 +144,7 @@ export default function Home() {
           'Livraison internationale',
           'Retours sous 14 jours',
           'Flocage nom + numéro',
-          'Tarifs clubs dès 10 pièces',
+          'Tarifs clubs dès 200 pièces',
         ]}
       />
 

@@ -3,13 +3,14 @@
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXmark, faCartShopping, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faXmark, faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { useCart } from '@/context/CartContext';
-import { formatPrice } from '@/lib/format';
+import { buildCartMessage, whatsappUrl } from '@/lib/whatsapp';
 import ProductVisual from './ProductVisual';
 
 export default function CartSidebar() {
-  const { cart, isOpen, closeCart, removeFromCart, updateQty, cartTotal, cartCount } = useCart();
+  const { cart, isOpen, closeCart, removeFromCart, updateQty, cartCount } = useCart();
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const lastFocused = useRef<HTMLElement | null>(null);
 
@@ -56,16 +57,16 @@ export default function CartSidebar() {
         }`}
       >
         <header className="flex items-center justify-between border-b border-line px-6 py-5">
-          <h2 id="titre-panier" className="font-display text-2xl tracking-wide text-white">
+          <h2 id="titre-panier" className="font-display text-2xl tracking-wide text-fg">
             Mon Panier
-            {cartCount > 0 && <span className="ml-2 text-teranga">({cartCount})</span>}
+            {cartCount > 0 && <span className="ml-2 text-accent">({cartCount})</span>}
           </h2>
           <button
             ref={closeButtonRef}
             type="button"
             onClick={closeCart}
             aria-label="Fermer le panier"
-            className="p-1 text-mute transition-colors hover:text-white"
+            className="p-1 text-mute transition-colors hover:text-fg"
           >
             <FontAwesomeIcon icon={faXmark} className="h-5 w-5" />
           </button>
@@ -75,13 +76,13 @@ export default function CartSidebar() {
           {cart.length === 0 ? (
             <div className="flex h-full flex-col items-center justify-center gap-5 text-mute">
               <FontAwesomeIcon icon={faCartShopping} className="h-10 w-10 opacity-20" />
-              <p className="text-sm uppercase tracking-label">Votre panier est vide</p>
+              <p className="text-sm uppercase tracking-label">Ton panier est vide</p>
               <Link
                 href="/produits"
                 onClick={closeCart}
-                className="bg-white px-6 py-3 text-xs font-black uppercase tracking-cta text-black transition-colors hover:bg-teranga hover:text-white"
+                className="bg-inverse px-6 py-3 text-xs font-black uppercase tracking-cta text-on-inverse transition-colors hover:bg-accent"
               >
-                Voir les produits
+                Continuer mes achats
               </Link>
             </div>
           ) : (
@@ -91,7 +92,7 @@ export default function CartSidebar() {
                   <Link
                     href={`/produits/${item.slug}`}
                     onClick={closeCart}
-                    className="h-16 w-16 shrink-0 border border-line bg-ink p-1"
+                    className="h-16 w-16 shrink-0 border border-line bg-bg p-1"
                   >
                     <ProductVisual category={item.category} />
                   </Link>
@@ -100,7 +101,7 @@ export default function CartSidebar() {
                     <Link
                       href={`/produits/${item.slug}`}
                       onClick={closeCart}
-                      className="block truncate text-sm font-semibold text-white transition-colors hover:text-teranga"
+                      className="block truncate text-sm font-semibold text-fg transition-colors hover:text-fg"
                     >
                       {item.name}
                     </Link>
@@ -111,25 +112,24 @@ export default function CartSidebar() {
                       </p>
                     )}
 
-                    <p className="mt-0.5 text-sm text-teranga">{formatPrice(item.price)}</p>
 
                     <div className="mt-2 flex items-center gap-2">
                       <button
                         type="button"
                         onClick={() => updateQty(item.key, -1)}
                         aria-label={`Réduire la quantité de ${item.name}`}
-                        className="flex h-7 w-7 items-center justify-center border border-line text-sm text-white transition-colors hover:border-line-strong"
+                        className="flex h-7 w-7 items-center justify-center border border-line text-sm text-fg transition-colors hover:border-line-strong"
                       >
                         −
                       </button>
-                      <span className="w-5 text-center text-sm text-white" aria-live="polite">
+                      <span className="w-5 text-center text-sm text-fg" aria-live="polite">
                         {item.qty}
                       </span>
                       <button
                         type="button"
                         onClick={() => updateQty(item.key, 1)}
                         aria-label={`Augmenter la quantité de ${item.name}`}
-                        className="flex h-7 w-7 items-center justify-center border border-line text-sm text-white transition-colors hover:border-line-strong"
+                        className="flex h-7 w-7 items-center justify-center border border-line text-sm text-fg transition-colors hover:border-line-strong"
                       >
                         +
                       </button>
@@ -140,7 +140,7 @@ export default function CartSidebar() {
                     type="button"
                     onClick={() => removeFromCart(item.key)}
                     aria-label={`Retirer ${item.name} du panier`}
-                    className="p-1 text-mute-dim transition-colors hover:text-lion"
+                    className="p-1 text-mute-dim transition-colors hover:text-fg"
                   >
                     <FontAwesomeIcon icon={faXmark} className="h-4 w-4" />
                   </button>
@@ -152,24 +152,30 @@ export default function CartSidebar() {
 
         {cart.length > 0 && (
           <footer className="border-t border-line px-6 py-5">
-            <div className="mb-2 flex items-center justify-between text-xs text-mute-dim">
-              <span>Livraison</span>
-              <span>Calculée à la commande</span>
-            </div>
+            {/* Pas de total : les articles sont fabriqués à la demande et le
+                tarif dépend de la quantité comme de la personnalisation. */}
             <div className="mb-5 flex items-center justify-between">
-              <span className="text-xs uppercase tracking-label text-mute">Sous-total</span>
-              <strong className="font-display text-2xl tracking-wide text-white">
-                {formatPrice(cartTotal)}
+              <span className="text-xs uppercase tracking-label text-mute">Ta sélection</span>
+              <strong className="font-display text-2xl tracking-wide text-fg">
+                {cart.reduce((n, i) => n + i.qty, 0)} article
+                {cart.reduce((n, i) => n + i.qty, 0) > 1 ? 's' : ''}
               </strong>
             </div>
-            <Link
-              href="/checkout"
+            {/* Pas de tunnel de commande : le panier part directement dans la
+                conversation, l'adresse et le paiement s'y règlent. */}
+            <a
+              href={whatsappUrl(buildCartMessage(cart))}
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={closeCart}
-              className="flex w-full items-center justify-center gap-2.5 bg-white py-4 text-sm font-black uppercase tracking-cta text-black transition-colors hover:bg-teranga hover:text-white"
+              className="flex w-full items-center justify-center gap-2.5 bg-inverse py-4 text-sm font-black uppercase tracking-cta text-on-inverse transition-colors hover:bg-accent"
             >
-              Commander
-              <FontAwesomeIcon icon={faArrowRight} className="h-3.5 w-3.5" />
-            </Link>
+              <FontAwesomeIcon icon={faWhatsapp} className="h-4 w-4" />
+              Demander un devis
+            </a>
+            <p className="mt-3 text-center text-xs text-mute-dim">
+              Tarif, personnalisation et livraison se règlent dans la conversation.
+            </p>
           </footer>
         )}
       </aside>

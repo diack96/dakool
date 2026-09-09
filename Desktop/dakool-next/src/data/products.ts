@@ -3,12 +3,31 @@ export type Product = {
   slug: string;
   name: string;
   category: string;
+  /** Conservé pour référence interne, mais plus affiché nulle part : le tarif
+      dépend de la quantité et de la personnalisation, il s'établit sur
+      WhatsApp. */
   price: number;
-  badge?: { label: string; color: 'green' | 'yellow' | 'red' };
+  badge?: { label: string };
+  /** Toutes les vues de l'article dans /public, coloris après coloris ; à
+      défaut, un dessin par catégorie est utilisé. */
+  images?: string[];
+  /** Rayons supplémentaires où l'article se range aussi. Un maillot de
+      basket appartient au rayon Basketball comme au rayon Maillots : il y
+      figure une fois, sans doublon de fiche ni de photo. `category` reste
+      le rayon principal, celui du fil d'Ariane et de la carte produit. */
+  alsoIn?: string[];
+  /** Article fabriqué à la demande : les clubs et logos visibles sur les
+      photos sont des réalisations, pas ce qui est livré. La fiche produit
+      le dit explicitement au lieu de laisser croire à un article de stock. */
+  personnalisable?: boolean;
   tagline: string;
   description: string;
   sizes: string[];
-  colors: { name: string; hex: string }[];
+  /** Un coloris peut porter ses propres vues : la galerie n'affiche alors que
+      celles-ci, et changer de pastille change la photo. C'est ce qui permet de
+      réunir sur une seule fiche un modèle décliné en cinq couleurs, au lieu
+      d'en faire cinq articles quasi identiques. */
+  colors: { name: string; hex: string; images?: string[] }[];
   details: string[];
   inStock: boolean;
 };
@@ -16,23 +35,24 @@ export type Product = {
 const JERSEY_SIZES = ['S', 'M', 'L', 'XL', 'XXL'];
 const BOOT_SIZES = ['39', '40', '41', '42', '43', '44', '45'];
 const ONE_SIZE = ['Taille unique'];
+const YOGA_SIZES = ['XS', 'S', 'M', 'L', 'XL'];
 
 export const products: Product[] = [
   {
     id: 'p1',
-    slug: 'maillot-officiel-teranga',
-    name: 'Maillot Officiel Teranga',
+    slug: 'maillot-officiel-pro',
+    name: 'Maillot Officiel Pro',
     category: 'Maillots',
-    price: 25000,
-    badge: { label: 'Nouveau', color: 'green' },
-    tagline: 'Le maillot qui porte le nom du pays.',
+    price: 38,
+    badge: { label: 'Nouveau' },
+    tagline: 'Notre maillot signature.',
     description:
-      "Notre pièce signature. Le maillot Teranga reprend les codes du football sénégalais dans une coupe ajustée pensée pour le jeu. Maille technique à double couche, empiècements ventilés sous les bras et col côtelé renforcé. Le blason est brodé, pas imprimé — il tiendra toute la saison.",
+      "Notre pièce signature, dans une coupe ajustée pensée pour le jeu. Maille technique à double couche, empiècements ventilés sous les bras et col côtelé renforcé. Le blason est brodé, pas imprimé — il tiendra toute la saison.",
     sizes: JERSEY_SIZES,
     colors: [
-      { name: 'Vert Téranga', hex: '#00853F' },
-      { name: 'Blanc Lion', hex: '#F2F2F2' },
-      { name: 'Noir Dakar', hex: '#111111' },
+      { name: 'Noir', hex: '#0F0F0F' },
+      { name: 'Blanc', hex: '#F2F2F2' },
+      { name: 'Gris', hex: '#8A8A8A' },
     ],
     details: [
       'Maille technique respirante 100% polyester recyclé',
@@ -45,17 +65,17 @@ export const products: Product[] = [
   },
   {
     id: 'p2',
-    slug: 'maillot-domicile-lion',
-    name: 'Maillot Domicile Lion',
+    slug: 'maillot-domicile',
+    name: 'Maillot Domicile',
     category: 'Maillots',
-    price: 22000,
+    price: 34,
     tagline: 'Le maillot des soirs de match à domicile.',
     description:
-      'Coupe classique, tissu léger, séchage rapide. Le maillot Domicile Lion est celui que portent nos clubs partenaires en championnat. Sobre sur le terrain, il se porte aussi bien en dehors.',
+      "Coupe classique, tissu léger, séchage rapide. C'est le maillot que portent nos clubs partenaires en championnat. Sobre sur le terrain, il se porte aussi bien en dehors.",
     sizes: JERSEY_SIZES,
     colors: [
-      { name: 'Vert Téranga', hex: '#00853F' },
-      { name: 'Or', hex: '#FDEF42' },
+      { name: 'Noir', hex: '#0F0F0F' },
+      { name: 'Blanc', hex: '#F2F2F2' },
     ],
     details: [
       'Maille piquée légère, séchage rapide',
@@ -67,18 +87,18 @@ export const products: Product[] = [
   },
   {
     id: 'p3',
-    slug: 'ballon-officiel-teranga',
-    name: 'Ballon Officiel Téranga',
+    slug: 'ballon-officiel-match',
+    name: 'Ballon Officiel Match',
     category: 'Ballons',
-    price: 18500,
-    badge: { label: 'Officiel', color: 'yellow' },
+    price: 28,
+    badge: { label: 'Officiel' },
     tagline: 'Le ballon des compétitions que nous sponsorisons.',
     description:
-      "Ballon de match taille 5, thermocollé sans couture apparente pour une trajectoire prévisible et un contact régulier. C'est le ballon utilisé sur le Tournoi de la Téranga et en Coupe du Sénégal.",
+      "Ballon de match taille 5, thermocollé sans couture apparente pour une trajectoire prévisible et un contact régulier. C'est le ballon utilisé sur les compétitions que nous sponsorisons.",
     sizes: ['Taille 4', 'Taille 5'],
     colors: [
-      { name: 'Blanc / Vert', hex: '#F2F2F2' },
-      { name: 'Or', hex: '#FDEF42' },
+      { name: 'Blanc', hex: '#F2F2F2' },
+      { name: 'Noir', hex: '#0F0F0F' },
     ],
     details: [
       'Ballon de match taille 5, 410–450 g',
@@ -91,22 +111,28 @@ export const products: Product[] = [
   {
     id: 'p4',
     slug: 'chaussures-elite-pro',
-    name: 'Chaussures Elite Pro',
+    name: 'Chaussure Elite Pro',
     category: 'Chaussures',
-    price: 45000,
-    badge: { label: 'Pro', color: 'yellow' },
+    price: 69,
+    badge: { label: 'Pro' },
+    images: [
+      '/produits/chaussures-foot-bordeaux.jpg',
+      '/produits/chaussures-foot-bleu.jpg',
+      '/produits/chaussures-foot-degrade.jpg',
+    ],
     tagline: 'Notre chaussure la plus rapide.',
     description:
-      'Conçue avec des joueurs de Ligue 1 sénégalaise. Tige synthétique fine pour le toucher de balle, semelle en composite léger, crampons lamellaires pour les appuis sur terrain sec. 210 g en taille 42.',
+      "Conçue avec des joueurs professionnels. Tige synthétique fine pour le toucher de balle, semelle en composite léger, crampons lamellaires pour les appuis sur terrain sec. Le motif de la tige est imprimé dans la matière et change avec le coloris : nervures, mouchetures ou dégradé. 210 g en taille 42.",
     sizes: BOOT_SIZES,
     colors: [
-      { name: 'Noir / Vert', hex: '#111111' },
-      { name: 'Blanc / Or', hex: '#F2F2F2' },
-      { name: 'Rouge Lion', hex: '#E31E24' },
+      { name: 'Bordeaux / Noir', hex: '#6B1F28', images: ['/produits/chaussures-foot-bordeaux.jpg'] },
+      { name: 'Bleu roi', hex: '#2B7FD4', images: ['/produits/chaussures-foot-bleu.jpg'] },
+      { name: 'Bleu / Vert', hex: '#1F8F3E', images: ['/produits/chaussures-foot-degrade.jpg'] },
     ],
     details: [
       '210 g en taille 42',
       'Tige synthétique microfibre, toucher direct',
+      'Motif imprimé dans la matière',
       'Semelle composite, crampons lamellaires FG',
       'Chausson interne pour un maintien sans point dur',
       'Terrain sec et synthétique',
@@ -115,17 +141,18 @@ export const products: Product[] = [
   },
   {
     id: 'p5',
-    slug: 'short-training-dakool',
-    name: 'Short Training DAKOOL',
+    slug: 'short-entrainement',
+    name: 'Short d’Entraînement',
     category: 'Accessoires',
-    price: 8500,
+    price: 13,
+    personnalisable: true,
     tagline: "Le short d'entraînement, tous les jours.",
     description:
       "Taille élastiquée à cordon, deux poches latérales, tissu léger qui sèche vite. Rien de superflu — c'est le short que portent nos équipes à l'entraînement toute la semaine.",
     sizes: JERSEY_SIZES,
     colors: [
-      { name: 'Noir', hex: '#111111' },
-      { name: 'Vert Téranga', hex: '#00853F' },
+      { name: 'Noir', hex: '#0F0F0F' },
+      { name: 'Gris', hex: '#8A8A8A' },
     ],
     details: [
       'Tissu léger séchage rapide',
@@ -140,15 +167,15 @@ export const products: Product[] = [
     slug: 'chaussettes-pro',
     name: 'Chaussettes Pro',
     category: 'Accessoires',
-    price: 3500,
+    price: 6,
     tagline: 'Maintien du pied, zéro glissement.',
     description:
       'Chaussettes hautes à compression légère sur la voûte plantaire, semelle bouclette pour amortir les chocs et bande antidérapante interne. Vendues par paire.',
     sizes: ['35–38', '39–42', '43–46'],
     colors: [
-      { name: 'Vert Téranga', hex: '#00853F' },
       { name: 'Blanc', hex: '#F2F2F2' },
-      { name: 'Noir', hex: '#111111' },
+      { name: 'Noir', hex: '#0F0F0F' },
+      { name: 'Gris', hex: '#8A8A8A' },
     ],
     details: [
       'Compression légère sur la voûte plantaire',
@@ -163,15 +190,15 @@ export const products: Product[] = [
     slug: 'veste-entraineur',
     name: 'Veste Entraîneur',
     category: 'Équipements',
-    price: 35000,
-    badge: { label: 'Coach', color: 'green' },
+    price: 53,
+    badge: { label: 'Coach' },
     tagline: 'Pour ceux qui dirigent depuis le bord du terrain.',
     description:
-      'Veste coupe-vent déperlante, doublure maille, col montant et poches zippées. Pensée pour rester trois heures debout sous le vent de la corniche sans bouger.',
+      'Veste coupe-vent déperlante, doublure maille, col montant et poches zippées. Pensée pour rester trois heures debout au bord du terrain sans bouger.',
     sizes: JERSEY_SIZES,
     colors: [
-      { name: 'Noir', hex: '#111111' },
-      { name: 'Vert Téranga', hex: '#00853F' },
+      { name: 'Noir', hex: '#0F0F0F' },
+      { name: 'Gris', hex: '#8A8A8A' },
     ],
     details: [
       'Coupe-vent déperlant, coutures thermocollées',
@@ -183,17 +210,18 @@ export const products: Product[] = [
   },
   {
     id: 'p8',
-    slug: 'sac-de-sport-dakool',
-    name: 'Sac de Sport DAKOOL',
+    slug: 'sac-de-sport',
+    name: 'Sac de Sport',
     category: 'Équipements',
-    price: 28000,
+    price: 43,
+    personnalisable: true,
     tagline: 'Tout le kit du match dans un seul sac.',
     description:
       'Sac de 55 litres avec compartiment chaussures ventilé séparé, poche humide étanche et bandoulière rembourrée. Base renforcée pour poser au sol sans abîmer.',
     sizes: ONE_SIZE,
     colors: [
-      { name: 'Noir', hex: '#111111' },
-      { name: 'Vert Téranga', hex: '#00853F' },
+      { name: 'Noir', hex: '#0F0F0F' },
+      { name: 'Gris', hex: '#8A8A8A' },
     ],
     details: [
       'Volume 55 L',
@@ -209,15 +237,15 @@ export const products: Product[] = [
     slug: 'gants-de-gardien',
     name: 'Gants de Gardien',
     category: 'Équipements',
-    price: 32000,
-    badge: { label: 'Gardien', color: 'red' },
+    price: 49,
+    badge: { label: 'Gardien' },
     tagline: 'Latex allemand, adhérence par tous les temps.',
     description:
       'Paume en latex 4 mm à grain fin, adhérente sur sec comme sur mouillé. Sangle de serrage large et dos aéré. Les barrettes de protection des doigts sont amovibles.',
     sizes: ['7', '8', '9', '10', '11'],
     colors: [
-      { name: 'Noir / Vert', hex: '#111111' },
-      { name: 'Rouge Lion', hex: '#E31E24' },
+      { name: 'Noir', hex: '#0F0F0F' },
+      { name: 'Blanc', hex: '#F2F2F2' },
     ],
     details: [
       'Paume latex 4 mm à grain fin',
@@ -233,14 +261,14 @@ export const products: Product[] = [
     slug: 'protege-tibias-elite',
     name: 'Protège-tibias Elite',
     category: 'Accessoires',
-    price: 7500,
+    price: 11,
     tagline: 'Léger au point de les oublier.',
     description:
       'Coque en polypropylène haute densité doublée mousse EVA. 42 g par protège-tibia. Livrés avec une paire de manchons de maintien.',
     sizes: ['S', 'M', 'L'],
     colors: [
-      { name: 'Blanc / Vert', hex: '#F2F2F2' },
-      { name: 'Noir', hex: '#111111' },
+      { name: 'Blanc', hex: '#F2F2F2' },
+      { name: 'Noir', hex: '#0F0F0F' },
     ],
     details: [
       '42 g par protège-tibia',
@@ -252,17 +280,17 @@ export const products: Product[] = [
   },
   {
     id: 'p11',
-    slug: 'bandeau-teranga',
-    name: 'Bandeau Téranga',
+    slug: 'bandeau-performance',
+    name: 'Bandeau Performance',
     category: 'Accessoires',
-    price: 4500,
+    price: 7,
     tagline: 'Le détail qui se voit de la tribune.',
     description:
-      'Bandeau élastique absorbant aux couleurs du drapeau. Coutures plates pour ne pas irriter, maintien sans serrer.',
+      'Bandeau élastique absorbant, logo DAKOOL tissé. Coutures plates pour ne pas irriter, maintien sans serrer.',
     sizes: ONE_SIZE,
     colors: [
-      { name: 'Drapeau', hex: '#00853F' },
-      { name: 'Noir', hex: '#111111' },
+      { name: 'Noir', hex: '#0F0F0F' },
+      { name: 'Blanc', hex: '#F2F2F2' },
     ],
     details: ['Maille absorbante élastique', 'Coutures plates', 'Lavable en machine'],
     inStock: true,
@@ -270,17 +298,17 @@ export const products: Product[] = [
   {
     id: 'p12',
     slug: 'chaussures-junior',
-    name: 'Chaussures Junior',
+    name: 'Chaussure Junior',
     category: 'Chaussures',
-    price: 28000,
-    badge: { label: 'Junior', color: 'red' },
+    price: 43,
+    badge: { label: 'Junior' },
     tagline: 'La première paire sérieuse.',
     description:
       "Version allégée de l'Elite Pro pour les 8–14 ans. Fermeture scratch en plus des lacets, tige souple et crampons adaptés aux terrains des académies.",
     sizes: ['33', '34', '35', '36', '37', '38'],
     colors: [
-      { name: 'Vert / Blanc', hex: '#00853F' },
-      { name: 'Noir / Or', hex: '#111111' },
+      { name: 'Noir', hex: '#0F0F0F' },
+      { name: 'Blanc', hex: '#F2F2F2' },
     ],
     details: [
       'Pour les 8–14 ans',
@@ -295,16 +323,16 @@ export const products: Product[] = [
     slug: 'maillot-gardien-elite',
     name: 'Maillot Gardien Elite',
     category: 'Maillots',
-    price: 26000,
-    badge: { label: 'GK', color: 'yellow' },
+    price: 40,
+    badge: { label: 'GK' },
     tagline: 'Manches longues, coudes rembourrés.',
     description:
       'Le maillot des gardiens de nos clubs partenaires. Rembourrage discret aux coudes, manches longues resserrées aux poignets, coupe ample pour ne pas gêner les plongeons.',
     sizes: JERSEY_SIZES,
     colors: [
-      { name: 'Or', hex: '#FDEF42' },
-      { name: 'Noir', hex: '#111111' },
-      { name: 'Rouge Lion', hex: '#E31E24' },
+      { name: 'Noir', hex: '#0F0F0F' },
+      { name: 'Gris', hex: '#8A8A8A' },
+      { name: 'Blanc', hex: '#F2F2F2' },
     ],
     details: [
       'Manches longues resserrées aux poignets',
@@ -319,14 +347,14 @@ export const products: Product[] = [
     slug: 'ballon-d-entrainement',
     name: "Ballon d'Entraînement",
     category: 'Ballons',
-    price: 12000,
+    price: 18,
     tagline: 'Celui qui encaisse les séances de la semaine.',
     description:
       "Ballon d'entraînement cousu machine, enveloppe TPU renforcée. Moins nerveux que le ballon de match, beaucoup plus résistant aux terrains durs.",
     sizes: ['Taille 4', 'Taille 5'],
     colors: [
-      { name: 'Blanc / Noir', hex: '#F2F2F2' },
-      { name: 'Vert Téranga', hex: '#00853F' },
+      { name: 'Blanc', hex: '#F2F2F2' },
+      { name: 'Noir', hex: '#0F0F0F' },
     ],
     details: [
       'Enveloppe TPU renforcée',
@@ -338,47 +366,768 @@ export const products: Product[] = [
   },
   {
     id: 'p15',
+    alsoIn: ['Survêtements', 'Pantalons & Leggings'],
     slug: 'survetement-complet',
     name: 'Survêtement Complet',
     category: 'Équipements',
-    price: 42000,
-    badge: { label: 'Ensemble', color: 'green' },
+    price: 64,
+    badge: { label: 'Ensemble' },
+    personnalisable: true,
+    images: ['/produits/survetement-marine.jpg'],
     tagline: 'Veste et pantalon, une seule commande.',
     description:
-      "L'ensemble d'échauffement de nos clubs : veste zippée col montant et pantalon fuselé à chevilles zippées. Bandes latérales aux couleurs du drapeau sur les deux pièces.",
+      "L'ensemble d'échauffement de nos clubs : veste zippée col montant et pantalon fuselé. Les épaules et les manches reçoivent un motif imprimé, le reste tient dans la couleur du club. Blason et logos sponsors posés à la commande.",
     sizes: JERSEY_SIZES,
-    colors: [
-      { name: 'Noir / Drapeau', hex: '#111111' },
-      { name: 'Vert Téranga', hex: '#00853F' },
-    ],
+    colors: [{ name: 'Marine', hex: '#232C4A' }],
     details: [
       'Veste zippée col montant + pantalon fuselé',
-      'Chevilles zippées',
-      'Bandes latérales drapeau',
-      'Poches zippées sur les deux pièces',
+      'Motif imprimé aux épaules et aux manches',
+      'Poches latérales sur les deux pièces',
+      'Blason club et logos sponsors inclus',
+      'Déclinable aux couleurs du club',
+      'Production à partir de 10 ensembles',
     ],
     inStock: true,
   },
   {
-    id: 'p16',
-    slug: 'casquette-dakool',
-    name: 'Casquette DAKOOL',
-    category: 'Accessoires',
-    price: 6000,
-    tagline: "Le logo, rien d'autre.",
+    id: 'b1',
+    alsoIn: ['Maillots'],
+    slug: 'ensemble-basketball',
+    name: 'Ensemble Basketball',
+    category: 'Basketball',
+    price: 58,
+    badge: { label: 'Sur mesure' },
+    personnalisable: true,
+    images: [
+      '/produits/basket-royal.jpg',
+      '/produits/basket-or.jpg',
+      '/produits/basket-noir.jpg',
+      '/produits/basket-jaune.jpg',
+      '/produits/basket-blanc.jpg',
+    ],
+    tagline: 'Maillot sans manches et short, sublimés aux couleurs du club.',
     description:
-      'Casquette six panneaux en coton lavé, logo DAKOOL brodé sur le devant, fermeture métal réglable. Visière préformée.',
-    sizes: ONE_SIZE,
+      "Ensemble de basketball sublimé : maillot sans manches à emmanchures larges et short assorti. Nom, numéro, blason et sponsors sont intégrés à l'impression, pas rapportés — rien ne se décolle au lavage. Cinq réalisations en exemple ci-contre ; le tien se dessine à partir de tes couleurs.",
+    sizes: JERSEY_SIZES,
     colors: [
-      { name: 'Noir', hex: '#111111' },
-      { name: 'Vert Téranga', hex: '#00853F' },
-      { name: 'Écru', hex: '#E8E3D8' },
+      { name: 'Bleu roi', hex: '#1B32D6', images: ['/produits/basket-royal.jpg'] },
+      { name: 'Or', hex: '#D9A227', images: ['/produits/basket-or.jpg'] },
+      { name: 'Noir', hex: '#111111', images: ['/produits/basket-noir.jpg'] },
+      { name: 'Jaune', hex: '#E9C61C', images: ['/produits/basket-jaune.jpg'] },
+      { name: 'Blanc', hex: '#F2F2F2', images: ['/produits/basket-blanc.jpg'] },
     ],
     details: [
-      'Coton lavé six panneaux',
-      'Logo brodé devant',
-      'Fermeture métal réglable',
-      'Visière préformée',
+      'Ensemble complet : maillot sans manches + short',
+      'Sublimation intégrale — le motif ne se décolle pas',
+      'Maille technique respirante, séchage rapide',
+      'Nom, numéros, logos club et sponsors inclus',
+      'Production à partir de 10 ensembles',
+      'Livraison 3 à 4 semaines après validation de la maquette',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'v1',
+    alsoIn: ['Maillots'],
+    slug: 'ensemble-volleyball',
+    name: 'Ensemble Volleyball',
+    category: 'Volleyball',
+    price: 52,
+    badge: { label: 'Sur mesure' },
+    personnalisable: true,
+    /* Les tenues portées d'abord : elles vendent mieux que les à-plats d'atelier. */
+    images: [
+      '/produits/volley-vert-3.jpg',
+      '/produits/volley-vert-1.jpg',
+      '/produits/volley-vert-2.jpg',
+      '/produits/volley-blanc-3.jpg',
+      '/produits/volley-blanc-5.jpg',
+      '/produits/volley-blanc-4.jpg',
+      '/produits/volley-blanc-1.jpg',
+      '/produits/volley-blanc-2.jpg',
+    ],
+    tagline: 'Débardeur et short en maille légère, pour la salle et le sable.',
+    description:
+      "Ensemble de volleyball en maille légère : débardeur à emmanchures larges et short à taille élastiquée. Le marquage est imprimé à chaud sur la poitrine, le dos et la cuisse. Une tenue pensée pour le jeu en extérieur et sur sable, où la couleur doit rester lisible en plein soleil.",
+    sizes: JERSEY_SIZES,
+    colors: [
+      {
+        name: 'Vert',
+        hex: '#2E9B2E',
+        images: [
+          '/produits/volley-vert-3.jpg',
+          '/produits/volley-vert-1.jpg',
+          '/produits/volley-vert-2.jpg',
+        ],
+      },
+      {
+        name: 'Blanc',
+        hex: '#F2F2F2',
+        images: [
+          '/produits/volley-blanc-3.jpg',
+          '/produits/volley-blanc-5.jpg',
+          '/produits/volley-blanc-4.jpg',
+          '/produits/volley-blanc-1.jpg',
+          '/produits/volley-blanc-2.jpg',
+        ],
+      },
+    ],
+    details: [
+      'Ensemble complet : débardeur + short',
+      'Maille légère, séchage rapide',
+      'Motif ton sur ton intégré au tissu',
+      'Marquage nom, numéro et sponsors imprimé à chaud',
+      'Production à partir de 10 ensembles',
+      'Livraison 3 à 4 semaines après validation de la maquette',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'h1',
+    alsoIn: ['Maillots'],
+    slug: 'maillot-handball',
+    name: 'Maillot Handball',
+    category: 'Handball',
+    price: 44,
+    badge: { label: 'Sur mesure' },
+    personnalisable: true,
+    images: [
+      '/produits/hand-blanc-orange.jpg',
+      '/produits/hand-marine.jpg',
+      '/produits/hand-blanc-marine.jpg',
+    ],
+    tagline: 'Col et poignets contrastés, emplacements sponsors intégrés.',
+    description:
+      "Maillot de handball à manches courtes, col rond et poignets contrastés. La coupe laisse l'épaule libre pour le geste de tir. Numéro, blason et sponsors sont intégrés dès la maquette : les vues ci-dessus montrent trois coloris réellement produits pour des clubs.",
+    sizes: JERSEY_SIZES,
+    colors: [
+      { name: 'Blanc / Orange', hex: '#F2F2F2', images: ['/produits/hand-blanc-orange.jpg'] },
+      { name: 'Marine / Orange', hex: '#2E3192', images: ['/produits/hand-marine.jpg'] },
+      { name: 'Blanc / Marine', hex: '#EDEDED', images: ['/produits/hand-blanc-marine.jpg'] },
+    ],
+    details: [
+      'Manches courtes, col rond côtelé',
+      'Col et poignets en contraste',
+      'Maille technique respirante, séchage rapide',
+      'Numéro, blason et sponsors inclus',
+      'Production à partir de 10 maillots',
+      'Livraison 3 à 4 semaines après validation de la maquette',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'h2',
+    alsoIn: ['Maillots', 'Pantalons & Leggings'],
+    slug: 'tenue-staff',
+    name: 'Tenue Staff',
+    category: 'Équipements',
+    price: 62,
+    personnalisable: true,
+    images: [
+      '/produits/staff-vert-marine.jpg',
+      '/produits/staff-blanc-vert.jpg',
+      '/produits/staff-vert-blanc.jpg',
+      '/produits/staff-bleu-ciel.jpg',
+      '/produits/staff-marine.jpg',
+      '/produits/staff-petrole.jpg',
+    ],
+    tagline: 'Polo et pantalon, pour le banc et les déplacements.',
+    description:
+      "L'ensemble que portent les encadrants : polo à empiècement contrasté, boutonnage trois trous, et pantalon de survêtement à bas resserré. Une tenue qui tient le bord du terrain comme le déplacement, et qui se décline aux couleurs du club. La mention portée dans le dos — STAFF, COACH ou autre — se choisit à la commande.",
+    sizes: JERSEY_SIZES,
+    colors: [
+      { name: 'Vert / Marine', hex: '#2E3192', images: ['/produits/staff-vert-marine.jpg'] },
+      { name: 'Blanc / Vert', hex: '#2ECC40', images: ['/produits/staff-blanc-vert.jpg'] },
+      { name: 'Vert / Blanc', hex: '#1E7A5C', images: ['/produits/staff-vert-blanc.jpg'] },
+      { name: 'Bleu ciel / Blanc', hex: '#4BA3DA', images: ['/produits/staff-bleu-ciel.jpg'] },
+      { name: 'Marine / Blanc', hex: '#2B3A8F', images: ['/produits/staff-marine.jpg'] },
+      { name: 'Pétrole / Blanc', hex: '#1F5C73', images: ['/produits/staff-petrole.jpg'] },
+    ],
+    details: [
+      'Ensemble complet : polo + pantalon',
+      'Polo à empiècement contrasté, boutonnage trois trous',
+      'Pantalon à taille élastiquée et bas resserré',
+      'Mention dorsale au choix : STAFF, COACH, ou libre',
+      'Blason club et logos sponsors inclus',
+      'Production à partir de 10 ensembles',
+      'Livraison 3 à 4 semaines après validation de la maquette',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'a1',
+    slug: 'chasuble-entrainement',
+    name: 'Chasuble d’Entraînement',
+    category: 'Accessoires',
+    price: 9,
+    personnalisable: true,
+    images: ['/produits/chasuble-verte.jpg'],
+    tagline: 'Le repère qui sépare les deux équipes à l’entraînement.',
+    description:
+      "Chasuble sans manches en maille aérée, à enfiler par-dessus la tenue. Les côtés ouverts laissent passer l'air, le biais contrasté tient la forme lavage après lavage. Vendue à l'unité, pensée pour être commandée par lots de couleurs.",
+    sizes: ['Junior', 'Adulte'],
+    colors: [{ name: 'Vert', hex: '#1E9E3E' }],
+    details: [
+      'Maille aérée sans manches',
+      'Biais contrasté au col et aux emmanchures',
+      'Côtés ouverts pour la ventilation',
+      'Logo DAKOOL brodé poitrine',
+      'Lots multicolores sur demande',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'a2',
+    alsoIn: ['Équipements'],
+    slug: 'sac-bandouliere',
+    name: 'Sac Bandoulière',
+    category: 'Accessoires',
+    price: 24,
+    personnalisable: true,
+    images: ['/produits/sac-bandouliere.jpg'],
+    tagline: 'Le petit format pour le trajet et les affaires du jour.',
+    description:
+      "Sac à bandoulière en toile enduite, avec poche zippée frontale et compartiment principal. Assez compact pour le déplacement quotidien, assez solide pour le sac de rechange. Personnalisable au logo du club en impression frontale.",
+    sizes: ONE_SIZE,
+    colors: [{ name: 'Noir', hex: '#111111' }],
+    details: [
+      'Toile enduite résistante',
+      'Poche zippée frontale',
+      'Bandoulière réglable',
+      'Impression club possible sur le rabat',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'a3',
+    slug: 'manchons-chaussettes-grip',
+    name: 'Manchons + Chaussettes Grip',
+    category: 'Accessoires',
+    price: 14,
+    images: ['/produits/manchons-chaussettes.jpg'],
+    tagline: 'Le duo qui tient le pied dans la chaussure.',
+    description:
+      "Ensemble de deux manchons de compression et d'une paire de chaussettes courtes à semelle antidérapante. Les pastilles de grip limitent le glissement du pied dans la chaussure ; les manchons couvrent le mollet et maintiennent le protège-tibia.",
+    sizes: ['35–38', '39–42', '43–46'],
+    colors: [{ name: 'Blanc', hex: '#F2F2F2' }],
+    details: [
+      'Une paire de manchons + une paire de chaussettes',
+      'Semelle à pastilles antidérapantes',
+      'Compression légère du mollet',
+      'Maintien du protège-tibia sans bande adhésive',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'a4',
+    alsoIn: ['Équipements'],
+    slug: 'sac-a-dos-motif',
+    name: 'Sac à Dos Motif',
+    category: 'Accessoires',
+    price: 34,
+    images: ['/produits/sac-a-dos-motif.jpg'],
+    tagline: 'Grande contenance, fermeture enveloppante.',
+    description:
+      "Sac à dos à ouverture enveloppante et base renforcée, taillé pour porter la tenue complète et les chaussures. Bretelles larges rembourrées, poches latérales pour la gourde. Le motif imprimé se décline selon les arrivages.",
+    sizes: ONE_SIZE,
+    colors: [{ name: 'Noir / Blanc', hex: '#F2F2F2' }],
+    details: [
+      'Ouverture enveloppante grande contenance',
+      'Base renforcée',
+      'Bretelles larges rembourrées',
+      'Poches latérales gourde',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'a5',
+    alsoIn: ['Équipements'],
+    slug: 'sac-a-dos-club',
+    name: 'Sac à Dos Club',
+    category: 'Accessoires',
+    price: 39,
+    badge: { label: 'Club' },
+    personnalisable: true,
+    images: ['/produits/sac-a-dos-dakool.jpg'],
+    tagline: 'Le sac de club, compartiment chaussures inclus.',
+    description:
+      "Sac à dos de sport à plusieurs compartiments, dont un espace chaussures séparé en partie basse. Dos matelassé, bretelles réglables et poches latérales. C'est le modèle que nous personnalisons au blason des clubs.",
+    sizes: ONE_SIZE,
+    colors: [{ name: 'Noir', hex: '#111111' }],
+    details: [
+      'Compartiment chaussures séparé en partie basse',
+      'Dos matelassé et bretelles réglables',
+      'Poches latérales et poche frontale zippée',
+      'Blason club et logo sponsors sur demande',
+      'Tarifs dégressifs à partir de 10 sacs',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'a6',
+    slug: 'echarpe-supporter',
+    name: 'Écharpe Supporter',
+    category: 'Accessoires',
+    price: 19,
+    personnalisable: true,
+    images: [
+      '/produits/echarpe-asp.jpg',
+      '/produits/echarpe-casa-sports.jpg',
+      '/produits/echarpe-stade-mbour.jpg',
+      '/produits/echarpe-uso.jpg',
+    ],
+    tagline: 'Les couleurs du club, tendues à bout de bras.',
+    description:
+      "Écharpe de supporter tricotée en jacquard double face : le nom du club sur toute la longueur, le blason au centre et à chaque extrémité. Maille épaisse, franges nouées à la main. C'est l'objet qu'on lève au coup d'envoi et qu'on garde des années. Chaque coloris se dessine avec le club, à partir de son blason.",
+    sizes: ONE_SIZE,
+    colors: [
+      { name: 'Rouge / Vert', hex: '#D42027', images: ['/produits/echarpe-asp.jpg'] },
+      { name: 'Vert / Blanc', hex: '#1B5E3A', images: ['/produits/echarpe-casa-sports.jpg'] },
+      { name: 'Rouge / Noir', hex: '#E01B22', images: ['/produits/echarpe-stade-mbour.jpg'] },
+      { name: 'Bordeaux / Blanc', hex: '#8C1420', images: ['/produits/echarpe-uso.jpg'] },
+    ],
+    details: [
+      'Tricot jacquard double face',
+      'Nom du club sur toute la longueur',
+      'Blason au centre et sur les deux pointes',
+      'Franges nouées',
+      'Environ 140 × 17 cm',
+      'Tarifs dégressifs à partir de 50 pièces',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'a10',
+    slug: 'casquette-brodee',
+    name: 'Casquette Brodée',
+    category: 'Accessoires',
+    price: 22,
+    personnalisable: true,
+    images: ['/produits/casquette-jeanne-darc.jpg'],
+    tagline: 'Visière plate, blason brodé, rien de plus.',
+    description:
+      "Casquette snapback à visière plate, calotte cinq panneaux et blason brodé sur le devant. Visière contrastée, fermeture arrière réglable par pression. La calotte, la visière et la broderie se choisissent séparément, aux couleurs du club ou de la structure.",
+    sizes: ONE_SIZE,
+    colors: [{ name: 'Bleu / Blanc', hex: '#22409A' }],
+    details: [
+      'Snapback cinq panneaux, visière plate',
+      'Blason brodé sur le panneau frontal',
+      'Calotte et visière de couleurs distinctes',
+      'Fermeture arrière réglable',
+      'Broderie sur commande, à partir de 10 pièces',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'y1',
+    alsoIn: ['Pantalons & Leggings'],
+    slug: 'legging-taille-haute',
+    name: 'Legging Taille Haute',
+    category: 'Yoga',
+    price: 29,
+    images: ['/produits/yoga-legging-vert.jpg'],
+    tagline: 'Une seconde peau qui ne bouge pas d’un centimètre.',
+    description:
+      "Legging sculptant en maille sans couture, ceinture large qui remonte au-dessus du nombril et reste en place pendant la séance. La maille est opaque à l'étirement, y compris en flexion profonde, et évacue l'humidité au lieu de la garder.",
+    sizes: YOGA_SIZES,
+    colors: [{ name: 'Vert d’eau', hex: '#5E9B93' }],
+    details: [
+      'Maille sans couture, opaque à l’étirement',
+      'Ceinture large taille haute',
+      'Coutures sculptantes au dos',
+      'Séchage rapide',
+      'Lavage machine à 30°',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'y2',
+    alsoIn: ['Équipements', 'Pantalons & Leggings'],
+    slug: 'ensemble-veste-legging',
+    name: 'Ensemble Veste + Legging',
+    category: 'Yoga',
+    price: 59,
+    images: ['/produits/yoga-ensemble-gris.jpg'],
+    tagline: 'Le deux-pièces pour l’échauffement et le retour au calme.',
+    description:
+      "Veste courte zippée à manches longues et passe-pouces, assortie au legging taille haute. On garde la veste le temps de monter en température, on l'enlève sans défaire la tenue. Coupe près du corps sur les deux pièces.",
+    sizes: YOGA_SIZES,
+    colors: [{ name: 'Gris anthracite', hex: '#4A4A4A' }],
+    details: [
+      'Veste zippée courte à manches longues',
+      'Passe-pouces aux poignets',
+      'Legging taille haute assorti',
+      'Maille extensible dans les deux sens',
+      'Vendu en ensemble deux pièces',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'y3',
+    slug: 'ensemble-brassiere-short',
+    name: 'Ensemble Brassière + Short',
+    category: 'Yoga',
+    price: 34,
+    badge: { label: 'Club' },
+    images: ['/produits/yoga-brassiere-short.jpg'],
+    tagline: 'Maille côtelée, format court, logo à ta demande.',
+    description:
+      "Brassière zippée col montant et short cycliste taille haute, en maille côtelée qui reprend sa forme après chaque lavage. C'est le modèle que nous personnalisons au logo du club ou de la salle, sur la poitrine et à l'arrière du short.",
+    sizes: YOGA_SIZES,
+    colors: [
+      { name: 'Noir', hex: '#111111' },
+      { name: 'Blanc', hex: '#F2F2F2' },
+    ],
+    details: [
+      'Brassière zippée à col montant',
+      'Short cycliste taille haute',
+      'Maille côtelée extensible',
+      'Emplacements logo poitrine et dos',
+      'Tarifs dégressifs à partir de 10 ensembles',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'y4',
+    alsoIn: ['Équipements', 'Pantalons & Leggings'],
+    slug: 'ensemble-brassiere-lacee',
+    name: 'Ensemble Brassière Lacée',
+    category: 'Yoga',
+    price: 49,
+    images: ['/produits/yoga-ensemble-blanc.jpg'],
+    tagline: 'Le laçage dorsal se règle au serrage que tu veux.',
+    description:
+      "Brassière à fines bretelles croisées et laçage dorsal réglable, portée avec le legging taille haute assorti. Le laçage permet d'ajuster le maintien sans changer de taille. Maintien léger à modéré, pensé pour le yoga et le pilates plutôt que pour la course.",
+    sizes: YOGA_SIZES,
+    colors: [{ name: 'Blanc', hex: '#F2F2F2' }],
+    details: [
+      'Laçage dorsal réglable',
+      'Fines bretelles croisées',
+      'Legging taille haute assorti',
+      'Maintien léger à modéré',
+      'Vendu en ensemble deux pièces',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'y5',
+    alsoIn: ['Équipements', 'Pantalons & Leggings'],
+    slug: 'ensemble-brassiere-legging',
+    name: 'Ensemble Brassière + Legging',
+    category: 'Yoga',
+    price: 44,
+    images: ['/produits/yoga-ensemble-lime.jpg'],
+    tagline: 'Deux pièces, une seule couleur, rien qui dépasse.',
+    description:
+      "Brassière à bretelles fines et legging taille haute sans couture, coupés dans la même maille et la même teinte. La ceinture large ne roule pas à la flexion, la brassière se porte seule ou sous une veste. L'ensemble le plus simple de la gamme.",
+    sizes: YOGA_SIZES,
+    colors: [{ name: 'Vert lime', hex: '#9DBE2B' }],
+    details: [
+      'Brassière à bretelles fines',
+      'Legging taille haute sans couture',
+      'Ceinture large qui ne roule pas',
+      'Maille opaque à l’étirement',
+      'Vendu en ensemble deux pièces',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'c3',
+    slug: 'chaussures-basket-low',
+    name: 'Chaussure de Basket Low',
+    category: 'Chaussures',
+    price: 64,
+    badge: { label: 'Pro' },
+    images: ['/produits/chaussures-basket-glacier.jpg', '/produits/chaussures-basket-royal.jpg'],
+    tagline: 'Tige basse, cheville libre, appuis secs.',
+    description:
+      "Chaussure de basket à tige basse pour les joueurs qui veulent de la vitesse plutôt que du maintien haut. Empeigne en mesh perforé sur contreforts synthétiques, semelle intermédiaire translucide et gomme à chevrons pour accrocher au premier appui. Deux coloris, même construction.",
+    sizes: BOOT_SIZES,
+    colors: [
+      { name: 'Blanc / Bleu glacier', hex: '#A8CBE4', images: ['/produits/chaussures-basket-glacier.jpg'] },
+      { name: 'Blanc / Bleu roi', hex: '#2B4BA8', images: ['/produits/chaussures-basket-royal.jpg'] },
+    ],
+    details: [
+      'Tige basse, cheville dégagée',
+      'Mesh perforé et contreforts synthétiques',
+      'Semelle intermédiaire translucide',
+      'Gomme à chevrons pour les changements de direction',
+      'Parquet et terrain couvert',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'c4',
+    slug: 'chaussures-basket-mid',
+    name: 'Chaussure de Basket Mid',
+    category: 'Chaussures',
+    price: 58,
+    images: ['/produits/chaussures-basket-fluo.jpg'],
+    tagline: 'Le modèle qui encaisse le bitume.',
+    description:
+      "Chaussure montante pensée pour le terrain extérieur : tige tricotée renforcée aux zones d'usure, col mi-haut qui tient la cheville et semelle en gomme épaisse qui résiste au béton. La languette et la boucle arrière facilitent le chaussage.",
+    sizes: BOOT_SIZES,
+    colors: [{ name: 'Noir / Vert fluo', hex: '#C6F032' }],
+    details: [
+      'Col mi-haut, maintien de la cheville',
+      'Tige tricotée renforcée aux zones d’usure',
+      'Gomme épaisse résistante au béton',
+      'Boucle arrière de chaussage',
+      'Terrain extérieur et playground',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'c5',
+    slug: 'chaussures-basket-graffiti',
+    name: 'Chaussure de Basket Graffiti',
+    category: 'Chaussures',
+    price: 62,
+    images: [
+      '/produits/chaussures-basket-graffiti-1.jpg',
+      '/produits/chaussures-basket-graffiti-2.jpg',
+    ],
+    tagline: 'Celle qu’on repère à l’autre bout du terrain.',
+    description:
+      "Chaussure de basket à tige tricotée dégradée et semelle imprimée graffiti, chaque paire sortant légèrement différente de l'impression. Sous le motif, la construction reste sérieuse : maintien latéral rigide, amorti sur toute la longueur et gomme adhérente.",
+    sizes: BOOT_SIZES,
+    colors: [{ name: 'Pastel multicolore', hex: '#F2C7D0' }],
+    details: [
+      'Tige tricotée en dégradé',
+      'Semelle à impression graffiti',
+      'Maintien latéral rigide',
+      'Amorti sur toute la longueur',
+      'Parquet et terrain couvert',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'j1',
+    alsoIn: ['Pantalons & Leggings', 'Sweats', 'Survêtements'],
+    slug: 'ensemble-capuche-zippe',
+    name: 'Ensemble Capuche Zippé',
+    category: 'Équipements',
+    price: 54,
+    badge: { label: 'Ensemble' },
+    personnalisable: true,
+    images: ['/produits/jogging-zippe-gris.jpg', '/produits/jogging-zippe-bleu.jpg'],
+    tagline: 'Le survêtement qu’on garde après la douche.',
+    description:
+      "Veste à capuche zippée sur toute la longueur, poche kangourou coupée en deux, et jogger fuselé à bas resserré. Molleton gratté à l'intérieur, assez chaud pour l'avant-match en extérieur, assez sobre pour le trajet. Blason brodé poitrine.",
+    sizes: JERSEY_SIZES,
+    colors: [
+      { name: 'Gris clair', hex: '#C9CACC', images: ['/produits/jogging-zippe-gris.jpg'] },
+      { name: 'Bleu', hex: '#2E6C96', images: ['/produits/jogging-zippe-bleu.jpg'] },
+    ],
+    details: [
+      'Ensemble complet : veste à capuche + jogger',
+      'Zip intégral, poche kangourou',
+      'Molleton gratté intérieur',
+      'Jogger fuselé, bas resserré et cordon de taille',
+      'Blason club et logos sponsors inclus',
+      'Production à partir de 10 ensembles',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'j2',
+    alsoIn: ['Pantalons & Leggings', 'Sweats', 'Survêtements'],
+    slug: 'ensemble-capuche',
+    name: 'Ensemble à Capuche',
+    category: 'Équipements',
+    price: 48,
+    personnalisable: true,
+    images: [
+      '/produits/jogging-bordeaux.jpg',
+      '/produits/jogging-bleu.jpg',
+      '/produits/jogging-gris.jpg',
+    ],
+    tagline: 'Sweat à enfiler et jogger assorti, rien à régler.',
+    description:
+      "La version à enfiler du même ensemble : sweat à capuche sans zip, poche kangourou d'un seul tenant, et jogger fuselé assorti. Une seule couleur d'un bout à l'autre, le blason brodé pour seul marquage.",
+    sizes: JERSEY_SIZES,
+    colors: [
+      { name: 'Bordeaux', hex: '#5E2226', images: ['/produits/jogging-bordeaux.jpg'] },
+      { name: 'Bleu', hex: '#2C5F86', images: ['/produits/jogging-bleu.jpg'] },
+      { name: 'Gris', hex: '#9EA1A4', images: ['/produits/jogging-gris.jpg'] },
+    ],
+    details: [
+      'Ensemble complet : sweat à capuche + jogger',
+      'Sweat à enfiler, poche kangourou',
+      'Molleton gratté intérieur',
+      'Jogger fuselé, bas resserré et cordon de taille',
+      'Blason club et logos sponsors inclus',
+      'Production à partir de 10 ensembles',
+    ],
+    inStock: true,
+  },
+  {
+    id: 's1',
+    alsoIn: ['Équipements'],
+    slug: 'sweat-entrainement-demi-zip',
+    name: 'Sweat d’Entraînement Demi-Zip',
+    category: 'Sweats',
+    price: 42,
+    badge: { label: 'Sur mesure' },
+    personnalisable: true,
+    images: [
+      '/produits/sweat-bordeaux.jpg',
+      '/produits/sweat-blanc.jpg',
+      '/produits/sweat-bleu.jpg',
+    ],
+    tagline: 'Col demi-zip, manches longues, motif baobab.',
+    description:
+      "Le haut d'entraînement des séances où il fait frais : col montant à demi-zip, manches longues, maille technique sublimée sur toute la pièce. Le motif — bande de losanges en travers de la poitrine, baobab qui monte du bas du flanc — est imprimé dans la matière, pas posé dessus : il ne s'écaille pas au lavage.",
+    sizes: JERSEY_SIZES,
+    colors: [
+      { name: 'Bordeaux', hex: '#6B2C35', images: ['/produits/sweat-bordeaux.jpg'] },
+      { name: 'Blanc', hex: '#F2F2F2', images: ['/produits/sweat-blanc.jpg'] },
+      { name: 'Bleu ciel', hex: '#4E9BD1', images: ['/produits/sweat-bleu.jpg'] },
+    ],
+    details: [
+      'Col montant à demi-zip',
+      'Sublimation intégrale, motif dans la matière',
+      'Maille technique respirante, manches longues',
+      'Blason club et logos sponsors inclus',
+      'Production à partir de 10 pièces',
+      'Livraison 3 à 4 semaines après validation de la maquette',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'l1',
+    alsoIn: ['Maillots'],
+    slug: 'ensemble-coach',
+    name: 'Ensemble Coach',
+    category: 'Loisirs',
+    price: 46,
+    badge: { label: 'Sur mesure' },
+    personnalisable: true,
+    images: ['/produits/loisir-coach-marine.jpg'],
+    tagline: 'La tenue de celui qui dirige la séance.',
+    description:
+      "Maillot col rond et short assorti, dans une maille sublimée à motif ondulé ton sur ton. La fonction se lit dans le dos en toutes lettres — coach, préparateur, délégué — sur deux lignes, au-dessus du nom de la structure. Sobre de face, explicite de dos.",
+    sizes: JERSEY_SIZES,
+    colors: [{ name: 'Marine', hex: '#252a6b' }],
+    details: [
+      'Ensemble complet : maillot + short',
+      'Sublimation intégrale, motif ondulé ton sur ton',
+      'Marquage dorsal sur deux lignes : fonction et structure',
+      'Blason et logos sponsors inclus',
+      'Production à partir de 10 ensembles',
+      'Livraison 3 à 4 semaines après validation de la maquette',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'l2',
+    alsoIn: ['Maillots'],
+    slug: 'ensemble-club-sponsors',
+    name: 'Ensemble Club Sponsors',
+    category: 'Loisirs',
+    price: 46,
+    personnalisable: true,
+    images: ['/produits/loisir-club-bleu.jpg'],
+    tagline: 'Six emplacements sponsors, un seul ensemble.',
+    description:
+      "L'ensemble des clubs qui doivent loger plusieurs partenaires : poitrine, dos, manches et cuisse, chaque emplacement est prévu à la maquette. Maillot col V et short à bandes latérales contrastées, dans une maille sublimée à motif ton sur ton qui laisse les logos lisibles.",
+    sizes: JERSEY_SIZES,
+    colors: [{ name: 'Bleu roi', hex: '#1f43c9' }],
+    details: [
+      'Ensemble complet : maillot + short',
+      'Jusqu’à six emplacements sponsors',
+      'Nom du club en arc dans le dos',
+      'Short à bandes latérales contrastées',
+      'Production à partir de 10 ensembles',
+      'Livraison 3 à 4 semaines après validation de la maquette',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'l3',
+    alsoIn: ['Maillots'],
+    slug: 'maillot-graphique',
+    name: 'Maillot Graphique',
+    category: 'Loisirs',
+    price: 36,
+    badge: { label: 'Nouveau' },
+    personnalisable: true,
+    images: ['/produits/loisir-splatter-1.jpg', '/produits/loisir-splatter-2.jpg'],
+    tagline: 'Éclaboussures fluo sur fond marine.',
+    description:
+      "Le maillot qui ne passe pas inaperçu : un motif d'éclaboussures jaune fluo projeté sur un fond marine, sublimé dans la maille et donc jamais deux pièces exactement identiques. Col montant côtelé, poignets retournés. Se porte en match comme en dehors.",
+    sizes: JERSEY_SIZES,
+    colors: [{ name: 'Marine / Jaune fluo', hex: '#2a3a7a' }],
+    details: [
+      'Sublimation intégrale, motif dans la matière',
+      'Col montant côtelé et poignets retournés',
+      'Blason club brodé poitrine',
+      'Short et chaussettes assortis sur demande',
+      'Production à partir de 10 pièces',
+      'Livraison 3 à 4 semaines après validation de la maquette',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'sv1',
+    alsoIn: ['Sweats', 'Pantalons & Leggings'],
+    slug: 'survetement-a-capuche',
+    name: 'Survêtement à Capuche',
+    category: 'Survêtements',
+    price: 58,
+    badge: { label: 'Sur mesure' },
+    personnalisable: true,
+    images: [
+      '/produits/survetement-capuche-noir.jpg',
+      '/produits/survetement-capuche-jaune.jpg',
+    ],
+    tagline: 'Capuche doublée, bords-côtes contrastés, nom du club dans le dos.',
+    description:
+      "Le survêtement de l'équipe pour les déplacements : veste à capuche doublée en couleur contrastée, zip intégral, bords-côtes assortis à la taille et aux poignets. Le nom du club et sa discipline s'impriment en grand dans le dos, le blason reste discret sur la poitrine. Jogger fuselé assorti.",
+    sizes: JERSEY_SIZES,
+    colors: [
+      { name: 'Noir / Jaune', hex: '#111111', images: ['/produits/survetement-capuche-noir.jpg'] },
+      { name: 'Jaune / Noir', hex: '#EDD65B', images: ['/produits/survetement-capuche-jaune.jpg'] },
+    ],
+    details: [
+      'Ensemble complet : veste à capuche + jogger',
+      'Capuche doublée et bords-côtes contrastés',
+      'Zip intégral, poches latérales',
+      'Nom du club et discipline imprimés dans le dos',
+      'Production à partir de 10 ensembles',
+      'Livraison 3 à 4 semaines après validation de la maquette',
+    ],
+    inStock: true,
+  },
+  {
+    id: 'sv2',
+    alsoIn: ['Pantalons & Leggings'],
+    slug: 'survetement-presentation',
+    name: 'Survêtement de Présentation',
+    category: 'Survêtements',
+    price: 56,
+    personnalisable: true,
+    images: [
+      '/produits/survetement-presentation-bleu.jpg',
+      '/produits/survetement-presentation-marine.jpg',
+      '/produits/survetement-presentation-blanc.jpg',
+    ],
+    tagline: 'Col montant, pantalon droit, trois découpes au choix.',
+    description:
+      "Le survêtement qu'on porte à l'échauffement et sur la photo d'équipe : veste à col montant et zip intégral, pantalon droit à bas ouvert. Trois découpes au choix — empiècement courbe, bande droite en travers de la poitrine, ou chevron — chacune déclinable dans les couleurs du club.",
+    sizes: JERSEY_SIZES,
+    colors: [
+      { name: 'Bleu roi / Blanc — empiècement courbe', hex: '#2540E8', images: ['/produits/survetement-presentation-bleu.jpg'] },
+      { name: 'Marine / Blanc — bande droite', hex: '#39329B', images: ['/produits/survetement-presentation-marine.jpg'] },
+      { name: 'Blanc / Marine — chevron', hex: '#F2F2F2', images: ['/produits/survetement-presentation-blanc.jpg'] },
+    ],
+    details: [
+      'Ensemble complet : veste + pantalon droit',
+      'Col montant, zip intégral, poches zippées',
+      'Trois découpes au choix',
+      'Blason club et logos sponsors inclus',
+      'Production à partir de 10 ensembles',
+      'Livraison 3 à 4 semaines après validation de la maquette',
     ],
     inStock: true,
   },
@@ -386,7 +1135,15 @@ export const products: Product[] = [
 
 export const categories = [
   'Tous',
+  'Basketball',
+  'Volleyball',
+  'Handball',
+  'Yoga',
   'Maillots',
+  'Pantalons & Leggings',
+  'Sweats',
+  'Loisirs',
+  'Survêtements',
   'Chaussures',
   'Ballons',
   'Équipements',
@@ -395,6 +1152,41 @@ export const categories = [
 
 export function getProduct(slug: string): Product | undefined {
   return products.find((p) => p.slug === slug);
+}
+
+/**
+ * Vues à afficher pour un coloris donné.
+ *
+ * Un article décliné en couleurs range ses photos coloris par coloris : la
+ * galerie ne montre alors que celles du coloris choisi. Les autres articles
+ * renvoient simplement toutes leurs vues.
+ */
+export function viewsFor(product: Product, colorName: string): string[] {
+  const color = product.colors.find((c) => c.name === colorName);
+  return color?.images ?? product.images ?? [];
+}
+
+/** Vrai quand chaque coloris porte ses propres vues. */
+export function hasColorViews(product: Product): boolean {
+  return product.colors.length > 0 && product.colors.every((c) => c.images?.length);
+}
+
+/** Vrai si l'article se range dans ce rayon, à titre principal ou secondaire. */
+export function isInCategory(product: Product, category: string): boolean {
+  return product.category === category || (product.alsoIn?.includes(category) ?? false);
+}
+
+/**
+ * Contenu d'un rayon, photos d'abord. « Tous » renvoie le catalogue entier.
+ *
+ * Les articles encore sans photo passent en fin de liste : sinon un rayon
+ * s'ouvrait sur les dessins de secours alors que ses vraies photos
+ * attendaient plus bas.
+ */
+export function productsIn(category: string): Product[] {
+  const list = category === 'Tous' ? products : products.filter((p) => isInCategory(p, category));
+
+  return [...list.filter((p) => p.images?.length), ...list.filter((p) => !p.images?.length)];
 }
 
 /** Suggestions de fin de fiche produit : même catégorie d'abord, puis le reste. */

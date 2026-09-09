@@ -2,12 +2,11 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getProduct, getRelatedProducts, products } from '@/data/products';
-import { formatPrice } from '@/lib/format';
 import Container from '@/components/Container';
-import ProductVisual from '@/components/ProductVisual';
+import ProductGallery from '@/components/ProductGallery';
+import { ProductVariantProvider } from '@/components/ProductVariant';
 import ProductCard from '@/components/ProductCard';
 import SectionHeading from '@/components/SectionHeading';
-import FlagBar from '@/components/FlagBar';
 import Reveal from '@/components/Reveal';
 import BuyPanel from './BuyPanel';
 
@@ -46,18 +45,18 @@ export default async function ProduitPage({ params }: Params) {
 
   return (
     <>
-      <div className="border-b border-line bg-ink pt-24">
+      <div className="border-b border-line bg-bg pt-24">
         <Container>
           <nav aria-label="Fil d'Ariane" className="py-5 text-xs text-mute-dim">
             <ol className="flex flex-wrap items-center gap-2">
               <li>
-                <Link href="/" className="transition-colors hover:text-white">
+                <Link href="/" className="transition-colors hover:text-fg">
                   Accueil
                 </Link>
               </li>
               <li aria-hidden>/</li>
               <li>
-                <Link href="/produits" className="transition-colors hover:text-white">
+                <Link href="/produits" className="transition-colors hover:text-fg">
                   Produits
                 </Link>
               </li>
@@ -65,73 +64,69 @@ export default async function ProduitPage({ params }: Params) {
               <li>
                 <Link
                   href={`/produits?categorie=${encodeURIComponent(product.category)}`}
-                  className="transition-colors hover:text-white"
+                  className="transition-colors hover:text-fg"
                 >
                   {product.category}
                 </Link>
               </li>
               <li aria-hidden>/</li>
-              <li className="text-white">{product.name}</li>
+              <li className="text-fg">{product.name}</li>
             </ol>
           </nav>
         </Container>
       </div>
 
       {/* Visuel + achat */}
-      <section className="bg-ink">
-        <Container className="grid gap-12 py-12 lg:grid-cols-2 lg:gap-16 lg:py-16">
-          <div className="relative">
-            <div className="grain relative flex aspect-square items-center justify-center overflow-hidden border border-line bg-elevated">
-              <ProductVisual category={product.category} index={productIndex} />
-              {product.badge && (
-                <span className="absolute top-5 left-5 bg-teranga px-2.5 py-1.5 text-[10px] font-black uppercase tracking-cta text-white">
-                  {product.badge.label}
-                </span>
-              )}
-              <FlagBar className="absolute inset-x-0 bottom-0" />
+      <section className="bg-bg">
+        {/* Le fournisseur enveloppe les deux colonnes : la galerie et le
+            panneau d'achat partagent le coloris sélectionné. */}
+        <ProductVariantProvider product={product}>
+          <Container className="grid gap-12 py-12 lg:grid-cols-2 lg:gap-16 lg:py-16">
+            <div className="relative">
+              <ProductGallery product={product} index={productIndex} />
+
+              {/* Nuancier des coloris disponibles. */}
+              <ul className="mt-3 flex flex-wrap gap-px bg-line">
+                {product.colors.map((c) => (
+                  <li key={c.name} className="flex grow items-center gap-3 bg-elevated px-4 py-3.5">
+                    <span
+                      aria-hidden
+                      className="h-6 w-6 shrink-0 border border-line-strong"
+                      style={{ backgroundColor: c.hex }}
+                    />
+                    <span className="text-xs text-mute">{c.name}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            {/* Nuancier des coloris disponibles. */}
-            <ul className="mt-3 grid gap-px bg-line sm:grid-cols-3">
-              {product.colors.map((c) => (
-                <li key={c.name} className="flex items-center gap-3 bg-elevated px-4 py-3.5">
-                  <span
-                    aria-hidden
-                    className="h-6 w-6 shrink-0 border border-line-strong"
-                    style={{ backgroundColor: c.hex }}
-                  />
-                  <span className="text-xs text-mute">{c.name}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="lg:sticky lg:top-24 lg:self-start">
-            <BuyPanel product={product} />
-          </div>
-        </Container>
+            <div className="lg:sticky lg:top-24 lg:self-start">
+              <BuyPanel product={product} />
+            </div>
+          </Container>
+        </ProductVariantProvider>
       </section>
 
       {/* Description + caractéristiques */}
       <section className="border-y border-line bg-surface py-16 sm:py-20">
         <Container className="grid gap-12 lg:grid-cols-2 lg:gap-20">
           <Reveal>
-            <span className="mb-4 block text-[11px] font-bold uppercase tracking-brand text-teranga">
+            <span className="mb-4 block text-[11px] font-bold uppercase tracking-brand text-fg">
               Le produit
             </span>
-            <h2 className="mb-5 font-display text-heading text-white">Description</h2>
+            <h2 className="mb-5 font-display text-heading text-fg">Description</h2>
             <p className="text-base leading-relaxed text-mute">{product.description}</p>
           </Reveal>
 
           <Reveal delay={100}>
-            <span className="mb-4 block text-[11px] font-bold uppercase tracking-brand text-teranga">
+            <span className="mb-4 block text-[11px] font-bold uppercase tracking-brand text-fg">
               Fiche technique
             </span>
-            <h2 className="mb-5 font-display text-heading text-white">Caractéristiques</h2>
+            <h2 className="mb-5 font-display text-heading text-fg">Caractéristiques</h2>
             <ul className="divide-y divide-line border-y border-line">
               {product.details.map((detail) => (
                 <li key={detail} className="flex items-start gap-3 py-3.5 text-sm text-mute">
-                  <span aria-hidden className="mt-1 text-xs text-teranga">
+                  <span aria-hidden className="mt-1 text-xs text-accent">
                     ▸
                   </span>
                   {detail}
@@ -141,16 +136,16 @@ export default async function ProduitPage({ params }: Params) {
 
             <dl className="mt-8 grid grid-cols-2 gap-px border border-line bg-line">
               <div className="bg-surface px-5 py-4">
-                <dt className="text-[10px] uppercase tracking-label text-mute-dim">Prix</dt>
-                <dd className="mt-1 font-display text-2xl text-white">
-                  {formatPrice(product.price)}
+                <dt className="text-[10px] uppercase tracking-label text-mute-dim">Coloris</dt>
+                <dd className="mt-1 font-display text-2xl text-fg">
+                  {product.colors.length > 1 ? `${product.colors.length} au choix` : 'Sur mesure'}
                 </dd>
               </div>
               <div className="bg-surface px-5 py-4">
                 <dt className="text-[10px] uppercase tracking-label text-mute-dim">
                   {product.sizes.length > 1 ? 'Tailles' : 'Format'}
                 </dt>
-                <dd className="mt-1 font-display text-2xl text-white">
+                <dd className="mt-1 font-display text-2xl text-fg">
                   {product.sizes.length > 1 ? product.sizes.join(' · ') : product.sizes[0]}
                 </dd>
               </div>
@@ -160,13 +155,13 @@ export default async function ProduitPage({ params }: Params) {
       </section>
 
       {/* Suggestions */}
-      <section className="bg-ink py-16 sm:py-20">
+      <section className="bg-bg py-16 sm:py-20">
         <Container>
           <SectionHeading
-            eyebrow="À compléter"
-            title="Vous aimerez"
-            highlight="aussi"
-            link={{ href: '/produits', label: 'Tout voir' }}
+            eyebrow="Complète ta tenue"
+            title="À"
+            highlight="compléter"
+            link={{ href: '/produits', label: 'Voir plus' }}
           />
           <div className="grid grid-cols-1 gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
             {related.map((p, i) => (

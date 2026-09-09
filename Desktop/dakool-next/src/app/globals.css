@@ -2,29 +2,69 @@
 
 /* ============================================================
    DAKOOL — Design system
-   Direction : brutalisme sportif. Noir profond, typo condensée
-   display, grille en filets, accents drapeau sénégalais.
+   Direction : brutalisme sportif, strictement noir et blanc.
+   Aucune teinte : la hiérarchie repose sur le contraste, la
+   graisse typographique et les filets.
+
+   Deux thèmes. Les valeurs vivent dans des variables CSS classiques
+   pour pouvoir basculer à l'exécution ; `@theme inline` se contente
+   de les exposer aux utilitaires Tailwind.
    ============================================================ */
 
+/* ---- Thème clair (défaut) ----
+   `.surface-light` fige cette même palette localement : le header la porte
+   pour rester clair dans les deux thèmes, le logo embarquant un fond opaque
+   qui ne ressortirait pas sur un fond sombre. Les variables étant héritées,
+   tous les utilitaires (text-fg, bg-inverse, border-line…) suivent. */
+:root,
+.surface-light {
+  --c-bg: #ffffff;
+  --c-surface: #f5f5f5;
+  --c-elevated: #ededed;
+  --c-fg: #000000;
+  --c-mute: #575757;
+  --c-mute-dim: #8a8a8a;
+  --c-accent: #767676;
+  --c-line: rgba(0, 0, 0, 0.12);
+  --c-line-strong: rgba(0, 0, 0, 0.28);
+  /* Panneaux et boutons inversés par rapport au fond de page. */
+  --c-inverse: #000000;
+  --c-on-inverse: #ffffff;
+  --grain-opacity: 0.02;
+}
+
+/* ---- Thème sombre ---- */
+[data-theme='dark'] {
+  --c-bg: #000000;
+  --c-surface: #070707;
+  --c-elevated: #101010;
+  --c-fg: #ffffff;
+  --c-mute: #8d8d8d;
+  --c-mute-dim: #5c5c5c;
+  --c-accent: #a3a3a3;
+  --c-line: rgba(255, 255, 255, 0.1);
+  --c-line-strong: rgba(255, 255, 255, 0.24);
+  --c-inverse: #ffffff;
+  --c-on-inverse: #000000;
+  --grain-opacity: 0.035;
+}
+
+@theme inline {
+  /* ---- Surfaces & textes, pilotés par le thème ---- */
+  --color-bg: var(--c-bg);
+  --color-surface: var(--c-surface);
+  --color-elevated: var(--c-elevated);
+  --color-fg: var(--c-fg);
+  --color-mute: var(--c-mute);
+  --color-mute-dim: var(--c-mute-dim);
+  --color-accent: var(--c-accent);
+  --color-line: var(--c-line);
+  --color-line-strong: var(--c-line-strong);
+  --color-inverse: var(--c-inverse);
+  --color-on-inverse: var(--c-on-inverse);
+}
+
 @theme {
-  /* ---- Surfaces ---- */
-  --color-ink: #000000;
-  --color-surface: #050505;
-  --color-elevated: #0d0d0d;
-  --color-raised: #161616;
-
-  /* ---- Accents drapeau ---- */
-  --color-teranga: #00853f;
-  --color-teranga-bright: #00a34d;
-  --color-or: #fdef42;
-  --color-lion: #e31e24;
-
-  /* ---- Filets & textes ---- */
-  --color-line: rgba(255, 255, 255, 0.07);
-  --color-line-strong: rgba(255, 255, 255, 0.18);
-  --color-mute: #6e6e6e;
-  --color-mute-dim: #454545;
-
   /* ---- Typographie ---- */
   --font-display: var(--font-bebas), "Haettenschweiler", "Arial Narrow", sans-serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
@@ -89,8 +129,10 @@
   }
 
   body {
-    background: var(--color-ink);
-    color: #fff;
+    background: var(--c-bg);
+    color: var(--c-fg);
+    /* Le basculement de thème ne doit pas clignoter. */
+    transition: background-color 0.25s ease, color 0.25s ease;
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -99,8 +141,8 @@
   }
 
   ::selection {
-    background: var(--color-teranga);
-    color: #fff;
+    background: var(--c-inverse);
+    color: var(--c-on-inverse);
   }
 
   ::-webkit-scrollbar {
@@ -108,18 +150,18 @@
     height: 4px;
   }
   ::-webkit-scrollbar-track {
-    background: var(--color-ink);
+    background: var(--c-bg);
   }
   ::-webkit-scrollbar-thumb {
-    background: #222;
+    background: var(--c-line-strong);
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-teranga);
+    background: var(--c-accent);
   }
 
   /* Accessibilité : anneau de focus visible au clavier uniquement. */
   :focus-visible {
-    outline: 2px solid var(--color-teranga-bright);
+    outline: 2px solid var(--c-fg);
     outline-offset: 3px;
   }
 
@@ -137,7 +179,7 @@
   select {
     -webkit-appearance: none;
     appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%2300853F' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23767676' stroke-width='1.5'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 1rem center;
     background-size: 12px;
@@ -169,16 +211,16 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.035;
+  opacity: var(--grain-opacity);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Ligne de vie DAKOOL : le trait rouge qui se dessine au survol. */
+/* Ligne de vie DAKOOL : le trait qui s'allonge au survol. */
 .rule-grow {
   display: block;
   width: 1.5rem;
   height: 2px;
-  background: var(--color-teranga);
+  background: var(--c-fg);
   transition: width 0.4s var(--ease-brand);
 }
 .group:hover .rule-grow {

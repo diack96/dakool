@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-type Variant = 'solid' | 'outline' | 'dark' | 'accent';
+type Variant = 'solid' | 'outline' | 'dark' | 'darkOutline';
 type Size = 'sm' | 'md' | 'lg';
 
 type Props = {
@@ -15,12 +15,13 @@ type Props = {
 };
 
 const variants: Record<Variant, string> = {
-  /* Le CTA principal : blanc plein qui bascule au vert Téranga. */
-  solid: 'bg-white text-black hover:bg-teranga hover:text-white',
-  outline: 'border border-line-strong text-white hover:border-white hover:bg-white hover:text-black',
-  /* Sur fond vert : noir qui bascule au blanc. */
-  dark: 'bg-ink text-white hover:bg-white hover:text-black',
-  accent: 'bg-teranga text-white hover:bg-teranga-bright',
+  /* ---- Sur fond noir ---- */
+  solid: 'bg-inverse text-on-inverse hover:bg-accent',
+  outline: 'border border-line-strong text-fg hover:border-fg hover:bg-inverse hover:text-on-inverse',
+
+  /* ---- Sur fond blanc (bandeaux CTA inversés) ---- */
+  dark: 'bg-bg text-fg hover:bg-elevated',
+  darkOutline: 'border border-on-inverse/25 text-on-inverse hover:bg-bg hover:text-fg',
 };
 
 const sizes: Record<Size, string> = {

@@ -1,10 +1,14 @@
-/** Le liseré vert-jaune-rouge du drapeau sénégalais. Signature de la marque. */
+/**
+ * Filet de fin de section en trois valeurs de gris.
+ * Remplace l'ancien liseré aux couleurs du drapeau : même rôle graphique,
+ * mais dans la palette monochrome du site.
+ */
 export default function FlagBar({ className = '' }: { className?: string }) {
   return (
     <div aria-hidden className={`flex h-[3px] w-full ${className}`}>
-      <span className="flex-1 bg-teranga" />
-      <span className="flex-1 bg-or" />
-      <span className="flex-1 bg-lion" />
+      <span className="flex-1 bg-inverse" />
+      <span className="flex-1 bg-inverse/40" />
+      <span className="flex-1 bg-inverse/15" />
     </div>
   );
 }

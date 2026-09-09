@@ -17,9 +17,9 @@ export default function NewsletterForm() {
 
   if (done) {
     return (
-      <p className="flex items-center gap-3 border border-teranga/30 bg-teranga/5 px-5 py-4 text-sm text-white">
-        <FontAwesomeIcon icon={faCheck} className="h-4 w-4 shrink-0 text-teranga" />
-        Merci — vous êtes inscrit. Les prochaines sorties arrivent dans votre boîte mail.
+      <p className="flex items-center gap-3 border border-fg/20 bg-inverse/5 px-5 py-4 text-sm text-fg">
+        <FontAwesomeIcon icon={faCheck} className="h-4 w-4 shrink-0 text-accent" />
+        Bienvenue au Club DAKOOL. Les prochaines sorties arrivent dans ta boîte mail.
       </p>
     );
   }
@@ -27,7 +27,7 @@ export default function NewsletterForm() {
   return (
     <form onSubmit={handleSubmit} className="flex w-full max-w-md">
       <label htmlFor="newsletter-email" className="sr-only">
-        Votre adresse email
+        Ton adresse email
       </label>
       <input
         id="newsletter-email"
@@ -35,15 +35,15 @@ export default function NewsletterForm() {
         required
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        placeholder="votre@email.sn"
-        className="min-w-0 flex-1 border border-line bg-ink px-4 py-3.5 text-sm text-white placeholder-mute-dim transition-colors focus:border-teranga focus:outline-none"
+        placeholder="ton@email.com"
+        className="min-w-0 flex-1 border border-line bg-bg px-4 py-3.5 text-sm text-fg placeholder-mute-dim transition-colors focus:border-fg focus:outline-none"
       />
       <button
         type="submit"
-        aria-label="S'inscrire à la newsletter"
-        className="flex shrink-0 items-center gap-2 bg-white px-5 py-3.5 text-xs font-black uppercase tracking-cta text-black transition-colors hover:bg-teranga hover:text-white"
+        aria-label="Rejoindre le Club DAKOOL"
+        className="flex shrink-0 items-center gap-2 bg-inverse px-5 py-3.5 text-xs font-black uppercase tracking-cta text-on-inverse transition-colors hover:bg-accent"
       >
-        <span className="hidden sm:inline">S&apos;inscrire</span>
+        <span className="hidden sm:inline">Rejoindre</span>
         <FontAwesomeIcon icon={faArrowRight} className="h-3.5 w-3.5" />
       </button>
     </form>

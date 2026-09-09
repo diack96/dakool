@@ -7,17 +7,33 @@ import {
   faShirt,
   faShoePrints,
   faFutbol,
+  faBasketball,
+  faVolleyball,
+  faHandBackFist,
+  faSpa,
+  faPersonRunning,
+  faVestPatches,
+  faPeopleGroup,
+  faLayerGroup,
   faVest,
   faTag,
 } from '@fortawesome/free-solid-svg-icons';
 import ProductCard from '@/components/ProductCard';
 import Container from '@/components/Container';
 import Reveal from '@/components/Reveal';
-import { products, categories } from '@/data/products';
+import { categories, productsIn } from '@/data/products';
 
 const catIcons: Record<string, typeof faGrip> = {
   Tous: faGrip,
+  Basketball: faBasketball,
+  Volleyball: faVolleyball,
+  Handball: faHandBackFist,
+  Yoga: faSpa,
   Maillots: faShirt,
+  'Pantalons & Leggings': faPersonRunning,
+  Sweats: faVestPatches,
+  Loisirs: faPeopleGroup,
+  Survêtements: faLayerGroup,
   Chaussures: faShoePrints,
   Ballons: faFutbol,
   Équipements: faVest,
@@ -26,8 +42,6 @@ const catIcons: Record<string, typeof faGrip> = {
 
 const sorts = {
   defaut: 'Sélection',
-  'prix-croissant': 'Prix croissant',
-  'prix-decroissant': 'Prix décroissant',
   nom: 'Nom (A–Z)',
 } as const;
 
@@ -38,13 +52,9 @@ export default function ProduitsClient({ initialCategory }: { initialCategory: s
   const [sort, setSort] = useState<SortKey>('defaut');
 
   const filtered = useMemo(() => {
-    const list = active === 'Tous' ? products : products.filter((p) => p.category === active);
+    const list = productsIn(active);
 
     switch (sort) {
-      case 'prix-croissant':
-        return [...list].sort((a, b) => a.price - b.price);
-      case 'prix-decroissant':
-        return [...list].sort((a, b) => b.price - a.price);
       case 'nom':
         return [...list].sort((a, b) => a.name.localeCompare(b.name, 'fr'));
       default:
@@ -53,7 +63,7 @@ export default function ProduitsClient({ initialCategory }: { initialCategory: s
   }, [active, sort]);
 
   return (
-    <section className="bg-ink py-14 sm:py-16">
+    <section className="bg-bg py-14 sm:py-16">
       <Container>
         {/* Filtres */}
         <div className="mb-8 flex flex-col gap-4 border-b border-line pb-6 lg:flex-row lg:items-center lg:justify-between">
@@ -70,8 +80,8 @@ export default function ProduitsClient({ initialCategory }: { initialCategory: s
                 aria-pressed={active === cat}
                 className={`flex shrink-0 items-center gap-2 border px-4 py-2.5 text-[11px] font-black uppercase tracking-label transition-colors ${
                   active === cat
-                    ? 'border-white bg-white text-black'
-                    : 'border-line bg-transparent text-mute hover:border-line-strong hover:text-white'
+                    ? 'border-fg bg-inverse text-on-inverse'
+                    : 'border-line bg-transparent text-mute hover:border-line-strong hover:text-fg'
                 }`}
               >
                 <FontAwesomeIcon icon={catIcons[cat] ?? faGrip} className="h-3 w-3" />
@@ -91,7 +101,7 @@ export default function ProduitsClient({ initialCategory }: { initialCategory: s
               id="tri"
               value={sort}
               onChange={(e) => setSort(e.target.value as SortKey)}
-              className="border border-line bg-elevated py-2.5 pl-4 pr-10 text-xs text-white transition-colors focus:border-teranga focus:outline-none"
+              className="border border-line bg-elevated py-2.5 pl-4 pr-10 text-xs text-fg transition-colors focus:border-fg focus:outline-none"
             >
               {Object.entries(sorts).map(([value, label]) => (
                 <option key={value} value={value}>
@@ -109,8 +119,8 @@ export default function ProduitsClient({ initialCategory }: { initialCategory: s
 
         {filtered.length === 0 ? (
           <div className="border border-line py-24 text-center">
-            <p className="font-display text-3xl text-white">Aucun produit</p>
-            <p className="mt-2 text-sm text-mute">Cette catégorie est vide pour le moment.</p>
+            <p className="font-display text-3xl text-fg">Aucun produit</p>
+            <p className="mt-2 text-sm text-mute">Rien dans cette catégorie pour le moment.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 gap-px bg-line sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

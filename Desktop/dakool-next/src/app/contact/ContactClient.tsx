@@ -21,27 +21,28 @@ import {
 import Container from '@/components/Container';
 import SectionHeading from '@/components/SectionHeading';
 import Reveal from '@/components/Reveal';
+import { whatsappUrl, WHATSAPP_DISPLAY } from '@/lib/whatsapp';
 
 const faqs = [
   {
     q: 'Proposez-vous des commandes groupées pour les clubs ?',
-    a: "Oui. DAKOOL propose des tarifs préférentiels pour les commandes groupées à partir de 10 maillots. Contactez-nous par email ou WhatsApp avec votre logo et vos couleurs pour un devis personnalisé sous 48 heures.",
+    a: "Oui. Tarifs préférentiels à partir de 10 maillots. Écris-nous par email ou WhatsApp avec ton logo et tes couleurs : tu as un devis sous 48 heures.",
   },
   {
     q: 'Quels sont les délais de livraison ?',
-    a: "Livraison gratuite à Dakar sous 24 à 48 heures. Pour les autres régions du Sénégal, comptez 3 à 5 jours ouvrables. Les commandes personnalisées (flocage, broderie) nécessitent 7 à 10 jours supplémentaires.",
+    a: "Les commandes partent de notre atelier sous 48 heures. Le délai de livraison dépend ensuite de la destination. Les commandes personnalisées (flocage, broderie) demandent 7 à 10 jours supplémentaires.",
   },
   {
-    q: 'Puis-je personnaliser un maillot avec le nom et le numéro de mon joueur ?',
-    a: "Oui. Nous proposons le flocage et la broderie sur tous nos maillots. Envoyez-nous le nom, le numéro et la police souhaitée lors de votre commande. Frais supplémentaires de 2 000 FCFA par maillot.",
+    q: 'Puis-je faire floquer un maillot au nom de mon joueur ?',
+    a: "Oui, flocage et broderie sur tous nos maillots. Indique le nom, le numéro et la police au moment de la commande. Compte 3 € de plus par maillot.",
   },
   {
     q: 'Comment devenir partenaire de DAKOOL pour mon club ?',
-    a: "Contactez notre département partenariats à partenariats@dakool.sn ou via le formulaire ci-dessus en choisissant le sujet « Partenariat Club ». Nous répondons sous 5 jours ouvrables.",
+    a: "Écris à partenariats@dakool.com, ou passe par le formulaire ci-dessus en choisissant le sujet « Partenariat club ». On répond sous 5 jours ouvrables.",
   },
   {
     q: 'Quels sont les modes de paiement acceptés ?',
-    a: "Wave, Orange Money, Free Money, virement bancaire et espèces à la livraison dans la région de Dakar. Le paiement par carte bancaire sera disponible prochainement.",
+    a: "Virement bancaire et paiement mobile. Les modalités sont confirmées avec vous sur WhatsApp avant tout règlement. Le paiement par carte bancaire arrive prochainement.",
   },
   {
     q: 'Proposez-vous une garantie ou une politique de retour ?',
@@ -53,41 +54,41 @@ const socials = [
   {
     icon: faInstagram,
     label: 'Instagram',
-    handle: '@dakool.sn',
-    href: 'https://instagram.com/dakool.sn',
-    bg: 'linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)',
+    handle: '@dakool',
+    href: 'https://instagram.com/dakool',
   },
   {
     icon: faFacebookF,
     label: 'Facebook',
-    handle: 'DAKOOL Sénégal',
-    href: 'https://facebook.com/dakool.sn',
-    bg: '#1877F2',
+    handle: 'DAKOOL',
+    href: 'https://facebook.com/dakool',
   },
   {
     icon: faTiktok,
     label: 'TikTok',
     handle: '@dakool.official',
     href: 'https://tiktok.com/@dakool.official',
-    bg: '#000',
   },
   {
     icon: faYoutube,
     label: 'YouTube',
     handle: 'DAKOOL TV',
     href: 'https://youtube.com/@dakool',
-    bg: '#FF0000',
   },
 ];
 
 const coordinates = [
   {
-    icon: faLocationDot,
-    title: 'Adresse',
-    lines: ['Zone Industrielle de Dakar', 'Route de Rufisque, Dakar 11000', 'Sénégal'],
+    icon: faEnvelope,
+    title: 'Email',
+    lines: ['contact@dakool.com', 'partenariats@dakool.com'],
   },
-  { icon: faPhone, title: 'Téléphone', lines: ['+221 76 123 45 67', '+221 33 800 12 34 (fixe)'] },
-  { icon: faEnvelope, title: 'Email', lines: ['contact@dakool.sn', 'partenariats@dakool.sn'] },
+  { icon: faPhone, title: 'WhatsApp', lines: [WHATSAPP_DISPLAY, 'Réponse rapide, 7j/7'] },
+  {
+    icon: faLocationDot,
+    title: 'Expédition',
+    lines: ['Départ sous 48 heures', 'Livraison internationale'],
+  },
   {
     icon: faClock,
     title: "Horaires d'ouverture",
@@ -107,7 +108,7 @@ const subjects = [
 ];
 
 const inputClass =
-  'w-full border border-line bg-elevated px-4 py-3.5 text-sm text-white placeholder-mute-dim transition-colors focus:border-teranga focus:outline-none';
+  'w-full border border-line bg-elevated px-4 py-3.5 text-sm text-fg placeholder-mute-dim transition-colors focus:border-fg focus:outline-none';
 const labelClass = 'mb-1.5 block text-[10px] font-black uppercase tracking-label text-mute-dim';
 
 export default function ContactClient() {
@@ -127,33 +128,33 @@ export default function ContactClient() {
 
   return (
     <>
-      <section className="bg-ink py-16 sm:py-20">
+      <section className="bg-bg py-16 sm:py-20">
         <Container>
           <div className="grid gap-14 lg:grid-cols-2 lg:gap-16">
             {/* Formulaire */}
             <div>
-              <span className="mb-5 flex items-center gap-3 text-[11px] font-bold uppercase tracking-brand text-teranga">
-                <span className="h-2 w-2 shrink-0 rounded-full bg-teranga" />
+              <span className="mb-5 flex items-center gap-3 text-[11px] font-bold uppercase tracking-brand text-fg">
+                <span className="h-2 w-2 shrink-0 rounded-full bg-inverse" />
                 Formulaire de contact
               </span>
-              <h2 className="mb-2 font-display text-title text-white">
-                Envoyez-nous un <span className="text-teranga">message</span>
+              <h2 className="mb-2 font-display text-title text-fg">
+                Écris-nous un <span className="text-accent">message</span>
               </h2>
               <p className="mb-8 text-sm text-mute">
-                Nous répondons en général dans les 24 heures.
+                On répond en général dans les 24 heures.
               </p>
 
               {submitted ? (
-                <div className="border border-teranga/25 bg-teranga/5 p-10 text-center">
-                  <span className="mx-auto mb-5 flex h-12 w-12 items-center justify-center bg-teranga">
-                    <FontAwesomeIcon icon={faCheck} className="h-5 w-5 text-white" />
+                <div className="border border-fg/20 bg-inverse/5 p-10 text-center">
+                  <span className="mx-auto mb-5 flex h-12 w-12 items-center justify-center bg-inverse">
+                    <FontAwesomeIcon icon={faCheck} className="h-5 w-5 text-on-inverse" />
                   </span>
-                  <h3 className="mb-2 font-display text-3xl text-white">Message envoyé</h3>
-                  <p className="text-sm text-mute">Nous vous répondrons dans les 24 heures.</p>
+                  <h3 className="mb-2 font-display text-3xl text-fg">Message envoyé</h3>
+                  <p className="text-sm text-mute">On te répond dans les 24 heures.</p>
                   <button
                     type="button"
                     onClick={() => setSubmitted(false)}
-                    className="mt-5 border-b border-teranga/40 pb-0.5 text-sm text-teranga transition-colors hover:border-teranga"
+                    className="mt-5 border-b border-fg/30 pb-0.5 text-sm text-accent transition-colors hover:border-fg"
                   >
                     Envoyer un autre message
                   </button>
@@ -199,7 +200,7 @@ export default function ContactClient() {
                       type="email"
                       required
                       autoComplete="email"
-                      placeholder="moussa@example.sn"
+                      placeholder="prenom@example.com"
                       className={inputClass}
                     />
                   </div>
@@ -213,7 +214,7 @@ export default function ContactClient() {
                       name="telephone"
                       type="tel"
                       autoComplete="tel"
-                      placeholder="+221 76 000 00 00"
+                      placeholder="+33 6 00 00 00 00"
                       className={inputClass}
                     />
                   </div>
@@ -249,7 +250,7 @@ export default function ContactClient() {
                       name="message"
                       required
                       rows={5}
-                      placeholder="Décrivez votre demande…"
+                      placeholder="Dis-nous ce dont tu as besoin…"
                       className={`${inputClass} resize-none`}
                     />
                   </div>
@@ -257,7 +258,7 @@ export default function ContactClient() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="flex w-full items-center justify-center gap-2.5 bg-white py-4 text-sm font-black uppercase tracking-cta text-black transition-colors hover:bg-teranga hover:text-white disabled:pointer-events-none disabled:opacity-50"
+                    className="flex w-full items-center justify-center gap-2.5 bg-inverse py-4 text-sm font-black uppercase tracking-cta text-on-inverse transition-colors hover:bg-accent disabled:pointer-events-none disabled:opacity-50"
                   >
                     <FontAwesomeIcon icon={faPaperPlane} className="h-3.5 w-3.5" />
                     {loading ? 'Envoi en cours…' : 'Envoyer le message'}
@@ -268,12 +269,12 @@ export default function ContactClient() {
 
             {/* Coordonnées */}
             <div>
-              <span className="mb-5 flex items-center gap-3 text-[11px] font-bold uppercase tracking-brand text-teranga">
-                <span className="h-2 w-2 shrink-0 rounded-full bg-teranga" />
+              <span className="mb-5 flex items-center gap-3 text-[11px] font-bold uppercase tracking-brand text-fg">
+                <span className="h-2 w-2 shrink-0 rounded-full bg-inverse" />
                 Nos coordonnées
               </span>
-              <h2 className="mb-8 font-display text-title text-white">
-                Trouvez-nous <span className="text-teranga">facilement</span>
+              <h2 className="mb-8 font-display text-title text-fg">
+                Où nous <span className="text-accent">trouver</span>
               </h2>
 
               <div className="mb-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
@@ -282,11 +283,11 @@ export default function ContactClient() {
                     key={item.title}
                     className="flex items-start gap-4 border border-line p-5 transition-colors hover:border-line-strong"
                   >
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-teranga/25">
-                      <FontAwesomeIcon icon={item.icon} className="h-3.5 w-3.5 text-teranga" />
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-fg/20">
+                      <FontAwesomeIcon icon={item.icon} className="h-3.5 w-3.5 text-accent" />
                     </span>
                     <div>
-                      <h3 className="mb-1 text-xs font-black uppercase tracking-cta text-white">
+                      <h3 className="mb-1 text-xs font-black uppercase tracking-cta text-fg">
                         {item.title}
                       </h3>
                       {item.lines.map((line) => (
@@ -300,24 +301,24 @@ export default function ContactClient() {
               </div>
 
               <a
-                href="https://wa.me/221761234567"
+                href={whatsappUrl('Bonjour DAKOOL, j’ai une question.')}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mb-8 flex items-start gap-4 border border-line p-5 transition-colors hover:border-[#25D366]/40"
+                className="mb-8 flex items-start gap-4 border border-line p-5 transition-colors hover:border-line-strong"
               >
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-[#25D366]/25">
-                  <FontAwesomeIcon icon={faWhatsapp} className="h-3.5 w-3.5 text-[#25D366]" />
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-line-strong">
+                  <FontAwesomeIcon icon={faWhatsapp} className="h-3.5 w-3.5 text-fg" />
                 </span>
                 <div>
-                  <h3 className="mb-1 text-xs font-black uppercase tracking-cta text-white">
+                  <h3 className="mb-1 text-xs font-black uppercase tracking-cta text-fg">
                     WhatsApp Business
                   </h3>
-                  <p className="text-sm text-teranga">+221 76 123 45 67</p>
+                  <p className="text-sm text-accent">{WHATSAPP_DISPLAY}</p>
                   <p className="text-xs text-mute-dim">Réponse rapide · 7j/7 · 8h–20h</p>
                 </div>
               </a>
 
-              <h3 className="mb-4 font-display text-xl text-white">Suivez-nous</h3>
+              <h3 className="mb-4 font-display text-xl text-fg">Suivez-nous</h3>
               <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                 {socials.map((s) => (
                   <a
@@ -327,14 +328,11 @@ export default function ContactClient() {
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 border border-line p-3.5 transition-colors hover:border-line-strong"
                   >
-                    <span
-                      className="flex h-8 w-8 shrink-0 items-center justify-center text-white"
-                      style={{ background: s.bg }}
-                    >
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center border border-line-strong text-fg">
                       <FontAwesomeIcon icon={s.icon} className="h-3.5 w-3.5" />
                     </span>
                     <span>
-                      <span className="block text-xs font-bold text-white">{s.label}</span>
+                      <span className="block text-xs font-bold text-fg">{s.label}</span>
                       <span className="block text-xs text-mute-dim">{s.handle}</span>
                     </span>
                   </a>
@@ -364,13 +362,13 @@ export default function ContactClient() {
                       className="group flex w-full items-center justify-between gap-4 py-5 text-left"
                     >
                       <span
-                        className={`text-sm font-medium transition-colors ${open ? 'text-teranga' : 'text-white group-hover:text-teranga'}`}
+                        className={`text-sm font-medium transition-colors ${open ? 'text-accent' : 'text-fg group-hover:text-fg'}`}
                       >
                         {faq.q}
                       </span>
                       <FontAwesomeIcon
                         icon={faPlus}
-                        className={`h-3.5 w-3.5 shrink-0 text-teranga transition-transform duration-300 ${open ? 'rotate-45' : ''}`}
+                        className={`h-3.5 w-3.5 shrink-0 text-accent transition-transform duration-300 ${open ? 'rotate-45' : ''}`}
                       />
                     </button>
                   </h3>

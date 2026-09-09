@@ -16,20 +16,20 @@ export default function SectionHeading({ eyebrow, title, highlight, link }: Prop
     <Reveal>
       <div className="mb-10 flex items-end justify-between gap-8 border-b border-line pb-6 sm:mb-12">
         <div>
-          <span className="mb-3 flex items-center gap-3 text-[11px] font-bold uppercase tracking-brand text-teranga">
-            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-teranga" />
+          <span className="mb-3 flex items-center gap-3 text-[11px] font-bold uppercase tracking-brand text-fg">
+            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-inverse" />
             {eyebrow}
           </span>
-          <h2 className="font-display text-title text-white">
+          <h2 className="font-display text-title text-fg">
             {title}
-            {highlight && <span className="text-teranga"> {highlight}</span>}
+            {highlight && <span className="text-accent"> {highlight}</span>}
           </h2>
         </div>
 
         {link && (
           <Link
             href={link.href}
-            className="mb-1 hidden shrink-0 border-b border-line-strong pb-1 text-xs font-black uppercase tracking-label text-white transition-colors hover:border-teranga hover:text-teranga sm:block"
+            className="mb-1 hidden shrink-0 border-b border-line-strong pb-1 text-xs font-black uppercase tracking-label text-fg transition-colors hover:border-fg hover:text-fg sm:block"
           >
             {link.label} →
           </Link>

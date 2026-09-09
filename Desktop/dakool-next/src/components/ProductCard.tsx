@@ -4,16 +4,15 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faHeart, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { useCart } from '@/context/CartContext';
-import { formatPrice } from '@/lib/format';
+import { buildProductMessage, whatsappUrl } from '@/lib/whatsapp';
 import type { Product } from '@/data/products';
 import ProductVisual from './ProductVisual';
 
-const badgeStyles = {
-  green: 'bg-teranga text-white',
-  yellow: 'bg-or text-black',
-  red: 'bg-lion text-white',
-};
+/* Toutes les pastilles partagent le même traitement : le site est
+   monochrome, la distinction se fait par le libellé. */
+const BADGE = 'bg-inverse text-on-inverse';
 
 export default function ProductCard({ product, index }: { product: Product; index?: number }) {
   const { addToCart, openCart } = useCart();
@@ -28,7 +27,6 @@ export default function ProductCard({ product, index }: { product: Product; inde
       productId: product.id,
       slug: product.slug,
       name: product.name,
-      price: product.price,
       category: product.category,
       size: product.sizes[0],
       color: product.colors[0]?.name,
@@ -37,13 +35,18 @@ export default function ProductCard({ product, index }: { product: Product; inde
   };
 
   return (
-    <article className="group relative bg-ink">
+    <article className="group relative bg-bg">
       <div className="relative flex aspect-square items-center justify-center overflow-hidden bg-elevated">
-        <ProductVisual category={product.category} index={index} />
+        <ProductVisual
+          category={product.category}
+          image={product.images?.[0]}
+          alt={product.name}
+          index={index}
+        />
 
         {product.badge && (
           <span
-            className={`absolute top-3 left-3 z-10 px-2 py-1 text-[10px] font-black uppercase tracking-cta ${badgeStyles[product.badge.color]}`}
+            className={`absolute top-3 left-3 z-10 px-2 py-1 text-[10px] font-black uppercase tracking-cta ${BADGE}`}
           >
             {product.badge.label}
           </span>
@@ -60,7 +63,7 @@ export default function ProductCard({ product, index }: { product: Product; inde
         >
           <FontAwesomeIcon
             icon={faHeart}
-            className={`h-3.5 w-3.5 transition-colors ${wished ? 'text-lion' : 'text-white/40'}`}
+            className={`h-3.5 w-3.5 transition-colors ${wished ? 'text-fg' : 'text-fg/40'}`}
           />
         </button>
 
@@ -69,34 +72,51 @@ export default function ProductCard({ product, index }: { product: Product; inde
           <button
             type="button"
             onClick={handleAdd}
-            className="absolute inset-x-0 bottom-0 z-20 flex items-center justify-center gap-2 bg-white py-3.5 text-[11px] font-black uppercase tracking-label text-black transition-[transform,background-color,color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:bg-teranga hover:text-white sm:translate-y-full sm:group-hover:translate-y-0 sm:focus-visible:translate-y-0"
+            className="absolute inset-x-0 bottom-0 z-20 flex items-center justify-center gap-2 bg-inverse py-3.5 text-[11px] font-black uppercase tracking-label text-on-inverse transition-[transform,background-color,color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:bg-accent sm:translate-y-full sm:group-hover:translate-y-0 sm:focus-visible:translate-y-0"
           >
             <FontAwesomeIcon icon={faPlus} className="h-3 w-3" />
             Ajouter au panier
           </button>
         ) : (
-          <span className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex items-center justify-center gap-2 bg-white py-3.5 text-[11px] font-black uppercase tracking-label text-black transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] sm:translate-y-full sm:group-hover:translate-y-0">
-            Choisir la taille
+          <span className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex items-center justify-center gap-2 bg-inverse py-3.5 text-[11px] font-black uppercase tracking-label text-on-inverse transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] sm:translate-y-full sm:group-hover:translate-y-0">
+            Voir le produit
             <FontAwesomeIcon icon={faArrowRight} className="h-3 w-3" />
           </span>
         )}
       </div>
 
       <div className="pt-4 pb-1">
-        <p className="mb-1.5 text-[10px] font-bold uppercase tracking-label text-teranga">
+        <p className="mb-1.5 text-[10px] font-bold uppercase tracking-label text-accent">
           {product.category}
         </p>
-        <h3 className="mb-2 text-sm leading-tight font-semibold text-white">
+        <h3 className="mb-2 text-sm leading-tight font-semibold text-fg">
           {/* Le ::after étend la zone cliquable à toute la carte sans imbriquer
               de bouton dans un lien. */}
           <Link
             href={`/produits/${product.slug}`}
-            className="transition-colors after:absolute after:inset-0 after:content-[''] hover:text-teranga"
+            className="transition-colors after:absolute after:inset-0 after:content-[''] hover:text-fg"
           >
             {product.name}
           </Link>
         </h3>
-        <p className="font-display text-xl tracking-wide text-white">{formatPrice(product.price)}</p>
+        {/* Le lien du titre couvre la carte entière via son ::after ; ce bouton
+            doit donc passer au-dessus pour rester cliquable. */}
+        <a
+          href={whatsappUrl(
+            buildProductMessage({
+              name: product.name,
+              color: product.colors[0]?.name,
+              qty: 1,
+            }),
+          )}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Demander le tarif de ${product.name} sur WhatsApp`}
+          className="relative z-10 inline-flex items-center gap-2 border border-line-strong px-3 py-2 text-[11px] font-black uppercase tracking-cta text-fg transition-colors hover:bg-inverse hover:text-on-inverse"
+        >
+          <FontAwesomeIcon icon={faWhatsapp} className="h-3.5 w-3.5" />
+          Demander le tarif
+        </a>
       </div>
     </article>
   );

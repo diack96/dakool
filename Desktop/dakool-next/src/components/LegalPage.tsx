@@ -31,7 +31,7 @@ export default function LegalPage({
     <>
       <PageHero tag={tag} title={title} highlight={highlight} subtitle={subtitle} />
 
-      <article className="bg-ink py-16 sm:py-20">
+      <article className="bg-bg py-16 sm:py-20">
         <Container size="narrow">
           <p className="mb-12 border-b border-line pb-6 text-xs uppercase tracking-label text-mute-dim">
             Dernière mise à jour : {updatedAt}
@@ -40,8 +40,8 @@ export default function LegalPage({
           <div className="space-y-12">
             {sections.map((section, i) => (
               <section key={section.heading}>
-                <h2 className="mb-4 font-display text-heading text-white">
-                  <span className="mr-3 text-teranga">{String(i + 1).padStart(2, '0')}</span>
+                <h2 className="mb-4 font-display text-heading text-fg">
+                  <span className="mr-3 text-accent">{String(i + 1).padStart(2, '0')}</span>
                   {section.heading}
                 </h2>
 
@@ -55,7 +55,7 @@ export default function LegalPage({
                   <ul className="mt-4 divide-y divide-line border-y border-line">
                     {section.bullets.map((bullet) => (
                       <li key={bullet} className="flex items-start gap-3 py-3.5 text-sm text-mute">
-                        <span aria-hidden className="mt-1 text-xs text-teranga">
+                        <span aria-hidden className="mt-1 text-xs text-accent">
                           ▸
                         </span>
                         {bullet}
@@ -70,10 +70,10 @@ export default function LegalPage({
           <p className="mt-16 border-t border-line pt-8 text-sm text-mute">
             Une question sur ce document ? Écrivez-nous à{' '}
             <a
-              href="mailto:contact@dakool.sn"
-              className="text-teranga transition-colors hover:text-teranga-bright"
+              href="mailto:contact@dakool.com"
+              className="text-accent transition-colors hover:text-fg"
             >
-              contact@dakool.sn
+              contact@dakool.com
             </a>
             .
           </p>

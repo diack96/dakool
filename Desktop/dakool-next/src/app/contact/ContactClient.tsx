@@ -16,7 +16,7 @@ import {
   faInstagram,
   faFacebookF,
   faTiktok,
-  faYoutube,
+  faLinkedinIn,
 } from '@fortawesome/free-brands-svg-icons';
 import Container from '@/components/Container';
 import SectionHeading from '@/components/SectionHeading';
@@ -54,26 +54,26 @@ const socials = [
   {
     icon: faInstagram,
     label: 'Instagram',
-    handle: '@dakool',
-    href: 'https://instagram.com/dakool',
+    handle: '@dakoolsport',
+    href: 'https://www.instagram.com/dakoolsport',
   },
   {
     icon: faFacebookF,
     label: 'Facebook',
     handle: 'DAKOOL',
-    href: 'https://facebook.com/dakool',
+    href: 'https://www.facebook.com/share/1FLovtc773/',
   },
   {
     icon: faTiktok,
     label: 'TikTok',
-    handle: '@dakool.official',
-    href: 'https://tiktok.com/@dakool.official',
+    handle: '@dakoolsport',
+    href: 'https://www.tiktok.com/@dakoolsport',
   },
   {
-    icon: faYoutube,
-    label: 'YouTube',
-    handle: 'DAKOOL TV',
-    href: 'https://youtube.com/@dakool',
+    icon: faLinkedinIn,
+    label: 'LinkedIn',
+    handle: 'DAKOOL',
+    href: 'https://www.linkedin.com/company/dakool/',
   },
 ];
 

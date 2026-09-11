@@ -32,6 +32,7 @@ const catIcons: Record<string, typeof faGrip> = {
   Maillots: faShirt,
   'Pantalons & Leggings': faPersonRunning,
   Sweats: faVestPatches,
+  'Sweat à Capuche': faVestPatches,
   Loisirs: faPeopleGroup,
   Survêtements: faLayerGroup,
   Chaussures: faShoePrints,

@@ -903,7 +903,7 @@ export const products: Product[] = [
   },
   {
     id: 'j1',
-    alsoIn: ['Pantalons & Leggings', 'Sweats', 'Survêtements'],
+    alsoIn: ['Pantalons & Leggings', 'Sweats', 'Sweat à Capuche', 'Survêtements'],
     slug: 'ensemble-capuche-zippe',
     name: 'Ensemble Capuche Zippé',
     category: 'Équipements',
@@ -931,7 +931,7 @@ export const products: Product[] = [
   },
   {
     id: 'j2',
-    alsoIn: ['Pantalons & Leggings', 'Sweats', 'Survêtements'],
+    alsoIn: ['Pantalons & Leggings', 'Sweats', 'Sweat à Capuche', 'Survêtements'],
     slug: 'ensemble-capuche',
     name: 'Ensemble à Capuche',
     category: 'Équipements',
@@ -1070,7 +1070,7 @@ export const products: Product[] = [
   },
   {
     id: 'sv1',
-    alsoIn: ['Sweats', 'Pantalons & Leggings'],
+    alsoIn: ['Sweats', 'Sweat à Capuche', 'Pantalons & Leggings'],
     slug: 'survetement-a-capuche',
     name: 'Survêtement à Capuche',
     category: 'Survêtements',
@@ -1142,6 +1142,7 @@ export const categories = [
   'Maillots',
   'Pantalons & Leggings',
   'Sweats',
+  'Sweat à Capuche',
   'Loisirs',
   'Survêtements',
   'Chaussures',

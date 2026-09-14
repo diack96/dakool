@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import SiteLocked from '@/components/SiteLocked';
+import { SITE_LOCKED } from '@/lib/site-lock';
 import Container from '@/components/Container';
 import Button from '@/components/Button';
 import FlagBar from '@/components/FlagBar';
@@ -9,6 +11,10 @@ const suggestions = [
 ];
 
 export default function NotFound() {
+  /* Site fermé : le 404 ne doit pas dévoiler la boutique, ni dans sa page ni
+     dans les données que Next sérialise sur chaque adresse. */
+  if (SITE_LOCKED) return <SiteLocked />;
+
   return (
     <section className="grain relative flex min-h-[100svh] items-center overflow-hidden bg-bg">
       <div aria-hidden className="pointer-events-none absolute inset-0">

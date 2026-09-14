@@ -903,7 +903,7 @@ export const products: Product[] = [
   },
   {
     id: 'j1',
-    alsoIn: ['Pantalons & Leggings', 'Sweats', 'Survêtements'],
+    alsoIn: ['Pantalons & Leggings', 'Sweats', 'Sweats à Capuche', 'Survêtements'],
     slug: 'ensemble-capuche-zippe',
     name: 'Ensemble Capuche Zippé',
     category: 'Équipements',
@@ -931,7 +931,7 @@ export const products: Product[] = [
   },
   {
     id: 'j2',
-    alsoIn: ['Pantalons & Leggings', 'Sweats', 'Survêtements'],
+    alsoIn: ['Pantalons & Leggings', 'Sweats', 'Sweats à Capuche', 'Survêtements'],
     slug: 'ensemble-capuche',
     name: 'Ensemble à Capuche',
     category: 'Équipements',
@@ -1069,8 +1069,43 @@ export const products: Product[] = [
     inStock: true,
   },
   {
+    id: 'sc1',
+    alsoIn: ['Sweats'],
+    slug: 'sweat-a-capuche',
+    name: 'Sweat à Capuche',
+    category: 'Sweats à Capuche',
+    price: 32,
+    badge: { label: 'Sur mesure' },
+    personnalisable: true,
+    images: [
+      '/produits/sweat-capuche-blanc.jpg',
+      '/produits/sweat-capuche-lettrage.jpg',
+      '/produits/sweat-capuche-script.jpg',
+      '/produits/sweat-capuche-ecusson.jpg',
+    ],
+    tagline: 'Le sweat du club, vendu seul.',
+    description:
+      "Sweat à capuche à enfiler, molleton gratté à l'intérieur, capuche doublée à cordon et poche kangourou d'un seul tenant. Bords-côtes à la taille et aux poignets. Le visuel se pose en grand sur la poitrine — logo, lettrage ou écusson, au choix du club. Vendu à l'unité, sans le bas.",
+    sizes: JERSEY_SIZES,
+    colors: [
+      { name: 'Blanc — logo club', hex: '#F2F2F2', images: ['/produits/sweat-capuche-blanc.jpg'] },
+      { name: 'Bleu roi — lettrage', hex: '#2A3F9D', images: ['/produits/sweat-capuche-lettrage.jpg'] },
+      { name: 'Bleu roi — script', hex: '#2B44A8', images: ['/produits/sweat-capuche-script.jpg'] },
+      { name: 'Bleu roi — écusson', hex: '#2743A5', images: ['/produits/sweat-capuche-ecusson.jpg'] },
+    ],
+    details: [
+      'Sweat à enfiler, vendu à l’unité',
+      'Molleton gratté intérieur',
+      'Capuche doublée à cordon, poche kangourou',
+      'Bords-côtes taille et poignets',
+      'Visuel poitrine : logo, lettrage ou écusson',
+      'Production à partir de 10 pièces',
+    ],
+    inStock: true,
+  },
+  {
     id: 'sv1',
-    alsoIn: ['Sweats', 'Pantalons & Leggings'],
+    alsoIn: ['Sweats', 'Sweats à Capuche', 'Pantalons & Leggings'],
     slug: 'survetement-a-capuche',
     name: 'Survêtement à Capuche',
     category: 'Survêtements',
@@ -1080,6 +1115,7 @@ export const products: Product[] = [
     images: [
       '/produits/survetement-capuche-noir.jpg',
       '/produits/survetement-capuche-jaune.jpg',
+      '/produits/survetement-capuche-vert.jpg',
     ],
     tagline: 'Capuche doublée, bords-côtes contrastés, nom du club dans le dos.',
     description:
@@ -1088,6 +1124,7 @@ export const products: Product[] = [
     colors: [
       { name: 'Noir / Jaune', hex: '#111111', images: ['/produits/survetement-capuche-noir.jpg'] },
       { name: 'Jaune / Noir', hex: '#EDD65B', images: ['/produits/survetement-capuche-jaune.jpg'] },
+      { name: 'Vert', hex: '#1FA84A', images: ['/produits/survetement-capuche-vert.jpg'] },
     ],
     details: [
       'Ensemble complet : veste à capuche + jogger',
@@ -1142,6 +1179,7 @@ export const categories = [
   'Maillots',
   'Pantalons & Leggings',
   'Sweats',
+  'Sweats à Capuche',
   'Loisirs',
   'Survêtements',
   'Chaussures',

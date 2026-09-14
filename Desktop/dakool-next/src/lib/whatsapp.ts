@@ -1,10 +1,10 @@
 import type { CartItem } from '@/context/CartContext';
 
-/** Numéro WhatsApp Business, au format international sans espaces ni « + ». */
-export const WHATSAPP_NUMBER = '221772870148';
+/** Numéro de commande, au format international sans espaces ni « + ». */
+export const WHATSAPP_NUMBER = '221762570288';
 
 /** Même numéro, mis en forme pour l'affichage. */
-export const WHATSAPP_DISPLAY = '+221 77 287 01 48';
+export const WHATSAPP_DISPLAY = '+221 76 257 02 88';
 
 /** Lien wa.me avec message pré-rempli. */
 export function whatsappUrl(message: string): string {

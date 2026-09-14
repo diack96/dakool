@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import CartSidebar from '@/components/CartSidebar';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
 import { themeInitScript } from '@/components/ThemeToggle';
+import { SITE_LOCKED } from '@/lib/site-lock';
 
 const bebas = Bebas_Neue({
   subsets: ['latin'],
@@ -50,7 +51,8 @@ export const metadata: Metadata = {
     title: 'DAKOOL Site Officiel | Équipements de sport',
     description: 'Équipementier sportif. Fait pour le terrain.',
   },
-  robots: { index: true, follow: true },
+  /* Site fermé : on demande aux moteurs de ne rien indexer. */
+  robots: SITE_LOCKED ? { index: false, follow: false } : { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
@@ -75,18 +77,28 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <noscript>
           <style>{'[data-reveal]{opacity:1!important;transform:none!important}'}</style>
         </noscript>
-        <a
-          href="#contenu"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-inverse focus:px-5 focus:py-3 focus:text-xs focus:font-black focus:uppercase focus:tracking-cta focus:text-on-inverse"
-        >
-          Aller au contenu
-        </a>
+        {/* Le fournisseur de panier reste monté même site fermé : les pages du
+            catalogue continuent d'être compilées, et leurs cartes produit en
+            dépendent. C'est l'habillage — menu, panier, pied de page — que la
+            page d'attente ne doit pas porter. */}
         <CartProvider>
-          <Navbar />
-          <CartSidebar />
-          <main id="contenu">{children}</main>
-          <Footer />
-          <FloatingWhatsApp />
+          {SITE_LOCKED ? (
+            children
+          ) : (
+            <>
+              <a
+                href="#contenu"
+                className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-inverse focus:px-5 focus:py-3 focus:text-xs focus:font-black focus:uppercase focus:tracking-cta focus:text-on-inverse"
+              >
+                Aller au contenu
+              </a>
+              <Navbar />
+              <CartSidebar />
+              <main id="contenu">{children}</main>
+              <Footer />
+              <FloatingWhatsApp />
+            </>
+          )}
         </CartProvider>
       </body>
     </html>

@@ -19,6 +19,7 @@ const VOLLEY = '/produits?categorie=Volleyball';
 const HAND = '/produits?categorie=Handball';
 const YOGA = '/produits?categorie=Yoga';
 const TRACKSUITS = '/produits?categorie=' + encodeURIComponent('Survêtements');
+const BASELAYERS = '/produits?categorie=' + encodeURIComponent('Sous-vêtements');
 const HOODIES = '/produits?categorie=' + encodeURIComponent('Sweats à Capuche');
 const BOTTOMS = '/produits?categorie=' + encodeURIComponent('Pantalons & Leggings');
 
@@ -26,7 +27,7 @@ const APPAREL: NavChild[] = [
   { label: 'Maillot de football', href: JERSEYS },
   { label: 'Survêtements', href: TRACKSUITS },
   { label: 'Sweats à capuche', href: HOODIES },
-  { label: 'T-shirt', href: SHOP },
+  { label: 'Sous-vêtements', href: BASELAYERS },
   { label: 'Short', href: SHOP },
   { label: 'Pantalon & Legging', href: BOTTOMS },
 ];

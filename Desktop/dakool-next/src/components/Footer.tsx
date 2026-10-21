@@ -141,6 +141,10 @@ export default function Footer() {
         <Container className="flex flex-col items-center justify-between gap-4 sm:flex-row">
           <p className="text-xs text-mute-dim">
             © {new Date().getFullYear()} DAKOOL. Tous droits réservés.
+            {' · '}Conçu par{' '}
+            <a href="https://warabadigital.com" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-mute">
+              Waraba Digital
+            </a>
           </p>
           <Link
             href="/mentions-legales"
